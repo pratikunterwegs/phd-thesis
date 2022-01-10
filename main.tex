@@ -1,0 +1,187 @@
+% !TEX program = xelatex
+
+\RequirePackage{silence} % :-\
+    \WarningFilter{scrreprt}{Usage of package `titlesec'}
+    %\WarningFilter{scrreprt}{Activating an ugly workaround}
+    \WarningFilter{titlesec}{Non standard sectioning command detected}
+\documentclass[ twoside,openright,titlepage,numbers=noenddot,%1headlines,
+                headinclude,footinclude,cleardoublepage=empty,abstract=on,
+                BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames
+                ]{scrreprt}
+\renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
+
+% use some packages
+\usepackage{multicol}
+\usepackage{xcolor}
+
+%********************************************************************
+% Note: Make all your adjustments in here
+%*******************************************************
+\input{config}
+
+%********************************************************************
+% Bibliographies
+%*******************************************************
+% \RequirePackage[authoryear,sort]{natbib}
+
+\addbibresource{chapters/preprocessing.bib}
+% \addbibresource{Bibliography.bib}
+% \addbibresource[label=ownpubs]{AMiede_Publications.bib}
+
+%********************************************************************
+% Hyphenation
+%*******************************************************
+%\hyphenation{put special hyphenation here}
+
+\usepackage{sourcesanspro}   % scaling is recommended
+\setmainfont[Ligatures=TeX]{Source Serif Pro}
+\setsansfont{Source Sans Pro}
+
+\newfontfamily\myfont{TeX Gyre Pagella}
+\newfontfamily\numfont{TeX Gyre Schola}
+
+\renewcommand{\chapterNumber}{%
+  \color{Black}\fontsize{60}{60} \bfseries\numfont}\par
+
+\makeatletter
+% fix part heading format
+\titleformat{\part}[display]
+        {\ct@altfont\centering\LARGE\rmfamily}%
+        {\thispagestyle{empty}\scshape\myfont\partname~\MakeTextUppercase{\thepart}}{1em}%
+        {\color{Maroon}\scshape\bfseries\huge\myfont}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+        
+% fix chapter heading format
+\titleformat{\chapter}[display]%
+    % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
+    {\relax}{\mbox{}\oldmarginpar{\chapterNumber\thechapter}}{0pt}%
+    {\raggedright\huge\emph}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
+
+% fix section format
+\titleformat{\section}
+    {\relax}{\textsc{\MakeTextLowercase{\thesection}}}{1em}{\bfseries\scshape\large\color{Maroon}\myfont}
+
+% parts in toc
+\renewcommand{\cftpartfont}{\color{Maroon}\scshape\bfseries}%
+% chapters in toc
+\renewcommand{\cftchappresnum}{\normalfont}%
+\renewcommand{\cftchapaftersnumb}{\normalfont}%
+\renewcommand{\cftchapfont}{\normalfont}%
+\renewcommand{\cftchappagefont}{\normalfont}%
+\makeatother
+
+% ********************************************************************
+% GO!GO!GO! MOVE IT!
+%*******************************************************
+\begin{document}
+\frenchspacing
+\raggedbottom
+\selectlanguage{american} % american ngerman
+%\renewcommand*{\bibname}{new name}
+%\setbibpreamble{}
+% \pagenumbering{roman}
+\pagestyle{plain}
+%********************************************************************
+% Frontmatter
+%*******************************************************
+% \include{FrontBackmatter/DirtyTitlepage}
+\include{frontbackmatter/Titlepage}
+\include{frontbackmatter/Titleback}
+\cleardoublepage\include{frontbackmatter/Dedication}
+%\cleardoublepage\include{FrontBackmatter/Foreword}
+\cleardoublepage\include{frontbackmatter/Contents}
+\cleardoublepage\include{frontbackmatter/Abstract}
+%********************************************************************
+% Mainmatter
+%*******************************************************
+\cleardoublepage
+\pagestyle{scrheadings}
+\pagenumbering{arabic}
+%\setcounter{page}{90}
+% use \cleardoublepage here to avoid problems with pdfbookmark
+\cleardoublepage
+
+\include{chapters/introduction}
+
+% Competition typically takes place in a spatial context, but eco-evolutionary models rarely address the joint evolution of movement and competition strategies. 
+% Here we investigate a spatially explicit forager-kleptoparasite model where consumers can either forage on a heterogeneous resource landscape, or steal resource items from conspecifics (kleptoparasitism). 
+% We consider three scenarios: (1) foragers without kleptoparasites; (2) consumers specializing as foragers or as kleptoparasites; and (3) consumers that can switch between foraging and kleptoparasitism depending on local conditions.
+% We model movement strategies as individual-specific combinations of preferences for environmental cues, similar to step-selection coefficients.
+% By means of mechanistic, individual-based simulations, we study the joint evolution of movement and competition strategies, and we investigate the implications on the resource landscape and the distribution of consumers over this landscape.
+% Movement and competition strategies evolve rapidly and consistently across all scenarios, with marked differences among scenarios, leading to differences in resource exploitation patterns.
+
+% \label{ch:intro}
+% \addcontentsline{toc}{chapter}{\nameref{ch:intro}}
+
+\ctparttext{You can put some informational part preamble text here.
+Illo principalmente su nos. Non message \emph{occidental} angloromanic
+da. Debitas effortio simplificate sia se, auxiliar summarios da que,
+se avantiate publicationes via. Pan in terra summarios, capital
+interlingua se que. Al via multo esser specimen, campo responder que
+da. Le usate medical addresses pro, europa origine sanctificate nos se.}
+
+\part{Tracking Animal Movement at High Resolution}
+
+\include{chapters/htme}
+
+\cleardoublepage
+
+\include{chapters/preprocessing}
+
+% \ctparttext{You can put some informational part preamble text here.
+% Illo principalmente su nos. Non message \emph{occidental} angloromanic
+% da. Debitas effortio simplificate sia se, auxiliar summarios da que,
+% se avantiate publicationes via. Pan in terra summarios, capital
+% interlingua se que. Al via multo esser specimen, campo responder que
+% da. Le usate medical addresses pro, europa origine sanctificate nos se.}
+
+\cleardoublepage
+
+\part{Ecology of Animal Movement and Space Use}
+
+\include{chapters/knots}
+
+\cleardoublepage
+
+\include{chapters/holeybirds}
+
+\cleardoublepage
+
+\include{chapters/hillybirds}
+
+\part{Evolution of Animal Movement Strategies}
+
+\include{chapters/kleptomove}
+
+\include{chapters/patternprocess}
+
+\include{chapters/pathomove}
+
+% \include{Chapters/Chapter02}
+%\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
+% \include{Chapters/Chapter03}
+%\include{multiToC} % <--- just debug stuff, ignore for your documents
+
+\include{chapters/discussion}
+
+% ********************************************************************
+% Backmatter
+%*******************************************************
+\appendix
+%\renewcommand{\thechapter}{\alph{chapter}}
+\cleardoublepage
+% \part{Appendix}
+
+%********************************************************************
+% Other Stuff in the Back
+%*******************************************************
+%\cleardoublepage\include{frontbackmatter/Bibliography}
+% \cleardoublepage\include{FrontBackmatter/Declaration}
+\cleardoublepage\include{frontbackmatter/Colophon}
+
+% \cleardoublepage\include{FrontBackmatter/Publications}
+% \cleardoublepage\include{FrontBackmatter/Acknowledgments}
+% ********************************************************************
+% Game Over: Restore, Restart, or Quit?
+%*******************************************************
+\end{document}
+% ********************************************************************
