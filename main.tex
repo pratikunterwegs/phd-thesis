@@ -33,15 +33,26 @@
 %*******************************************************
 %\hyphenation{put special hyphenation here}
 
-\usepackage{sourcesanspro}   % scaling is recommended
-\setmainfont[Ligatures=TeX]{Source Serif Pro}
+%\usepackage{sourcesanspro}   % scaling is recommended
+\usepackage{fontspec}
+% \setmainfont{Vollkorn}[
+%     Extension = .ttf,
+%     UprightFont = *-Regular,
+%     BoldFont = *-Bold,
+%     ItalicFont = *-Italic,
+%     BoldItalicFont = *-BoldItalic,
+%     ]
+\setmainfont{Source Serif Pro}
 \setsansfont{Source Sans Pro}
 
-\newfontfamily\myfont{TeX Gyre Pagella}
+\newfontfamily\myfont{TeX Gyre Schola}
 \newfontfamily\numfont{TeX Gyre Schola}
 
 \renewcommand{\chapterNumber}{%
   \color{Black}\fontsize{60}{60} \bfseries\numfont}\par
+
+\usepackage{enumitem}
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
 
 \makeatletter
 % fix part heading format
@@ -61,7 +72,7 @@
     {\relax}{\textsc{\MakeTextLowercase{\thesection}}}{1em}{\bfseries\scshape\large\color{Maroon}\myfont}
 
 % parts in toc
-\renewcommand{\cftpartfont}{\color{Maroon}\scshape\bfseries}%
+\renewcommand{\cftpartfont}{\color{Maroon}\scshape\bfseries\myfont}%
 % chapters in toc
 \renewcommand{\cftchappresnum}{\normalfont}%
 \renewcommand{\cftchapaftersnumb}{\normalfont}%
@@ -86,47 +97,47 @@
 % \include{FrontBackmatter/DirtyTitlepage}
 \include{frontbackmatter/Titlepage}
 \include{frontbackmatter/Titleback}
-% \cleardoublepage\include{frontbackmatter/Dedication}
-%\cleardoublepage\include{FrontBackmatter/Foreword}
+\include{frontbackmatter/innertitle}
+\cleardoublepage\include{frontbackmatter/Dedication}
+\cleardoublepage\include{frontbackmatter/Foreword}
 % \cleardoublepage\include{frontbackmatter/Colophon}
 \cleardoublepage
 \cleardoublepage\include{frontbackmatter/Contents}
+
+\setcounter{page}{0}
 \cleardoublepage\include{frontbackmatter/Abstract}
 %********************************************************************
 % Mainmatter
-%*******************************************************
-% \cleardoublepage
+% *******************************************************
+\clearpage
 \pagestyle{scrheadings}
-\pagenumbering{arabic}
-%\setcounter{page}{90}
+% \pagenumbering{arabic}
 % use \cleardoublepage here to avoid problems with pdfbookmark
-% \cleardoublepage
 
-\include{chapters/introduction}
+\cleardoublepage\include{chapters/introduction}
 
-% Competition typically takes place in a spatial context, but eco-evolutionary models rarely address the joint evolution of movement and competition strategies. 
-% Here we investigate a spatially explicit forager-kleptoparasite model where consumers can either forage on a heterogeneous resource landscape, or steal resource items from conspecifics (kleptoparasitism). 
-% We consider three scenarios: (1) foragers without kleptoparasites; (2) consumers specializing as foragers or as kleptoparasites; and (3) consumers that can switch between foraging and kleptoparasitism depending on local conditions.
-% We model movement strategies as individual-specific combinations of preferences for environmental cues, similar to step-selection coefficients.
-% By means of mechanistic, individual-based simulations, we study the joint evolution of movement and competition strategies, and we investigate the implications on the resource landscape and the distribution of consumers over this landscape.
-% Movement and competition strategies evolve rapidly and consistently across all scenarios, with marked differences among scenarios, leading to differences in resource exploitation patterns.
+\ctparttext{
+    The GPS-tracking revolution announced a new era of rich animal positioning datasets in the late 2000s and through the 2010s.
+    Yet smaller animals, and especially small birds, remained beyond the reach of GPS-tracking, as these tags were, and in many cases remain, too heavy for them to carry.
+    % Aquatic species were also poorly served, as GPS tags are not suitable for underwater tracking.\\
+    
+    \medskip
+    
+    Recent collaborations between animal ecologists and computer scientists has led to the development and adoption of a host of new lightweight, `high-throughput' tracking technologies.
+    In this part, I cover two efforts: first, and as an introduction, a review of what high-throughput animal tracking has revealed, and what more it promises.
+    Second, my own work on pre-processing the vast datasets that high-throughput tracking generates, to make them suitable for ecological inference.
 
-% \label{ch:intro}
-% \addcontentsline{toc}{chapter}{\nameref{ch:intro}}
+    \medskip
 
-\ctparttext{You can put some informational part preamble text here.
-Illo principalmente su nos. Non message \emph{occidental} angloromanic
-da. Debitas effortio simplificate sia se, auxiliar summarios da que,
-se avantiate publicationes via. Pan in terra summarios, capital
-interlingua se que. Al via multo esser specimen, campo responder que
-da. Le usate medical addresses pro, europa origine sanctificate nos se.}
+    This part lays out the landscape of current research and methods in animal movement ecology, and it is on this landscape that later chapters are located.
+}
+\cleardoublepage
 
-\part{Tracking Animal Movement at High Resolution}
+\part{Big Data Analysis\\\&\\the Ecology of Animal Movement and Space-Use}
 
-\include{chapters/htme}
+% \include{chapters/htme}
 
-% \cleardoublepage
-
+\cleardoublepage
 \include{chapters/preprocessing}
 
 % \ctparttext{You can put some informational part preamble text here.
@@ -136,21 +147,18 @@ da. Le usate medical addresses pro, europa origine sanctificate nos se.}
 % interlingua se que. Al via multo esser specimen, campo responder que
 % da. Le usate medical addresses pro, europa origine sanctificate nos se.}
 
-% \cleardoublepage
+\cleardoublepage
+% \part{Ecology of Animal Movement and Space Use}
 
-\part{Ecology of Animal Movement and Space Use}
+% \include{chapters/knots}
 
-\include{chapters/knots}
-
-% \cleardoublepage
-
+\cleardoublepage
 \include{chapters/holeybirds}
 
-% \cleardoublepage
-
+\cleardoublepage
 \include{chapters/hillybirds}
 
-\part{Evolution of Animal Movement Strategies}
+\part{Individual Based Modelling\\\&\\the Evolution of Animal Movement Strategies}
 
 \include{chapters/kleptomove}
 
