@@ -1,8 +1,9 @@
 %*******************************************************
 % RUG defined Titlepage
 %*******************************************************
-
+\thispagestyle{empty}
 \begin{titlepage}
+    \thispagestyle{empty}
     %\pdfbookmark[1]{\myTitle}{titlepage}
     % if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
     \begin{addmargin}[-1cm]{-3cm}
@@ -84,14 +85,9 @@
         % \vfill
 
     \end{center}
-  \end{addmargin}
 
-\end{titlepage}
-
-  %% begin second page with supervisor information
-  \newpage
-
-%   \begin{addmargin}[-1cm]{-3cm}
+    \pagebreak
+    \thispagestyle{empty}
 
     \textbf{Supervisors}
     \begin{description}
@@ -102,17 +98,24 @@
 
     \textbf{Co-supervisor}
     \begin{description}
-        \item Prof. Dr. Ran Nathan(if possible?)
+        \item Whomever
     \end{description}
 
     \vspace{6mm}
 
     \textbf{Assessment committee}
     \begin{description}
-        \item Prof. Dr. Whomever
-        \item Prof. Dr. Whomever
-        \item Prof. Dr. Whomever
+        \item Whomever
+        \item Whomever
+        \item Whomever
     \end{description}
 
-    % \end{addmargin}
+  \end{addmargin}
+
+\end{titlepage}
+
+
+    %\pdfbookmark[1]{\myTitle}{titlepage}
+    % if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
+    
 
