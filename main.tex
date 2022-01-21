@@ -45,6 +45,8 @@
 \setmainfont{Source Serif Pro}
 \setsansfont{Source Sans Pro}
 
+\usepackage{setspace}
+
 \newfontfamily\myfont{TeX Gyre Schola}
 \newfontfamily\numfont{TeX Gyre Schola}
 
@@ -116,54 +118,54 @@
 
 \cleardoublepage\include{chapters/introduction}
 
-\ctparttext{
-    The GPS-tracking revolution announced a new era of rich animal positioning datasets in the late 2000s and through the 2010s.
-    Yet smaller animals, and especially small birds, remained beyond the reach of GPS-tracking, as these tags were, and in many cases remain, too heavy for them to carry.
-    % Aquatic species were also poorly served, as GPS tags are not suitable for underwater tracking.\\
-    
-    \medskip
-    
-    Recent collaborations between animal ecologists and computer scientists has led to the development and adoption of a host of new lightweight, `high-throughput' tracking technologies.
-    In this part, I cover two efforts: first, and as an introduction, a review of what high-throughput animal tracking has revealed, and what more it promises.
-    Second, my own work on pre-processing the vast datasets that high-throughput tracking generates, to make them suitable for ecological inference.
-
-    \medskip
-
-    This part lays out the landscape of current research and methods in animal movement ecology, and it is on this landscape that later chapters are located.
-}
 \cleardoublepage
 
-\part{Big Data Analysis\\\&\\the Ecology of Animal Movement and Space-Use}
+\ctparttext{
+    Large datsets are revolutioning our understanding of animal movement, but preparing these data for inference, and integrating that preparation with existing methods, is key.
+    
+    \medskip
 
-% \include{chapters/htme}
+    \textit{Chapter 1} covers how data from a novel, high-throughput, reverse-GPS tracking system should be prepared, calling for a substantially more reproducible and automated approach. 
+    This guide introduces the summarising of data into `residence patches', a fast and simple way to cluster and segment tracking data.
+
+    \medskip
+
+    \textit{Chapter 2} takes a mechanistic look at the movement of moulting birds, which is surprisingly poorly understood.
+    This analysis combines the residence patch method of \textit{Chapter 1} with step-selection and viewshed analysis, to show how birds use sheltered habitats.
+}
+\part{Developing and Applying Methods for High-Resolution Tracking}
 
 \cleardoublepage
 \include{chapters/preprocessing}
 
-% \ctparttext{You can put some informational part preamble text here.
-% Illo principalmente su nos. Non message \emph{occidental} angloromanic
-% da. Debitas effortio simplificate sia se, auxiliar summarios da que,
-% se avantiate publicationes via. Pan in terra summarios, capital
-% interlingua se que. Al via multo esser specimen, campo responder que
-% da. Le usate medical addresses pro, europa origine sanctificate nos se.}
-
-\cleardoublepage
-% \part{Ecology of Animal Movement and Space Use}
-
-% \include{chapters/knots}
-
 \cleardoublepage
 \include{chapters/holeybirds}
 
-\cleardoublepage
-\include{chapters/hillybirds}
+\ctparttext{
+    Mechanistic, individual-based models can capture the complexity and diversity of animal behaviour with spatial contexts --- simultaneously, they can be used to investigate methods used in empirical studies.
+    
+    \medskip
 
-\part{Individual Based Modelling\\\&\\the Evolution of Animal Movement Strategies}
+    \textit{Chapter 3} presents a translation of the step-selection paradigm into an individual-based model to study the evolution of movement and competition strategies.
+    Feedbacks between ecology and evolution lead to unexpected outcomes, including substantial individual variation, and the correlation of movement and competition strategies.
+
+    \medskip
+
+    \textit{Chapter 4} takes the evolved populations from \textit{Chapter 3} and parses them through the lens of two methods in animal behaviour: repeatability analysis, and step-selection analysis.
+    Applying these methods to scenarios with known mechanisms explains aspects of their performance on real data.
+}
+\part{Mechanistic Modelling and Investigating Empirical Methods}
 
 \include{chapters/kleptomove}
 
 \include{chapters/patternprocess}
 
+\part{Long-Term and Large-Scale Studies in Animal Space-Use}
+
+\cleardoublepage
+\include{chapters/hillybirds}
+
+\cleardoublepage
 \include{chapters/pathomove}
 
 % \include{Chapters/Chapter02}
@@ -172,6 +174,7 @@
 %\include{multiToC} % <--- just debug stuff, ignore for your documents
 
 \include{chapters/discussion}
+\include{frontbackmatter/Acknowledgments}
 
 % ********************************************************************
 % Backmatter
