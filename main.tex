@@ -35,15 +35,24 @@
 
 %\usepackage{sourcesanspro}   % scaling is recommended
 \usepackage{fontspec}
-% \setmainfont{Vollkorn}[
-%     Extension = .ttf,
-%     UprightFont = *-Regular,
-%     BoldFont = *-Bold,
-%     ItalicFont = *-Italic,
-%     BoldItalicFont = *-BoldItalic,
-%     ]
+\setmainfont{Vollkorn}[
+    Extension = .ttf,
+    % UprightFont = *-Regular,
+    % BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+    % BoldItalicFont = *-BoldItalic,
+    % Numbers=Lining
+    BoldFont=*-Semibold, 
+    BoldItalicFont=*-SemiboldItalic, 
+    Numbers={Proportional,Uppercase}
+    ]
 % \setmainfont{Source Serif Pro}
-% \setsansfont{Oswald}
+\setsansfont{Oswald}[UprightFont = *-Light,BoldFont = *-Regular]
+% \setsansfont[BoldFont=*-Bold]{QTHelvetCnd}
+
+\usepackage{mathspec} %loads fontspec
+% \setmathrm{Vollkorn-Regular.ttf}
+\setmathfont(Latin,Greek){TeX Gyre Schola}
 
 \usepackage{setspace}
 
@@ -67,18 +76,20 @@
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
     {\relax}{\mbox{}\oldmarginpar{\chapterNumber\sffamily\thechapter}}{0pt}%
-    {\raggedright\huge\sffamily}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
+    {\raggedright\huge\sffamily\bfseries}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\sffamily\scshape}
+    {\relax}{\thesection}{1em}{\large\sffamily\bfseries}
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\sffamily}
+    {\relax}{\thesubsection}{1em}{\large\sffamily}
+
+% \usepackage[left]{lineno}
 
 % parts in toc
-\renewcommand{\cftpartfont}{\scshape\bfseries\sffamily}%
+\renewcommand{\cftpartfont}{\scshape\sffamily}%
 % chapters in toc
 \renewcommand{\cftchappresnum}{\sffamily}%
 \renewcommand{\cftchapaftersnumb}{\sffamily}%
@@ -147,7 +158,8 @@
 % \part{Developing and Applying Methods for High-Resolution Tracking}
 
 \cleardoublepage
-\include{chapters/preprocessing}
+\include{chapters/preprocessing_header}
+\include{chapters/preprocessing_main}
 
 \cleardoublepage
 \include{chapters/holeybirds}
