@@ -1,0 +1,55 @@
+
+\begin{refsection}
+\section*{Introduction}
+    Intraspecific competition is an important driver of population dynamics and the spatial distribution of organisms \citep{krebs1978}, and has two main types, `exploitation' and `interference'.
+    In exploitation competition, individuals compete indirectly by depleting a common resource, while in interference competition, individuals compete directly by interacting with each other \citep{birch1957,case1974,keddy2001}.
+    A special case of interference competition which is widespread among animal taxa is `kleptoparasitism', in which an individual steals a resource from its owner \citep{iyengar2008}.
+    Since competition has an obvious spatial context, animals should account for the locations of competitors when deciding where to move \citep{nathan2008}.
+    % Experimental work shows that indeed, competition, as well as the pre-emptive avoidance of competitive interactions, affects animal movement decisions in taxa as far apart as shorebirds \citep[][see also \citealt{rutten2010,bijleveld2012}]{goss-custard1980,vahl2005b,rutten2010a}, and fish \citep[][]{laskowski2013}.
+    This is expected to have downstream effects on animal distributions across spatial scales, from resource patches \citep{fretwell1970}, to species distributions \citep{duckworth2007,schlagel2020}.
+    Animal movement strategies are thus likely to be adaptive responses to landscapes of competition, with competitive strategies themselves being evolved responses to animal distributions.
+    Empirical studies of this joint evolution are nearly impossible at large spatio-temporal scales.
+    This makes models linking individual movement and competition strategies with population distributions necessary.
+
+    Contemporary individual-to-population models of animal space-use \citep[reviewed in][]{deangelis2019} and competition, however, are only sufficient to represent very simple movement and prey-choice decisions.
+    % , and struggle to adequately represent more complex systems of consumer-resource interactions.
+    For example, models including the ideal free distribution \citep[IFD;][]{fretwell1970}, information-sharing models \citep[][]{giraldeau1999,folmer2012}, and producer-scrounger models \citep[][]{barnard1981,vickery1991,beauchamp2008}, often treat foraging competition in highly simplified ways.
+    Most IFD models consider resource depletion unimportant or negligible \citep[continuous input models, see][]{tregenza1995, vandermeer1997}, make simplifying assumptions about interference competition, or even model an \textit{ad hoc} benefit of grouping \citep[e.g.][]{amano2006}.
+    Meanwhile, producer-scrounger models primarily examine the benefits of choosing either a producer or scrounger strategy given local conditions, such as conspecific density \citep{vickery1991}, or the order of arrival on a patch \citep{beauchamp2008}.
+    Overall, these models simplify the mechanisms by which competition decisions are made, and downplay spatial structure \citep[see also][]{holmgren1995, garay2020, spencer2018}.
+
+    On the contrary, spatial structure is key to foraging (competition) decisions \citep{beauchamp2008}.
+    % , making resource abundance and conspecific density of obvious importance to animal movement decisions \citep[e.g. step selection, \textit{sensu}][]{fortin2005, avgar2016}.
+    How animals are assumed to integrate the costs (and potential benefits) of competition into their movement decisions has important consequences for theoretical expectations of population distributions \citep{vandermeer1997,hamilton2002,beauchamp2008}.
+    In addition to short-term, ecological effects, competition also likely has evolutionary consequences for individual \textit{movement strategies}, setting up feedback loops between ecology and evolution.
+    Modelling competition and movement decisions jointly is thus a major challenge.
+    Some models take an entirely ecological view, assuming that individuals move or compete ideally, or according to fixed strategies \citep{vickery1991,holmgren1995,tregenza1995,amano2006}, but see \citep{hamilton2002}.
+    Models that include evolutionary dynamics in movement \citep{dejager2011,dejager2020} and foraging competition strategies \citep{beauchamp2008,tania2012} are more plausible, but they too make arbitrary assumptions about the functional importance of environmental cues to individual decisions.
+
+    Mechanistic, individual-based models are well suited to capturing the complexities of spatial structure, animal decision-making, and evolutionary dynamics \citep{guttal2010,kuijper2012,getz2015,getz2016,white2018,long2020,netz2021}; for conceptual underpinnings see \textcite{huston1988,mueller2011,deangelis2019}.
+    Individual-based models can incorporate the often significant variation in movement and competition preferences found in populations, allowing individuals to make different decisions given similar cues \citep[][]{laskowski2013}.
+    % Capturing these differences in models is likely key to better understanding how individual decisions scale to population- and community-level outcomes \citep{bolnick2011}.
+    Individual-based models also force researchers to be explicit about their modelling assumptions, such as \textit{how exactly} competition affects fitness.
+    Similarly, rather than taking a purely ecological approach and assuming individual differences \citep[e.g. in movement rules:][]{white2018}, allowing movement strategies to evolve in a competitive landscape can reveal whether individual variation emerges in plausible ecological scenarios \citep[as in][]{getz2015}.
+    This allows the functional importance of environmental cues for movement \citep[see e.g.][]{scherer2020} and competition decisions in evolutionary models to be joint outcomes of selection, and lets different competition strategies to be associated with different movement strategies \citep[][]{getz2015}.
+
+    Here, we present a spatially-explicit, mechanistic, individual-based model of intraspecific foraging competition, where movement and competition strategies jointly evolve on a resource landscape with discrete, depletable food items that need to be processed (`handled') before consumption.
+    % As foraging and movement decisions are taken by individuals, we study the joint evolution of both types of decision-making by means of an individual-based simulation model.
+    % Such models are well suited to modelling the ecology and evolution of complex behaviours .
+    % This allows us to both focus more closely on the interplay of exploitation and interference competition, and to examine the feedback between movement and foraging behaviour at ecological and evolutionary timescales.
+    % In our model, foraging individuals move .
+    In our model, foragers make movement decisions using inherited, evolvable preferences for local ecological cues, such as resource and competitor densities; the combination of preferences for each cue forms individuals' movement strategy \citep[similar to relative step-selection:][]{fortin2005, avgar2016}.
+    % After each move, individuals choose between two foraging strategies: whether to search for a food item or steal from another individual; 
+    Lifetime resource consumption is our proxy for fitness; more successful individuals produce more offspring, transmitting their movement and foraging strategies to future generations (with small mutations).
+    We consider three scenarios: in the first scenario, we examine only exploitation competition.
+    In the second scenario, we introduce kleptoparasitic interference as an inherited strategy, fixed through an individual's life.
+    In the third scenario, we model kleptoparasitism as a behavioural strategy conditioned on local environmental and social cues; the mechanism underlying this foraging choice is also inherited.
+
+    Our model allows us to examine the evolution of individual movement strategies, population-level resource intake, and the spatial structure of the resource landscape.
+    The model enables us to take ecological snapshots of consumer-resource dynamics (animal distributions, resource depletion, and competition) proceeding at evolutionary time-scales.
+    Studying these snapshots allows us to check whether, when, and to what extent the spatial distribution of competitors resulting from the co-evolution of competition and movement strategies corresponds to standard IFD predictions.
+    We investigate \textit{(1)} which movement strategies evolve in our three competition scenarios, \textit{(2)} whether movement strategies differ within and between competition strategies in our scenarios, and \textit{(3)} whether the emergent spatial distributions of consumers corresponds to `ideal free' expectations.
+
+    {\printbibliography[heading=subbibliography]}
+
+\end{refsection}
