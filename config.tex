@@ -159,6 +159,21 @@
   belowcaptionskip=.75\baselineskip
   %frame=L
 }
+
+\lstdefinestyle{customR}{
+  belowcaptionskip=1\baselineskip,
+  captionpos=b,
+  breaklines=true,
+%   numbers=left,
+  frame=L,
+  xleftmargin=\parindent,
+  language=R,
+  showstringspaces=false,
+  basicstyle=\small\ttfamily\color{black},
+  keywordstyle=\ttfamily,
+  commentstyle=\color{commentstyleCol},   % comment style
+  stringstyle=\color{stringstyleCol}      % string literal style
+}
 % ****************************************************************************************************
 
 
@@ -185,7 +200,7 @@
   % pdfpagemode=UseOutlines,%
   plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
   hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
-  urlcolor=CTurl, linkcolor=CTlink, citecolor=CTcitation, %pagecolor=RoyalBlue,%
+  urlcolor=CTurl, linkcolor=Gray, citecolor=darkgray, %pagecolor=RoyalBlue,%
   %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
   pdftitle={\myTitle},%
   pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
