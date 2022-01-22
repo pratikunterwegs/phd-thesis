@@ -5,16 +5,16 @@
 % \thispagestyle{empty}
 %\phantomsection
 \pdfbookmark[1]{\contentsname}{tableofcontents}
-\setcounter{tocdepth}{1} % <-- 2 includes up to subsections in the ToC
+\setcounter{tocdepth}{0} % <-- 2 includes up to subsections in the ToC
 \setcounter{secnumdepth}{2} % <-- 3 numbers up to subsubsections
 \manualmark
 \markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}}
-\begin{onehalfspace}
+\begin{doublespace}
     \tableofcontents
     \automark[section]{chapter}
     \renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}}
     \renewcommand{\sectionmark}[1]{\markright{\textsc{\thesection}\enspace\spacedlowsmallcaps{#1}}}
-\end{onehalfspace}
+\end{doublespace}
 
 %*******************************************************
 % List of Figures and of the Tables
