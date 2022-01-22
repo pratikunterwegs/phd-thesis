@@ -1,4 +1,4 @@
-% !TEX program = xelatex
+% !TEX program = lualatex
 
 \RequirePackage{silence} % :-\
     \WarningFilter{scrreprt}{Usage of package `titlesec'}
@@ -6,7 +6,7 @@
     \WarningFilter{titlesec}{Non standard sectioning command detected}
 \documentclass[ twoside,openright,titlepage,numbers=noenddot,%1headlines,
                 headinclude,footinclude,cleardoublepage=empty,abstract=on,
-                BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames
+                BCOR=5mm,paper=letter,fontsize=10pt,dvipsnames
                 ]{scrbook}
 \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
 
@@ -25,6 +25,7 @@
 % \RequirePackage[authoryear,sort]{natbib}
 
 \addbibresource{chapters/preprocessing.bib}
+\addbibresource{chapters/kleptomove.bib}
 % \addbibresource{Bibliography.bib}
 % \addbibresource[label=ownpubs]{AMiede_Publications.bib}
 
@@ -35,28 +36,32 @@
 
 %\usepackage{sourcesanspro}   % scaling is recommended
 \usepackage{fontspec}
-\setmainfont{Vollkorn}[
-    Extension = .ttf,
-    % UprightFont = *-Regular,
-    % BoldFont = *-Bold,
-    ItalicFont = *-Italic,
-    % BoldItalicFont = *-BoldItalic,
-    % Numbers=Lining
-    BoldFont=*-Semibold, 
-    BoldItalicFont=*-SemiboldItalic, 
-    Numbers={Proportional,Uppercase}
-    ]
-% \setmainfont{Source Serif Pro}
+% \setmainfont{Vollkorn}[
+%     Extension = .ttf,
+%     % UprightFont = *-Regular,
+%     % BoldFont = *-Bold,
+%     ItalicFont = *-Italic,
+%     % BoldItalicFont = *-BoldItalic,
+%     % Numbers=Lining
+%     BoldFont=*-Semibold, 
+%     BoldItalicFont=*-SemiboldItalic, 
+%     Numbers={Proportional,Uppercase}
+% ]
+\setmainfont{Source Serif Pro}
 \setsansfont{Oswald}[UprightFont = *-Light,BoldFont = *-Regular]
-% \setsansfont[BoldFont=*-Bold]{QTHelvetCnd}
+% \setsansfont[BoldFont=*-Black]{QTHelvetCnd}
 
-\usepackage{mathspec} %loads fontspec
 % \setmathrm{Vollkorn-Regular.ttf}
-\setmathfont(Latin,Greek){TeX Gyre Schola}
+% \setmathfont(Latin,Greek){TeX Gyre Schola}
+
+\renewcommand*{\bibfont}{\footnotesize}
 
 \usepackage{setspace}
 
-% \newfontfamily\myfont{TeX Gyre Schola}
+\setlength{\parindent}{2em}
+% \setlength{\parskip}{0.5em}
+
+\newfontfamily\myfont{QTHelvetCnd}
 % \newfontfamily\numfont{TeX Gyre Schola}
 
 \renewcommand{\chapterNumber}{%
@@ -107,8 +112,11 @@
 % GO!GO!GO! MOVE IT!
 %*******************************************************
 \begin{document}
+
+\raggedright
 \frenchspacing
 \raggedbottom
+\setlength{\parindent}{2em}
 \selectlanguage{american} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
@@ -159,7 +167,7 @@
 
 \cleardoublepage
 \include{chapters/preprocessing_header}
-\include{chapters/preprocessing_main}
+% \include{chapters/preprocessing_main}
 
 \cleardoublepage
 \include{chapters/holeybirds}
@@ -179,7 +187,9 @@
 % }
 % \part{Mechanistic Modelling and Investigating Empirical Methods}
 
-\include{chapters/kleptomove}
+\include{chapters/kleptomove_header}
+\include{chapters/kleptomove_main}
+
 
 \include{chapters/patternprocess}
 
