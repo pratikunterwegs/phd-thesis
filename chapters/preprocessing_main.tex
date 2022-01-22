@@ -1,47 +1,5 @@
-%************************************************
-\chapter{Pre-processing High Throughput Animal Tracking Data}\label{ch:preprocessing}
-%************************************************
-% 
-{\noindent \sffamily\textbf{Pratik R. Gupte}, Christine E. Beardsworth\textsuperscript{1}, Orr Spiegel\textsuperscript{2}, Emmanuel Lourie\textsuperscript{3}, Sivan Toledo\textsuperscript{2}, Ran Nathan\textsuperscript{3}, and Allert Bijleveld\textsuperscript{1}}
-
-\marginpar{
-    \textsuperscript{1} Netherlands Inst. for Sea Research, The Netherlands.
-    
-    \medskip
-    
-    \textsuperscript{2} Tel Aviv University, Israel.
-    
-    \medskip
-
-    \textsuperscript{3} The Hebrew University of Jerusalem, Israel.
-}
-
-\section*{Abstract}
-\marginpar{ 
-    \bigskip
-
-    {\large{\color{Maroon}$\Delta$}} \normalfont Published in the \textit{Journal of Animal Ecology} as Gupte et al. (2021). A guide to pre-processing high throughput tracking data.
-}
-    Modern, high-throughput animal tracking increasingly yields `big data' at very fine temporal scales. 
-    At these scales, location error can exceed the animal's step size, leading to mis-estimation of behaviours inferred from movement. 
-    `Cleaning' the data to reduce location errors is one of the main ways to deal with position uncertainty. 
-    Though data cleaning is widely recommended, inclusive, uniform guidance on this crucial step, and on how to organise the cleaning of massive datasets, is relatively scarce.
-    A pipeline for cleaning massive high-throughput datasets must balance ease of use and computationally efficiency, in which location errors are rejected while preserving valid animal movements. 
-    Another useful feature of a pre-processing pipeline is efficiently segmenting and clustering location data for statistical methods, while also being scalable to large datasets and robust to imperfect sampling. 
-    Manual methods being prohibitively time consuming, and to boost reproducibility, pre-processing pipelines must be automated.
-    We provide guidance on building pipelines for pre-processing high-throughput animal tracking data to prepare it for subsequent analyses. 
-    We apply our proposed pipeline to simulated movement data with location errors, and also show how large volumes of cleaned data can be transformed into biologically meaningful `residence patches', for exploratory inference on animal space use. 
-    We use tracking data from the Wadden Sea ATLAS system (WATLAS) to show how pre-processing improves its quality, and to verify the usefulness of the residence patch method. 
-    Finally, with tracks from Egyptian fruit bats \textit{Rousettus aegyptiacus}, we demonstrate the pre-processing pipeline and residence patch method in a fully worked out example.
-    To help with fast implementation of standardised methods, we developed the R package \textit{atlastools}, which we also introduce here. 
-    Our pre-processing pipeline and \textit{atlastools} can be used with any high-throughput animal movement data in which the high data-volume combined with knowledge of the tracked individuals’ movement capacity can be used to reduce location errors. 
-    \textit{atlastools} is easy to use for beginners, while providing a template for further development. 
-    The common use of simple yet robust pre-processing steps promotes standardised methods in the field of movement ecology and leads to better inferences from data.
-
-\clearpage
-
 \begin{refsection}
-    \section{Introduction}
+    \section*{Introduction}
     The movement of an animal is an adaptive, integrated response to multiple drivers, including internal state, life-history traits and capacities, biotic interactions, and other environmental factors \cite{nathan2008a, holyoak2008}.
     % Movement has both beneficial and detrimental consequences for individual fitness, and 
     The movement ecology framework links the drivers, processes, and fitness outcomes of animal movement \cite{nathan2008a}, and remotely tracking individual animals in the wild is the methodological mainstay of movement ecology \cite{wikelski2007,nathan2008a,hussey2015,kays2015}.
@@ -100,7 +58,7 @@
     Finally, in our second example, we use ATLAS data from Egyptian fruit bats (\textit{Rousettus aegyptiacus}) tracked in the Hula Valley, Israel, to show a fully worked out example of the pre-processing pipeline and the residence patch method.
     While our approach to high-throughput tracking data, and our package of pre-processing functions was developed with reverse-GPS ATLAS systems in mind, both are broadly suitable to a wide range of high-throughput animal tracking data sources, from underwater acoustic reverse-GPS \cite{baktoft2019, baktoft2017, jung2015, aspillaga2021, aspillaga2021a}, high-resolution GPS \cite{strandburg-peshkin2015, papageorgiou2019, harel2016, klarevas-irby2021}, tracking radars \cite{horvitz2014}, and visual video tracking \cite{rathore2020, perez-escudero2014}.
 
-    \section{Best-Practices for Pre-Processing Workflows}
+    \section*{Best-Practices for Pre-Processing Workflows}
 
     % \begin{figure*}
     %     % \begin{addmargin}[-.3\textwidth]{-.3\textwidth}
@@ -147,9 +105,9 @@
     Finally, another advanced method, used by popular packages such as \textit{move} \cite{kranstauber2011} and \textit{recurse} \cite{bracis2018}, is to write one's own methods in a `fast' low-level language, such as \textit{C++}, and link these to \textit{R} \cite[][]{eddelbuettel2013}; see also \textit{adehabitatLT}, which is written partially in \textit{C}: \cite{calenge2006}.
     Beginning practitioners can organise their workflows around these packages to benefit from the features they incorporate.
 
-    \section{Pre-processing Steps, Usage, and Simulating Data}
+    \section*{Pre-processing Steps, Usage, and Simulating Data}
 
-    \subsection{An Overview of Pre-processing Steps and \texttt{atlastools}}
+    \subsection*{An Overview of Pre-processing Steps and \texttt{atlastools}}
 
     In the sections that follow, we lay out pre-processing techniques for raw high-throughput tracking data, and demonstrate working examples of these techniques, which we have collected in the \texttt{R} package \texttt{atlastools} (see Fig. 2).
     Our package is aimed at getting `raw data' to the `analysis' stage identified by Joo et al. (2020) in their review of \texttt{R} packages in movement ecology.
@@ -193,16 +151,16 @@
     %     \label{fig:figure_pipeline}
     % \end{figure}
 
-    \subsection{Simulating Data to Demonstrate Pre-Processing Steps}
+    \subsection*{Simulating Data to Demonstrate Pre-Processing Steps}
 
     To demonstrate pre-processing steps, we simulated a realistic movement track of 5,000 positions using an unbiased correlated velocity model (UCVM) implemented via the \texttt{R} package \texttt{smoove} \citep[][see Fig. 3.a]{gurarie2017}.
     We added four kinds of error to the simulated track: (1) normally distributed small-scale offsets to the X and Y coordinates (small-scale error), (2) normally distributed large-scale offsets to a random subset (0.5 \%) of the positions (spikes), (3) large-scale displacement of a continuous sequence of 300 of the 5,000 positions (prolonged spikes; indices 500 -- 800), and (4) we removed 10\% of the canonical track to simulate missing data (see Fig. 3.a).
     To demonstrate the residence patch method, we obtained data, in the form of 1,000 positions, from a mechanistic, individual-based simulation model, in which agents move using simple decision making rules, and can find high-productivity patches using only ephemeral cues, such as the density of prey-items and other competitors \citep{gupte2021a, netz2021}.
     The emergent, complex track structure is analogous to the foraging movements of animals, and provides a suitable challenge for the residence patch method and helps to demonstrate its generality.
 
-    \section{Spatio-Temporal Filtering}
+    \section*{Spatio-Temporal Filtering}
 
-    \subsection{Spatial Filtering Using Bounding Boxes and Polygons}
+    \subsection*{Spatial Filtering Using Bounding Boxes and Polygons}
 
     First, users should exclude positions outside the spatial bounds of a study area by comparing position coordinates with the range of acceptable coordinates (the bounding box), and removing positions outside them (Fig. 3.a; Listing 1). 
     A bounding box filter does not require a geospatial representation such as a shapefile, and can help remove unreliable data from a tracking system that is less accurate beyond a certain range \citep[][]{beardsworth2021}.
@@ -242,7 +200,7 @@
     %     \label{fig:figure_filtering_data}
     % \end{figure}
 
-    \subsection{Temporal and Spatio-temporal Filters}
+    \subsection*{Temporal and Spatio-temporal Filters}
 
     Tracking data might fail to properly represent an animal’s movement at certain times, for instance, data recorded before release, or data from shortly after release when the animal is still influenced by the stress of capture and handling.
     Periods of poor tracking quality may result from system malfunctions and unusual disturbances, and users may wish to exclude these data as well.
@@ -280,9 +238,9 @@
                         )                            
     \end{lstlisting}
 
-    \section{Filtering to Reduce Location Errors}
+    \section*{Filtering to Reduce Location Errors}
 
-    \subsection{Filtering on Data Quality Attributes}
+    \subsection*{Filtering on Data Quality Attributes}
 
     Tracking data attributes can be good indicators of the reliability of positions calculated by a tracking system \citep{beardsworth2021}.
     GPS systems provide direct measures of location error during localisation \citep[Horizontal Dilution of Precision, HDOP in GPS]{ranacher2016}, while  in reverse-GPS systems, a measure referred to as Standard Deviation (SD in many datasets), can be calculated from the variance-covariance matrix of each position as: $\text{SD} = \sqrt{\text{Var X} + \text{Var Y} + \text{Cov XY}}$ \citep[see details in][]{maccurdy2009, maccurdy2019, weiser2016, ranacher2016}.
@@ -298,7 +256,7 @@
     Unreliable positions can be removed by filtering on direct or indirect measures of quality using \texttt{atl\_filter\_covariates} (Listing 2).
     While filtering on direct quality attributes and unrealistic movement speeds (see below) will often be sufficient, filtering on indirect quality indicators is a strategy to consider when direct error measures are not available.
 
-    \subsection{Filtering Unrealistic Movement}
+    \subsection*{Filtering Unrealistic Movement}
 
     Filtering on system-generated attributes may not remove all erroneous positions, and the remaining data may still include biologically implausible movement.
     Users are encouraged to visualise their tracks before and after filtering point locations, and especially to `join the dots' and connect consecutive positions with lines (Fig. 3.b).
@@ -375,25 +333,27 @@
     %                        est_ref_len = N)
     % \end{lstlisting}
 
-    \section{Smoothing and Thinning Data}
+    \section*{Smoothing and Thinning Data}
 
-    \subsection{Median Smoothing}
+    \subsection*{Median Smoothing}
 
     After filtering out large location errors, the track may still look `spiky’ at small scales, and this is due to smaller location errors that are especially noticeable when the individual is stationary or moving slowly \citep{noonan2019}.
     These smaller errors are challenging to remove since their attributes (such as speed and turning angles) are within the expected range of movement behaviour for the study species. 
     The large data volumes of high-throughput tracking allow users to resolve this problem by smoothing the positions. 
-    The most basic `smooths’ work by approximating the value of an observation based on neighbouring values.
+    The most basic `smooths' work by approximating the value of an observation based on neighbouring values.
     For a one-dimensional series of observations, the neighbouring values are the $K$ observations centred on each index value $i$.
-    The range $ {i - (K-1)/2} \ldots {i + (K-1)/2} $ is referred to as the moving window as it shifts with $i$, and $K$ is the moving window size.
+    The range ${i - (K-1)/2} \ldots {i + (K-1)/2}$ is referred to as the moving window as it shifts with $i$, and $K$ is the moving window size.
     A common smooth is nearest neighbour averaging, in which the value of an observation $x_i$ is the average of the moving window $K$.
     The median smooth is a variant of nearest neighbour averaging which uses the median rather than the mean, and is more robust to outliers (\citeauthor{tukey1977} 1977).
     The median smoothed value of the X coordinate, for instance, is
     %
-    \begin{linenomath*}
-        \begin{equation*}
+    % \begin{linenomath*}
+        % \begin{equation*}
+        $$
             X_i = Median(X_{i - (K-1)/2} \ldots X_{i + (K-1)/2}).
-        \end{equation*}
-    \end{linenomath*}
+        $$
+            % \end{equation*}
+    % \end{linenomath*}
     %
     Users can apply a median smooth with an appropriate $K$ independently to the X and Y coordinates of a movement track to smooth it (see Fig. 4.a -- e).
     The median smooth is robust to even very large temporal and spatial gaps, and does not interpolate between positions when data are missing. 
@@ -440,7 +400,7 @@
     %     \label{fig:figure_median_smooth}
     % \end{figure}
 
-    \subsection{Thinning Movement Tracks}
+    \subsection*{Thinning Movement Tracks}
 
     Most data at this stage are technically ‘clean’, yet the volume alone may pose challenges for lower-specification or older hardware and software if these are not optimised for efficient computation.
     Thinning data i.e., reducing their volume, need not compromise researchers' ability to answer ecological questions; for instance, proximity-based social interactions lasting 1 -- 2 minutes would still be detected on thinning from a sampling interval of 1 second to 1 minute \citep[][]{aspillaga2021a}.
@@ -508,7 +468,7 @@
     %     \label{fig:figure_thinning}
     % \end{figure}
 
-    \section{System-Specific Pre-processing Tools}
+    \section*{System-Specific Pre-processing Tools}
 
     When researchers' pre-processing requirements exceed the functionalities of existing tools, they might have to conceptualise and implement their own methods.
     For instance, an important and common analysis with animal tracking data is to link space use with environmental covariates.
@@ -521,7 +481,7 @@
     Here, as a working example that may be suitable for some systems, we present a simple segmentation-clustering algorithm to make `residence patches', identified as bouts of relatively stationary behaviour \citep[][]{barraquand2008,bijleveld2016,oudman2018}.
     Details of the implementation may be found in the package code, and examples are provided in the Supplementary Material.
 
-    \subsection{Conceptualising a Simple Segmentation-Clustering Algorithm: The Residence-Patch Example}
+    \subsection*{Conceptualising a Simple Segmentation-Clustering Algorithm: The Residence-Patch Example}
 
     Before implementing the algorithm, users should identify positions where the animal is relatively stationary, for instance on its speed or first-passage time \citep{bracis2018,barraquand2008}.
     Our suggested algorithm begins by assessing whether consecutive stationary positions are spatio-temporally independent, and clusters them together into a residence patch if they are not.
@@ -574,7 +534,7 @@
     %     \label{fig:figure_residence_patch}
     % \end{figure}
 
-    \subsection{A Real-World Test of User-Built Pre-Processing Tools}
+    \subsection*{A Real-World Test of User-Built Pre-Processing Tools}
 
     We applied the pre-processing pipeline using \texttt{atlastools} functions described above to an ATLAS dataset to verify that the residence patch method could correctly identify known stopping points (see Fig. 7).
     We collected the data (n = 50,816) on foot and by boat, with a hand-held WATLAS tag (sampling interval = 1s) around the island of Griend (53.25$^{\circ}$N, 5.25$^{\circ}$E) in August 2020 \citep[WATLAS: Wadden Sea ATLAS system][Bijleveld et al. \textit{in prep.}]{beardsworth2021}.
@@ -624,7 +584,7 @@
     %     \label{fig:figure_calibration}
     % \end{figure}
 
-    \section{A Worked-Out Example on Animal Tracking Data}
+    \section*{A Worked-Out Example on Animal Tracking Data}
 
     We present a fully worked-out example of our pre-processing pipeline and residence patch method using movement data from three Egyptian fruit bats (\textit{Rousettus aegyptiacus}) tracked using the ATLAS system in the Hula Valley, Israel (33.1$^{\circ}$N, 35.6$^{\circ}$E) (\citealt{toledo2020, lourie2021}).
     Code and data can be found in the Supplementary Material and Zenodo repository (see \textsc{Processing Egyptian Fruit Bat Tracks}). 
@@ -668,7 +628,7 @@
     %     \label{fig:figure_bats}
     % \end{figure}
 
-    \section{Discussion and Perspective}
+    \section*{Discussion and Perspective}
 
     Recent technical advances in wildlife tracking have already yielded exciting new insights from massive high-resolution movement datasets \citep{aspillaga2021, aspillaga2021a, baktoft2017, baktoft2019, harel2016, harel2018, oudman2018, papageorgiou2019, tsoar2011, strandburg-peshkin2015, toledo2020, beardsworth2021a, beardsworth2021b, corl2020, vilk2021, lourie2021}, and high-throughput animal tracking is expected to become increasingly more common in the near future.
     Tackling the very large datasets that high-throughput tracking generates requires a different approach from that used for traditionally smaller volumes of data.
@@ -686,7 +646,6 @@
     % For instance, relational databases are the standard for storing very large datasets, and extending pre-processing pipelines to deal with various data sources is relatively simple, as we show in our Supplementary Material.
     We see the diversity of animal tracking datasets and studies as an incentive for more users to be involved in developing methods for their systems.
     We offer our approach to large tracking datasets, and our pipeline and package as a foundation for system-specific tools in the belief that simple, robust concepts are key to methods development that balances system-specificity and broad applicability.
-
 
     \printbibliography[heading=subbibliography]
 \end{refsection}
