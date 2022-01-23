@@ -38,17 +38,6 @@
 
 %\usepackage{sourcesanspro}   % scaling is recommended
 \usepackage{fontspec}
-% \setmainfont{Vollkorn}[
-%     Extension = .ttf,
-%     % UprightFont = *-Regular,
-%     % BoldFont = *-Bold,
-%     ItalicFont = *-Italic,
-%     % BoldItalicFont = *-BoldItalic,
-%     % Numbers=Lining
-%     BoldFont=*-Semibold, 
-%     BoldItalicFont=*-SemiboldItalic, 
-%     Numbers={Proportional,Uppercase}
-% ]
 \setmainfont{Source Serif Pro}
 \setsansfont{Oswald}[Extension = .ttf,
     UprightFont = *-Light,BoldFont = *-Regular]
@@ -63,10 +52,6 @@
 
 \setlength{\parindent}{1.5em}
 % \setlength{\parskip}{0.5em}
-
-% \newfontfamily\myfont{Oswald}[Extension = .ttf,
-% UprightFont = *-ExtraLight]
-% \newfontfamily\numfont{TeX Gyre Schola}
 
 \renewcommand{\chapterNumber}{%
   \color{Black}\fontsize{60}{60} \bfseries}\par
@@ -112,6 +97,13 @@
 
 \usepackage{caption}
 \setcapindent{0pt}
+
+\captionsetup{
+  font={footnotesize,it},
+  labelfont=bf,
+  justification=justified,
+  format=plain
+}
 
 % paragraph spacing
 % \setlength{\parskip}{1em}
