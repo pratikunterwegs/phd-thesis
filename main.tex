@@ -61,10 +61,11 @@
 
 \usepackage{setspace}
 
-\setlength{\parindent}{2em}
+\setlength{\parindent}{1.5em}
 % \setlength{\parskip}{0.5em}
 
-\newfontfamily\myfont{QTHelvetCnd}
+% \newfontfamily\myfont{Oswald}[Extension = .ttf,
+% UprightFont = *-ExtraLight]
 % \newfontfamily\numfont{TeX Gyre Schola}
 
 \renewcommand{\chapterNumber}{%
@@ -93,6 +94,10 @@
 % fix section format
 \titleformat{\subsection}
     {\relax}{\thesubsection}{1em}{\large\sffamily}
+
+% fix section format
+\titleformat{\paragraph}
+    {\relax}{\theparagraph}{1em}{\sffamily}
 
 % \usepackage[left]{lineno}
 
