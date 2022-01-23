@@ -6,7 +6,7 @@
     \WarningFilter{titlesec}{Non standard sectioning command detected}
 \documentclass[ twoside,openright,titlepage,numbers=noenddot,%1headlines,
                 headinclude,footinclude,cleardoublepage=empty,abstract=on,
-                BCOR=5mm,paper=letter,fontsize=10pt,dvipsnames
+                BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames
                 ]{scrbook}
 \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
 
@@ -24,6 +24,8 @@
 %*******************************************************
 % \RequirePackage[authoryear,sort]{natbib}
 
+% \usepackage{citation-style-language}
+% \cslsetup{style = apa}
 \addbibresource{chapters/preprocessing.bib}
 \addbibresource{chapters/kleptomove.bib}
 % \addbibresource{Bibliography.bib}
@@ -48,7 +50,8 @@
 %     Numbers={Proportional,Uppercase}
 % ]
 \setmainfont{Source Serif Pro}
-\setsansfont{Oswald}[UprightFont = *-Light,BoldFont = *-Regular]
+\setsansfont{Oswald}[Extension = .ttf,
+    UprightFont = *-Light,BoldFont = *-Regular]
 % \setsansfont[BoldFont=*-Black]{QTHelvetCnd}
 
 % \setmathrm{Vollkorn-Regular.ttf}
@@ -65,7 +68,7 @@
 % \newfontfamily\numfont{TeX Gyre Schola}
 
 \renewcommand{\chapterNumber}{%
-  \color{Black}\fontsize{60}{60} \bfseries\numfont}\par
+  \color{Black}\fontsize{60}{60} \bfseries}\par
 
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent}
