@@ -87,19 +87,27 @@
 
 \usepackage{csquotes}
 \PassOptionsToPackage{%
-  %backend=biber,bibencoding=utf8, %instead of bibtex
-  backend=bibtex8,bibencoding=ascii,%
+  backend=biber,bibencoding=utf8, %instead of bibtex
+  % backend=bibtex8,bibencoding=ascii,%
   language=auto,%
+  url=false,
+  isbn=false,
+  doi=false,
+  eprint=false,
   % style=science,%
-  style=authoryear, % Author 1999, 2010
-  bibstyle=authoryear,dashed=false, % dashed: substitute rep. author with ---
-  sorting=nyt, % name, year, title
+  style=authoryear-comp, % Author 1999, 2010
+  bibstyle=authoryear,
+  dashed=true, % dashed: substitute rep. author with ---
+  sorting=ynt, % name, year, title
+  % sortcites,
   % sorting=none,
-  maxbibnames=1, % default: 3, et al.
+  maxcitenames=2,
+  % maxbibnames=5
+  maxbibnames=3, % default: 3, et al.
   %backref=true,%
   natbib=true % natbib compatibility mode (\citep and \citet still work)
 }{biblatex}
-    \usepackage{biblatex}
+\usepackage{biblatex}
 
 \PassOptionsToPackage{fleqn}{amsmath}       % math environments and more by the AMS
   \usepackage{amsmath}
