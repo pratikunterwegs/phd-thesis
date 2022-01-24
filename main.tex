@@ -38,17 +38,6 @@
 
 %\usepackage{sourcesanspro}   % scaling is recommended
 \usepackage{fontspec}
-% \setmainfont{Vollkorn}[
-%     Extension = .ttf,
-%     % UprightFont = *-Regular,
-%     % BoldFont = *-Bold,
-%     ItalicFont = *-Italic,
-%     % BoldItalicFont = *-BoldItalic,
-%     % Numbers=Lining
-%     BoldFont=*-Semibold, 
-%     BoldItalicFont=*-SemiboldItalic, 
-%     Numbers={Proportional,Uppercase}
-% ]
 \setmainfont{Source Serif Pro}
 \setsansfont{Oswald}[Extension = .ttf,
     UprightFont = *-Light,BoldFont = *-Regular]
@@ -57,11 +46,8 @@
 
 \usepackage{setspace}
 
-\setlength{\parindent}{2em}
+\setlength{\parindent}{1.5em}
 % \setlength{\parskip}{0.5em}
-
-\newfontfamily\myfont{QTHelvetCnd}
-% \newfontfamily\numfont{TeX Gyre Schola}
 
 \renewcommand{\chapterNumber}{%
   \color{Black}\fontsize{60}{60} \bfseries}\par
@@ -90,6 +76,10 @@
 \titleformat{\subsection}
     {\relax}{\thesubsection}{1em}{\large\sffamily}
 
+% fix section format
+\titleformat{\paragraph}
+    {\relax}{\theparagraph}{1em}{\sffamily}
+
 % \usepackage[left]{lineno}
 
 % parts in toc
@@ -103,6 +93,13 @@
 
 \usepackage{caption}
 \setcapindent{0pt}
+
+\captionsetup{
+  font={footnotesize,it},
+  labelfont=bf,
+  justification=justified,
+  format=plain
+}
 
 % paragraph spacing
 % \setlength{\parskip}{1em}
