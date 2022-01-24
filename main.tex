@@ -38,9 +38,14 @@
 
 %\usepackage{sourcesanspro}   % scaling is recommended
 \usepackage{fontspec}
+
 \setmainfont{Source Serif Pro}
 \setsansfont{Oswald}[Extension = .ttf,
     UprightFont = *-Light,BoldFont = *-Regular]
+\setmathfont{TeX Gyre Schola Math}
+\usepackage{unicode-math}
+% \setmathfont{Asana Math}
+% \setmainfont{Minion Pro}
 
 \renewcommand*{\bibfont}{\footnotesize}
 
@@ -95,7 +100,7 @@
 \setcapindent{0pt}
 
 \captionsetup{
-  font={footnotesize,it},
+  font={footnotesize},
   labelfont=bf,
   justification=justified,
   format=plain
