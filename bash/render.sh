@@ -4,6 +4,6 @@
 
 rm main.pdf
 
-lualatex main.tex
+lualatex -interaction=nonstopmode main.tex
 biber main.bcf
-lualatex main.tex
+lualatex -interaction=nonstopmode main.tex
