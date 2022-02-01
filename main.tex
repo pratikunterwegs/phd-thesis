@@ -38,7 +38,7 @@
 
 %\usepackage{sourcesanspro}   % scaling is recommended
 \usepackage{fontspec}
-\usepackage[xcharter]{newtxmath}
+% \usepackage[xcharter]{newtxmath}
 % \setmainfont{Vollkorn}[
 %   Scale=0.9274,% to match the math fonts
 %   Extension=.otf,
@@ -47,14 +47,17 @@
 %   BoldFont=*-Bold,
 %   BoldItalicFont=*-BoldItalic,
 % ]
-\setmainfont{Source Serif Pro}
+% \setmainfont{Source Serif Pro}
+% \setmainfont{Libre Baskerville}
 % \usepackage[usefilenames,RMstyle={Text,Semibold},SSstyle={Text,Semibold},TTstyle={Text,Semibold},DefaultFeatures={Ligatures=Common}]{plex-otf}
+\setmainfont{XCharter}
+\setmathfont{Erewhon Math}
 \setsansfont{Oswald}[Extension = .ttf, UprightFont = *-Light,BoldFont = *-Regular]
 % \setsansfont{Libre Franklin}
 % \setmathfont{TeX Gyre Schola Math}
-\usepackage{unicode-math}
-\setmathfont{Asana Math}
-\newfontfamily\mysans{Source Sans Pro}
+% \usepackage{unicode-math}
+% \setmathfont{XCharter}
+% \newfontfamily\mysans{Source Sans Pro}
 
 \renewcommand*{\bibfont}{\footnotesize}
 
@@ -106,11 +109,11 @@
 \makeatother
 
 \DeclareCaptionFont{quack}{\mysans}
-\usepackage[font=quack]{caption}
+\usepackage{caption}
 \setcapindent{0pt}
 
 \captionsetup{
-  font={footnotesize,quack},
+  font={footnotesize},
   labelfont=bf,
   justification=justified,
   format=plain
