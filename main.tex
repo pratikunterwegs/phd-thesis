@@ -106,6 +106,13 @@
 \renewcommand{\cftchapaftersnumb}{\sffamily}%
 \renewcommand{\cftchapfont}{\sffamily}%
 \renewcommand{\cftchappagefont}{\sffamily}%
+
+% for stylistic elements
+\usepackage{lettrine}
+%% Dropped capital for first letter of main text
+\newcommand{\dropcap}[1]{\lettrine[lines=2,lraise=0.05,findent=0.1em, nindent=0em]{{\bfseries\rmfamily{#1}}}{}}
+\usepackage{adforn}
+
 \makeatother
 
 \DeclareCaptionFont{quack}{\mysans}
