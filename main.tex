@@ -126,6 +126,13 @@
   format=plain
 }
 
+% to format short titles
+\renewcommand{\chaptermark}[1]{\markboth{\small\sffamily\MakeUppercase{#1}}{\small\sffamily\MakeUppercase{#1}}}
+\renewcommand{\sectionmark}[1]{\markright{\small\sffamily\MakeUppercase{\thesection}\enspace{#1}}}
+
+% to format page numbers
+\addtokomafont{pagenumber}{\small\sffamily}
+
 % paragraph spacing
 % \setlength{\parskip}{1em}
 
