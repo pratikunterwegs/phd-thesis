@@ -139,6 +139,7 @@
 % ********************************************************************
 % GO!GO!GO! MOVE IT!
 %*******************************************************
+
 \begin{document}
 
 \raggedright
@@ -150,9 +151,11 @@
 %\setbibpreamble{}
 % \pagenumbering{roman}
 \pagestyle{plain}
+
 %********************************************************************
 % Frontmatter
 %*******************************************************
+
 % \include{FrontBackmatter/DirtyTitlepage}
 \include{frontbackmatter/Titlepage}
 \include{frontbackmatter/Titleback}
@@ -165,17 +168,17 @@
 
 \setcounter{page}{0}
 \cleardoublepage\include{frontbackmatter/Abstract}
+
 %********************************************************************
 % Mainmatter
 % *******************************************************
-\clearpage
+\clearpage 
+% \titleformat{\section}{\relax}{\textsf{\thesection}}{1em}{}
 \pagestyle{scrheadings}
-% \pagenumbering{arabic}
+\pagenumbering{arabic}
 % use \cleardoublepage here to avoid problems with pdfbookmark
 
 \cleardoublepage\include{chapters/introduction}
-
-% \cleardoublepage
 
 % \ctparttext{
 %     Large datsets are revolutioning our understanding of animal movement, but preparing these data for inference, and integrating that preparation with existing methods, is key.
@@ -194,8 +197,7 @@
 
 \cleardoublepage \include{chapters/htme}
 
-\cleardoublepage
-\include{chapters/preprocessing_header}
+\cleardoublepage \include{chapters/preprocessing_header}
 % \include{chapters/preprocessing_main}
 
 \cleardoublepage \include{chapters/knots}
@@ -219,8 +221,7 @@
 % }
 % \part{Mechanistic Modelling and Investigating Empirical Methods}
 
-\cleardoublepage \include{chapters/kleptomove_header}
-\cleardoublepage \include{chapters/kleptomove_main}
+\cleardoublepage \include{chapters/kleptomove_header} \include{chapters/kleptomove_main}
 
 
 \cleardoublepage \include{chapters/patternprocess}
