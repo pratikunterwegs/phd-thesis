@@ -1,25 +1,28 @@
 
-\colorbox{gray}{
-    {
-    \begin{minipage}{\textwidth}
-        \footnotesize\mysans
-
-        \textit{In December 2020 I was pointed to the BES Mapping Animal Movements Contest, and the “R Map” category stood out to me. I entered a map made showing the movement of 14 savanna elephants Loxodonta africana tagged in Kruger National Park, South Africa.
-
-        The map highlights the path of the female elephant AM253 (the tag number). Some of the thirteen other elephants are also shown to give a sense of how densely Kruger is criss-crossed by elephant herds. The background shows the average temperature sensed by the LANDSAT-5 satellite over the two year period of this study.
-
-        This data was part of the postdocs of Maria Thaker and Abi Vanak, for whom I worked between my master’s and my PhD. We wrote a paper about how Kruger elephants move in response to temperature. The source code and the map I made can be found here.}
-
-        \section{Mapping as Exploratory Data Analysis}
-
-        Mapping animal movements is a key component of exploratory data analysis. It’s important for ‘joining the dots’ of animal positions. Large tracking datasets can contain errors that are only evident to researchers when they look at an approximation of the animal’s path and ask, “Does the animal move this way?”
-
-        For instance, this map shows ‘jumps’: long, linear segments between points, which indicate missing data for some periods. Mapping can also reveal interesting behaviours that can only be observed after significant effort in the field.
-
-        For instance, the ‘looping’ behaviour of AM253 to water sources is the focus of this map. Seeing this looping behaviour allowed us to focus our study on elephant movements between visits to water sources.
-    \end{minipage}
-    }
-}
+% \addtocontents{toc}{\protect\vspace{\beforebibskip}}%
+%\chapter*{Mapping Animal Movement in \textit{R}: The Science and the Art}
+%\chaptermark{Mapping Animal Movement in \textit{R}: The Science and the Art}
+\phantomsection
+\begin{addmargin}[-3cm]{-1.5cm}
+	
+	\fcolorbox{Black}{Snow2}{
+		\begin{minipage}[t]{\linewidth}%{\dimexpr\linewidth-2\fboxsep}
+			%\phantomsection
+			% \addtocontents{toc}{\protect\vspace{\beforebibskip}}%
+			\addcontentsline{toc}{chapter}{\tocEntry{\color{gray}\bfseries{Mapping Animal Movement in \textit{R}}}}%
+			{\small \color{SteelBlue4} \chapter*{Mapping Animal Movement in \textit{R}} }
+			\chaptermark{}
+			
+			\centering
+				\includegraphics[width=15cm]{figures/boxes/elemove.png}
+			\label{fig:sample_figure}
+			
+			
+		
+		\end{minipage}
+	}
+	
+\end{addmargin}
 
 % \begin{tcolorbox}[
 %   blanker,
