@@ -112,8 +112,6 @@
 
 % for stylistic elements
 \usepackage{lettrine}
-%% Dropped capital for first letter of main text
-\newcommand{\dropcap}[1]{\lettrine[lines=2,lraise=0.05,findent=0.1em, nindent=0em]{{\bfseries\rmfamily{#1}}}{}}
 \usepackage{adforn}
 
 \makeatother
@@ -130,11 +128,11 @@
 }
 
 % to format short titles
-\renewcommand{\chaptermark}[1]{\markboth{\small\sffamily\MakeUppercase{#1}}{\small\sffamily\MakeUppercase{#1}}}
+\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\sffamily{Chapter \thechapter}}{\color{gray}\small\sffamily{#1}}}
 \renewcommand{\sectionmark}[1]{\markright{\small\sffamily\MakeUppercase{\thesection}\enspace{#1}}}
 
 % to format page numbers
-\addtokomafont{pagenumber}{\small\sffamily}
+\addtokomafont{pagenumber}{\color{gray}\small\sffamily}
 
 % paragraph spacing
 % \setlength{\parskip}{1em}
