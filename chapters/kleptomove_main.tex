@@ -1,5 +1,5 @@
 
-\begin{refsection}[sorting=nyt]
+% \begin{refsection}[sorting=nyt]
 
 \lettrine{I}{ntraspecific} competition is an important driver of population dynamics and the spatial distribution of organisms \citep{krebs1978}, and has two main types, `exploitation' and `interference'.
 In exploitation competition, individuals compete indirectly by depleting a common resource, while in interference competition, individuals compete directly by interacting with each other \citep{birch1957,case1974,keddy2001}.
@@ -82,11 +82,11 @@ Our model has 1,000 generations, and this comprises the evolutionary timescale.
 }
 We considered our discrete resources, called `prey-items' to represent mussels, a common prey of many shorebirds, whose abundances are largely driven by external gradients.
 We assigned each cell a constant probability of generating a new prey-item per timestep, which we refer to as the cell-specific growth rate $r$.
-We modelled clustering in landscape productivity by having the distribution of $r$ across the grid take the form of 1,024 resource peaks, placed at regular distances of 16 grid cells from the peaks around them; $r$ declines from the centre of each peak (called $r_{max}$) to its periphery (see Fig.~\ref{fig1}A).
+We modelled clustering in landscape productivity by having the distribution of $r$ across the grid take the form of 1,024 resource peaks, placed at regular distances of 16 grid cells from the peaks around them; $r$ declines from the centre of each peak (called $r_{max}$) to its periphery (see Fig.~\ref{klepto_fig_01}A).
 Thus the central cell generates prey-items five times more frequently than peripheral cell: at $r_{max}$ = 0.01, central cells generate one item per 100 timesteps (four items/generation), while the peripheral cells generate one item only every 500 timesteps ($<$ one item/generation).
 All landscape cells have a uniform carrying capacity $K$ of 5 prey-items.
 While a cell is at carrying capacity its $r$ is 0.
-Cells are initialised with prey-items proportional to their $r$ (see e.g. Fig.~\ref{fig1}A).
+Cells are initialised with prey-items proportional to their $r$ (see e.g. Fig.~\ref{klepto_fig_01}A).
 
 \paragraph{Prey Acquisition by Foragers}
 
@@ -115,7 +115,7 @@ Since individuals are constrained to perceiving and moving short distances, they
 
 It is the combination of cue preferences, and especially their value relative to each other, that determines individual movement decisions \citep[similar to relative selection coefficients,][]{fortin2005,avgar2016,white2018}. 
 For example, an extreme value of $s_P$ relative to the other preferences would mean that an individual's movement decisions are guided primarily by differences in the local density of prey-items.
-We call an individual's combination of inherited preferences its \textit{movement strategy} (see e.g. Fig.~\ref{fig1}E).
+We call an individual's combination of inherited preferences its \textit{movement strategy} (see e.g. Fig.~\ref{klepto_fig_01}E).
 
 \subsection*{Competition Strategies}
 
@@ -184,8 +184,8 @@ We chose this option because it allows us to focus on adaptive movement strategi
 \graffito{
     The simulation output, in a Windows-specific compressed format, required a number of specialised functions to extract useful information.
 }
-We ran all three scenarios at a default $r_{max}$ of 0.01, which we present in the \textsc{Results}, and also across a range of $r_{max}$ values between 0.001 and 0.05 (see Fig.~\ref{fig6} and Supplementary Material Figs. 7 -- 9).
-We initialised the cue preferences with values drawn from a Cauchy distribution with a scale of 0.01 centred on zero; this allows a very small amount of variation in the population (see e.g. Fig.~\ref{fig1}E), and is equivalent to a single generation of mutation from all preferences initialised at zero (see \textsc{Reproduction and Inheritance} above).
+We ran all three scenarios at a default $r_{max}$ of 0.01, which we present in the \textsc{Results}, and also across a range of $r_{max}$ values between 0.001 and 0.05 (see Fig.~\ref{klepto_fig_06} and Supplementary Material Figs. 7 -- 9).
+We initialised the cue preferences with values drawn from a Cauchy distribution with a scale of 0.01 centred on zero; this allows a very small amount of variation in the population (see e.g. Fig.~\ref{klepto_fig_01}E), and is equivalent to a single generation of mutation from all preferences initialised at zero (see \textsc{Reproduction and Inheritance} above).
 Normalising each individual's cue preferences by the sum of the absolute values of all preferences $s_I = s_I / (|s_P| + |s_H| + |s_N|)$, for $s_I \in s_P, s_H, s_N$, makes it possible to visualise individuals on a three-dimensional trait space of relative preferences bounded by (-1.0: \textit{strongly avoid}, +1.0: \textit{strongly prefer}).
 With remarkably consistent outcomes across replicates in each scenario, and as each simulation run produced massive datasets, we show the outcomes of three replicates here.
 More data can be generated and analysed using the code linked below.
@@ -209,7 +209,7 @@ Scenario 3 competition strategies are determined by four values (3 preferences a
 This makes strategies \textit{per se} difficult to visualise.
 We first scaled the competition cue preferences and the threshold value as we did the movement cue preferences.
 To illustrate variation in the competition strategies evolved, we presented each individual in representative generations (G = 10, 30, 100, 300, 950) with combinations of two key cues, handler and prey density (each 0 -- 5; 36 combinations overall).
-We summarised the proportion of individuals that would attempt to steal at each combination of cue values (see Eqn. 1; Fig.~\ref{fig4}F).
+We summarised the proportion of individuals that would attempt to steal at each combination of cue values (see Eqn. 1; Fig.~\ref{klepto_fig_04}F).
 
 \paragraph{Ecological Snapshots of Consumer-Resource Distributions}
 
@@ -228,14 +228,14 @@ Patch productivity is challenging to measure in real world systems, but is among
 
 \subsection*{Scenario 1: No Kleptoparasitism}
 
-In scenario 1, foragers deplete prey-items faster than they are replenished, drastically reducing the overall number of prey within 50 generations (Fig.~\ref{fig1}A).
-The population activity budget is split between searching and handling (Fig.~\ref{fig1}B); while handling and the mean per-capita intake are both initially low, they peak within ten generations (Fig.~\ref{fig1}C), as individuals easily acquire prey-items from the fully stocked landscape in the first few generations.
-With dwindling prey-items, fewer searching foragers find prey, and handling as a share of the activity budget declines to a stable $\sim$ 45\% within 50 generations, and mean per-capita intake also stabilises (Fig.~\ref{fig1}C).
-Across generations, the correlation between the number of foragers and cell productivity is only slightly positive (Fig.~\ref{fig1}D).
+In scenario 1, foragers deplete prey-items faster than they are replenished, drastically reducing the overall number of prey within 50 generations (Fig.~\ref{klepto_fig_01}A).
+The population activity budget is split between searching and handling (Fig.~\ref{klepto_fig_01}B); while handling and the mean per-capita intake are both initially low, they peak within ten generations (Fig.~\ref{klepto_fig_01}C), as individuals easily acquire prey-items from the fully stocked landscape in the first few generations.
+With dwindling prey-items, fewer searching foragers find prey, and handling as a share of the activity budget declines to a stable $\sim$ 45\% within 50 generations, and mean per-capita intake also stabilises (Fig.~\ref{klepto_fig_01}C).
+Across generations, the correlation between the number of foragers and cell productivity is only slightly positive (Fig.~\ref{klepto_fig_01}D).
 This is in contrast with the perfect correspondence between resource input rate and forager density (the `input matching rule'), which is a defining property of the IFD \citep{parker1978, houston2008}.
 Contrary to standard IFD assumptions, foragers cannot directly sense the local cell productivity $r$; instead they can only use the (small) number of prey-items available in a cell as a cue for local productivity.
 A wide range of movement strategies co-exist on the landscape (see all generations in Supplementary Material Fig.~2, 6).
-Some individuals mostly move up gradients of prey-items (Fig.~\ref{fig1}E; $s_P$ $\approx$ 1.0), some move primarily towards successful foragers (handlers), while others move away from unsuccessful foragers which are potential competitors (more red $s_N$).
+Some individuals mostly move up gradients of prey-items (Fig.~\ref{klepto_fig_01}E; $s_P$ $\approx$ 1.0), some move primarily towards successful foragers (handlers), while others move away from unsuccessful foragers which are potential competitors (more red $s_N$).
 
 \begin{figure}[t!]
     \centering
@@ -250,26 +250,26 @@ Some individuals mostly move up gradients of prey-items (Fig.~\ref{fig1}E; $s_P$
         Individuals may focus on moving up gradients of prey-items (sP $\approx$ 1.0: \textit{prefer}), moving towards successful foragers (handlers), or moving away from unsuccessful foragers which are potential competitors (sN $\approx$ red).
         Panels \textbf{A, E} show a single replicate, panels \textbf{B, C, D} and \textbf{D} show three replicate simulations with log-scaled X-axes (lines overlap almost perfectly); all panels are for $r_{max}$ = 0.01; panel \textbf{E} shows 2,500 individuals.
     }
-    \label{fig1}
+    \label{klepto_fig_01}
 \end{figure}
 
 \subsection*{Scenario 2: Co-existence of Foragers and Kleptoparasites}
 
 In scenario 2, with fixed foraging and kleptoparasitism allowed, the spatial distribution of prey-items at equilibrium is very different from scenario 1.
-Consumers graze down resource peaks until few prey-items remain on the landscape; however, within 50 generations the resource landscape recovers with prey abundances higher than in the earliest generations (Fig.~\ref{fig2}A).
-This is because of the emergence of kleptoparasites (Fig.~\ref{fig2}B): in early generations, kleptoparasites are rare, and the activity budget, the mean per-capita intake, and the distribution of consumers over the landscape, are similar to scenario 1.
-As resources are depleted and kleptoparasite-handler encounters become more common than forager-prey encounters, kleptoparasitism becomes the majority strategy (a stable $\sim$70\% of the population; see Fig.~\ref{fig2}B), and searching for handlers to rob becomes the commonest activity.
+Consumers graze down resource peaks until few prey-items remain on the landscape; however, within 50 generations the resource landscape recovers with prey abundances higher than in the earliest generations (Fig.~\ref{klepto_fig_02}A).
+This is because of the emergence of kleptoparasites (Fig.~\ref{klepto_fig_02}B): in early generations, kleptoparasites are rare, and the activity budget, the mean per-capita intake, and the distribution of consumers over the landscape, are similar to scenario 1.
+As resources are depleted and kleptoparasite-handler encounters become more common than forager-prey encounters, kleptoparasitism becomes the majority strategy (a stable $\sim$70\% of the population; see Fig.~\ref{klepto_fig_02}B), and searching for handlers to rob becomes the commonest activity.
 However, the high frequency of this activity and the low frequency of handling, indicate that few kleptoparasites are successful at robbing handlers.
 
-With few foragers, few prey-items are extracted from the landscape, which recovers beyond its initial prey abundance within 50 generations (Fig.~\ref{fig2}A).
-As fewer prey-items are extracted overall, mean per-capita intake also declines from an initial peak (Fig.~\ref{fig2}C).
-Despite the strong spatial structure of the resource landscape within 50 generations, the correlation between consumers (of either strategy) and cell productivity remains weak or zero across generations (Fig.~\ref{fig2}D).
+With few foragers, few prey-items are extracted from the landscape, which recovers beyond its initial prey abundance within 50 generations (Fig.~\ref{klepto_fig_02}A).
+As fewer prey-items are extracted overall, mean per-capita intake also declines from an initial peak (Fig.~\ref{klepto_fig_02}C).
+Despite the strong spatial structure of the resource landscape within 50 generations, the correlation between consumers (of either strategy) and cell productivity remains weak or zero across generations (Fig.~\ref{klepto_fig_02}D).
 This may be partially explained by the ecology of kleptoparasitism: foragers are regularly displaced by kleptoparasites, and kleptoparasites must themselves move to find handlers.
 
 There is a sharp evolutionary divergence of movement strategies between foragers and kleptoparasites.
-While both foragers and kleptoparasites evolve to prefer prey and avoid non-handlers, their response to handlers is very different (Fig.~\ref{fig3}; see also Supplementary Material Fig.~3, 5).
-Kleptoparasites very rapidly evolve a strong preference for moving towards handlers, which are their primary resource (Fig.~\ref{fig3}).
-In the absence of kleptoparasites, foragers would also evolve a similar preference (Fig.~\ref{fig1}E), but, with kleptoparasites common in the population, foragers converge upon a handler-avoiding strategy (Fig.~\ref{fig3}).
+While both foragers and kleptoparasites evolve to prefer prey and avoid non-handlers, their response to handlers is very different (Fig.~\ref{klepto_fig_03}; see also Supplementary Material Fig.~3, 5).
+Kleptoparasites very rapidly evolve a strong preference for moving towards handlers, which are their primary resource (Fig.~\ref{klepto_fig_03}).
+In the absence of kleptoparasites, foragers would also evolve a similar preference (Fig.~\ref{klepto_fig_01}E), but, with kleptoparasites common in the population, foragers converge upon a handler-avoiding strategy (Fig.~\ref{klepto_fig_03}).
 This completes the explanation for why consumers do not match landscape productivity: foragers evolve strategies to avoid high productivity areas (which are more likely to have many handlers), while kleptoparasites evolve strategies to find handlers (which need not be on high productivity cells).
 
 \begin{figure}[t!]
@@ -285,7 +285,7 @@ This completes the explanation for why consumers do not match landscape producti
         \textbf{(D)} Neither foragers nor kleptoparasites follow the input matching rule, and the correlation of their abundance with cell productivity $r$ is zero at equilibrium.
         Panel \textbf{A} shows a single replicate, while \textbf{B, C, D} and \textbf{D} show three replicates with log-scaled X-axes; all panels are for $r_{max}$ = 0.01.
     }
-    \label{fig2}
+    \label{klepto_fig_02}
 \end{figure}
 
 \begin{figure}[t!]
@@ -301,23 +301,23 @@ This completes the explanation for why consumers do not match landscape producti
        At the evolutionary equilibrium then, social information (either sH or sN) is the strongest component of all individuals' movement strategies.
        All panels show 2,500 individuals (25\% of total) from the same simulation replicate ($r_{max}$ = 0.01), and earlier generations are ancestors of later generations.
     }
-    \label{fig3}
+    \label{klepto_fig_03}
 \end{figure}
 
 \subsection*{Scenario 3: Condition-dependent Kleptoparasitism}
 
-When individuals are allowed to choose their competition strategy (foraging or kleptoparasitism) based on local environmental cues, the distribution of prey-items is substantially different from the two previous scenarios (Fig.~\ref{fig4}A).
+When individuals are allowed to choose their competition strategy (foraging or kleptoparasitism) based on local environmental cues, the distribution of prey-items is substantially different from the two previous scenarios (Fig.~\ref{klepto_fig_04}A).
 Initially, individuals deplete the resource landscape of prey-items within ten generations.
 By generation 50, the resource landscape recovers some of the spatial structure of early generations, but prey-item abundances do not match the recovery seen in scenario 2.
-This is because unlike scenario 2, individuals search for prey more often and steal less (at or below 25\%; compare Figs.~\ref{fig4}B and \ref{fig2}B), preventing a full recovery of the resource landscape.
-Consequently, mean per-capita intake stabilises (after an initial spike, as in scenarios 1 and 2) within ten generations to a level similar to scenario 1 (Fig.~\ref{fig4}C).
-While not as strong as predicted by IFD theory, the correlations between consumer abundance and cell productivity are weakly positive (Fig.~\ref{fig4}D).
+This is because unlike scenario 2, individuals search for prey more often and steal less (at or below 25\%; compare Figs.~\ref{klepto_fig_04}B and \ref{klepto_fig_02}B), preventing a full recovery of the resource landscape.
+Consequently, mean per-capita intake stabilises (after an initial spike, as in scenarios 1 and 2) within ten generations to a level similar to scenario 1 (Fig.~\ref{klepto_fig_04}C).
+While not as strong as predicted by IFD theory, the correlations between consumer abundance and cell productivity are weakly positive (Fig.~\ref{klepto_fig_04}D).
 
-The weak input matching is likely because all individuals prefer to move up gradients of prey density, and towards handlers, which are more likely to be found on resource peaks (Fig.~\ref{fig4}E; see also Supplementary Material Fig.~4, 7).
-Using conditional foraging strategies, individuals are able to switch between resource types (prey and handlers) depending on which is more profitable \citep{emlen1966} (`opportunistic kleptoparasitism'; Fig.~\ref{fig4}F; see Supplementary Material Fig. 6).
+The weak input matching is likely because all individuals prefer to move up gradients of prey density, and towards handlers, which are more likely to be found on resource peaks (Fig.~\ref{klepto_fig_04}E; see also Supplementary Material Fig.~4, 7).
+Using conditional foraging strategies, individuals are able to switch between resource types (prey and handlers) depending on which is more profitable \citep{emlen1966} (`opportunistic kleptoparasitism'; Fig.~\ref{klepto_fig_04}F; see Supplementary Material Fig. 6).
 All individuals would choose to steal when handlers are present, even when prey items are more common.
 Indeed, about 40\% of individuals would choose to steal even when prey are abundant and there are no handlers at all, showing the prevalence of a `fixed kleptoparasite' clade similar to scenario 2.
-In a further parallel with scenario 2, about 70\% of individuals have an intrinsic bias towards kleptoparasitism, i.e., they would by default attempt to steal when there are no cues to inform their decision (Fig.~\ref{fig4}F: $P$ = 0, $H$ = 0).
+In a further parallel with scenario 2, about 70\% of individuals have an intrinsic bias towards kleptoparasitism, i.e., they would by default attempt to steal when there are no cues to inform their decision (Fig.~\ref{klepto_fig_04}F: $P$ = 0, $H$ = 0).
 
 \begin{figure}[t!]
     \centering
@@ -334,28 +334,28 @@ In a further parallel with scenario 2, about 70\% of individuals have an intrins
         All individuals will steal when handlers are available.
         Panels \textbf{A, E} show a single replicate, while \textbf{B, C} and \textbf{D} show three replicates, \textbf{F} shows the mean across replicates; all panels are for $r_{max}$ = 0.01.
     }
-    \label{fig4}
+    \label{klepto_fig_04}
 \end{figure}
 
 \subsection*{Movement Strategies on Depleted Landscapes}
 
 Orienting movement towards resources \citep[][\textit{where to move}]{nathan2008a} can be a challenge in a system with low densities of discrete prey-items, because the local prey \textit{density} may provide very limited information about local \textit{productivity}.
-In our model, prey-depletion leads parts of the resource landscape to become `clueless regions' \citep{perkins1992}, where foragers cannot make directed movements based on prey-item abundances alone, as all neighbouring item abundances are identical (see white areas in Fig.~\ref{fig5}A; A1: scenario 1, A2: scenario 2, A3: scenario 3).
+In our model, prey-depletion leads parts of the resource landscape to become `clueless regions' \citep{perkins1992}, where foragers cannot make directed movements based on prey-item abundances alone, as all neighbouring item abundances are identical (see white areas in Fig.~\ref{klepto_fig_05}A; A1: scenario 1, A2: scenario 2, A3: scenario 3).
 At the beginning of all three scenarios, about 75\% of landscape cells have a different number of prey-items from the cells around them; these are primarily cells with an intermediate $r$, which have more prey than peripheral cells of resource peaks, but fewer prey than the central cells.
 This proportion rapidly declines to a much lower value within 10 generations in all three scenarios.
 
-The `cluelessness' of the landscapes develops differently across scenarios on evolutionary timescales (Fig.~\ref{fig5}B).
-In scenario 1, the proportion of cells with a different number of items in the neighbourhood is initially very high (Fig.~\ref{fig5}A1).
+The `cluelessness' of the landscapes develops differently across scenarios on evolutionary timescales (Fig.~\ref{klepto_fig_05}B).
+In scenario 1, the proportion of cells with a different number of items in the neighbourhood is initially very high (Fig.~\ref{klepto_fig_05}A1).
 This proportion rapidly declines to $\sim$25\% within 10 generations, as foragers deplete most prey-items, making most of the landscape a clueless region.
-In this context, foragers evolve to move towards handlers, with $>$ 75\% of individuals showing a preference for handlers within 100 generations (Fig.~\ref{fig5}B1).
+In this context, foragers evolve to move towards handlers, with $>$ 75\% of individuals showing a preference for handlers within 100 generations (Fig.~\ref{klepto_fig_05}B1).
 Forager preference for handlers may be explained as the sensing of a long-term cue of local productivity.
 Since handlers are immobilised on the cell where they find a prey-item, handler density is an indirect indicator of cell $r$, and due to spatial autocorrelation, also of the $r$ of bordering cells.
 
-Scenario 2 landscapes develop similarly to scenario 1 in early generations (Fig.~\ref{fig5}A2).
-However, within 50 generations, most cells bear items as extraction is reduced, with differences among cells according to their $r$ (see also Fig.~\ref{fig2}A).
-Thus $>$ 75\% of cells have a different number of items from neighbouring cells (Fig.~\ref{fig5}A2 -- panel \textit{gen: 50}, 5B2).
+Scenario 2 landscapes develop similarly to scenario 1 in early generations (Fig.~\ref{klepto_fig_05}A2).
+However, within 50 generations, most cells bear items as extraction is reduced, with differences among cells according to their $r$ (see also Fig.~\ref{klepto_fig_02}A).
+Thus $>$ 75\% of cells have a different number of items from neighbouring cells (Fig.~\ref{klepto_fig_05}A2 -- panel \textit{gen: 50}, 5B2).
 Unlike scenario 1, the rapid increase in handler preference is driven by kleptoparasites becoming the majority strategy (see above).
-Scenario 3 is similar to scenario 2, except that only about half of all cells have a different number of prey-items from neighbouring cells (Fig.~\ref{fig5}A3, 5B3).
+Scenario 3 is similar to scenario 2, except that only about half of all cells have a different number of prey-items from neighbouring cells (Fig.~\ref{klepto_fig_05}A3, 5B3).
 Here, the rapid evolution of a handler preference in movement decisions cannot be assigned a clear cause, since handlers are both a potential direct resource as well as indirect cues to the location of productive cells.
 
 \begin{figure}[t!]
@@ -369,7 +369,7 @@ Here, the rapid evolution of a handler preference in movement decisions cannot b
         In \textbf{(B2)} representing scenario 2, this proportion is shown separately for foragers (blue line) and kleptoparasites (red line).
         While panels in \textbf{(A)} show a single representative replicate for $r_{max}$ = 0.01, panels in \textbf{(B)} show three replicates.
     }
-    \label{fig5}
+    \label{klepto_fig_05}
 \end{figure}
 
 \subsection*{Effect of Landscape Productivity}
@@ -378,17 +378,17 @@ The prey-item regrowth rate that characterises the peaks of the resource landsca
 Having thus far focused on scenarios with $r_{max}$ = 0.01 (corresponding to a peak production of 4 food times per consumer lifetime), we find that, not unexpectedly, the value of $r_{max}$ has a marked effect on evolved population activity budgets, mean per capita intake, and even evolved strategies.
 The frequency of foraging reduces with $r_{max}$ in scenarios 1 and 3; this is caused by more frequent acquisition of prey-items (as regrowth keeps pace with depletion), which results in a greater frequency of handling rather than foraging.
 
-In scenario 2 however, the frequency of handling is relatively unaffected by increasing $r_{max}$ (Fig.~\ref{fig6}A).
-The difference between scenarios 2 and 3 has to do with the change in the frequency of kleptoparasitism (Fig.~\ref{fig6}B).
+In scenario 2 however, the frequency of handling is relatively unaffected by increasing $r_{max}$ (Fig.~\ref{klepto_fig_06}A).
+The difference between scenarios 2 and 3 has to do with the change in the frequency of kleptoparasitism (Fig.~\ref{klepto_fig_06}B).
 In scenario 2, kleptoparasitism forms $>$ 75\% of all activities at low $r_{max}$, and is much more common than in scenario 3 populations at the same regrowth rate.
 However, at relatively high $r_{max}$ (0.03), the fixed kleptoparasitic strategy goes extinct.
 This is because at high $r_{max}$, forager-prey encounters are more common than kleptoparasite-handler encounters, in both early ($<$ 10) and later generations ($>$ 50).
 Consequently, kleptoparasites have relatively much lower fitness than foragers, and do not proliferate.
 Thus at high $r_{max}$, a scenario 2 population is nearly identical to a scenario 1 population; while some kleptoparasites may be seen in later generations, these occur most likely due to ephemeral mutations in the forager strategy.
 
-In scenario 3, kleptoparasitism persists at low frequencies even at the highest regrowth rates (Fig.~\ref{fig6}B); thus some foragers lose time in extracting items which are then stolen from them.
+In scenario 3, kleptoparasitism persists at low frequencies even at the highest regrowth rates (Fig.~\ref{klepto_fig_06}B); thus some foragers lose time in extracting items which are then stolen from them.
 Consequently, while populations in all three scenarios achieve very similar mean per-capita intakes at low $r_{max}$, at intermediate regrowth rates (0.01, 0.02), conditionally kleptoparasitic populations achieve a higher mean per-capita intake than populations using fixed strategies.
-Only at high $r_{max}$, when fixed strategy populations effectively convert to purely forager populations, do they achieve a higher intake than conditional strategy populations (Fig.~\ref{fig6}C).
+Only at high $r_{max}$, when fixed strategy populations effectively convert to purely forager populations, do they achieve a higher intake than conditional strategy populations (Fig.~\ref{klepto_fig_06}C).
 
 \begin{figure}[t!]
     \centering
@@ -404,7 +404,7 @@ Only at high $r_{max}$, when fixed strategy populations effectively convert to p
         At high $r_{max}$, the average intake rate in populations with conditional kleptoparasites (scenario 3) is substantially lower than in populations without kleptoparasitism.
         All panels show conditions at G = 1,000; error ranges where present show standard deviation around values; some error ranges are too small to be visible.
     }
-    \label{fig6}
+    \label{klepto_fig_06}
 \end{figure}
 
 \section*{Discussion}
@@ -539,6 +539,6 @@ Rather, they can provide valuable perspective on existing population-level model
 % F.J.W. and C.F.G.N. acknowledge funding from the European Research Council (ERC Advanced Grant No. 789240).
 % P.R.G was supported by an Adaptive Life Programme grant made possible by the Groningen Institute for Evolutionary Life Sciences (GELIFES).
 % Finally, we thank two anonymous reviewers for helpful suggestions that improved the manuscript.
-    \printbibliography[title=Kleptomove,sorting=nyt,heading=subbibliography]
+\printbibliography[title=Literature~Cited,sorting=nyt,heading=subbibliography]
 
 \end{refsection}
