@@ -1,5 +1,5 @@
 
-% \newrefcontext[sorting=nyt]
+\newrefcontext[sorting=ynt]
 
     \section*{Introduction}
     
@@ -469,7 +469,7 @@
     Users may question why thinning, which can obtain consensus positions over an interval and also reduce data-volumes should not be used directly on the raw data.
     %%
     We caution that thinning prior to excluding unrealistic movement and smoothing (Fig 5.b) can lead to preserving artefacts in the data, and estimates of essential metrics --- such as straight-line displacement (and hence, speed) --- that are substantially different from the true value \citep[see Fig.~\ref{preproc_fig_05}.c;][]{noonan2019}.
-    In our example, the data with errors would have to be thinned to \sfrac{1}{30}\textsuperscript{th} of its volume for the median speed of the thinned data to be comparable with the overall median speed --- this is an undesirable step if the aim is fine-scale tracking.
+    In our example, the data with errors would have to be thinned to $\frac{1}{30}$\textsuperscript{th} of its volume for the median speed of the thinned data to be comparable with the overall median speed --- this is an undesirable step if the aim is fine-scale tracking.
     Additionally, the optimal level of thinning can be difficult to determine, especially if there is wide individual variation in movement behaviour, and the mis-estimation of track metrics from inappropriately thinned data could have consequences for the implementation of subsequent filters based on detecting unrealistic movement.
     However, thinning before data-cleaning has its place as a useful step before exploratory visualisation of the movement track, since reduced data-volumes are easier to handle for plotting software.
     %
@@ -683,6 +683,6 @@
     We see the diversity of animal tracking datasets and studies as an incentive for more users to be involved in developing methods for their systems.
     We offer our approach to large tracking datasets, and our pipeline and package as a foundation for system-specific tools in the belief that simple, robust concepts are key to methods development that balances system-specificity and broad applicability.
 
-
-    \printbibliography[title=Literature~Cited,heading=subbibliography]
-\end{refsection}
+    \newrefcontext[sorting=nyt]
+    \printbibliography[title=Literature~Cited,sorting=nyt,heading=subbibliography]
+% \end{refsection}
