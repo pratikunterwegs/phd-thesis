@@ -50,9 +50,6 @@
 
     Even after removing unrealistic movement, a track may be comprised of positions that are randomly distributed around the true animal location \citep{noonan2019}.
     The large data-volumes of high-throughput tracking allow for a neat solution: tracks can be `median smoothed' to reduce small location errors that have remained undetected \citep[e.g.][]{bijleveld2016}.
-    \graffito{
-        Median smoothing is a classic method \citep{tukey1977} that has found applications across fields, including for example, recovering corrupted digital images.
-    } 
     Large data volumes may also need to be thinned, for example, examining environmental covariates as predictors of prolonged residence in an area  \citep[see e.g.][]{bracis2018, aarts2008, bijleveld2016, oudman2018, harel2016} might require thinning of high-resolution movement data to match the lower spatial resolution of environmental measurements. 
     Data thinning and clustering are also required to avoid non-independent observations due to strong spatio-temporal autocorrelation, or to examine the effect of sampling scale on movement metrics and resource-selection \citep{fleming2014a,noonan2019}.
 
@@ -194,9 +191,6 @@
     An example of the former is studies of transit behaviour between features which can be approximated by their bounding boxes. 
     Instances of the latter are likely to be system specific, but are known from ATLAS systems. 
     Bounding boxes are typically rectangular, and users seeking to filter for other geometries, such as a circular or irregularly-shaped study area, need a geometric intersection between their data and a spatial representation of the area of interest (e.g. shapefile, geopackage, or \textit{sf}-object in \textit{R}).
-    \graffito{
-        The `sf' package is a massive improvement on previous spatial-data handling tools in R (e.g. `sp', `ppp'). More generally, R's spatial data ecosystem has undergone some substantial changes over the past 7 years that I've been using it.
-    }
     The \textit{atlastools} function \textit{atl\_filter\_bounds} implements both bounding box and explicit spatial filters, and accepts X and Y coordinate ranges, an \textit{sf}-polygon or multi-polygon object \citep{pebesma2018}, or any combination of the three to filter the data.
     When both coordinate ranges and a polygon are provided, the data is first filtered by the ranges and then the polygon.
     The boolean function argument \textit{remove\_inside} determines whether positions inside the bounds are retained (\textit{FALSE}) or removed (\textit{TRUE}).
@@ -343,7 +337,10 @@
     %                     )
     %                 )
     % \end{lst{\color{red} Listing}}
-
+    \graffito{
+        This issue was especially evident in WATLAS tracking data from 2018. ATLAS positioning errors are an interesting combination of
+        failures of the physical tracking device, as well as failures of the maximum likelihood localisation algorithm.
+    }
     Sometimes, entire subsets of the track may be affected by the same large-scale location error.
     For instance, multiple consecutive positions may be roughly translated (geometrically) away from the real track and form `prolonged spikes', or `reflections' (see Fig.~\ref{preproc_fig_03}.b).
     These cannot be corrected by targeted removal of individual positions, as in Bjørneraas et al.'s approach (2010), since there are no positions with both high incoming and outgoing speeds, as well as sharp turning angles, that characterise spikes.
@@ -389,7 +386,9 @@
         $$
             % \end{equation*}
     % \end{linenomath*}
-    %
+    \graffito{
+        Median smoothing is a classic method \citep{tukey1977} that has found applications across fields, including for example, recovering corrupted digital images.
+    }
     Users can apply a median smooth with an appropriate $K$ independently to the X and Y coordinates of a movement track to smooth it (see Fig.~\ref{preproc_fig_04}.a -- e).
     The median smooth is robust to even very large temporal and spatial gaps, and does not interpolate between positions when data are missing. 
     Thus it is not necessary to split the data into segments separated by periods of missing observations when applying the filter (see Fig.~\ref{preproc_fig_04}).
@@ -456,13 +455,13 @@
     In the aggregation method, the location error around each coordinate provided by either GPS or reverse-GPS systems can be propagated --- assuming the errors are normally distributed --- to the averaged position as the sum of errors divided by the square of the number of observations contributing to each average ($N$):
     % \begin{linenomath*}
         $$
-            \text{Var}(X)_{agg} = \left( \sum_{i=1}^{i=N} \text{Var}(X)_i \right) / N ^ 2
+            \text{Var}(X)_\text{agg} = \left( \sum_{i=1}^{i=N} \text{Var}(X)_i \right) / N ^ 2
         $$
     % \end{linenomath*}
     Similarly, the overall location error estimate for the average of $N$ positions in a time-interval can be calculated by treating it as a variance. For instance, the ATLAS error and GPS error measures (SD and HDOP, respectively) can be aggregated as:
     % \begin{linenomath*}
         $$
-            SD_{agg} \ or \ HDOP_{agg} = \sqrt{ \left( \sum_{i=1}^{i=N} SD_i^2 \ or \ HDOP_i^2 \right) / N ^ 2  }
+            SD_\text{agg} \ or \ HDOP_\text{agg} = \sqrt{ \left( \sum_{i=1}^{i=N} SD_i^2 \ or \ HDOP_i^2 \right) / N ^ 2  }
         $$
     % \end{linenomath*}
 
@@ -510,6 +509,9 @@
     Users aiming for such analyses can benefit from segmenting and clustering the data into spatio-temporally independent bouts of different behavioural modes \citep{patin2020a}.
     Treating these as the unit of observation also conveniently sidesteps pseudo-replication and reduces computational requirements.
     While numerous methods of segmenting and clustering data are in use, they may not be scalable to very large or gappy datasets \citep{patin2020a, langrock2012, michelot2016}.
+    \graffito{
+        I actually came up with the residence patch method because Lavielle segmentation \citep{lavielle} and `segclust2d' \citep{patin2020a} just did not seem to be working on WATLAS data.
+    }
     As an alternative, a first-principles approach that segments data based on the movement capacity (top speed, etc.) of tracked animals, could provide a fast, yet useful way to cluster data.
     Here, as a working example that may be suitable for some systems, we present a simple segmentation-clustering algorithm to make `residence patches', identified as bouts of relatively stationary behaviour \citep[][]{barraquand2008,bijleveld2016,oudman2018}.
     Details of the implementation may be found in the package code, and examples are provided in the Supplementary Material.
@@ -519,7 +521,7 @@
     Before implementing the algorithm, users should identify positions where the animal is relatively stationary, for instance on its speed or first-passage time \citep{bracis2018,barraquand2008}.
     Our suggested algorithm begins by assessing whether consecutive stationary positions are spatio-temporally independent, and clusters them together into a residence patch if they are not.
     This clustering could be based on a simple proximity threshold --- points farther apart than some threshold distance are likely to represent two different residence patches.
-    In cases where animals visit multiple sites in sequence \citep[such as traplining][]{thomson1997}, and which researchers might wish to consider as a single residence patch, a larger-scale distance threshold can help cluster nearby residence patches together, and this can also be applied to cluster together patches artificially separated due to missing data.
+    In cases where animals visit multiple sites in sequence \citep[such as traplining:][]{thomson1997}, and which researchers might wish to consider as a single residence patch, a larger-scale distance threshold can help cluster nearby residence patches together, and this can also be applied to cluster together patches artificially separated due to missing data.
     Our algorithm separates two observations at a similar location, but at two very different time points, by comparing the intervening time-lag against a time-difference threshold, which can also apply to patches that would otherwise be clustered by the large-scale distance threshold.
     Users are encouraged to base these thresholds on the movement habits of their study species (see the \textit{Worked Out Example}).
 
@@ -586,6 +588,9 @@
     Finally, we targeted small-scale location errors by applying a median smooth with a moving window size $K$ = 5 using the function \textit{atl\_median\_smooth} (Fig.~\ref{preproc_fig_07}.c).
     This step does not reduce the number of positions.
 
+    \graffito{
+        The residence patch method obviously works best when there are clear speed differences between stationary and travelling positions.
+    }
     We identified stationary positions as those where the median smoothed speed ($K$ = 5) was $<$ 2m/s, as people or a boat moving any faster are likely to be in transit.
     We clustered these positions into residence patches with a buffer radius of 5m, spatial independence limit of 50m, temporal independence limit of 5 minutes, and a minimum of 3 positions per patch.
     Inferred residence patches corresponded well to the locations of stops (see Fig.~\ref{preproc_fig_07}.c).
@@ -636,6 +641,9 @@
     % Since bats departed and returned to their roost at different times each night, we also excluded locations with a residence time $>$ 200 minutes (approx. 3.3 hours), as this was more likely to represent daytime roosting than nighttime foraging; of 31,012 smoothed positions, 18,677 remained (60\%).
     % From these positions, we calculated that between leaving the roost to forage, and returning, bats had a mean residence time at each position of 95.64 minutes (SD = 119.23) --- this value is still likely to be biased by some positions at the roost.
     
+    \graffito{
+        These and similar data are further analysed in \citep{lourie2021}.
+    }
     To determine the true duration of foraging, we opted for a first-principles approach and first selected only locations with a residence time $>$ 5 minutes, reasoning that a flying animal stopping for $>$ 5 minutes at a location should plausibly indicate resource use or another interesting localised behaviour.
     This step retained 5,736 positions per bat on average (17,208 total), or 72.4\% of the nighttime positions.
     We then constructed residence patches with a buffer distance of 25m, a spatial independence limit of 100m, a temporal independence limit of 30 minutes, and rejected patches with fewer than three positions.
@@ -665,6 +673,9 @@
     \section*{Discussion and Perspective}
 
     Recent technical advances in wildlife tracking have already yielded exciting new insights from massive high-resolution movement datasets \citep{aspillaga2021, aspillaga2021a, baktoft2017, baktoft2019, harel2016, harel2018, oudman2018, papageorgiou2019, tsoar2011, strandburg-peshkin2015, toledo2020, beardsworth2021a, beardsworth2021b, corl2020, vilk2021, lourie2021}, and high-throughput animal tracking is expected to become increasingly more common in the near future.
+    \graffito{
+        I also had the opportunity to test the residence patch method on pike tracked using YAPS \citep{baktoft2017}, and found it worked very well.
+    }
     Tackling the very large datasets that high-throughput tracking generates requires a different approach from that used for traditionally smaller volumes of data.
     We foresee that movement ecologists will have to adopt ever more practices from fields accustomed to dealing with `big data', and that the field will become increasingly computational \citep{peng2011}.
 
