@@ -118,11 +118,10 @@ An observer with a higher number of species of interest reported within 60 minut
 We then estimated a checklist calibration index (CCI) from observer-specific calibration scores associated with each checklist.
 The CCI was the lone observer's calibration score for single-observer checklists and the highest calibration score among observers for group checklists.
 CCI is predicted from a generalized linear mixed effects model:
-% $$
-% \text{nSpeciesOfInterest} \sim \textit{duration} + \text{sqrt(duration)} + \text{landcover} + \text{sqrt(time\_of\_day)} + \text{I((sqrt(time\_of\_day))^2)} + log(julian\_date) + I((log(julian\_date)^2)) + (1 | observer) 
-% + (0 + duration | observer), family = \text{poisson})
-% $$
-where, nSpeciesOfInterest is the number of species observed in that checklist, duration is the time spent observing birds for the checklist, landcover refers to the land cover type, time\_of\_day refers to the time of the day that observations were made, and julian\_date refers to the ordinal day of the year.
+\begin{multline*}
+    \text{n} \sim \text{duration} + \sqrt{\text{duration}} + \text{landcover} + \sqrt{\text{time of day}} + \sqrt{\text{time of day}}^2 + \\ \log({\text{julian date})} + \log({\text{julian date})}^2 + (1 | \text{observer}) + \\(0 + \text{duration} | \text{observer})
+\end{multline*}
+where, $n$ is the number of species observed in that checklist, \textit{duration} is the time spent observing birds for the checklist, \textit{landcover} refers to the land cover type, \textit{time\_of\_day} refers to the time of the day that observations were made, and \textit{julian\_date} refers to the ordinal day of the year.
 
 \subsubsection*{Preparing Occupancy Predictors}
 
@@ -155,17 +154,21 @@ Our breeding season is often toward the end of this window (late April to early 
 We modeled time of day so as to allow detectability to be highest at dawn and dusk when birds often sing and are easily detected, and to be lower in the middle of the day, when birds are least active and thus less likely to be detected.
 
 Using a multi-model information-theoretic approach, we tested how strongly our occurrence data fit our candidate set of environmental covariates (Burnham and Anderson 2002).
-We fitted single-species occupancy models for each species, to simultaneously estimate a probability of detection (p) and a probability of occupancy ($\psi$) (Mackenzie et al, 2002, Fiske and Chandler 2011).
+We fitted single-species occupancy models for each species, to simultaneously estimate a probability of detection ($p$) and a probability of occupancy ($\psi$) (Mackenzie et al, 2002, Fiske and Chandler 2011).
 For each species, we fit 512 models, each with a unique combination of the (climate and land cover) occupancy covariates and all detection covariates (the six detection covariates are present in every model).
 
-Probability of detection:
-logit(p) $\sim$ julian\_date + duration\_minutes + effort\_distance\_km + min\_obs\_started + number\_observers + CCI
+\begin{multline*}
+    \text{logit}(p) \sim \text{julian date} + \text{duration} + \text{distance} + \text{obs. started} + \\
+    \text{number observers} + CCI    
+\end{multline*}
 
-where julian\_date refers to the ordinal day of the year, duration\_minutes refers to the time spent observing birds in minutes, effort\_distance\_km refers to the distance travelled by the observer(s) in kilometers, min\_obs\_started is the time of day when observations were recorded, number\_observers refer to the number of observers and CCI is the checklist calibration index.
+where \textit{julian date} refers to the ordinal day of the year, \texit{duration} refers to the time spent observing birds in minutes, \textit{distance} is the distance travelled by the observer(s) in kilometers, \textit{obs. started} is the time of day when observations were recorded, \textit{number observers} refer to the number of observers, and $CCI$ is the checklist calibration index.
 
-
-Probability of occupancy:
-logit($\psi$) $\sim$ temperatureSeasonality + precipitationSeasonality + propEvergreen + propDeciduous + propMixedDegraded + propAgricultureSettlements + propPlantations + propGrasslands + propWaterBodies
+\begin{multline*}
+    \text{logit}(\psi) \sim \text{BIO 4a} + \text{BIO 15} + p(\text{Evergreen}) + p(\text{Deciduous}) + \\
+    p(\text{MixedDegraded}) + p(\text{AgricultureSettlements}) + p(\text{Plantations}) + \\
+    p(\text{Grasslands}) + p(\text{WaterBodies})
+\end{multline*}
 
 Previously, we explored the non-linear effects of temperature seasonality and precipitation seasonality.
 However, our occupancy models showed a poor fit to the data when temperature and precipitation seasonality were included as non-linear terms and hence, we did not explore this further.
