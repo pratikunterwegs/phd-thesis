@@ -21,8 +21,7 @@ As of March 2021, the eBird India dataset has grown to a total of over 14 millio
 
 We set out to examine the role of climate and land cover and its association with bird occupancy in a tropical montane region, the Western Ghats of southern India.
 The Western Ghats mountain ecosystem is part of the Western Ghats-Sri Lanka biodiversity hotspot and is home to numerous species of endemic plants and animals (Myers et al, 2000, Das et al, 2006).
-We examined observations from eBird between 2013 and 2021 for 79 species (later reduced to 55, following model fitting) of birds across the two largest hill ranges in the southern Western Ghats --- the Nilgiri and the Anamalai-Palani hills (see Fig.
-1a).
+We examined observations from eBird between 2013 and 2021 for 79 species (later reduced to 55, following model fitting) of birds across the two largest hill ranges in the southern Western Ghats --- the Nilgiri and the Anamalai-Palani hills (see Fig. 1a).
 Specifically, we tested associations between climatic variables, land cover, and bird occupancy.
 We binned species according to their habitat preference prior to hypothesis testing; a species could either be a forest species (species found in forested/woodland habitats as well as forest edges) or generalist species (widespread species found across a range of habitat types) (Ali and Ripley 1983).
 
@@ -53,6 +52,39 @@ These two hill ranges are home to a multitude of habitats, ranging from high ele
 1b).
 These hill ranges interact strongly with the annual south-west monsoon resulting in orographic rainfall on the western slopes ($\sim$3000 mm) and a relative rain-shadow on the leeward eastern slopes ($\sim$2000 mm) that in turn influences the distribution of endemic flora and fauna (Gadgil and Meher-Homji 1986, Pascal 1988, Robin et al, 2015).
 
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/hillybirds/fig_01.png}
+    \caption{
+        \textbf{The Nilgiri and Anamalai Hills in southern India provide a convenient geography for studying the interplay of land cover and climate on the distributions of bird species.}
+        \textbf{(a)} The Nilgiri and Anamalai Hills of the Southern Western Ghats are topographically complex, with maximum elevations > 2,000 m, and are separated by the very low-lying Palghat Gap, which serves as a natural barrier to the dispersal of many hill birds. 
+        \textbf{(b)} Lower elevations are primarily covered by agriculture and settlements, reflecting the intense human pressure on this region, while mid- and higher elevations show a mix of natural and human-modified land cover types (see Fig. 2 for details). 
+        \textbf{(c)} The coastal edge of the area, and the windward hill slopes show limited temperature seasonality across the December -- May period; this seasonality increases with distance from the coast but is lower at higher elevations inland. 
+        \textbf{(d)} Higher elevations also show limited precipitation seasonality than both low-lying coastal and inland regions. 
+        Our study area (bounds shown as dashed lines) includes multiple combinations of elevation, land cover type, and temperature and rainfall seasonality, resulting in a naturally occurring crossed-factorial design that allows us to study the effects of climate and land cover on bird occupancy. 
+        Representative forest-restricted and habitat-generalist birds from the study area are shown between panels (all images were obtained from Wikimedia commons and credit is assigned for each species in brackets); From L to R: (1) Malabar grey hornbill (by Koshy), (2) Crimson-backed sunbird (by Mandar Godbole), (3) Asian emerald dove (by Selvaganesh), (4) Black-and-orange flycatcher (by LKanth), (5) Grey-headed canary flycatcher (by David Raju), (6) Greater-racket tailed drongo (by MD Shahanshah Bappy), (7) Eurasian hoopoe (by Zeynel cebeci), (8) Chestnut-headed bee-eater (by MikeBirds), (9) Coppersmith barbet (by Raju Kasambe), (10) Red-vented bulbul (by TR Shankar Raman), (11) Pied bushchat (by TR Shankar Raman), (12) Ashy prinia (by Rison Thumboor). 
+        Elevation is from 30 m resolution SRTM data (Farr et al. 2007), land cover, at 1 km resolution, is reclassified from Roy et al. (2015), while climatic variation is represented by CHELSA seasonality layers (temperature: BIOCLIM 4a, rainfall: BIOCLIM 15), at 1km resolution (Karger et al. 2017). All layers were resampled to 1 km resolution for analyses.
+    }
+    \label{hilly_fig_01}
+\end{figure}
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/hillybirds/fig_02.png}
+    \caption{
+        Fig. 2. Climate and land cover vary strongly along the elevation gradient in the Nilgiri and Anamalai Hills.
+        Both \textbf{(a)} temperature seasonality and \textbf{(b)} precipitation seasonality, between the months of December and May, declines with increasing elevation across the Nilgiri and Anamalai Hills. 
+        Climatic variation is not very strongly associated with land cover type, as both natural habitats such as forests, and human-associated habitat types such as plantations show low seasonality in \textbf{(c)} temperature, and \textbf{(d)} precipitation.
+        \textbf{(e)} Most elevations host a range of land cover types: while human-associated habitats such as agriculture are concentrated at lower elevations, and more natural types such as grasslands and forests are associated with higher elevations, each of these types is also found outside their characteristic elevational bands.
+        We calculated climate seasonalities (BIOCLIM 4a and 15: temperature and precipitation, respectively) using CHELSA data over 1979 -- 2013, from December to May (Karger et al, 2017), and present mean seasonality values (vertical bars show standard deviation) for every 200 m elevational band
+        Land cover types were taken from a reclassification of Roy et al
+        (2015; see main text) at 100 m elevational bands.
+        Land cover types covering < 1\% of an elevational band are shaded grey
+        All landscape layers were first resampled to 1 km resolution.
+    }
+    \label{hilly_fig_01}
+\end{figure}
+
 \subsubsection*{Filtering eBird Data}
 
 Data from eBird is available in the form of a `checklist' submitted by an observer or a group of observers.
@@ -70,15 +102,13 @@ We used only checklists recorded between 5:00 AM and 7:00 PM to avoid sightings 
 
 \subsubsection*{Selecting Study Species}
 
-We limited our study to 79 species of terrestrial, diurnal birds that occur in our study region (see list of species in Appendix S1; see Fig.
-1 for representative species).
+We limited our study to 79 species of terrestrial, diurnal birds that occur in our study region (see list of species in Appendix S1; see Fig. 1 for representative species).
 We selected these species using inclusion criteria adapted from the State of India's Birds Report 2020 (SoIB 2020, Viswanathan et al, 2020).
 We intended these criteria to ensure uniform sampling of each species across our study area, and to reduce erroneous associations between environmental drivers and species distributions.
-Beginning with 3.37 million observations of 684 species in eBird that occurred within the outlines of our study area (Fig.
-1a), over the years 2013–2021, we retained only those species that had a minimum of 1,000 detections each between 2013 and 2021 (347 species remaining; 3.33 million observations).
+Beginning with 3.37 million observations of 684 species in eBird that occurred within the outlines of our study area (Fig. 1a), over the years 2013 -- 2021, we retained only those species that had a minimum of 1,000 detections each between 2013 and 2021 (347 species remaining; 3.33 million observations).
 Next, we divided the study area into 25 ✕ 25 km grid cells (42 unique cells; see supplementary material).
 We kept only those species that occurred in at least 5\% of all checklists across at least 27 unique grid cells (50\% of the study area).
-We further manually removed raptors (Accipitriformes and Falconidae), swifts (Apodiformes), and swallows (Hirundinidae) since these birds are usually observed in flight when species identification can be prone to errors.
+We further manually removed raptors (\textit{Accipitriformes} and \textit{Falconidae}), swifts (\textit{Apodiformes}), and swallows (\textit{Hirundinidae}) since these birds are usually observed in flight when species identification can be prone to errors.
 This filtering process resulted in a total of 1.29 million observations (presences) across our study area.
 
 \subsubsection*{Spatio-temporal bias in occurrence data}
@@ -90,14 +120,27 @@ The spatial clustering of observations can be reduced by sub-sampling at an appr
 Consequently, when there are many more absence records than presence records, presences and absences should be handled separately when spatially thinning the data.
 
 We first estimated two simple measures of spatial clustering: the distance from each site to the nearest road (road data from OpenStreetMap; OpenStreetMap contributors 2017) and the nearest-neighbor distance for each site.
-Sites were strongly tied to roads (see Fig 3a.; mean distance to road ± SD = 390.77 ± 859.15 m; range = 0.28 m – 7.64 km) and were on average only 297 m away from another site (SD = 553 m; range = 0.14 m – 12.85 km).
+Sites were strongly tied to roads (see Fig 3a.; mean distance to road ± SD = 390.77 ± 859.15 m; range = 0.28 m -- 7.64 km) and were on average only 297 m away from another site (SD = 553 m; range = 0.14 m -- 12.85 km).
 This is understandable, as roads and trails provide access, and particular well-known areas are visited often.
 On average, across species, presences comprised only 8.5\% of all observations.
-We followed Steen et al, (2021) in choosing to spatio-temporally thin only the absences, and not the presences, for each species – a methodology called `thin majority' that can improve model performance (Steen et al, 2021).
+We followed Steen et al, (2021) in choosing to spatio-temporally thin only the absences, and not the presences, for each species --- a methodology called `thin majority' that can improve model performance (Steen et al, 2021).
 To do this, we divided the study area into a grid of 500m wide square cells, and from within each cell, we chose the site with the most visits (checklists) over the sampling period.
 From each of the remaining sites, we selected a maximum of 10 random absence checklists to reduce temporal clustering, keeping all absence checklists for sites with ≤ 10 checklists.
 We retained all presences for each species without any spatial or temporal thinning (Steen et al, 2021).
 As a result of class balancing, in our final dataset, presences made up 29.3\% of observations on average across species.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/hillybirds/fig_03.png}
+    \caption{
+        \textbf{Distribution of sampling effort in the form of eBird checklists in the Nilgiri and Anamalai Hills between 2013 and 2021.}
+        \textbf{(a)} Sampling effort across the Nilgiri and Anamalai Hills, in the form of eBird checklists reported by birdwatchers, mostly takes place along roads, with the majority of checklists located $<$ 1 km from a roadway (see distribution in inset), and therefore, only about 300m, on average, from the location of another checklist.
+        \textbf{(b)} eBird checklists are also strongly clustered in time, with some of the most sampled areas over the study period visited at intervals of $>$ 1 week, and with some less intensively sampled areas visited frequently, at intervals of $<$ 1 week.
+        Overall, most checklists are reported only a day after the previous checklist at that location (see inset).
+        Both spatial and temporal clustering make data thinning necessary.
+        Both panels show counts or mean intervals in a 2.5 km grid cell; the study area is bounded by a dashed line, and roads within it are shown as (a) blue or (b) red lines.
+    }
+\end{figure}
 
 \subsubsection*{Adjusting for Spatial Precision}
 
@@ -126,7 +169,7 @@ where, $n$ is the number of species observed in that checklist, \textit{duration
 \subsubsection*{Preparing Occupancy Predictors}
 
 We prepared a suite of climatic and land cover variables to be modeled as covariates of species-specific probabilities of occupancy within our full study region (Figs.
-1–2).
+1 -- 2).
 Among climatic predictors, we chose to examine the effects of temperature and precipitation seasonality on species occupancy, and we obtained these predictors at a spatial scale of 1km (CHELSA; Karger et al, 2017).
 Temperature seasonality is defined as the amount of temperature variation over a given time period based on the ratio of the standard deviation of the monthly mean temperatures to the mean of the monthly temperatures (O'Donnell and Ignizio 2012).
 In other words, temperature seasonality is the coefficient of variation and captures the dispersion in relative terms because standard deviation can produce two similar values while the means may be different.
@@ -201,7 +244,6 @@ The number of detections varied from a minimum of 224 observations to a maximum 
 Chi-square goodness-of-fit tests suggested a poor model fit for twenty-four species (p<0.05; Appendix S2) and hence these species were removed before further analysis (resulting in a total of 55 species).
 Of the list of 55 species, six species were migratory species (long-distance/altitudinal) that are present in our study area during the focal seasonal time period: Blyth's reed warbler Acrocephalus dumetorum, Brown shrike Lanius cristatus, Chestnut-headed bee-eater Merops leschenaulti, Grey wagtail Motacilla cinerea, Eurasian hoopoe Upupa epops and Ashy drongo Dicrurus leucophaeus.
 
-
 \subsubsection*{Bird-climate associations}
 
 The probability of occupancy of $\sim$78\% (n = 43 out of 55) of species examined was significantly (p<0.05) associated with temperature seasonality.
@@ -209,6 +251,28 @@ The probability of occupancy of $\sim$78\% (n = 43 out of 55) of species examine
 4; Table 1).
 The probability of occupancy of $\sim$38\% of (n = 21 out of 55) species examined had a significant association with precipitation seasonality.
 14 bird species (n = 8 generalist birds and 6 forest birds) showed a positive association, while seven bird species (n = 5 generalist birds and 2 forest birds) were negatively associated with precipitation seasonality.
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/hillybirds/fig_05.png}
+    \caption{
+        \textbf{Probability of occupancy as a function of temperature seasonality.}
+        Predicted probability of occupancy curves as a function of temperature seasonality for four forest species are shown here. 
+        Temperature seasonality is negatively associated with the probability of occupancy of several forest species including the Asian fairy-bluebird (\textit{Irena puella}), the crimson-backed sunbird (\textit{Leptocoma minima}), the chestnut-headed bee-eater (\textit{Merops leschenaulti}) and the Malabar whistling-thrush (\textit{Myophonus horsfieldii}).
+    }
+    \label{hilly_fig_05}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/hillybirds/fig_04.png}
+    \caption{
+        \textbf{Environmental predictors and species-specific associations}.
+        The direction of association between species-specific probability of occupancy and climatic and landscape predictors is shown here (as a function of habitat preference). 
+        Blue colors show the number of species that are positively associated with a climatic/landscape predictor while red colors show the number of species that are negatively associated with a climatic/landscape predictor (see Table 1 for the number of forest/generalist species that show positive/negative association with each of the predictors).
+    }
+    \label{hilly_fig_04}
+\end{figure}
 
 \subsubsection*{Bird-land cover associations}
 
@@ -220,6 +284,16 @@ Six bird species showed a significant association with the proportion of grassla
 Of these species, three forest bird species and three generalist birds showed a negative association (Fig.
 4; Table 1).
 Five bird species were significantly and positively associated with the proportion of water bodies (n = 3 generalist birds and 2 forest birds).
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/hillybirds/fig_06.png}
+    \caption{
+        \textbf{Predicted area of occurrence for four forest species.} 
+        The probability of occupancy of the Asian fairy-bluebird (\textit{Irena puella}), the crimson-backed sunbird (\textit{Leptocoma minima}) and the chestnut-headed bee-eater (\textit{Merops leschenaulti}) is higher across the western slopes and at mid-elevations across our study area. The Malabar whistling-thrush (\textit{Myophonus horsfieldii}) has a higher probability of occupancy across mid-elevations throughout the study area examined.
+    }
+    \label{hilly_fig_06}
+\end{figure}
 
 33\% (n = 18 out of 55) of species examined were significantly associated with human-modified land cover types --- including the proportion of agriculture or settlements, plantations, and mixed or degraded forests.
 One forest species showed a negative association, and one generalist species was positively associated with the proportion of mixed or degraded forests.
