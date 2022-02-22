@@ -25,7 +25,7 @@
     Users have two main options to improve data quality, \textit{(i)} making inferences after modelling the system-specific location error using a continuous time movement model \citep{fleming2014a, fleming2020, jonsen2003, jonsen2005, johnson2008, patterson2008, aspillaga2021}, or \textit{(ii)} pre-processing data to clean it of positions with large location errors \citep{bjorneraas2010}.
     The first approach may be limited by the animal movement models that can be fitted to the data \citep{fleming2014a, noonan2019, fleming2020}, may result in unreasonable computation times, or may be entirely beyond the computational capacity of common hardware, leading users to prefer data cleaning instead.
     \graffito{
-        Methods from \citep{fleming2014a} are technically very advanced, and that puts them beyond the reach of many animal ecologists.
+        Methods from \citet{fleming2014a} are technically very advanced, and that puts them beyond the reach of many animal ecologists.
     }
     Data cleaning reveals another challenge of high-throughput tracking: the large number of observations make it difficult for researchers to visually examine each animal's track for errors \citep{weiser2016, toledo2020}.
     With manual identification and removal of errors from individual tracks prohibitively time consuming, data cleaning can benefit from automation based on a protocol.
@@ -143,7 +143,7 @@
     We then show how users can tackle small-scale location errors by applying a \textit{\textbf{Median Smooth}}, and users who need uniformly sampled data, can undertake \textit{\textbf{Data Thinning}} by either aggregation or subsampling.
     At this stage, the data are ready for a number of popular statistical treatments such as Hidden Markov Model-based classification \citep{michelot2016,langrock2012}.
     \graffito{
-        Neither \citep{barraquand2008} nor \citep{bijleveld2016} had reproducible code --- I cannot really be sure how my implementation corresponds to theirs.
+        Neither \citet{barraquand2008} nor \citet{bijleveld2016} had reproducible code --- I cannot really be sure how my implementation corresponds to theirs.
     }
     Finally, we show how users wishing simple, efficient segmentation-clustering of points where the animal showed prolonged residence, can classify their data into `residence patches' \citep{barraquand2008, bijleveld2016} based on the movement ecology of their study species, after filtering out travelling segments (see \textit{\textbf{System-Specific Pre-Processing Tools}}).
 
@@ -265,7 +265,7 @@
 
     Tracking data attributes can be good indicators of the reliability of positions calculated by a tracking system \citep{beardsworth2021}.
     \graffito{
-        When writing this, I wasn't fully convinced that ATLAS systems solve for X and Y coordinates independently. The assumption of independence underlies the formula for `SD' --- but \citep{weiser2016} does not make it perfectly clear whether it is correct.
+        I wasn't fully convinced that ATLAS systems solve for X and Y coordinates independently. The assumption of independence underlies the formula for `SD' --- but \citet{weiser2016} does not make it perfectly clear whether it is correct.
     }
     GPS systems provide direct measures of location error during localisation \citep[Horizontal Dilution of Precision, HDOP in GPS]{ranacher2016}, while  in reverse-GPS systems, a measure referred to as Standard Deviation (SD in many datasets), can be calculated from the variance-covariance matrix of each position as: $\text{SD} = \sqrt{\text{Var X} + \text{Var Y} + \text{Cov XY}}$ \citep[see details in][]{maccurdy2009, maccurdy2019, weiser2016, ranacher2016}.
     Tracking data can also include indirect indicators of data quality.
@@ -287,7 +287,7 @@
     Whether the resulting track looks realistic is ultimately a subjective human judgement, but any decision to filter-out data must remain independent of the hypothesised movement behavior.
     This basic principle does not preclude explicitly integrating prior knowledge of the movement ecology of the study species to ask, `Does the animal move this way?'.
     \graffito{
-        \citealp{bjorneraas2010}'s 2010 paper is surprisingly not as well known as it should be.
+        \citeauthor{bjorneraas2010}'s 2010 paper is surprisingly not as well known as it should be.
     }
     Segments which appear to represent unrealistic animal movement are often obvious to researchers with extensive experience of the study system \citep[the non-movement approach; see][]{bjorneraas2010}.
     Since it is both difficult and prohibitively time consuming to exactly reproduce expert judgement when dealing with large volumes of tracking data from multiple individuals, some automation is necessary.
@@ -336,8 +336,7 @@
     %                 )
     % \end{lst{\color{red} Listing}}
     \graffito{
-        This issue was especially evident in WATLAS tracking data from 2018. ATLAS positioning errors are an interesting combination of
-        failures of the physical tracking device, as well as failures of the maximum likelihood localisation algorithm.
+        This issue was especially evident in WATLAS tracking data from 2018. ATLAS positioning errors are an interesting combination of failures of the physical tracking device, as well as failures of the maximum likelihood localisation algorithm.
     }
     Sometimes, entire subsets of the track may be affected by the same large-scale location error.
     For instance, multiple consecutive positions may be roughly translated (geometrically) away from the real track and form `prolonged spikes', or `reflections' (see Fig.~\ref{preproc_fig_03}.b).
@@ -385,7 +384,7 @@
             % \end{equation*}
     % \end{linenomath*}
     \graffito{
-        Median smoothing is a classic method \citep{tukey1977} that has found applications across fields, including for example, recovering corrupted digital images.
+        Median smoothing is a classic method \citep{tukey1977}, that has found applications across fields, including for example, recovering corrupted digital images.
     }
     Users can apply a median smooth with an appropriate $K$ independently to the X and Y coordinates of a movement track to smooth it (see Fig.~\ref{preproc_fig_04}.a -- e).
     The median smooth is robust to even very large temporal and spatial gaps, and does not interpolate between positions when data are missing. 
@@ -640,7 +639,7 @@
     % From these positions, we calculated that between leaving the roost to forage, and returning, bats had a mean residence time at each position of 95.64 minutes (SD = 119.23) --- this value is still likely to be biased by some positions at the roost.
     
     \graffito{
-        These and similar data are further analysed in \citep{lourie2021}.
+        These and similar data are further analysed in \citet{lourie2021}.
     }
     To determine the true duration of foraging, we opted for a first-principles approach and first selected only locations with a residence time $>$ 5 minutes, reasoning that a flying animal stopping for $>$ 5 minutes at a location should plausibly indicate resource use or another interesting localised behaviour.
     This step retained 5,736 positions per bat on average (17,208 total), or 72.4\% of the nighttime positions.
@@ -672,7 +671,7 @@
 
     Recent technical advances in wildlife tracking have already yielded exciting new insights from massive high-resolution movement datasets \citep{aspillaga2021, aspillaga2021a, baktoft2017, baktoft2019, harel2016, harel2018, oudman2018, papageorgiou2019, tsoar2011, strandburg-peshkin2015, toledo2020, beardsworth2021a, beardsworth2021b, corl2020, vilk2021, lourie2021}, and high-throughput animal tracking is expected to become increasingly more common in the near future.
     \graffito{
-        I also had the opportunity to test the residence patch method on pike tracked using YAPS \citep{baktoft2017}, and found it worked very well.
+        I also had the opportunity to test the residence patch method on pike tracked using YAPS \citet{baktoft2017}, and found it worked very well.
     }
     Tackling the very large datasets that high-throughput tracking generates requires a different approach from that used for traditionally smaller volumes of data.
     We foresee that movement ecologists will have to adopt ever more practices from fields accustomed to dealing with `big data', and that the field will become increasingly computational \citep{peng2011}.
