@@ -75,12 +75,9 @@
 
     \section*{Best-Practices for Pre-Processing Workflows}
 
-    \begin{figure}
-        \begin{addmargin}{-.3\textwidth}%[-.3\textwidth]
+    \begin{figure}[ht!]
         \centering
-        \captionsetup{width=13.5cm}
-        \includegraphics[width=13.5cm]{figures/preprocessing/fig_01.png}
-        \end{addmargin}
+        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_01.png}
         \caption{
             {\small
             \textbf{Some best-practices for pre-processing high-throughput tracking data.}
@@ -94,9 +91,7 @@
             % Fig.~\ref{preproc_fig_02} shows an example of such a pipeline.
         }
         }
-        % \end{addmargin}
         \label{preproc_fig_01}
-        % \end{addmargin}
     \end{figure}
 
     Exploratory data analysis should be the first step towards pre-processing movement data \citep[see Fig.~\ref{preproc_fig_01};][]{slingsby2016}.
@@ -152,13 +147,9 @@
     Users may construct a pre-processing pipeline comprising of all the techniques we cover, or implement the modules most suitable for their data.
     Users are advised to visualise their data throughout their workflow, and especially to perform thorough exploratory data analysis, to check for evident location errors or other issues \citep{slingsby2016}.
 
-    \begin{figure}
+    \begin{figure}[ht!]
         \centering
-        \begin{addmargin}{-.3\textwidth}%[-.3\textwidth]
-        \centering
-        \captionsetup{width=13.5cm}
-        \includegraphics[width=13.5cm]{figures/preprocessing/fig_02.png}
-        \end{addmargin}
+        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_02.png}
         \caption{
             \textbf{An example of a modular pipeline for pre-processing high-throughput tracking data from raw localisations to cleaned data, and optionally into residence patches.}
             Users should apply the appropriate pre-processing modules and the steps therein until the data are suitable for their intended analysis, some of which are suggested here.
@@ -207,9 +198,9 @@
     %                     )
     % \end{lst{\color{red} Listing}}
 
-    \begin{figure}[h!]
+    \begin{figure}[ht!][h!]
         \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_03.png}
+        \includegraphics[width=0.9\textwidth\textwidth]{figures/preprocessing/fig_03.png}
         \caption{
             \textbf{Simulated movement data showing four kinds of artificially added errors}.\\
             (i) Normally distributed small-scale error on each position, (ii) large-scale error added to 0.5\% of positions, (iii) 10\% of positions removed to simulate missing data, and (iv) 300 consecutive positions displaced to simulate a gross distortion affecting a continuous subset of the track.
@@ -415,9 +406,9 @@
     % )
     % \end{lst{\color{red} Listing}}
 
-    \begin{figure}[h!]
+    \begin{figure}[ht!][h!]
         \centering
-        \includegraphics[width=0.95\textwidth]{figures/preprocessing/fig_04.png}
+        \includegraphics[width=0.9\textwidth\textwidth]{figures/preprocessing/fig_04.png}
         \caption{
             \textbf{Median smoothing position coordinates reduces small-scale location error in tracking data.}\\
             The goal of this step is to approximate the simulated canonical track (black line, \textbf{(a)}), given positions with small-scale error that remains after filtering in previous steps (green points).
@@ -484,9 +475,9 @@
     % \end{lst{\color{red} Listing}}
 
     % % figure for aggregation thinning
-    \begin{figure}[h!]
+    \begin{figure}[ht!][h!]
         \centering
-        \includegraphics[width=0.95\textwidth]{figures/preprocessing/fig_05.png}
+        \includegraphics[width=0.9\textwidth0\textwidth]{figures/preprocessing/fig_05.png}
         \caption{
             \textbf{Thinning tracking data can aid computation but must be approached carefully}.\\
             Aggregating a filtered and smoothed movement track \textbf{(a)} preserves track structure while reducing data-volume, but \textbf{(b)} aggregating before filtering gross location errors and unrealistic movement leads to the persistence of large-scale errors (such as prolonged spikes).
@@ -548,9 +539,9 @@
     % %                 )
 
     % % first residence patch figure
-    \begin{figure}[h!]
+    \begin{figure}[ht!][h!]
         \centering
-        \includegraphics[width=0.75\textwidth]{figures/preprocessing/fig_06.png}
+        \includegraphics[width=0.9\textwidth\textwidth]{figures/preprocessing/fig_06.png}
         \caption{
             \textbf{Movement tracks can be classified into residence patches, while leaving out the transit between them.}\\
             \textbf{(a)} A simulated animal movement track from \citealt{gupte2021a}, where an agent uses local cues to make movement decisions to maximise intake.
@@ -604,9 +595,9 @@
     Finally, any classification algorithm will present users with a trade-off between over-sensitivity (erroneously finding stops where there were none), and under-sensitivity (missing stops where they are not local or long enough) --- users should balance between these based on the broader questions sought to be answered.
 
     % % calibration figure
-    \begin{figure}[h!]
+    \begin{figure}[ht!][h!]
         \centering
-        \includegraphics[width=0.75\textwidth]{figures/preprocessing/fig_07.png}
+        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_07.png}
         \caption{
             \textbf{Pre-processing steps for WATLAS calibration data showing filtering on speed, median smoothing and thinning by aggregation, and making residence patches.}\\
             \textbf{(a)} Positions with incoming and outgoing speed $>$ 15 m/s are removed (grey crosses = removed, green points = retained).
@@ -650,9 +641,9 @@
     Contrasting the actual movement path with the linear path between residence patches can help reveal details of how animal cognition affects space use \citep{toledo2020}.
     Bats tended to show prolonged residence near known food sources (fruit trees), but also where no fruit trees were recorded (Fig.~\ref{preproc_fig_08}.b, ~\ref{preproc_fig_08}.c), in line with previous evidence for their use of non-fruiting trees to rest, to handle and digest food, and presumably for social interactions \citep{tsoar2011}.
 
-    \begin{figure}[h!]
+    \begin{figure}[ht!][h!]
         \centering
-        \includegraphics[width=0.75\textwidth]{figures/preprocessing/fig_08.png}
+        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_08.png}
         \caption{
             \textbf{Synthesising animal tracks into residence patches can reveal movement in relation to landscape features, prior exploration, and other individuals.}
             \textbf{(a)} Linear approximations of the paths (coloured straight lines) between residence patches (circles) of three Egyptian fruit bats (\textit{Rousettus aegyptiacus}), tracked over three nights in the Hula Valley, Israel.
