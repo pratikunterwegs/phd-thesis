@@ -79,7 +79,6 @@
         \centering
         \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_01.png}
         \caption{
-            {\small
             \textbf{Some best-practices for pre-processing high-throughput tracking data.}
             Simple pre-processing of animal tracking data can improve the quality of animal tracking data, and the inferences that are drawn from it.
             % The organisation of pre-processing workflows into a `pipeline' --- a set of steps that users apply to prepare the data for a specific analysis --- can help make research more reproducible and reliable.
@@ -198,11 +197,11 @@
     %                     )
     % \end{lst{\color{red} Listing}}
 
-    \begin{figure}[ht!][h!]
+    \begin{figure}[ht!]
         \centering
-        \includegraphics[width=0.9\textwidth\textwidth]{figures/preprocessing/fig_03.png}
+        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_03.png}
         \caption{
-            \textbf{Simulated movement data showing four kinds of artificially added errors}.\\
+            \textbf{Simulated movement data showing four kinds of artificially added errors}.
             (i) Normally distributed small-scale error on each position, (ii) large-scale error added to 0.5\% of positions, (iii) 10\% of positions removed to simulate missing data, and (iv) 300 consecutive positions displaced to simulate a gross distortion affecting a continuous subset of the track.
             \textbf{(a)} Tracks can be quickly filtered by spatial bounds (dashed grey lines) to exclude broad regions (green = retained; grey = removed).
             \textbf{(b)} location error may affect single observations resulting in point outliers or `spikes' (red crosses and track segments), or continuous subsets of a track, called a `prolonged spike' (purple circles, top right), and both represent unrealistic movement.
@@ -406,11 +405,11 @@
     % )
     % \end{lst{\color{red} Listing}}
 
-    \begin{figure}[ht!][h!]
+    \begin{figure}[ht!]
         \centering
-        \includegraphics[width=0.9\textwidth\textwidth]{figures/preprocessing/fig_04.png}
+        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_04.png}
         \caption{
-            \textbf{Median smoothing position coordinates reduces small-scale location error in tracking data.}\\
+            \textbf{Median smoothing position coordinates reduces small-scale location error in tracking data.}
             The goal of this step is to approximate the simulated canonical track (black line, \textbf{(a)}), given positions with small-scale error that remains after filtering in previous steps (green points).
             \textbf{(b)} Median smoothing the position coordinates (green points, in \textbf{(a)}) over a moving window ($K$) of 21 positions gives a good approximation (blue line) of the canonical track, and is a significant improvement on the unsmoothed track (grey lines and points).
             While $K$ should usually be at least two orders of magnitude less than the number of positions in the track, users are cautioned that there is no correct $K$, and they must subjectively choose a $K$ which most usefully trades small-scale details of the track for large-scale accuracy.
@@ -475,11 +474,11 @@
     % \end{lst{\color{red} Listing}}
 
     % % figure for aggregation thinning
-    \begin{figure}[ht!][h!]
+    \begin{figure}[ht!]
         \centering
-        \includegraphics[width=0.9\textwidth0\textwidth]{figures/preprocessing/fig_05.png}
+        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_05.png}
         \caption{
-            \textbf{Thinning tracking data can aid computation but must be approached carefully}.\\
+            \textbf{Thinning tracking data can aid computation but must be approached carefully}.
             Aggregating a filtered and smoothed movement track \textbf{(a)} preserves track structure while reducing data-volume, but \textbf{(b)} aggregating before filtering gross location errors and unrealistic movement leads to the persistence of large-scale errors (such as prolonged spikes).
             \textbf{(c)} Thinning before data cleaning can lead to significant misestimations of essential movement metrics such as speed at lower intervals.
             Boxplots show the median and interquartile ranges for speed estimates of tracks aggregated over intervals of 3, 10, 30, and 120 seconds.
@@ -539,11 +538,11 @@
     % %                 )
 
     % % first residence patch figure
-    \begin{figure}[ht!][h!]
+    \begin{figure}[ht!]
         \centering
-        \includegraphics[width=0.9\textwidth\textwidth]{figures/preprocessing/fig_06.png}
+        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_06.png}
         \caption{
-            \textbf{Movement tracks can be classified into residence patches, while leaving out the transit between them.}\\
+            \textbf{Movement tracks can be classified into residence patches, while leaving out the transit between them.}
             \textbf{(a)} A simulated animal movement track from \citealt{gupte2021a}, where an agent uses local cues to make movement decisions to maximise intake.
             The agent tends to stop (solid circles) on high-productivity areas of the landscape, as these are more likely to generate prey-items.
             Transit points between stationary phases are shown as crosses.
@@ -595,11 +594,11 @@
     Finally, any classification algorithm will present users with a trade-off between over-sensitivity (erroneously finding stops where there were none), and under-sensitivity (missing stops where they are not local or long enough) --- users should balance between these based on the broader questions sought to be answered.
 
     % % calibration figure
-    \begin{figure}[ht!][h!]
+    \begin{figure}[ht!]
         \centering
         \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_07.png}
         \caption{
-            \textbf{Pre-processing steps for WATLAS calibration data showing filtering on speed, median smoothing and thinning by aggregation, and making residence patches.}\\
+            \textbf{Pre-processing steps for WATLAS calibration data showing filtering on speed, median smoothing and thinning by aggregation, and making residence patches.}
             \textbf{(a)} Positions with incoming and outgoing speed $>$ 15 m/s are removed (grey crosses = removed, green points = retained).
             \textbf{(b)} Raw data (grey crosses), median smoothed positions (green circles; moving window $K$ = 5), and the smoothed track thinned by aggregation to a 30 second interval (purple squares).
             Square size corresponds to the number of positions used to calculate the averaged position during thinning.
@@ -641,7 +640,7 @@
     Contrasting the actual movement path with the linear path between residence patches can help reveal details of how animal cognition affects space use \citep{toledo2020}.
     Bats tended to show prolonged residence near known food sources (fruit trees), but also where no fruit trees were recorded (Fig.~\ref{preproc_fig_08}.b, ~\ref{preproc_fig_08}.c), in line with previous evidence for their use of non-fruiting trees to rest, to handle and digest food, and presumably for social interactions \citep{tsoar2011}.
 
-    \begin{figure}[ht!][h!]
+    \begin{figure}[ht!]
         \centering
         \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_08.png}
         \caption{
@@ -683,5 +682,5 @@
     We offer our approach to large tracking datasets, and our pipeline and package as a foundation for system-specific tools in the belief that simple, robust concepts are key to methods development that balances system-specificity and broad applicability.
 
     \newrefcontext[sorting=nyt]
-    \printbibliography[title=Literature~Cited,sorting=nyt,heading=subbibliography]
-% \end{refsection}
+    \printbibliography[title=Literature~Cited,heading=none]
+\end{refsection}
