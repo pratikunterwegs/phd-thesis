@@ -40,7 +40,11 @@
 
 %\usepackage{sourcesanspro}   % scaling is recommended
 \usepackage{fontspec}
-\usepackage[usefilenames,RMstyle={Text,Semibold},SSstyle={Text,Semibold},TTstyle={Text,Semibold},DefaultFeatures={Ligatures=Common,Scale=0.94}]{plex-otf}
+\usepackage[usefilenames,
+    RMstyle={Text,Semibold},
+    SSstyle={Text,Semibold},
+    TTstyle={Text,Semibold},
+    DefaultFeatures={Ligatures=Common,Scale=0.94}]{plex-otf}
 \setmathfont{Erewhon Math}
 \setsansfont{TeX Gyre Heros}%[Extension = .ttf, UprightFont = *-Light,BoldFont = *-Regular]
 
@@ -67,32 +71,32 @@
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\chapterNumber\sffamily\thechapter}}{0pt}%
-    {\raggedright\huge\sffamily\bfseries}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
+    {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
+    {\raggedright\huge\itshape\rmfamily\bfseries}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\large\sffamily\bfseries}
+    {\relax}{\thesection}{1em}{\large\rmfamily\bfseries\itshape}
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\large\sffamily}
+    {\relax}{\thesubsection}{1em}{\large\rmfamily\itshape}
 
 % fix section format
 \titleformat{\paragraph}
-    {\relax}{\theparagraph}{1em}{\sffamily}
+    {\relax}{\theparagraph}{1em}{\rmfamily\itshape}
 
 % \usepackage[left]{lineno}
 \usepackage[skins,breakable]{tcolorbox}
 \usepackage{lipsum}
 
 % parts in toc
-\renewcommand{\cftpartfont}{\scshape\sffamily}%
+\renewcommand{\cftpartfont}{\scshape\rmfamily}%
 % chapters in toc
-\renewcommand{\cftchappresnum}{\sffamily}%
-\renewcommand{\cftchapaftersnumb}{\sffamily}%
-\renewcommand{\cftchapfont}{\sffamily}%
-\renewcommand{\cftchappagefont}{\sffamily}%
+\renewcommand{\cftchappresnum}{\rmfamily}%
+\renewcommand{\cftchapaftersnumb}{\rmfamily}%
+\renewcommand{\cftchapfont}{\rmfamily}%
+\renewcommand{\cftchappagefont}{\rmfamily}%
 
 % for stylistic elements
 \usepackage{lettrine}
