@@ -38,7 +38,6 @@
 %*******************************************************
 %\hyphenation{put special hyphenation here}
 
-%\usepackage{sourcesanspro}   % scaling is recommended
 \usepackage{fontspec}
 \usepackage[usefilenames,
     RMstyle={Text,Semibold},
@@ -51,9 +50,6 @@
 \renewcommand*{\bibfont}{\footnotesize}
 
 \usepackage{setspace}
-
-\setlength{\parindent}{1.5em}
-% \setlength{\parskip}{0.5em}
 
 \renewcommand{\chapterNumber}{%
   \color{Black}\fontsize{60}{60} \bfseries}\par
@@ -71,20 +67,20 @@
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\itshape\rmfamily\bfseries}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
+    {\relax}{\mbox{}\oldmarginpar{\itseries\bfseries\rmfamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
+    {\raggedright\huge\sffamily}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\large\rmfamily\bfseries\itshape}
+    {\relax}{\thesection}{1em}{\rmfamily\bfseries}
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\large\rmfamily\itshape}
+    {\relax}{\thesubsection}{1em}{\rmfamily\itshape}
 
 % fix section format
 \titleformat{\paragraph}
-    {\relax}{\theparagraph}{1em}{\rmfamily\itshape}
+    {\relax}{\theparagraph}{1em}{\rmfamily\small\MakeTextUppercase}
 
 % \usepackage[left]{lineno}
 \usepackage[skins,breakable]{tcolorbox}
@@ -135,7 +131,7 @@
 \raggedright
 \frenchspacing
 \raggedbottom
-\setlength{\parindent}{2em}
+\setlength{\parindent}{1.2em}
 \selectlanguage{american} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
