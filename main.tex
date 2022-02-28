@@ -27,9 +27,10 @@
 
 % \usepackage{citation-style-language}
 % \cslsetup{style = apa}
-\addbibresource{chapters/preprocessing.bib}
-\addbibresource{chapters/kleptomove.bib}
-\addbibresource{chapters/hillybirds.bib}
+\addbibresource{references/preprocessing.bib}
+\addbibresource{references/kleptomove.bib}
+\addbibresource{references/hillybirds.bib}
+\addbibresource{references/holeybirds.bib}
 % \addbibresource{Bibliography.bib}
 % \addbibresource[label=ownpubs]{AMiede_Publications.bib}
 
@@ -44,6 +45,7 @@
     SSstyle={Text,Semibold},
     TTstyle={Text,Semibold},
     DefaultFeatures={Ligatures=Common,Scale=0.94}]{plex-otf}
+% \setmainfont[]{Source Serif Pro}
 \setmathfont{Erewhon Math}
 \setsansfont{TeX Gyre Heros}%[Extension = .ttf, UprightFont = *-Light,BoldFont = *-Regular]
 
@@ -67,20 +69,20 @@
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\itseries\bfseries\rmfamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\sffamily}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
+    {\raggedright\huge\rmfamily\itshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\rmfamily\bfseries}
+    {\relax}{\thesection}{1em}{\rmfamily\itshape\LARGE}
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\rmfamily\itshape}
+    {\relax}{\thesubsection}{1em}{\rmfamily\itshape\large}
 
 % fix section format
 \titleformat{\paragraph}
-    {\relax}{\theparagraph}{1em}{\rmfamily\small\MakeTextUppercase}
+    {\relax}{\theparagraph}{1em}{\rmfamily\itshape}
 
 % \usepackage[left]{lineno}
 \usepackage[skins,breakable]{tcolorbox}
@@ -101,7 +103,6 @@
 
 \makeatother
 
-\DeclareCaptionFont{quack}{\mysans}
 \usepackage{caption}
 \setcapindent{0pt}
 
@@ -192,7 +193,8 @@
 
 \cleardoublepage \include{boxes/details}
 
-\cleardoublepage \include{chapters/holeybirds}
+\cleardoublepage \include{chapters/holeybirds_header} 
+\include{chapters/holeybirds_main}
 
 \cleardoublepage \include{boxes/ssf_ann}
 
