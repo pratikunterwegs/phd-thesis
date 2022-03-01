@@ -40,12 +40,12 @@
 %\hyphenation{put special hyphenation here}
 
 \usepackage{fontspec}
-\usepackage[usefilenames,
-    RMstyle={Text,Semibold},
-    SSstyle={Text,Semibold},
-    TTstyle={Text,Semibold},
-    DefaultFeatures={Ligatures=Common,Scale=0.94}]{plex-otf}
-% \setmainfont[]{Source Serif Pro}
+% \usepackage[usefilenames,
+%     RMstyle={Text,Semibold},
+%     SSstyle={Text,Semibold},
+%     TTstyle={Text,Semibold},
+%     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
+\setmainfont{Source Serif Pro}%[Extension = .ttf, UprightFont = *-Light,BoldFont = *-Regular]
 \setmathfont{Erewhon Math}
 \setsansfont{TeX Gyre Heros}%[Extension = .ttf, UprightFont = *-Light,BoldFont = *-Regular]
 
@@ -70,15 +70,15 @@
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
     {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\rmfamily\itshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\raggedright\huge\rmfamily\itshape\bfseries}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\rmfamily\itshape\LARGE}
+    {\relax}{\thesection}{1em}{\rmfamily\bfseries\scshape\large}
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\rmfamily\itshape\large}
+    {\relax}{\thesubsection}{1em}{\rmfamily\scshape\itshape}
 
 % fix section format
 \titleformat{\paragraph}
