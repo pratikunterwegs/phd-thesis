@@ -71,7 +71,7 @@
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
     {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\rmfamily\itshape\bfseries}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\raggedright\huge\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
@@ -225,10 +225,8 @@
 
 % \part{Long-Term and Large-Scale Studies in Animal Space-Use}
 
-
-
-\cleardoublepage
-\include{chapters/pathomove}
+\cleardoublepage \include{chapters/pathomove_header}
+\include{chapters/pathomove_main}
 
 % \include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
