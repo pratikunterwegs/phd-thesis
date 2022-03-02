@@ -41,12 +41,11 @@
 %\hyphenation{put special hyphenation here}
 
 \usepackage{fontspec}
-% \usepackage[usefilenames,
-%     RMstyle={Text,Semibold},
-%     SSstyle={Text,Semibold},
-%     TTstyle={Text,Semibold},
-%     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
-\setmainfont{Source Serif Pro}%[Extension = .ttf, UprightFont = *-Light,BoldFont = *-Regular]
+\usepackage[usefilenames,
+    RMstyle={Text,Semibold},
+    SSstyle={Text,Semibold},
+    TTstyle={Text,Semibold},
+    DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
 \setmathfont{Erewhon Math}
 \setsansfont{TeX Gyre Heros}%[Extension = .ttf, UprightFont = *-Light,BoldFont = *-Regular]
 
@@ -71,15 +70,15 @@
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
     {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\raggedright\huge\rmfamily\itshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\rmfamily\bfseries\scshape\large}
+    {\relax}{\thesection}{1em}{\rmfamily\itshape\large}
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\rmfamily\scshape\itshape}
+    {\relax}{\thesubsection}{1em}{\rmfamily\itshape}
 
 % fix section format
 \titleformat{\paragraph}
@@ -234,7 +233,7 @@
 %\include{multiToC} % <--- just debug stuff, ignore for your documents
 
 \include{chapters/discussion}
-% \include{frontbackmatter/Acknowledgments}
+\include{frontbackmatter/Acknowledgments}
 
 % \include{frontbackmatter/Publications}
 
