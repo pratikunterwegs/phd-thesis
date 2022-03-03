@@ -14,13 +14,108 @@
     spatial distribution of foragers}\label{box:details}
 	\chaptermark{Details Matter When Modelling Personality}
 
-	Opening paragraph here.
+	\marginpar{ 
+		\bigskip
 
-	\graffito{
 		{\large{$\Delta$}} This box is adapted from a co-authored comment on \citet{dinuzzo2020}, now published in Proceedings of the Royal Society B: Biological Sciences as \citep{netz2022}.
 	}
 
+	By means of a simulation study, DiNuzzo and Griffen \citep{dinuzzo2020} investigate whether individual variation in a personality trait can explain ``undermatching'', an often-observed deviation from the ideal free distribution (IFD). Here we raise five points of concern about this study, regarding (1) the interpretation of the results in terms of personality variation; (2) deficiencies in the technical implementation of the model, leading to wrong conclusions; (3) the effects of population size on deviations from the IFD; (4) the measure used for quantifying deviations from the IFD; and (5) the analysis of the mud crab data. Finally, we give an outlook over the evolutionary ramifications of the relation between animal personality and the IFD.
 	
+	\section*{Personality variation and the IFD}
+	
+	The individuals in \citeauthor{dinuzzo2020}'s model tend to maximize their intake rate.
+	At each point in time, they are perfectly informed about the distribution of resources (which remains constant) and the distribution of foragers (which can change due to movement).
+	Individuals differ in ``activity'', that is the rate at which they recognize that their current intake rate is suboptimal; once they observe a discrepancy, they move instantaneously to the habitat patch yielding a maximal intake rate.
+	In this model, each individual has to move at most once: if all individuals have moved (or stayed at their initial position, as this already yielded a maximal intake rate), the IFD is reached.
+	It is therefore obvious that less active individuals that, by definition, take on average more time steps for making a movement decision, retard the approach of the population to the IFD.
+	Hence, it is also obvious that the ``time to reach IFD'' increases with an increase of the proportion of inactive individuals.
+	In other words, it is not personality variation per se that retards the approach to the IFD, but rather the presence of inefficient movers.
+
+	\section*{Problems with the technical implementation of the model}
+
+	Above we argued that it is obvious that the ``time to reach IFD'' increases with the proportion of inactive individuals.
+	In view of this, it is surprising that \citeauthor{dinuzzo2020} report a hump-shaped relationship in one of their simulation scenarios (their Figure 4E) and even a monotonic decline of the time to reach IFD with the proportion of inactive individuals in case of a type II functional response (their Supplementary Figure S1, reproduced here in Figure 1A).
+	We think both results are artefacts.
+	The pattern in Figure S1 is caused by a comparison between intake rates calculated with different formulas.
+	As a consequence, individuals can “believe” that they are already in a habitat maximizing their intake rate, while really they are not.
+	In addition, an incorrect formula of a ratio-dependent functional response type 2 is used \citep[following][]{abrams2000}.
+	A detailed explanation of these mistakes can be found in our Supplement.
+	If these mistakes are corrected, the time to reach IFD shows the expected declining trend with the proportion of inactive individuals (fig. 1B), rather than the increasing trend reported in Figure S1.
+	Hence, a saturating type II functional response leads to a similar relationship between the proportion of active consumers and time-to-IFD as an unlimited linear (type I) functional response.
+	Special explanations for discrepancies between type I and type II models (the ``domino effect'' explanation in Supplement 1.4 of \cite{dinuzzo2020}) are not needed and actually misleading.
+	
+	We can further show by a simple mathematical argument that the correspondence between the two model variants considered by \citeauthor{dinuzzo2020} should be even stronger: the special version of the type II functional response used by \citeauthor{dinuzzo2020} (following \citeauthor{abrams2000}) should lead to exactly the same time-to-IFD and the same consumer distribution over patches as their type I functional response (see part 3 of our Supplement).
+	We were therefore surprised our Figure 1B does not exactly match Figure 3 in \citep{dinuzzo2020}: it generally takes 100 time steps longer to reach the IFD.
+	Rerunning the scenario underlying Figure 3 in \citep{dinuzzo2020} with DiNuzzo and Griffen's published NetLogo code, we obtained an exact replicate of our Figure 1B.
+	We conclude that DiNuzzo and Griffen must have used a different version of their simulation program to produce their Figure 3.
+
+	In addition, the simulation program in \citep{dinuzzo2020} produces a substantial bias in reported time to reach the IFD.
+	Each simulation run stops once movement has ceased for 50 time steps, assuming that this is a clear indication that the IFD has been reached.
+	The problem is that movement can cease for longer time periods even in situations where the population is still far from an IFD (Figure 2A).
+	This easily happens in populations with a large proportion of highly inactive individuals: the lack of movement of these individuals may just reflect the reluctance of these individuals to move (rather than having reached a habitat with maximal intake rate, where movement is no longer necessary).
+	Figure 2 shows two replications of Figure 4E in \citep{dinuzzo2020}, one with the published NetLogo code (Fig. 2B) and a second with an improved version (see Supplement) where DiNuzzo and Griffen's stopping criterion is replaced by a check whether the IFD has indeed been reached (Fig. 2C).
+	It is obvious that the stopping criterion has a large effect on the simulation outcome.
+	Notice that neither outcome shows the puzzling ``hump'' in Figure 4E in \citep{dinuzzo2020}.
+	As we produced Figure 2B with DiNuzzo and Griffen's published NetLogo code, we have to conclude again that a different version of their simulation program was used to derive their Figure 4E.
+	A more detailed account of the technical issues reported above (and some additional issues) and corrected versions of the NetLogo program can be found in the Supplement.
+
+	\section*{Effects of population size}
+	
+	DiNuzzo and Griffen investigated the effect of population size on the time to reach the IFD.
+	However, the time scale of their model implementation is quite different from a `natural' time scale.
+	In their simulation program, individuals make decisions sequentially, and only one individual can make a decision in each time step.
+	As in a larger population more individuals have to take decisions, this automatically increases the time to reach a certain target.
+	Moreover, the time to reach the IFD is inflated by the fact that active individuals are restricted in their movement because they have to ``wait'' for the inactive individuals.
+	For these reasons, it is more natural to use a continuous time scale, where individuals take movement decisions independently of each other, at a rate that is proportional to their activity level.
+	This can be done in a straightforward manner, by translating the discrete-time model of DiNuzzo and Griffen into an otherwise equivalent event-based model (making use of the Gillespie algorithm \cite{gillespie1976}; a description and implementation of such a model can be found in \cite{netz2021b}).
+	Figure 3 shows how in the event-based version of the model the time to reach the IFD depends on the population size N and the proportion of active individuals.
+	For each population size, the time to reach the IFD is, as expected, positively related to the proportion of inactive individuals.
+	However, the event-based version of the model does not support DiNuzzo and Griffen's conclusion that the time to reach the IFD increases with population size.
+	This only occurs for very low population densities (N = 8 and N = 40 in Figure 3), and even in these cases the effect is small.
+	At higher population sizes, the time to reach the IFD decreases with population size: as shown in Figure 3, the IFD is reached much faster in a population with N = 1000 individuals than in any of the smaller populations.
+	This can be explained as follows.
+	In case of the low population sizes considered by DiNuzzo and Griffen, the initial density of individuals is very low (typically only one individual per patch).
+	In such a case, an individual can only improve its intake rate by moving to a more profitable patch.
+	In case of a large population size (and a higher initial density per patch), there is an additional option: if an individual on a patch decides to leave in order to improve its intake rate elsewhere, all remaining individuals on that patch profit as their intake rate increases due to alleviated within-patch competition (see \citep{wolf2008a}).
+	This effect is not addressed by the study of DiNuzzo and Griffen, although the authors state: ``in most natural systems, there are many more consumers than patches.'' 
+
+	Quantifying the approach to the IFD
+	
+	DiNuzzo and Griffen conducted their study in order to investigate whether personality differences can explain ``undermatching'', the commonly observed phenomenon that high-resource patches tend to be underexploited while low-resource patches are overexploited.
+	Yet, they devote only one figure (their Figure 2) to this phenomenon.
+	In general, they quantify deviations from the IFD by measuring the time to reach the IFD.
+	This measure has at least three disadvantages.
+	First, ``time-to-IFD'' is determined by the last individual that moves to a patch with an optimal intake rate.
+	In other words, a single individual with very low activity can have a very large effect on time-to-IFD.
+	Second, ``time-to-IFD'' depends on the initial conditions; it takes longer to reach the IFD if the initial distribution of individuals over patches differs a lot from the IFD.
+	Third, ``time-to-IFD'' is only a sensible measure when the IFD is actually reached.
+	This, however, will only be the case in highly standardized simulation models with a fixed resource distribution.
+	As stated by DiNuzzo and Griffen: ``In most systems, the IFD is a moving target owing to temporal environmental variation and directional change (i.e. habitat degradation).'' 
+	In Section 1.5 of their Supplement, DiNuzzo and Griffen show some simulation results for a scenario with temporally varying patch quality.
+	Surprisingly, ``time-to-IFD'' is also used for this scenario (their Supplementary Figure S2), where it is difficult for us to understand how the IFD can ever be reached in case of rapid environmental change.
+	How can movement cease for 50 time steps (the criterion for reaching the IFD) if the distribution of patch qualities changes completely every 10 or 20 time steps? Under such changing conditions, we would advocate using a more robust, population-level measure for deviations from the IFD, such as the variance in intake rates across patches. 
+	
+	\section*{Analysis of the mud crab system}
+	
+	We are puzzled by the fact that DiNuzzo and Griffen revert to a simple calculation of ratios in their analysis of the refuge use data on the mud crab \textit{Panopeus herbstii} \citep{toscano2014} instead of taking advantage of their individual-based model.
+	The model becomes necessary because such a simple calculation does not suffice, as it ignores the distribution of personality in the population.
+	Hence, Figure 5 illustrates the influence of personality on the IFD only in the sense that no single crab is ``ideal'' in immediately leaving its refuge and moving to the patch with highest profitability, but not the implications of the distribution of activity levels in the population.
+	Additionally, the data comes from a special (predation cue) treatment, not from standard conditions; and the crabs differ substantially in size (actually body size is used as a proxy for activity level) and accordingly also in their resource needs and competitive abilities. 
+	
+	\section*{Outlook}
+	
+	We have the impression that DiNuzzo and Griffen view ``personalities'' mainly as (maladaptive) deviations from optimal or efficient behaviour. In contrast, many studies show that personality variation is often shaped by adaptive evolution \citep{dall2004,wolf2007a,dingemanse2010,wolf2010,luttbegbarney2010,bergmuller2010,wolf2012}.
+	For example, Wolf and colleagues \citep{wolf2008a} demonstrate that “inactivity” (called “unresponsiveness in \citep{wolf2008a}) may be viewed as an efficient strategy in achieving a high foraging success and approaching an ideal free distribution.
+	An adaptive perspective on personality variation leads to novel eco-evolutionary questions regarding the interplay of individual behavioural variation and the spatial distribution of foragers.
+	The IFD is a prototype example of a model linking ecology (the spatial distribution of foragers) to evolution (optimal or evolutionarily stable movement decisions).
+	Future research is needed to reconcile the IFD with the eco-evolutionary causes and consequences of personality for at least two reasons: First, the IFD model presupposes that the resource intake rate is a proxy for fitness \citep{tregenza1995}.
+	But how, then, can different personality types persist at stable proportions, when inactive individuals consistently achieve a lower intake rate than their more active conspecifics? 
+	Second, a personality perspective may change what spatial distribution is optimal.
+	In animals, differences in activity are usually associated with (adaptive) differences in energy metabolism \citep{careau2008}.
+	When foraging individuals differ in energetic expenditure, they should not only take maximizing the intake rate as their sole guiding principle \citep{campos-candela2019}.
+	In other words, individuals differing in activity should use different decision rules, and the optimal behaviour of a polymorphic population may, even at equilibrium, deviate considerably from the IFD of a monomorphic population.
+
 	
 % \end{addmargin}
 \afterpage{\nopagecolor}
