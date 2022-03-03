@@ -66,13 +66,13 @@
 \titleformat{\part}[display]
         {\ct@altfont\centering\LARGE\sffamily}%
         {\thispagestyle{empty}\scshape\sffamily\partname~\MakeTextUppercase{\thepart}}{1em}%
-        {\color{Gray}\scshape\bfseries\huge\sffamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+        {\color{darkgray}\scshape\bfseries\huge\sffamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
     {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\rmfamily\itshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\raggedright\LARGE\sffamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
@@ -169,20 +169,20 @@
 
 \cleardoublepage \include{chapters/introduction}
 
-% \ctparttext{
-%     Large datsets are revolutioning our understanding of animal movement, but preparing these data for inference, and integrating that preparation with existing methods, is key.
+\ctparttext{
+    Large datsets are revolutioning our understanding of animal movement, but preparing these data for inference, and integrating that preparation with existing methods, is key.
     
-%     \medskip
+    \medskip
 
-%     \textit{Chapter 1} covers how data from a novel, high-throughput, reverse-GPS tracking system should be prepared, calling for a substantially more reproducible and automated approach. 
-%     This guide introduces the summarising of data into `residence patches', a fast and simple way to cluster and segment tracking data.
+    \textit{Chapter 1} covers how data from a novel, high-throughput, reverse-GPS tracking system should be prepared, calling for a substantially more reproducible and automated approach. 
+    This guide introduces the summarising of data into `residence patches', a fast and simple way to cluster and segment tracking data.
 
-%     \medskip
+    \medskip
 
-%     \textit{Chapter 2} takes a mechanistic look at the movement of moulting birds, which is surprisingly poorly understood.
-%     This analysis combines the residence patch method of \textit{Chapter 1} with step-selection and viewshed analysis, to show how birds use sheltered habitats.
-% }
-% \part{Developing and Applying Methods for High-Resolution Tracking}
+    \textit{Chapter 2} takes a mechanistic look at the movement of moulting birds, which is surprisingly poorly understood.
+    This analysis combines the residence patch method of \textit{Chapter 1} with step-selection and viewshed analysis, to show how birds use sheltered habitats.
+}
+\part{Developing and Applying Methods for High-Resolution Tracking}
 
 \cleardoublepage \include{chapters/htme}
 
@@ -191,30 +191,30 @@
 
 \cleardoublepage \include{boxes/mapping}
 
-\cleardoublepage \include{chapters/knots}
-
-\cleardoublepage \include{boxes/details}
-
 \cleardoublepage \include{chapters/holeybirds_header} 
 \include{chapters/holeybirds_main}
+
+\cleardoublepage \include{chapters/knots}
 
 % \cleardoublepage \include{chapters/hillybirds_header} 
 % \include{chapters/hillybirds_main}
 
-% \ctparttext{
-%     Mechanistic, individual-based models can capture the complexity and diversity of animal behaviour with spatial contexts --- simultaneously, they can be used to investigate methods used in empirical studies.
+\ctparttext{
+    Mechanistic, individual-based models can capture the complexity and diversity of animal behaviour with spatial contexts --- simultaneously, they can be used to investigate methods used in empirical studies.
     
-%     \medskip
+    \medskip
 
-%     \textit{Chapter 3} presents a translation of the step-selection paradigm into an individual-based model to study the evolution of movement and competition strategies.
-%     Feedbacks between ecology and evolution lead to unexpected outcomes, including substantial individual variation, and the correlation of movement and competition strategies.
+    \textit{Chapter 3} presents a translation of the step-selection paradigm into an individual-based model to study the evolution of movement and competition strategies.
+    Feedbacks between ecology and evolution lead to unexpected outcomes, including substantial individual variation, and the correlation of movement and competition strategies.
 
-%     \medskip
+    \medskip
 
-%     \textit{Chapter 4} takes the evolved populations from \textit{Chapter 3} and parses them through the lens of two methods in animal behaviour: repeatability analysis, and step-selection analysis.
-%     Applying these methods to scenarios with known mechanisms explains aspects of their performance on real data.
-% }
-% \part{Mechanistic Modelling and Investigating Empirical Methods}
+    \textit{Chapter 4} takes the evolved populations from \textit{Chapter 3} and parses them through the lens of two methods in animal behaviour: repeatability analysis, and step-selection analysis.
+    Applying these methods to scenarios with known mechanisms explains aspects of their performance on real data.
+}
+\part{Mechanistic Modelling and Investigating Empirical Methods}
+
+\cleardoublepage \include{boxes/details}
 
 \cleardoublepage \include{chapters/kleptomove_header} 
 \include{chapters/kleptomove_main}
