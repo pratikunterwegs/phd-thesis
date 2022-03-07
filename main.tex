@@ -49,7 +49,8 @@
     TTstyle={Text,Semibold},
     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
 \setmathfont{Erewhon Math}
-\setsansfont{TeX Gyre Heros}%[Extension = .ttf, UprightFont = *-Light,BoldFont = *-Regular]
+\setsansfont{IBM Plex Sans Condensed}[Extension = .ttf, 
+    UprightFont = *-Regular,BoldFont = *-Medium, ItalicFont = *-Italic]
 
 \renewcommand*{\bibfont}{\footnotesize}
 
@@ -72,7 +73,7 @@
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
     {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\LARGE\sffamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\raggedright\huge\sffamily\itshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
@@ -93,10 +94,10 @@
 % parts in toc
 \renewcommand{\cftpartfont}{\scshape\rmfamily}%
 % chapters in toc
-\renewcommand{\cftchappresnum}{\rmfamily}%
-\renewcommand{\cftchapaftersnumb}{\rmfamily}%
-\renewcommand{\cftchapfont}{\rmfamily}%
-\renewcommand{\cftchappagefont}{\rmfamily}%
+\renewcommand{\cftchappresnum}{\sffamily}%
+\renewcommand{\cftchapaftersnumb}{\sffamily}%
+\renewcommand{\cftchapfont}{\sffamily}%
+\renewcommand{\cftchappagefont}{\sffamily}%
 
 % for stylistic elements
 \usepackage{lettrine}
@@ -156,12 +157,11 @@
 \clearpage\include{frontbackmatter/Contents}
 
 \setcounter{page}{0}
-% \clearpage\include{frontbackmatter/Abstract}
+\clearpage\include{frontbackmatter/Abstract}
 
 %********************************************************************
 % Mainmatter
 % *******************************************************
-\clearpage 
 % \titleformat{\section}{\relax}{\textsf{\thesection}}{1em}{}
 \pagestyle{scrheadings}
 \pagenumbering{arabic}
@@ -186,14 +186,12 @@
 
 % \clearpage \include{chapters/htme}
 
-% \cleardoublepage 
-\include{chapters/preprocessing_header} 
+\cleardoublepage \include{chapters/preprocessing_header} 
 % \include{chapters/preprocessing_main}
 
 % \clearpage \include{boxes/mapping}
 
-\clearpage
-\include{chapters/holeybirds_header} 
+\cleardoublepage \include{chapters/holeybirds_header} 
 % \include{chapters/holeybirds_main}
 
 \clearpage
@@ -219,7 +217,7 @@
 % \part{Mechanistic Modelling and Investigating Empirical Methods}
 
 % \clearpage
-\include{boxes/details}
+% \include{boxes/details}
 
 \clearpage
 \include{chapters/kleptomove_header} 
