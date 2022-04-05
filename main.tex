@@ -49,8 +49,8 @@
     TTstyle={Text,Semibold},
     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
 \setmathfont{Erewhon Math}
-\setsansfont{IBM Plex Sans Condensed}[Extension = .ttf, 
-    UprightFont = *-Regular,BoldFont = *-Medium, ItalicFont = *-Italic]
+% \setsansfont{IBM Plex Sans Condensed}[Extension = .ttf, 
+%     UprightFont = *-Regular,BoldFont = *-Medium, ItalicFont = *-Italic]
 
 \renewcommand*{\bibfont}{\footnotesize}
 
@@ -65,15 +65,15 @@
 \makeatletter
 % fix part heading format
 \titleformat{\part}[display]
-        {\ct@altfont\centering\LARGE\sffamily}%
-        {\thispagestyle{empty}\scshape\sffamily\partname~\MakeTextUppercase{\thepart}}{1em}%
-        {\color{darkgray}\scshape\bfseries\huge\sffamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+        {\ct@altfont\centering\LARGE\rmfamily}%
+        {\thispagestyle{empty}\scshape\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
+        {\color{darkgray}\scshape\bfseries\huge\rmfamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\sffamily\itshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\relax}{\mbox{}\oldmarginpar{\bfseries\rmfamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
+    {\raggedright\huge\rmfamily\itshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
@@ -94,10 +94,10 @@
 % parts in toc
 \renewcommand{\cftpartfont}{\scshape\rmfamily}%
 % chapters in toc
-\renewcommand{\cftchappresnum}{\sffamily}%
-\renewcommand{\cftchapaftersnumb}{\sffamily}%
-\renewcommand{\cftchapfont}{\sffamily}%
-\renewcommand{\cftchappagefont}{\sffamily}%
+\renewcommand{\cftchappresnum}{\rmfamily}%
+\renewcommand{\cftchapaftersnumb}{\rmfamily}%
+\renewcommand{\cftchapfont}{\rmfamily}%
+\renewcommand{\cftchappagefont}{\rmfamily}%
 
 % for stylistic elements
 \usepackage{lettrine}
@@ -167,26 +167,12 @@
 \pagenumbering{arabic}
 % use \clearpage here to avoid problems with pdfbookmark
 
-% \clearpage \include{chapters/introduction}
+\clearpage \include{chapters/introduction}
 
-% \ctparttext{
-%     Large datsets are revolutioning our understanding of animal movement, but preparing these data for inference, and integrating that preparation with existing methods, is key.
-    
-%     \medskip
+% \ctparttext{}
+\part{Leveraging new methods to study animal movement and spatial ecology}
 
-%     \textit{Chapter 1} covers how data from a novel, high-throughput, reverse-GPS tracking system should be prepared, calling for a substantially more reproducible and automated approach. 
-%     This guide introduces the summarising of data into `residence patches', a fast and simple way to cluster and segment tracking data.
-
-%     \medskip
-
-%     \textit{Chapter 2} takes a mechanistic look at the movement of moulting birds, which is surprisingly poorly understood.
-%     This analysis combines the residence patch method of \textit{Chapter 1} with step-selection and viewshed analysis, to show how birds use sheltered habitats.
-% }
-% \part{Developing and Applying Methods for High-Resolution Tracking}
-
-% \clearpage \include{chapters/htme}
-
-\cleardoublepage \include{chapters/preprocessing_header} 
+\cleardoublepage \include{chapters/preprocessing_header}
 % \include{chapters/preprocessing_main}
 
 % \clearpage \include{boxes/mapping}
@@ -194,27 +180,11 @@
 \cleardoublepage \include{chapters/holeybirds_header} 
 % \include{chapters/holeybirds_main}
 
-\clearpage
-\include{chapters/knots}
-
-\clearpage
-\include{chapters/hillybirds_header} 
+\cleardoublepage \include{chapters/hillybirds_header}
 % \include{chapters/hillybirds_main}
 
-% \ctparttext{
-%     Mechanistic, individual-based models can capture the complexity and diversity of animal behaviour with spatial contexts --- simultaneously, they can be used to investigate methods used in empirical studies.
-    
-%     \medskip
-
-%     \textit{Chapter 3} presents a translation of the step-selection paradigm into an individual-based model to study the evolution of movement and competition strategies.
-%     Feedbacks between ecology and evolution lead to unexpected outcomes, including substantial individual variation, and the correlation of movement and competition strategies.
-
-%     \medskip
-
-%     \textit{Chapter 4} takes the evolved populations from \textit{Chapter 3} and parses them through the lens of two methods in animal behaviour: repeatability analysis, and step-selection analysis.
-%     Applying these methods to scenarios with known mechanisms explains aspects of their performance on real data.
-% }
-% \part{Mechanistic Modelling and Investigating Empirical Methods}
+% \ctparttext{}
+\part{Evolutionary contexts of animal movement strategies}
 
 % \clearpage
 % \include{boxes/details}
@@ -223,15 +193,14 @@
 \include{chapters/kleptomove_header} 
 % \include{chapters/kleptomove_main}
 
-
-\clearpage
-\include{chapters/patternprocess}
-
-% \part{Long-Term and Large-Scale Studies in Animal Space-Use}
-
 \clearpage
 \include{chapters/pathomove_header}
 % \include{chapters/pathomove_main}
+
+% \ctparttext{}
+\part{Linking theoretical and empirical approaches in the study of animal movement}
+
+\cleardoublepage \include{chapters/patternprocess}
 
 % \include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
