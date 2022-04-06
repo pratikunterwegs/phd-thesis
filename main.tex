@@ -53,8 +53,8 @@
 %     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
 \setmainfont{Source Serif Pro}
 \setmathfont{Erewhon Math}
-% \setsansfont{IBM Plex Sans Condensed}[Extension = .ttf, 
-%     UprightFont = *-Regular,BoldFont = *-Medium, ItalicFont = *-Italic]
+\setsansfont{Oswald}%[Extension = .ttf]%, 
+    [UprightFont = *-Light,BoldFont = *-Regular]
 
 \renewcommand*{\bibfont}{\footnotesize}
 
@@ -138,7 +138,7 @@
 \begin{document}
 
 \raggedright
-\frenchspacing
+\nonfrenchspacing
 \raggedbottom
 \setlength{\parindent}{1.2em}
 \selectlanguage{american} % american ngerman
@@ -178,31 +178,30 @@
 \part{Leveraging new methods to study animal movement and spatial ecology}
 
 \cleardoublepage \include{chapters/preprocessing_header}
-% \include{chapters/preprocessing_main}
+\include{chapters/preprocessing_main}
 
 % \clearpage \include{boxes/mapping}
 
 \cleardoublepage \include{chapters/holeybirds_header} 
-% \include{chapters/holeybirds_main}
+\include{chapters/holeybirds_main}
 
 \cleardoublepage \include{chapters/hillybirds_header}
-% \include{chapters/hillybirds_main}
+\include{chapters/hillybirds_main}
 
-\ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
+\cleardoublepage \ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
 \part{Evolutionary contexts of animal movement strategies}
 
 % \clearpage
 % \include{boxes/details}
 
-\clearpage
-\include{chapters/kleptomove_header} 
-% \include{chapters/kleptomove_main}
+\cleardoublepage \include{chapters/kleptomove_header} 
+\include{chapters/kleptomove_main}
 
-\clearpage
-\include{chapters/pathomove_header}
-% \include{chapters/pathomove_main}
+\cleardoublepage \include{chapters/pathomove_header}
+\include{chapters/pathomove_main}
 
-\cleardoublepage \include{chapters/patternprocess}
+\cleardoublepage \include{chapters/patternprocess_header}
+\include{chapters/patternprocess_main}
 
 % \include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
