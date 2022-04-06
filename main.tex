@@ -15,6 +15,9 @@
 \usepackage[x11names]{xcolor}
 \usepackage{graphbox}
 
+% for non hyphenated toc
+\usepackage{ragged2e}
+
 %********************************************************************
 % Note: Make all your adjustments in here
 %*******************************************************
@@ -43,11 +46,12 @@
 %\hyphenation{put special hyphenation here}
 
 \usepackage{fontspec}
-\usepackage[usefilenames,
-    RMstyle={Text,Semibold},
-    SSstyle={Text,Semibold},
-    TTstyle={Text,Semibold},
-    DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
+% \usepackage[usefilenames,
+%     RMstyle={Text,Semibold},
+%     SSstyle={Text,Semibold},
+%     TTstyle={Text,Semibold},
+%     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
+\setmainfont{Source Serif Pro}
 \setmathfont{Erewhon Math}
 % \setsansfont{IBM Plex Sans Condensed}[Extension = .ttf, 
 %     UprightFont = *-Regular,BoldFont = *-Medium, ItalicFont = *-Italic]
@@ -66,8 +70,8 @@
 % fix part heading format
 \titleformat{\part}[display]
         {\ct@altfont\centering\LARGE\rmfamily}%
-        {\thispagestyle{empty}\scshape\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
-        {\color{darkgray}\scshape\bfseries\huge\rmfamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+        {\thispagestyle{empty}\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
+        {\color{maroon}\scshape\huge\rmfamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
@@ -92,11 +96,12 @@
 \usepackage{lipsum}
 
 % parts in toc
-\renewcommand{\cftpartfont}{\scshape\rmfamily}%
+\renewcommand{\cftpartfont}{\scshape\rmfamily\large}%
+\renewcommand{\cftpartpresnum}{\rmfamily}%
 % chapters in toc
 \renewcommand{\cftchappresnum}{\rmfamily}%
 \renewcommand{\cftchapaftersnumb}{\rmfamily}%
-\renewcommand{\cftchapfont}{\rmfamily}%
+\renewcommand{\cftchapfont}{\rmfamily\itshape}%
 \renewcommand{\cftchappagefont}{\rmfamily}%
 
 % for stylistic elements
@@ -150,7 +155,7 @@
 \include{frontbackmatter/Titlepage}
 \include{frontbackmatter/Titleback}
 \include{frontbackmatter/innertitle}
-% \clearpage\include{frontbackmatter/propositions}
+\clearpage\include{frontbackmatter/propositions}
 % \clearpage\include{frontbackmatter/Dedication}
 % \clearpage\include{frontbackmatter/Colophon}
 \clearpage
@@ -183,7 +188,7 @@
 \cleardoublepage \include{chapters/hillybirds_header}
 % \include{chapters/hillybirds_main}
 
-% \ctparttext{}
+\ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
 \part{Evolutionary contexts of animal movement strategies}
 
 % \clearpage
@@ -197,9 +202,6 @@
 \include{chapters/pathomove_header}
 % \include{chapters/pathomove_main}
 
-% \ctparttext{}
-\part{Linking theoretical and empirical approaches in the study of animal movement}
-
 \cleardoublepage \include{chapters/patternprocess}
 
 % \include{Chapters/Chapter02}
@@ -207,7 +209,7 @@
 % \include{Chapters/Chapter03}
 %\include{multiToC} % <--- just debug stuff, ignore for your documents
 
-\include{chapters/discussion}
+\cleardoublepage \include{chapters/discussion}
 
 % \include{frontbackmatter/Acknowledgments}
 
