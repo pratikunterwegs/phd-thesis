@@ -103,7 +103,7 @@ All individuals move simultaneously at the end of each timestep $t$, and then im
 However, handlers do not make any movements until they have fully handled and consumed their prey.
 We model movement as comprised of small, discrete steps between adjacent cells.
 Across scenarios, individuals make movement decisions using evolved cue preferences.
-Individuals select a destination cell, after assessing potential destinations based on available cues, similar to approaches used previously \citep{getz2015,getz2016,white2018,scherer2020,netz2021}.
+Individuals select a destination cell, after assessing potential destinations based on available cues, similar to approaches used previously \citep{getz2015,getz2016,white2018,scherer2020,netz2021a}.
 
 \graffito{
     Our individuals can use much more complex functions, encoded by neural networks, an idea that has been explored, but not widely used, in movement ecology \citep{mueller2011}.
@@ -515,8 +515,8 @@ However, consistent behaviour in cue-poor captive environments does not always t
 
 Animal movement ecology takes an explicitly individual-based approach, centred around individual decisions \citep{nathan2008a}.
 This makes individual-based models a good choice when seeking general insights into the evolutionary ecology of animal movement strategies \citep[see e.g.][]{getz2015}, whose ultimate causes are otherwise difficult to study empirically.
-Modelling mechanistic movement decisions has substantial consequences for ecological outcomes \citep[e.g.][]{mueller2011,white2018,scherer2020}, yet few individual-based models in animal movement are mechanistic \citep[see review in:][]{deangelis2019}, and even fewer models include evolutionary dynamics \citep[but see][]{getz2015,getz2016,netz2021}. 
-Yet explicitly modelling both ecological interactions and evolutionary dynamics, as we do here, can reveal surprising outcomes ranging from innovative predator-prey strategies \citep{netz2021} to sympatric speciation \citep{getz2016}.
+Modelling mechanistic movement decisions has substantial consequences for ecological outcomes \citep[e.g.][]{mueller2011,white2018,scherer2020}, yet few individual-based models in animal movement are mechanistic \citep[see review in:][]{deangelis2019}, and even fewer models include evolutionary dynamics \citep[but see][]{getz2015,getz2016,netz2021a}. 
+Yet explicitly modelling both ecological interactions and evolutionary dynamics, as we do here, can reveal surprising outcomes ranging from innovative predator-prey strategies \citep{netz2021a} to sympatric speciation \citep{getz2016}.
 
 The use of resource- and step-selection functions in mechanistic modelling \citep[see][]{white2018} gives empirical movement ecologists a familiar starting point in individual-based modelling.
 Simulating an animal's potential space-use, conditional on environmental data (similar to our cues), and using selection coefficients estimated from tracking data (our cue preferences), is already accepted in movement ecology, and follows our grid-based approach \citep{avgar2016,signer2019,avgar2020,fieberg2021}.
