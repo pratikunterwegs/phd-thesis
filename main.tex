@@ -5,15 +5,15 @@
     %\WarningFilter{scrreprt}{Activating an ugly workaround}
     \WarningFilter{titlesec}{Non standard sectioning command detected}
 \documentclass[ twoside,openright,titlepage,numbers=noenddot,%1headlines,
-                headinclude,footinclude,clearpage=empty,abstract=on,
-                BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames,toc=flat
+                headinclude,footinclude,clearpage=empty,abstract=on,toc=flat,
+                BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames
                 ]{scrbook}
 \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
-% \RedeclareSectionCommands[
-%   tocindent=0mm,
-%   tocnumwidth=12mm,
-%   tocraggedentrytext
-% ]{chapter,section,part}
+\RedeclareSectionCommands[
+  tocindent=0mm,
+  tocnumwidth=12mm,
+  tocraggedentrytext
+]{chapter,section,part}
 
 % use some packages
 \usepackage{multicol}
@@ -36,12 +36,12 @@
 % \usepackage{citation-style-language}
 % \cslsetup{style = apa}
 \addbibresource{references/preprocessing.bib}
-% \addbibresource{references/kleptomove.bib}
-% \addbibresource{references/hillybirds.bib}
-% \addbibresource{references/holeybirds.bib}
-% \addbibresource{references/pathomove.bib}
-% \addbibresource{references/personality.bib}
-% \addbibresource{references/patternprocess.bib}
+\addbibresource{references/kleptomove.bib}
+\addbibresource{references/hillybirds.bib}
+\addbibresource{references/holeybirds.bib}
+\addbibresource{references/pathomove.bib}
+\addbibresource{references/personality.bib}
+\addbibresource{references/patternprocess.bib}
 \addbibresource{references/general.bib}
 
 % \addbibresource{Bibliography.bib}
@@ -53,16 +53,13 @@
 %\hyphenation{put special hyphenation here}
 
 \usepackage{fontspec}
-% \usepackage[usefilenames,
-%     RMstyle={Text,Semibold},
-%     SSstyle={Text,Semibold},
-%     TTstyle={Text,Semibold},
-%     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
-\setmainfont{Source Serif Pro}
+\usepackage[usefilenames,
+    RMstyle={Text,Semibold},
+    SSstyle={Text,Semibold},
+    TTstyle={Text,Semibold},
+    DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
+% \setmainfont{Source Serif Pro}
 \setmathfont{Erewhon Math}
-\setsansfont{DM Sans}%[Extension = .ttf]%, 
-    % [UprightFont = *-Light,BoldFont = *-Regular]
-
 \newfontfamily{\displayfont}{TeX Gyre Schola}
 
 \renewcommand*{\bibfont}{\footnotesize}
@@ -75,12 +72,23 @@
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent}
 
+% for indenting summary - doesnt work
+% \newenvironment{unnumbered}%
+% {\setcounter{secnumdepth}{-1}}
+% {\setcounter{secnumdepth}{3}}
+
 \makeatletter
+
+% to indent unnumbered chapters - doesnt work
+% \def\ttl@addcontentsline#1#2{%
+%   \addcontentsline{toc}{#1}{\ifttl@toclabel\ttl@a\else\numberline{}\fi#2}% indent unnumbered ToC entries too
+%   \nobreak}
+
 % fix part heading format
 \titleformat{\part}[display]
-        {\ct@altfont\centering\LARGE\displayfont}%
-        {\thispagestyle{empty}\displayfont\partname~\MakeTextUppercase{\thepart}}{1em}%
-        {\huge\displayfont}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+        {\ct@altfont\centering\LARGE\rmfamily}%
+        {\thispagestyle{empty}\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
+        {\huge\rmfamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
@@ -105,14 +113,20 @@
 \usepackage{lipsum}
 
 % parts in toc
+\renewcommand{\thepart}{\Roman{part}}%
 \renewcommand{\cftpartfont}{\bfseries\itshape\rmfamily\large}%
-\renewcommand{\thepart}{\thepart}%
-\renewcommand{\cftpartpresnum}{\normalfont}%  \MakeTextLowercase
+\renewcommand{\cftpartpresnum}{Part~}%  \MakeTextLowercase
 % chapters in toc
 \renewcommand{\cftchappresnum}{\rmfamily}%
 \renewcommand{\cftchapaftersnumb}{\rmfamily}%
 \renewcommand{\cftchapfont}{\rmfamily}%
 \renewcommand{\cftchappagefont}{\rmfamily}%
+
+% handle extended part and chapter numbers due to text
+\newlength\mylen
+\settowidth\mylen{\bfseries\cftpartpresnum\cftpartaftersnum}
+\addtolength\cftpartnumwidth{\mylen}
+\addtolength\cftchapnumwidth{\mylen}
 
 % for stylistic elements
 \usepackage{lettrine}
@@ -166,60 +180,61 @@
 \include{frontbackmatter/Titleback}
 \include{frontbackmatter/innertitle}
 \clearpage\include{frontbackmatter/propositions}
-% \clearpage\include{frontbackmatter/Dedication}
-% \clearpage\include{frontbackmatter/Colophon}
+% % \clearpage\include{frontbackmatter/Dedication}
+% % \clearpage\include{frontbackmatter/Colophon}
 
 \clearpage\include{frontbackmatter/Contents}
 
-\setcounter{page}{0}
+\pagestyle{scrheadings}
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \clearpage\include{frontbackmatter/Abstract}
 
 %********************************************************************
 % Mainmatter
 % *******************************************************
 % \titleformat{\section}{\relax}{\textsf{\thesection}}{1em}{}
-\pagestyle{scrheadings}
-\pagenumbering{arabic}
+
 % use \clearpage here to avoid problems with pdfbookmark
 
 \clearpage \include{chapters/introduction}
 
 % \ctparttext{}
-\part{Leveraging new methods to study animal movement and spatial ecology}
-
-\cleardoublepage \include{boxes/mapping}
+\part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
 
 \cleardoublepage \include{chapters/preprocessing_header}
 \include{chapters/preprocessing_main}
 
-% \cleardoublepage \include{chapters/holeybirds_header}
-% \include{chapters/holeybirds_main}
+\cleardoublepage \include{boxes/mapping}
 
-% \cleardoublepage \include{chapters/hillybirds_header}
-% \include{chapters/hillybirds_main}
+\cleardoublepage \include{chapters/holeybirds_header}
+\include{chapters/holeybirds_main}
 
-% \cleardoublepage \include{boxes/clearances}
+\cleardoublepage \include{chapters/hillybirds_header}
+\include{chapters/hillybirds_main}
+
+\cleardoublepage \include{boxes/clearances}
 
 % \cleardoublepage \ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
-% \part{Evolutionary contexts of animal movement strategies}
+\part{Evolutionary Contexts of Animal Movement Strategies}
 
-% \cleardoublepage \include{boxes/details}
+\cleardoublepage \include{boxes/details}
 
-% \cleardoublepage \include{chapters/kleptomove_header} 
-% \include{chapters/kleptomove_main}
+\cleardoublepage \include{chapters/kleptomove_header} 
+\include{chapters/kleptomove_main}
 
-% \cleardoublepage \include{chapters/pathomove_header}
-% \include{chapters/pathomove_main}
+\cleardoublepage \include{chapters/pathomove_header}
+\include{chapters/pathomove_main}
 
-% \cleardoublepage \include{chapters/patternprocess_header}
-% \include{chapters/patternprocess_main}
+\cleardoublepage \include{chapters/patternprocess_header}
+\include{chapters/patternprocess_main}
 
 % % \include{Chapters/Chapter02}
 % %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
 % % \include{Chapters/Chapter03}
 % %\include{multiToC} % <--- just debug stuff, ignore for your documents
 
-% \cleardoublepage \include{chapters/discussion}
+\cleardoublepage \include{chapters/discussion}
 
 % \include{frontbackmatter/Acknowledgments}
 
