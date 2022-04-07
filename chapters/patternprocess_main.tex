@@ -1,685 +1,480 @@
 
 \newrefcontext[sorting=ynt]
 
-    \lettrine{A}{nimal} movement is an adaptive, integrated response to multiple drivers, including internal state, life-history traits and capacities, biotic interactions, and other environmental factors \citep{nathan2008a, holyoak2008}.
-    % Movement has both beneficial and detrimental consequences for individual fitness, and 
-    The movement ecology framework links the drivers, processes, and fitness outcomes of animal movement \citep{nathan2008a}, and remotely tracking individual animals in the wild is the methodological mainstay of movement ecology \citep{wikelski2007,nathan2008a,hussey2015,kays2015}.
-    A key challenge with observed tracks is to extract information on the behavioural, cognitive, social, ecological and evolutionary processes that shape animal movement.
-    Addressing this challenge requires investigating the relationships between movement and its drivers at the fine scales at which animals sense and respond to variation in their environment. 
-    Tracking data, which are observations of a continuous process (animal movement) at discrete timesteps, reveal useful information about the movement process when the tracking interval is considerably shorter than the typical duration of a movement mode \citep{nathan2008a, noonan2019, getz2008}.
-    This can be accomplished by wildlife tracking systems that collect position data from many individuals at high temporal and spatial resolution (i.e., high-throughput tracking) relative to the scale of the movement mode of interest \citep{getz2008}.
-
-    \graffito{
-        Data repositories such as Movebank have much more data than can be processed, except in large, synthetic studies such as \citep{tucker2018}.
-        See the Discussion for ideas for these pre-existing datasets.
-    }
-    High-throughput tracking technologies include GPS tags \citep{strandburg-peshkin2015, papageorgiou2019, harel2016, klarevas-irby2021}, tracking radars \citep{horvitz2014}, and computer vision methods for tracking entire groups of animals from video recordings \citep{rathore2020, perez-escudero2014}. 
-    Furthermore, high-throughput wildlife tracking is routinely provided by terrestrial reverse-GPS systems such as ATLAS \citep[Advanced Tracking and Localization of Animals in real-life Systems:][]{toledo2014, weiser2016, toledo2016,toledo2020} --- see also \citep{maccurdy2009, maccurdy2019} --- and underwater acoustic reverse-GPS tracking of aquatic animals \citep{baktoft2019, baktoft2017, jung2015, aspillaga2021, aspillaga2021a}.
-    Finally, low resolution tracking over a long duration may also capture important aspects of animal behaviour at certain time-scales \citep[e.g. migration, long-range dispersal;][]{getz2008}, thereby being `relatively' high-throughput.
-
-    Although high-throughput tracking provides a massive amount of data on the path of a tracked animal, these data present a challenge to ecologists.
-    When tracking animals at a high temporal resolution, the location error of each position may approach or exceed the true movement distance of the animal, compared to low-resolution tracking with the same measurement error.
-    This leads to an over-estimation of the true distance moved by an animal between two discrete time-points, leading to unreliable behavioural metrics ultimately derived from movement distance, such as speed and tortuosity \citep[see][]{ranacher2016, noonan2019, hurford2009, calenge2009}.
-    Additionally, the location error around a position introduces uncertainty when studying the relationship between animal movements and either fixed landscape features (e.g. roads), or mobile elements (e.g. other tracked individuals), as well as confounding estimates of habitat selection.
-
-    Users have two main options to improve data quality, \textit{(i)} making inferences after modelling the system-specific location error using a continuous time movement model \citep{fleming2014, fleming2020, jonsen2003, jonsen2005, johnson2008, patterson2008, aspillaga2021}, or \textit{(ii)} pre-processing data to clean it of positions with large location errors \citep{bjorneraas2010}.
-    The first approach may be limited by the animal movement models that can be fitted to the data \citep{fleming2014, noonan2019, fleming2020}, may result in unreasonable computation times, or may be entirely beyond the computational capacity of common hardware, leading users to prefer data cleaning instead.
-    \graffito{
-        Methods from \citet{fleming2014} are technically very advanced, and that puts them beyond the reach of many animal ecologists.
-    }
-    Data cleaning reveals another challenge of high-throughput tracking: the large number of observations make it difficult for researchers to visually examine each animal's track for errors \citep{weiser2016, toledo2020}.
-    With manual identification and removal of errors from individual tracks prohibitively time consuming, data cleaning can benefit from automation based on a protocol.
-
-    Pre-processing of movement data --- defined as the set of data management steps executed prior to data analysis --- must reliably discard large location errors, also called outliers, from tracks (analogous to reducing false positives) while avoiding the overzealous rejection of valid animal movements (analogous to reducing false negatives).
-    How well researchers balance these imperatives has consequences for downstream analyses \citep{stine2001}.
-    For instance, small-scale resource selection functions can easily infer spurious preference and avoidance effects when there is uncertainty about an animal's true position \citep{visscher2006}.
-    Ecologists recognise that tracking data are imperfect observations of the underlying movement process, yet they implicitly consider cleaned data equivalent to the ground-truth.
-    This assumption is reflected in popular statistical methods in movement ecology such as Hidden Markov Models (HMMs) \citep{langrock2012}, stationary-phase identification methods \citep{patin2020a}, or step-selection functions (SSFs) \citep{barnett2008, signer2017, avgar2016}, which expect minimal location errors relative to real animal movement (i.e., a high signal-to-noise ratio).
-    This makes the reproducible, standardised removal of location errors crucial to any animal tracking study.
-    While gross errors are often removed by positioning-system algorithms in both GPS and reverse-GPS setups, `reasonable' errors often remain to confront end users \citep{fischler1981, weiser2016, ranacher2016}.
-    Further, as high-throughput tracking is deployed in more regions and for more species, standardised pre-processing steps should be general enough to tackle animal movement data recovered from a range of environments, so as to enable sound comparisons across species and ecosystems.
-
-    Despite the importance and ubiquity of reducing location errors in tracking data, movement ecologists lack formal guidance on this crucial step.
-    Pre-processing protocols are not often reported in the literature, or may not be easily tractable for mainstream computing hardware and software.
-    Some tracking data, such as GPS, are autonomously pre-processed without user access to the raw data \citep[using error estimates and Kalman smooths;][and substantial location errors may yet persist]{kaplan2005}.
-    However, filtering out positions using estimates of location error alone may not be sufficient to exclude outliers which represent unrealistic movement but have low error measures \citep{weiser2016, ranacher2016}.
-    When tracking systems do make their raw data available to researchers, this can enable users to better control the data pre-processing stage, and to substantially improve data quality while ensuring that cleaning does not itself lead to unrealistic movement tracks \citep[e.g. Kalman smooths which distort tracks,][]{kaplan2005}.
-    This makes identifying and removing biologically implausible locations from a track an important component of recovering true animal movement \citep{bjorneraas2010}.
-
-    Even after removing unrealistic movement, a track may be comprised of positions that are randomly distributed around the true animal location \citep{noonan2019}.
-    The large data-volumes of high-throughput tracking allow for a neat solution: tracks can be `median smoothed' to reduce small location errors that have remained undetected \citep[e.g.][]{bijleveld2016}.
-    Large data volumes may also need to be thinned, for example, examining environmental covariates as predictors of prolonged residence in an area  \citep[see e.g.][]{bracis2018, aarts2008, bijleveld2016, oudman2018, harel2016} might require thinning of high-resolution movement data to match the lower spatial resolution of environmental measurements. 
-    Data thinning and clustering are also required to avoid non-independent observations due to strong spatio-temporal autocorrelation, or to examine the effect of sampling scale on movement metrics and resource-selection \citep{fleming2014,noonan2019}.
-
-    When dealing with datasets that contain many millions of positions, reseachers may run into computational limits when trying to apply pre-processing steps to their full dataset.
-    For instance, the size of working memory (RAM) limits the size of datasets that can be loaded into \textit{R}, the programming and statistical language of choice in movement ecology \citep{r2020,joo2020,joo2020a}.
-    Data-rich fields such as genomics inspire a possible solution: to break very large data into smaller subsets, and pass these subsets through automated computational `pipelines' \citep{schadt2010,peng2011}.
-    Pre-processing pipelines for animal tracking data --- the set of steps that users apply to prepare the data for a specific analysis --- come with some additional concerns: \textit{(i)} identifying which pre-processing steps are necessary, and \textit{(ii)} ensuring that these steps reproducibly operate on the data as expected, and as efficiently as possible.
-
-    While exploratory data analysis and visualisation can help determine how to pre-process the data to maximise the signal to noise ratio \citep{slingsby2016}, standardising implementations of pre-processing techniques into robust, version controlled software packages \citep[e.g. in \textit{R}, see]{wickham2015}, can increase the reliability and reproducibility of animal movement ecology \citep{haddaway2015,archmiller2020,powers2019,lewis2018}.
-    Overcoming hard computational constraints on speed and memory usage for very large data will often require a combination of programming strategies, such as using tools optimised for tabular data, or parallelised processing.
-
-    Here, we present guidelines for reproducibly pre-processing high-throughput animal tracking data (Fig.~\ref{preproc_fig_01}), with a focus on simple, widely generalisable steps that help improve data quality (Fig.~\ref{preproc_fig_02}).
-    We take two important considerations into account, that \textit{(i)} the pre-processing steps should be easily understood and reproduced, and \textit{(ii)} our implementations must be computationally efficient and reliable.
-    Consequently, formalising tools as functions in an \textit{R} package would improve portability and reproducibility \citep{marwick2018, wickham2015}.
-    Using simulated movement tracks, we demonstrate simple yet robust implementations of the pre-processing steps we recommend, conveniently wrapped into the \textit{R} package \textit{atlastools} \citep{gupte2020a}, with a discussion of features that make these steps more reproducible, and more efficient.
-    We also suggest one potential application of high-throughput tracking in studies of animal movement and space use, illustrated by the first-principles based synthesis of `residence patches' from clusters of spatio-temporally proximate positions \citep[\textit{sensu}][]{bijleveld2016, oudman2018, barraquand2008}.
-
-    \graffito{
-        The version of this manuscript published in JAE includes useful code snippets as a hands-on guide to using `atlastools'.
-    }
-    In two fully worked out examples using our package on real tracking data, we show how to apply basic spatio-temporal and data quality filters, how to filter out unrealistic movement, and how to reduce the effect of location error with a median smooth.
-    In the first example, using calibration data from an ATLAS system, we show how the residence patch segmentation-clustering method can be used to accurately identify areas of prolonged residence under real field conditions.
-    Finally, in our second example, we use ATLAS data from Egyptian fruit bats (\textit{Rousettus aegyptiacus}) tracked in the Hula Valley, Israel, to show a fully worked out example of the pre-processing pipeline and the residence patch method.
-    While our approach to high-throughput tracking data, and our package of pre-processing functions was developed with reverse-GPS ATLAS systems in mind, both are broadly suitable to a wide range of high-throughput animal tracking data sources, from underwater acoustic reverse-GPS \citep{baktoft2019, baktoft2017, jung2015, aspillaga2021, aspillaga2021a}, high-resolution GPS \citep{strandburg-peshkin2015, papageorgiou2019, harel2016, klarevas-irby2021}, tracking radars \citep{horvitz2014}, and visual video tracking \citep{rathore2020, perez-escudero2014}.
-
-    \section*{Best-Practices for Pre-Processing Workflows}
-
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_01.png}
-        \caption{
-            \textbf{Some best-practices for pre-processing high-throughput tracking data.}
-            Simple pre-processing of animal tracking data can improve the quality of animal tracking data, and the inferences that are drawn from it.
-            % The organisation of pre-processing workflows into a `pipeline' --- a set of steps that users apply to prepare the data for a specific analysis --- can help make research more reproducible and reliable.
-            Exploratory data analysis of representative subsets of the data can help to identify common issues with data quality, and to determine which pre-processing, steps such as filters and smooths, might be necessary (\textit{see also Fig.~\ref{preproc_fig_02}}).
-            Pre-processing steps implemented as programming code can be made reproducible and shareable by following best-practices for software development: (i) tracking changes to the steps, and the software used, using version control (e.g. \textit{git}, \textit{renv}), (ii) preferring pre-existing tools, such as \textit{R} packages, which are well documented and tested, (iii) encapsulating custom-written code as functions, and bundling related functions into a package, and (iv) checking the quality of both custom-written code (e.g. by testing functions), and the overall pipeline (e.g. data visualisation).
-            The efficiency of pre-processing steps can be increased by using strategies for dealing with large datasets, such as batch processing, or using a computing cluster.
-            The use of existing tools optimised for large datasets, or by writing code in a `fast' language such as \textit{C++}, can also speed up the pre-processing of large datasets (see main text for examples).
-            % See the \textit{Worked Out Example} on Egyptian fruit bats, as well as Supplementary Material 1, for more details on implementing pipelines.
-            % Fig.~\ref{preproc_fig_02} shows an example of such a pipeline.
-        }
-        }
-        \label{preproc_fig_01}
-    \end{figure}
-
-    Exploratory data analysis should be the first step towards pre-processing movement data \citep[see Fig.~\ref{preproc_fig_01};][]{slingsby2016}.
-    Researchers with very large datasets of perhaps millions of rows should ideally select a representative subset of these data for exploratory data analysis, including individuals of different species, sexes, or seasonal cohorts.
-    \graffito{
-        Regardless of the level of automation, there is no replacement for human supervision at certain stages, which inherently makes it a subjective process. This both normal and desirable.
-    }
-    Examples of exploratory data analysis include plotting heatmaps of the number of observations per unit area across the study site (Fig.~\ref{preproc_fig_01}).
-    Histograms of the location error estimates, plotting the linear approximations of animal paths between observations, and histograms of the sampling interval can help determine how data need to be treated so as to minimise location errors and improve computational tractability (Fig.~\ref{preproc_fig_01}).
-    While pre-processing steps required for datasets will differ between studies and tracking technologies, we elaborate upon candidate steps and their parameterisation in following sections (see also Fig.~\ref{preproc_fig_02}).
-
-    Following exploratory data analysis and the parameterisation of data cleaning steps, the specific implementation of these steps should be made reliable and reproducible.
-    Since reproducing pre-processing steps can be challenging when using only written descriptions from published articles, providing the code to implement pre-processing steps reduces ambiguity and increases reproducibility \citep{haddaway2015}.
-    For technically advanced users, the best-practices here are \textit{(i)} to implement pre-processing steps as `functions', \textit{(ii)} to collect related functions --- e.g. for similar kinds of data --- into a software `package', \textit{(iii)} to `test' that the functions handle input as expected, and \textit{(iv)} implement `version control' throughout, such that the process of development is documented \citep[Fig.~\ref{preproc_fig_01};][]{wickham2015,alston2020,perez-riverol2016}.
-
-    As an example, our \textit{atlastools} package incorporates these best-practices, and may be used as a reference \citep[][]{gupte2020a}.
-    We have written each pre-processing step as a separate function, and each of these functions is tested, usually on simulated data, but in some cases also on empirical data \citep[][see the directory \textit{tests/} in the associated Zenodo repository]{wickham2015}.
-    Finally, logging error messages is crucial when passing data through a pipeline, helping determine which data subsets could not be handled as expected, and why.
-    Users who would prefer to rely on pre-existing toolsets and methods can use \textit{R} packages that follow these best-practices, such as \textit{move} \citep{kranstauber2011}, and \textit{sftrack} \citep{boone2020}.
-    \graffito{
-        Every so often, movement ecologists develop `one package to rule them all'. `sftrack' seemed to be one such --- but then the developing lab wound up operations, possibly because of the pandemic --- and `sftrack' has not seen widespread uptake.
-    }
-    The large size of modern, high-throughput animal tracking data means that the computational challenge can often be \textit{the} main challenge in working with these data.
-    For beginning users, organising their workflows so that they process subsets of the data (such as one individual) at a time can help overcome limitations on working memory.
-    Animal tracking data stored in a relational database \citep[e.g. SQL databases][]{codd1970}, for example, can be broken into meaningful subsets based on individual identity and tracking season.
-    These smaller subsets can then be loaded into working memory, pre-processed, and saved in a separate location (see Supplementary Material 1, Section 2 for a worked out example on an SQL database).
-    Using existing tools optimised for tabular data, such as the \textit{R} package \textit{data.table} \citep{dowle2020}, can also speed up computation; \textit{atlastools} is built using \textit{data.table} for this reason.
-
-    More advanced users seeking substantial speed gains might wish to look into parallel-processing, and process each subset of the data independently of the full dataset, for example by using a computing cluster \citep[see also][for an alternative]{zjdai2021}.
-    Finally, another advanced method, used by popular packages such as \textit{move} \citep{kranstauber2011} and \textit{recurse} \citep{bracis2018}, is to write one's own methods in a `fast' low-level language, such as \textit{C++}, and link these to \textit{R} \citep[][]{eddelbuettel2013}; see also \textit{adehabitatLT}, which is written partially in \textit{C} \citep{calenge2006}.
-    Beginning practitioners can organise their workflows around these packages to benefit from the features they incorporate.
-
-    \section*{Pre-processing Steps, Usage, and Simulating Data}
-
-    \subsection*{An Overview of Pre-processing Steps and \textit{atlastools}}
-
-    In the sections that follow, we lay out pre-processing techniques for raw high-throughput tracking data, and demonstrate working examples of these techniques, which we have collected in the \textit{R} package \textit{atlastools} (see Fig.~\ref{preproc_fig_02}).
-    Our package is aimed at getting `raw data' to the `analysis' stage identified by Joo et al. (2020) in their review of \textit{R} packages in movement ecology.
-    The package is based on \textit{data.table}, a fast implementation of data frames; thus it is compatible with a number of data structures from popular packages including \textit{move}, \textit{sftrack}, and \textit{ltraj} objects, which can be converted to data frames \citep[][]{kranstauber2011,boone2020,calenge2009}.
-    Our package functions are suitable for use with both regularly sampled data, as well as data with missing observations.
-
-    We cover, first, the use of simple \textit{\textbf{Spatio-Temporal Filters}} to select positions within a certain time or area.
-    Next, we show how users can \textit{\textbf{Reduce Location Errors}} by removing unreliable positions based on a system-specific error measure, or by the plausibility of associated movement metrics, such as speed and turning-angle \citep{seidel2018, calenge2009}.
-    We then show how users can tackle small-scale location errors by applying a \textit{\textbf{Median Smooth}}, and users who need uniformly sampled data, can undertake \textit{\textbf{Data Thinning}} by either aggregation or subsampling.
-    At this stage, the data are ready for a number of popular statistical treatments such as Hidden Markov Model-based classification \citep{michelot2016,langrock2012}.
-    \graffito{
-        Neither \citet{barraquand2008} nor \citet{bijleveld2016} had reproducible code --- I cannot really be sure how my implementation corresponds to theirs.
-    }
-    Finally, we show how users wishing simple, efficient segmentation-clustering of points where the animal showed prolonged residence, can classify their data into `residence patches' \citep{barraquand2008, bijleveld2016} based on the movement ecology of their study species, after filtering out travelling segments (see \textit{\textbf{System-Specific Pre-Processing Tools}}).
-
-    These pre-processing techniques and package were designed with ATLAS systems in mind, motivated to meet the rapid growth of studies using this high-throughput system worldwide: in Israel \citep{toledo2014, toledo2016, toledo2020, corl2020, vilk2021}, the UK \citep{beardsworth2021a, beardsworth2021b}, and the Netherlands \citep[][Bijleveld et al. \textit{in prep.}]{beardsworth2021}. 
-    However, the principles and functions presented here are ready for use with other massive high-resolution data collected by GPS \citep[e.g.][]{papageorgiou2019}, reverse-GPS \citep[e.g.][]{aspillaga2021} or any other high-throughput tracking system .
-    Users may construct a pre-processing pipeline comprising of all the techniques we cover, or implement the modules most suitable for their data.
-    Users are advised to visualise their data throughout their workflow, and especially to perform thorough exploratory data analysis, to check for evident location errors or other issues \citep{slingsby2016}.
-
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_02.png}
-        \caption{
-            \textbf{An example of a modular pipeline for pre-processing high-throughput tracking data from raw localisations to cleaned data, and optionally into residence patches.}
-            Users should apply the appropriate pre-processing modules and the steps therein until the data are suitable for their intended analysis, some of which are suggested here.
-            The \textit{atlastools} function that may be used to implement each pre-processing step is shown in the grey boxes underneath each step.
-            Popular statistical methods are shown underneath possible analyses (yellow boxes).
-            Users are strongly encouraged to visualise their data and scan it for location errors as they work through the pipeline, always asking the question, could the animal plausibly move this way?
-        }
-        \label{preproc_fig_02}
-    \end{figure}
-
-    \subsection*{Simulating Data to Demonstrate Pre-Processing Steps}
-
-    To demonstrate pre-processing steps, we simulated a realistic movement track of 5,000 positions using an unbiased correlated velocity model (UCVM) implemented via the \textit{R} package \textit{smoove} \citep[][see Fig.~\ref{preproc_fig_03}.a]{gurarie2017}.
-    We added four kinds of error to the simulated track: (i) normally distributed small-scale offsets to the X and Y coordinates (small-scale error), (ii) normally distributed large-scale offsets to a random subset (0.5 \%) of the positions (spikes), (iii) large-scale displacement of a continuous sequence of 300 of the 5,000 positions (prolonged spikes; indices 500 -- 800), and (iv) we removed 10\% of the canonical track to simulate missing data (see Fig.~\ref{preproc_fig_03}.a).
-    To demonstrate the residence patch method, we obtained data, in the form of 1,000 positions, from a mechanistic, individual-based simulation model, in which agents move using simple decision making rules, and can find high-productivity patches using only ephemeral cues, such as the density of prey-items and other competitors \citep{gupte2021a, netz2022}.
-    \graffito{
-        Using movement tracks from Chapter~\ref{ch:kleptomove} to demonstrate the residence patch method led to the idea of using them to investigate empirical methods generally; this then became Chapter~\ref{ch:patternprocess}.
-    }
-    The emergent, complex track structure is analogous to the foraging movements of animals, and provides a suitable challenge for the residence patch method and helps to demonstrate its generality.
-
-    \section*{Spatio-Temporal Filtering}
-
-    \subsection*{Spatial Filtering Using Bounding Boxes and Polygons}
-
-    First, users should exclude positions outside the spatial bounds of a study area by comparing position coordinates with the range of acceptable coordinates (the bounding box), and removing positions outside them (Fig.~\ref{preproc_fig_03}.a). 
-    A bounding box filter does not require a geospatial representation such as a shapefile, and can help remove unreliable data from a tracking system that is less accurate beyond a certain range \citep[][]{beardsworth2021}.
-    In some special cases, users may wish to remove positions \textit{inside} a bounding box, either because movement behaviour within an area is not the focus of a study, or because positions recorded within an area are known to be erroneous.
-    An example of the former is studies of transit behaviour between features which can be approximated by their bounding boxes. 
-    Instances of the latter are likely to be system specific, but are known from ATLAS systems. 
-    Bounding boxes are typically rectangular, and users seeking to filter for other geometries, such as a circular or irregularly-shaped study area, need a geometric intersection between their data and a spatial representation of the area of interest (e.g. shapefile, geopackage, or \textit{sf}-object in \textit{R}).
-    The \textit{atlastools} function \textit{atl\_filter\_bounds} implements both bounding box and explicit spatial filters, and accepts X and Y coordinate ranges, an \textit{sf}-polygon or multi-polygon object \citep{pebesma2018}, or any combination of the three to filter the data.
-    When both coordinate ranges and a polygon are provided, the data is first filtered by the ranges and then the polygon.
-    The boolean function argument \textit{remove\_inside} determines whether positions inside the bounds are retained (\textit{FALSE}) or removed (\textit{TRUE}).
-
-    % \begin{lst{\color{red} Listing}}[float,floatplacement=h!,language=R, style=customR, caption = {
-    %     The \textit{atl\_filter\_bounds} function filters on an area defined by coordinate ranges, a polygon, or all three; it can remove positions outside (\textit{remove\_inside = FALSE}), or within the area (\textit{remove\_inside = TRUE}).
-    %     The arguments \textit{x} and \textit{y} determine the X and Y coordinate columns, \textit{x\_range} and \textit{y\_range} are the filter bounds in a coordinate reference system in metres, and the data can be filtered by an \textit{sf-(MULTI)POLYGON}, which can be passed using the \textit{sf\_polygon} argument. 
-    %     The output is a \textit{data.table}, which must be saved as an object (here, \textit{filtered\_data}).}]
-    % filtered_data <- atl_filter_bounds(
-    %                         data = data,
-    %                         x = "X", y = "Y",
-    %                         x_range = c(x_min, x_max),
-    %                         y_range = c(y_min, y_max),
-    %                         sf_polygon = your_polygon,
-    %                         remove_inside = FALSE
-    %                     )
-    % \end{lst{\color{red} Listing}}
-
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_03.png}
-        \caption{
-            \textbf{Simulated movement data showing four kinds of artificially added errors}.
-            (i) Normally distributed small-scale error on each position, (ii) large-scale error added to 0.5\% of positions, (iii) 10\% of positions removed to simulate missing data, and (iv) 300 consecutive positions displaced to simulate a gross distortion affecting a continuous subset of the track.
-            \textbf{(a)} Tracks can be quickly filtered by spatial bounds (dashed grey lines) to exclude broad regions (green = retained; grey = removed).
-            \textbf{(b)} location error may affect single observations resulting in point outliers or `spikes' (red crosses and track segments), or continuous subsets of a track, called a `prolonged spike' (purple circles, top right), and both represent unrealistic movement.
-            \textbf{(c)} Histograms of speed for the track (grey = small-scale errors, red = spikes), and the prolonged spike (purple) show that while spikes could be removed by filtering out positions with both high incoming and outgoing speeds and turning angles, prolonged spikes cannot be removed in this way, and should be resolved by conceptualising algorithms that find the bounds of the distortion instead.
-            Users should frequently check the outputs of such algorithms to avoid rejecting valid data.
-        }
-        \label{preproc_fig_03}
-    \end{figure}
-
-    \subsection*{Temporal and Spatio-temporal Filters}
-
-    Tracking data might fail to properly represent an animal's movement at certain times, for instance, data recorded before release, or data from shortly after release when the animal is still influenced by the stress of capture and handling.
-    Periods of poor tracking quality may result from system malfunctions and unusual disturbances, and users may wish to exclude these data as well.
-    Temporal filtering can exclude positions from intervals when data are expected to be unreliable for ecological inference, either due to abnormal movement behaviour or system-specific issues.  
-    Temporal filters can be combined with spatial filters to select specific time-location combinations. 
-    For example, studies of foraging behaviour of a nocturnal animal would typically exclude tracking data from the animal's daytime roosts (see \textit{Worked Out Example}).
-    Users should apply filters in sequence rather than all at once, and visualise the output after each filtering step (`sanity checks'; see Supplementary Material Section 2).
-    The atlastools function \textit{atl\_filter\_covariates} allows convenient filtering of a dataset by any number of logical statements, including querying data within a spatio-temporal range.
-    % This function can be used to easily filter timestamps in a range, as well as combine simple spatial and temporal filters.
-    % It accepts a character vector of \textit{R} expressions that each return a logical vector (i.e., \textit{TRUE} or \textit{FALSE}; {\color{red} Listing} 2).
-    The function keeps only those data which satisfy each of the filter conditions, and users must ensure that the filtering variables exist in their dataset in order to avoid errors.
-
-    % \begin{lst{\color{red} Listing}}[float, language=R, style=customR, caption = {
-    %     Data can be filtered by a temporal or a spatio-temporal range using \textit{atl\_filter\_covariates}. 
-    %     Filter conditions are passed to the \textit{filters} argument as a character vector. 
-    %     Only rows in the data satisfying \textit{all} the conditions are retained. 
-    %     Here, the first example shows how nighttime data can be retained using a predicate that determines whether the value of `hour' is between 6 and 18, and also within a range of X coordinates.
-    %     The second example retains ATLAS locations calculated using $>$ 3 base stations (\textit{NBS}), with location error (\textit{SD}) $<$ 100, and data between an arbitrary day 5 and day 8.
-    %     }]
-    % night_data <- atl_filter_covariates(
-    %                     data = dataset,
-    %                     filters = c(
-    %                         "!inrange(hour, 6, 18)",
-    %                         "between(x, x_min, x_max)"
-    %                     )
-    %                 )
-
-    % filtered_data <- atl_filter_covariates(
-    %                         data = data,
-    %                         filters = c(
-    %                             "NBS > 3",
-    %                             "SD < 100",
-    %                             "between(day, 5, 8)"
-    %                         )
-    %                     )                            
-    % \end{lst{\color{red} Listing}}
-
-    \section*{Filtering to Reduce Location Errors}
-
-    \subsection*{Filtering on Data Quality Attributes}
-
-    Tracking data attributes can be good indicators of the reliability of positions calculated by a tracking system \citep{beardsworth2021}.
-    \graffito{
-        I wasn't fully convinced that ATLAS systems solve for X and Y coordinates independently. The assumption of independence underlies the formula for `SD' --- but \citet{weiser2016} does not make it perfectly clear whether it is correct.
-    }
-    GPS systems provide direct measures of location error during localisation \citep[Horizontal Dilution of Precision, HDOP in GPS]{ranacher2016}, while  in reverse-GPS systems, a measure referred to as Standard Deviation (SD in many datasets), can be calculated from the variance-covariance matrix of each position as: $\text{SD} = \sqrt{\text{Var X} + \text{Var Y} + \text{Cov XY}}$ \citep[see details in][]{maccurdy2009, maccurdy2019, weiser2016, ranacher2016}.
-    Tracking data can also include indirect indicators of data quality.
-    For instance, GPS systems' location error may be indicated indirectly by the number of satellites involved in the localisation.
-    In reverse-GPS systems too, the number of base stations involved in each localisation is an indirect indicator of data quality, and positions localised using more receivers are usually more reliable \citep[the minimum required for an ATLAS localisation is 3; see][]{weiser2016, beardsworth2021}.
-    % A location error measure associated with each coordinate pair (similar to GPS HDOP) can be calculated and assigned to a new column \textit{SD} using the formula for the sum of correlated random variables
-    % \begin{linenomath*}
-    %     \begin{equation*}
-    %         SD = \sqrt{{VARX} + {VARY} + 2 \times {COVXY}}
-    %      \end{equation*}
-    % \end{linenomath*}
-    Unreliable positions can be removed by filtering on direct or indirect measures of quality using \textit{atl\_filter\_covariates}.
-    While filtering on direct quality attributes and unrealistic movement speeds (see below) will often be sufficient, filtering on indirect quality indicators is a strategy to consider when direct error measures are not available.
-
-    \subsection*{Filtering Unrealistic Movement}
-
-    Filtering on system-generated attributes may not remove all erroneous positions, and the remaining data may still include biologically implausible movement.
-    Users are encouraged to visualise their tracks before and after filtering point locations, and especially to `join the dots' and connect consecutive positions with lines (Fig.~\ref{preproc_fig_03}.b).
-    Whether the resulting track looks realistic is ultimately a subjective human judgement, but any decision to filter-out data must remain independent of the hypothesised movement behavior.
-    This basic principle does not preclude explicitly integrating prior knowledge of the movement ecology of the study species to ask, `Does the animal move this way?'.
-    \graffito{
-        \citeauthor{bjorneraas2010}'s 2010 paper is surprisingly not as well known as it should be.
-    }
-    Segments which appear to represent unrealistic animal movement are often obvious to researchers with extensive experience of the study system \citep[the non-movement approach; see][]{bjorneraas2010}.
-    Since it is both difficult and prohibitively time consuming to exactly reproduce expert judgement when dealing with large volumes of tracking data from multiple individuals, some automation is necessary.
-    Users should first manually examine a representative subset of tracks and attempt to visually identify problems --- either with individual positions, or with subsets of the track --- that persist after filtering on system-generated attributes.
-    Once such problems are identified, users can conceptualise algorithms that can be applied to their data to resolve them.
-
-    A common example of a problem with individual positions is that of point outliers or `spikes' \citep{bjorneraas2010}, where a single position is displaced far from the track (see Fig.~\ref{preproc_fig_03}.b).
-    Point outliers are characterised by artificially high speeds between the outlier and the positions before and after \citep[called incoming and outgoing speed, respectively;][]{bjorneraas2010}, lending a `spiky' appearance to the track.
-    Removing spikes is simple: remove positions with extreme incoming and outgoing speeds.
-    Users must first define plausible upper limits of the study species' speed \citep{calenge2009, seidel2018}.
-    Here, it is important to remember that speed estimates are scale-dependent; high-throughput tracking typically overestimates the speed between positions where the animal is stationary or moving slowly, due to small-scale location errors \citep{ranacher2016, noonan2019}. 
-    Even after data with large location errors have been removed, it is advisable to begin with a liberal (high) speed threshold that excludes only the most unlikely speeds.
-    Estimates of maximum speed may not always be readily obtained for all species, and an alternative is to use a data-driven threshold such as the 90\textsuperscript{th} percentile of speeds from the track.
-    Once a speed threshold $S$ has been chosen, positions with incoming \textit{and} outgoing speeds $> S$ may be identified as spikes and removed.
-
-    Some species can realistically achieve speeds $> S$ in fast transit segments when assisted by their environment, such as birds with tailwinds, and a simple filter on incoming and outgoing speeds would exclude this valid data.
-    To avoid removing valid, fast transit segments while still excluding spikes, the speed filter can be combined with a filter on the turning angles of each position \citep[see][]{bjorneraas2010, calenge2009}.
-    This combined filter assumes that positions in high-throughput tracking with both high speeds and large turning angles are likely to be due to location errors, since most species are unable to turn sharply at very high speed.
-    Users can then remove those positions whose incoming and outgoing speeds are both $> S$, and where $\theta > A$ (sharp, high-speed turns), where $\theta$ is the turning angle, and $A$ is the turning angle threshold.
-    Many other track metrics may be used to identify implausible movement and to filter data \citep{seidel2018}.
-    At this early stage in pre-processing, track metrics should be considered provisional --- it is not until after smoothing and potentially resampling to a regular interval (see below), that calculated track metrics should be used for ecological inference.
-    % We show an implementation of spike removal using the \textit{atl\_filter\_covariates} function.
-
-    % \begin{lst{\color{red} Listing}}[float, language=R, style=customR, caption = {
-    %     Filtering a movement track on incoming and outgoing speeds, and on turning angle to remove unrealistic movement.
-    %     The functions \textit{atl\_get\_speed} and \textit{atl\_turning\_angle} are used to get the speeds and turning angles before filtering, and assigned to a column in the data (assignment of \textit{speed\_out} is not shown).
-    %     The filter step only retains positions with speeds below the speed threshold $S$ \textit{or} angles above the turning angle threshold $\theta$, i.e., positions where the animal is slow but makes sharp turns, and data where the animal moves quickly in a relatively straight line.}]
-    % data$speed_in <- atl_get_speed(
-    %                     data,
-    %                     x = "x", y = "y",
-    %                     time = "time", 
-    %                     type = c("in")
-    %                 )
-
-    % data$angle <- atl_turning_angle(
-    %                     data,
-    %                     x = "x", y = "y", 
-    %                     time = "time"
-    %                 )
-
-    % filtered_data <- atl_filter_covariates(
-    %                     data = data,
-    %                     filters = c(
-    %                         "(speed_in < S & speed_out < S) | angle < A"
-    %                     )
-    %                 )
-    % \end{lst{\color{red} Listing}}
-    \graffito{
-        This issue was especially evident in WATLAS tracking data from 2018. ATLAS positioning errors are an interesting combination of failures of the physical tracking device, as well as failures of the maximum likelihood localisation algorithm.
-    }
-    Sometimes, entire subsets of the track may be affected by the same large-scale location error.
-    For instance, multiple consecutive positions may be roughly translated (geometrically) away from the real track and form `prolonged spikes', or `reflections' (see Fig.~\ref{preproc_fig_03}.b).
-    These cannot be corrected by targeted removal of individual positions, as in Bjørneraas et al.'s approach (2010), since there are no positions with both high incoming and outgoing speeds, as well as sharp turning angles, that characterise spikes.
-    Since filtering individual positions will not suffice, algorithms to correct such errors must take a track-level view, and target the displaced sequence overall.
-    Track-subset algorithms are likely to be system-specific, and may be challenging to conceptualise or implement.
-    In the case of prolonged spikes, one relatively simple solution is identifying the bounds of displaced segments, and removing positions between them.
-    This identification can be based on relatively simple rules --- for example, the beginning of a prolonged spike could be identified as a position with a high \textit{incoming} speed, but a low \textit{outgoing} speed, while the end of such a spike would have a low incoming, but a high outgoing speed.
-    We have implemented an illustrative example of such an algorithm in the form of track-subset filtering for prolonged spikes using the \textit{atlastools} function \textit{atl\_remove\_reflections} (see the \textit{atlastools} documentation for details on the algorithm).
-    Users are strongly encouraged to visualise their data before and after applying such algorithms; as these methods are not foolproof, and data that are heavily distorted by errors affecting entire track-subsets should be used with care when making further inferences.
-
-    % % \begin{lst{\color{red} Listing}}[float, language=R, style=customR, caption = {
-    % %     Removing unrealistic movement in the form of prolonged spikes from a movement track. 
-    % %     The important function arguments here are \textit{point\_angle\_cutoff} ($A$), \textit{reflection\_speed\_cutoff} ($S$), and \textit{est\_ref\_len}, the maximum number of positions after the inner bound that are candidates for the end of the prolonged spike, i.e., the outer bound. 
-    % %     If the prolonged spike ends after less than $N$ positions, the true end point is used as the outer bound of the spike.
-    % %     However, the algorithm behind this function fails when the prolonged spike ends after more than $N$ positions. 
-    % %     Users are advised to use a liberally large value of N in the \textit{est\_ref\_len} argument; 1,000 may be appropriate for 3s interval data.
-    % %     Further, users are cautioned against relying on such algorithms for severely distorted data.}]
-    % % filtered_data <- atl_remove_reflections(data = track_data,
-    % %                        x = "x", y = "y", time = "time",
-    % %                        point_angle_cutoff = A,
-    % %                        reflection_speed_cutoff = S,
-    % %                        est_ref_len = N)
-    % % \end{lst{\color{red} Listing}}
-
-    \section*{Smoothing and Thinning Data}
-
-    \subsection*{Median Smoothing}
-
-    After filtering out large location errors, the track may still look `spiky' at small scales, and this is due to smaller location errors that are especially noticeable when the individual is stationary or moving slowly \citep{noonan2019}.
-    These smaller errors are challenging to remove since their attributes (such as speed and turning angles) are within the expected range of movement behaviour for the study species. 
-    The large data volumes of high-throughput tracking allow users to resolve this problem by smoothing the positions. 
-    The most basic `smooths' work by approximating the value of an observation based on neighbouring values.
-    For a one-dimensional series of observations, the neighbouring values are the $K$ observations centred on each index value $i$.
-    The range ${i - (K-1)/2} \ldots {i + (K-1)/2}$ is referred to as the moving window as it shifts with $i$, and $K$ is the moving window size.
-    A common smooth is nearest neighbour averaging, in which the value of an observation $x_i$ is the average of the moving window $K$.
-    The median smooth is a variant of nearest neighbour averaging which uses the median rather than the mean, and is more robust to outliers (\citeauthor{tukey1977} 1977).
-    The median smoothed value of the X coordinate, for instance, is
-    %
-    % \begin{linenomath*}
-        % \begin{equation*}
-        $$
-            X_i = \text{Median}(X_{i - (K-1)/2} \ldots X_{i + (K-1)/2}).
-        $$
-            % \end{equation*}
-    % \end{linenomath*}
-    \graffito{
-        Median smoothing is a classic method \citep{tukey1977}, that has found applications across fields, including for example, recovering corrupted digital images.
-    }
-    Users can apply a median smooth with an appropriate $K$ independently to the X and Y coordinates of a movement track to smooth it (see Fig.~\ref{preproc_fig_04}.a -- e).
-    The median smooth is robust to even very large temporal and spatial gaps, and does not interpolate between positions when data are missing. 
-    Thus it is not necessary to split the data into segments separated by periods of missing observations when applying the filter (see Fig.~\ref{preproc_fig_04}).
-
-    Some data sources, such as GPS, provide tracks that have already been smoothed in quite sophisticated ways, such as with a Kalman filter, making a median smooth unnecessary \citep{kaplan2005}.
-    Furthermore, smoothing is not a panacea for data quality issues, and has its drawbacks.
-    Smoothing does not change the number of observations, but does decouple the coordinates from some of their attributes.
-    For instance, smoothing breaks the relationship between a coordinate and the location error estimate around it (VARX, VARY, and SD in ATLAS systems).
-    Since the X and Y coordinates are smoothed independently, the smoothed coordinates of an observation will likely differ from all the coordinates used to compute the smoothed value.
-    Any position covariates (e.g. environmental values such as landcover or elevation) obtained before smoothing should be replaced with the covariates obtained at the smoothed coordinates.
-    Similarly, instantaneous track metrics, such as speed and turning angle, should also be updated at this stage to reflect the smoothed coordinates.
-    Furthermore, the location error estimate around each coordinate, and around the localisation overall, become invalid and should be ignored.
-    This makes subsequent filtering on measures of data quality unreliable, and smoothed data are unsuitable for use with methods that model location uncertainty \citep{noonan2019, fleming2014, fleming2020, calabrese2016}.
-    Thus, when applying location error modelling methods, users should ensure that the error measure bears a mechanistic relationship with the location estimate \citep[see][ for more details]{fleming2020, noonan2019}.
-    Additionally, excessively large $K$ may result in a loss in detail of the individual's small-scale movement (compare Fig.~\ref{preproc_fig_04}.e with ~\ref{preproc_fig_04}.a).
-    Users must themselves judge how best to balance large-scale and small-scale accuracy, and choose $K$ accordingly.
-    Median smoothing is provided by the \textit{atlastools} function \textit{atl\_median\_smooth}, with the only option being the moving window size, which must be an odd integer.
-
-    % \begin{lst{\color{red} Listing}}[float, language=R, style=customR, caption = {
-    %     Median smoothing a movement track using the function \textit{atl\_median\_smooth} function with a moving window \textit{K = 5}. 
-    %     Larger values of $K$ yield smoother tracks, but $K$ should always be some orders of magnitude lower than the number of observations.}]
-    % atl_median_smooth(
-    %     data = track_data,
-    %     x = "x", y = "y",
-    %     time = "time",
-    %     moving_window = 5
-    % )
-    % \end{lst{\color{red} Listing}}
-
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_04.png}
-        \caption{
-            \textbf{Median smoothing position coordinates reduces small-scale location error in tracking data.}
-            The goal of this step is to approximate the simulated canonical track (black line, \textbf{(a)}), given positions with small-scale error that remains after filtering in previous steps (green points).
-            \textbf{(b)} Median smoothing the position coordinates (green points, in \textbf{(a)}) over a moving window ($K$) of 21 positions gives a good approximation (blue line) of the canonical track, and is a significant improvement on the unsmoothed track (grey lines and points).
-            While $K$ should usually be at least two orders of magnitude less than the number of positions in the track, users are cautioned that there is no correct $K$, and they must subjectively choose a $K$ which most usefully trades small-scale details of the track for large-scale accuracy.
-            Here, smoothing with a $K$ of \textbf{(c)} 5 (dark grey line) and \textbf{(d)} 11 (blue line), leads to a jagged track, compared to the true path in (a), and the distance moved by the animal would be overestimated.
-            \textbf{(e)} Using extremely large values of $K$ (101) may lead to a loss of both large and small scale detail (red line).
-            Across panels, grey lines and points show the track without smoothing.
-        }
-        \label{preproc_fig_04}
-    \end{figure}
-
-    \subsection*{Thinning Movement Tracks}
-
-    Most data at this stage are technically ‘clean', yet the volume alone may pose challenges for lower-specification or older hardware and software if these are not optimised for efficient computation.
-    Thinning data i.e., reducing their volume, need not compromise researchers' ability to answer ecological questions; for instance, proximity-based social interactions lasting 1 -- 2 minutes would still be detected on thinning from a sampling interval of 1 second to 1 minute \citep[][]{aspillaga2021a}.
-    Thinning data also does not imply that efforts to collect high-throughput movement data are ‘wasted', as rich movement datasets enable more detailed and more accurate representation of the true track, as elaborated above. 
-    Indeed, some analyses require that temporal auto-correlation in the data be broken by subsampling the data to a lower resolution; these include traditional kernel density estimators for animal home-range, as well as resource selection functions \citep{fleming2014,manly2007,dupke2017}.
-    Furthermore, a number of powerful methods in movement ecology, including Hidden Markov Models and integrated Step-Selection Analysis recommend uniform sampling intervals \citep{avgar2016,langrock2012,michelot2016}.
-    Finally, subsampling data may be an important strategy in exploratory data analysis; for instance, it allows researchers to determine whether computationally intensive methods, such as distance and speed estimates from continuous time movement model fitting, are required for their data, or whether the movement metrics stabilise at a certain time scale \citep[][]{noonan2019}.
-    Two plausible approaches here are subsampling and aggregation, and both approaches begin with identifying time-interval groups (e.g. of 1 minute).
-    Subsampling picks one position from each time-interval group while aggregation involves computing the mean or median of all system-generated attributes for positions within a time-interval group.
-    Here again, users should repeat the extraction of any environmental covariates for the thinned data, and may wish to obtain the mean values in a radius aroung the locations, rather than point estimates alone.
-    Both approaches yield one position per time-interval group (Fig.~\ref{preproc_fig_05}.a).
-    Categorical variables, such as the habitat type associated with each position, can be aggregated using a suitable measure such as the mode.
-    We caution users that thinning causes an extensive loss of small-scale detail in the data, and should be used carefully.
-
-    Both aggregation and subsampling have their relative advantages. 
-    The aggregation method is less sensitive to selecting point outliers by chance than subsampling.
-    However, to account for location error with methods such as state-space models \citep{jonsen2003, jonsen2005, johnson2008} or continuous time movement models \citep{fleming2014, noonan2019, gurarie2017, calabrese2016, fleming2020}, correctly propagating the location error is important, and subsampling directly propagates these errors without further processing.
-    In reverse-GPS systems systems the location error is calculated from the variance-covariance matrix of the coordinates of candidate positions considered by the location solver \citep{weiser2016}; this is equivalent to GPS systems' HDOP \citep{ranacher2016}.
-    In the aggregation method, the location error around each coordinate provided by either GPS or reverse-GPS systems can be propagated --- assuming the errors are normally distributed --- to the averaged position as the sum of errors divided by the square of the number of observations contributing to each average ($N$):
-    % \begin{linenomath*}
-        $$
-            \text{Var}(X)_\text{agg} = \left( \sum_{i=1}^{i=N} \text{Var}(X)_i \right) / N ^ 2
-        $$
-    % \end{linenomath*}
-    Similarly, the overall location error estimate for the average of $N$ positions in a time-interval can be calculated by treating it as a variance. For instance, the ATLAS error and GPS error measures (SD and HDOP, respectively) can be aggregated as:
-    % \begin{linenomath*}
-        $$
-            \text{SD}_\text{agg} \ or \ \text{HDOP}_\text{agg} = \sqrt{ \left( \sum_{i=1}^{i=N} \text{SD}_i^2 \ or \ \text{HDOP}_i^2 \right) / N ^ 2  }
-        $$
-    % \end{linenomath*}
-
-    Users may question why thinning, which can obtain consensus positions over an interval and also reduce data-volumes should not be used directly on the raw data.
-    %%
-    We caution that thinning prior to excluding unrealistic movement and smoothing (Fig 5.b) can lead to preserving artefacts in the data, and estimates of essential metrics --- such as straight-line displacement (and hence, speed) --- that are substantially different from the true value \citep[see Fig.~\ref{preproc_fig_05}.c;][]{noonan2019}.
-    In our example, the data with errors would have to be thinned to $\frac{1}{30}$\textsuperscript{th} of its volume for the median speed of the thinned data to be comparable with the overall median speed --- this is an undesirable step if the aim is fine-scale tracking.
-    Additionally, the optimal level of thinning can be difficult to determine, especially if there is wide individual variation in movement behaviour, and the mis-estimation of track metrics from inappropriately thinned data could have consequences for the implementation of subsequent filters based on detecting unrealistic movement.
-    However, thinning before data-cleaning has its place as a useful step before exploratory visualisation of the movement track, since reduced data-volumes are easier to handle for plotting software.
-    %
-    Thinning is implemented in \textit{atlastools} using the \textit{atl\_thin\_data} function, with either aggregation or subsampling (specified by the \textit{method} argument) over an interval using the \textit{interval} argument.
-    Grouping variable names (such as animal identity) may be passed as a character vector to the \textit{id\_columns} argument.
-
-    % \begin{lst{\color{red} Listing}}[float, language=R, style=customR, caption = {Code to thin data by aggregation in \textit{atlastools}. The method can be either "aggregate" or "subsample". 
-    % The time interval is specified in seconds, while the \textit{id\_columns} allows a character vector of column names to be passed to the function, with these columns used as identity variables.
-    % Both methods return a dataset with one rows per time-interval.}]
-    % thinned_data <- atl_thin_data(
-    %                     data,
-    %                     interval = 60,
-    %                     id_columns = c("animal_id"),
-    %                     method = "aggregate"
-    %                 )
-    % \end{lst{\color{red} Listing}}
-
-    % % figure for aggregation thinning
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_05.png}
-        \caption{
-            \textbf{Thinning tracking data can aid computation but must be approached carefully}.
-            Aggregating a filtered and smoothed movement track \textbf{(a)} preserves track structure while reducing data-volume, but \textbf{(b)} aggregating before filtering gross location errors and unrealistic movement leads to the persistence of large-scale errors (such as prolonged spikes).
-            \textbf{(c)} Thinning before data cleaning can lead to significant misestimations of essential movement metrics such as speed at lower intervals.
-            Boxplots show the median and interquartile ranges for speed estimates of tracks aggregated over intervals of 3, 10, 30, and 120 seconds.
-            For comparison, the median and 95\textsuperscript{th} percentile of speed of the canonical track are shown as solid and dashed horizontal lines, respectively.
-            % The unfiltered data would have to be thinned to \sfrac{1}{30}\textsuperscript{th} volume to correctly estimate median speed.
-        }
-        \label{preproc_fig_05}
-    \end{figure}
-
-    \section*{System-Specific Pre-processing Tools}
-
-    When researchers' pre-processing requirements exceed the functionalities of existing tools, they might have to conceptualise and implement their own methods.
-    For instance, an important and common analysis with animal tracking data is to link space use with environmental covariates.
-    This is difficult even with smoothed and thinned high-throughput data, as these may be too large for statistical packages, or have strong autocorrelation.
-    Users aiming for such analyses can benefit from segmenting and clustering the data into spatio-temporally independent bouts of different behavioural modes \citep{patin2020a}.
-    Treating these as the unit of observation also conveniently sidesteps pseudo-replication and reduces computational requirements.
-    While numerous methods of segmenting and clustering data are in use, they may not be scalable to very large or gappy datasets \citep{patin2020a, langrock2012, michelot2016}.
-    \graffito{
-        I actually came up with the residence patch method because Lavielle segmentation \citep{lavielle2005} and `segclust2d' \citep{patin2020a} just did not seem to be working on WATLAS data.
-    }
-    As an alternative, a first-principles approach that segments data based on the movement capacity (top speed, etc.) of tracked animals, could provide a fast, yet useful way to cluster data.
-    Here, as a working example that may be suitable for some systems, we present a simple segmentation-clustering algorithm to make `residence patches', identified as bouts of relatively stationary behaviour \citep[][]{barraquand2008,bijleveld2016,oudman2018}.
-    Details of the implementation may be found in the package code, and examples are provided in the Supplementary Material.
-
-    \subsection*{Conceptualising a Simple Segmentation-Clustering Algorithm: The Residence-Patch Example}
-
-    Before implementing the algorithm, users should identify positions where the animal is relatively stationary, for instance on its speed or first-passage time \citep{bracis2018,barraquand2008}.
-    Our suggested algorithm begins by assessing whether consecutive stationary positions are spatio-temporally independent, and clusters them together into a residence patch if they are not.
-    This clustering could be based on a simple proximity threshold --- points farther apart than some threshold distance are likely to represent two different residence patches.
-    In cases where animals visit multiple sites in sequence \citep[such as traplining:][]{thomson1997}, and which researchers might wish to consider as a single residence patch, a larger-scale distance threshold can help cluster nearby residence patches together, and this can also be applied to cluster together patches artificially separated due to missing data.
-    Our algorithm separates two observations at a similar location, but at two very different time points, by comparing the intervening time-lag against a time-difference threshold, which can also apply to patches that would otherwise be clustered by the large-scale distance threshold.
-    Users are encouraged to base these thresholds on the movement habits of their study species (see the \textit{Worked Out Example}).
-
-    We have implemented a working example of the simple clustering concept presented here as the function \textit{atl\_res\_patch} (see Fig.~\ref{preproc_fig_06}.b), which requires three parameters: (i) the distance threshold between positions (called \textit{buffer\_size}), (ii) the large-scale distance threshold between clusters of positions (called \textit{lim\_spat\_indep}), and (iii) the time-difference threshold between clusters (called \textit{lim\_time\_indep}).
-    Clusters formed of fewer than a minimum number of positions can be excluded.
-    Our algorithm performs well when movement modes are clearly separated, and is capable of correctly separating positions that are close together in space and time, but which comprise different behavioural sequences (see Fig.~\ref{preproc_fig_06}).
-    While the algorithm may not cover all possible use-cases and study species, we provide it here as an example of a user-built exploratory method for animal tracking data.
-    It is important to systematically test such custom-made algorithms, to ensure reproducibility and reliability \citep{wickham2015, marwick2018}.
-    Simple examples of such tests for the residence patch method and other functions in \textit{atlastools} may be found in the \textit{tests/} directory in the associated Github repository.
-
-    % \begin{lst{\color{red} Listing}}[float, language=R, style=customR, caption ={The \textit{atl\_res\_patch} function can be used to classify a track into residence patches. The arguments \textit{buffer\_radius} and \textit{lim\_spat\_indep} are specified in metres, while the \textit{lim\_time\_indep} is provided in minutes. In this example, specifying \textit{summary\_variables = c("speed")}, and \textit{summary\_functions = c("mean", "sd")} will provide the mean and standard deviation of instantaneous speed in each residence patch. The \textit{atl\_patch\_summary} function is used to access the classified patch in one of three ways, here using the \textit{summary} option which returns a table of patch-wise summary statistics.}]
-    % patches <- atl_res_patch(
-    %                 data = track_data,
-    %                 buffer_radius = 10,
-    %                 lim_spat_indep = 100,
-    %                 lim_time_indep = 30,
-    %                 min_fixes = 3,
-    %                 summary_variables = c("speed"),
-    %                 summary_functions = c("mean", "sd")
-    %             )
-    % \end{lst{\color{red} Listing}}
-
-    % % patch_summary <- atl_patch_summary(
-    % %                     patch_data = patches,
-    % %                     which_data = "summary",
-    % %                     buffer_radius = 10
-    % %                 )
-
-    % % first residence patch figure
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_06.png}
-        \caption{
-            \textbf{Movement tracks can be classified into residence patches, while leaving out the transit between them.}
-            \textbf{(a)} A simulated animal movement track from \citealt{gupte2021a}, where an agent uses local cues to make movement decisions to maximise intake.
-            The agent tends to stop (solid circles) on high-productivity areas of the landscape, as these are more likely to generate prey-items.
-            Transit points between stationary phases are shown as crosses.
-            \textbf{(b)} Our simple, first-principles based clustering algorithm classifies the track into five residence patches. 
-            Some transit points are erroneously classified as being part of a residence patch (top, yellow), illustrating why is it important to remove such data before applying this method.
-            Simultaneously, some points where the animal is not stationary for long are not picked up by the method.
-            While the large purple patch (bottom) is composed almost entirely of consecutive positions, the subsequent patches are composed of multiple parts.
-            This is because our method was designed to be robust to missing data from empirical tracks; the spatial and temporal limits of splitting and lumping can be controlled using the arguments passed to \textit{atl\_res\_patch}, and can be adjusted to fit the study system.
-            Users are cautioned that there are no `correct' options, and the best guide is the behavioural biology of the tracked individual.
-        }
-        \label{preproc_fig_06}
-    \end{figure}
-
-    \subsection*{A Real-World Test of User-Built Pre-Processing Tools}
-
-    We applied the pre-processing pipeline using \textit{atlastools} functions described above to an ATLAS dataset to verify that the residence patch method could correctly identify known stopping points (see Fig.~\ref{preproc_fig_07}).
-    We collected the data (n = 50,816) on foot and by boat, with a hand-held WATLAS tag (sampling interval = 1s) around the island of Griend (53.25$^{\circ}$N, 5.25$^{\circ}$E) in August 2020 \citep[WATLAS: Wadden Sea ATLAS system][Bijleveld et al. \textit{in prep.}]{beardsworth2021}.
-    Since the data were intended to test the accuracy of the WATLAS system, we were able to log stops in the track as waypoints using a handheld GPS device, and manually annotate the WATLAS data with the timestamp of each waypoint (Garmin Dakota 10; see \citealt{beardsworth2021}).
-    We estimated the real duration of each stop as the time difference between the first and last position recorded within 50m of each waypoint, within a 10 minute window before and after the waypoint timestamp (to avoid biased durations from revisits).
-    Stops had a median duration of 10.28 minutes (range: 1.75 minutes -- 20 minutes; see Supplementary Material).
-    We cleaned the data before constructing residence patches by (i) removing a single outlier ($>$ 15 km away), removing unrealistic movement ($\geq$ 15 m/s), smoothing the data ($K$ = 5), and (iv) thinning the data by subsampling over a 30 second interval.
-    The cleaning steps retained 37,324 positions (74.45\%), while thinning reduced these to 1,803 positions (4.8\% positions of the smoothed track).
-    Details and code are provided in the Supplementary Material (see \textit{Validating the Residence Patch Method with Calibration Data}).
-
-    We began by visualising the data to check for location errors, and found a single outlier position approx. 15km away from the study area (Fig.~\ref{preproc_fig_07}.a).
-    This outlier was removed by filtering data by the X coordinate bounds using the function \textit{atl\_filter\_bounds}; X coordinate bounds $\leq$ 645,000 in the UTM 31N coordinate reference system were removed (n = 1; remaining positions = 50,815).
-    We then calculated the incoming and outgoing speed, as well as the turning angle at each position using the functions \textit{atl\_get\_speed} and \textit{atl\_turning\_angle} respectively, as a precursor to targeting large-scale location errors in the form of point outliers.
-    We used the function \textit{atl\_filter\_covariates} to remove positions with incoming and outgoing speeds $\geq$ the speed threshold of 15 m/s (n = 13,491, 26.5\%; remaining positions = 37,324, 73.5\%; Fig.~\ref{preproc_fig_07}.b).
-    This speed threshold was chosen as 5 m/s faster than the known boat speed, 10 m/s.
-    Finally, we targeted small-scale location errors by applying a median smooth with a moving window size $K$ = 5 using the function \textit{atl\_median\_smooth} (Fig.~\ref{preproc_fig_07}.c).
-    This step does not reduce the number of positions.
-
-    \graffito{
-        The residence patch method obviously works best when there are clear speed differences between stationary and travelling positions.
-    }
-    We identified stationary positions as those where the median smoothed speed ($K$ = 5) was $<$ 2m/s, as people or a boat moving any faster are likely to be in transit.
-    We clustered these positions into residence patches with a buffer radius of 5m, spatial independence limit of 50m, temporal independence limit of 5 minutes, and a minimum of 3 positions per patch.
-    Inferred residence patches corresponded well to the locations of stops (see Fig.~\ref{preproc_fig_07}.c).
-    However, the residence patch algorithm detected seven more stops (n = 28) than there were waypoints (n waypoints = 21).
-    One of these was the field station on Griend where the tag was stored between trips (red triangle, Fig.~\ref{preproc_fig_07}.c), while another patch was formed of positions recorded while waiting for the boat; such unintended stops, not recorded as waypoints, likely accounted for the remaining five `extra' residence patches.
-    Our analysis also did not detect two stops of 105 and 563 seconds (1.75 and 9.4 minutes) since they were data poor and were cleaned away during pre-processing (n positions = 6, 15), highlighting that the quality of the raw data (as in the rest of the track) is still a limiting factor on the inferences that are possible after pre-processing.
-    To determine whether the residence patch method correctly identified the duration of detected stops in the calibration track, we first extracted the patch attributes using the function \textit{atl\_patch\_summary}.
-    We then matched the patches to the waypoints by their median coordinates (rounded to 100 metres).
-    We assigned the inferred duration of the stop as the duration of the spatially matched residence patch.
-    We compared the inferred duration with the real duration using a linear model with the inferred duration as the only predictor of the real duration.
-    % We excluded a single waypoint (WP080) since we had accidentally stopped there for $>$ 60 minutes.
-    Inferred duration was a good predictor of the real duration of a stop (linear model estimate = 1.021, t-value = 12.965, $p <$ 0.0001, $R^2$ = 0.908; see Supplementary Material Fig.~\ref{preproc_fig_01}.7).
-    This translates to a 2\% underestimation of the stop duration at a tracking interval of 30 seconds.
-    Finally, any classification algorithm will present users with a trade-off between over-sensitivity (erroneously finding stops where there were none), and under-sensitivity (missing stops where they are not local or long enough) --- users should balance between these based on the broader questions sought to be answered.
-
-    % % calibration figure
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_07.png}
-        \caption{
-            \textbf{Pre-processing steps for WATLAS calibration data showing filtering on speed, median smoothing and thinning by aggregation, and making residence patches.}
-            \textbf{(a)} Positions with incoming and outgoing speed $>$ 15 m/s are removed (grey crosses = removed, green points = retained).
-            \textbf{(b)} Raw data (grey crosses), median smoothed positions (green circles; moving window $K$ = 5), and the smoothed track thinned by aggregation to a 30 second interval (purple squares).
-            Square size corresponds to the number of positions used to calculate the averaged position during thinning.
-            \textbf{(c)} Clustering thinned data into residence patches (green polygons) yields robust estimates of the location of known stops (purple triangles).
-            The algorithm identified all areas with prolonged residence, including those which we had not intended to be recorded, such as stops at the field station (n = 12; red triangle).
-            Our analysis could not find two stops of 105 and 563 seconds duration (6 and 15 fixes, respectively), since these were lost in the data thinning step; one of these is shown here (purple triangle without green polygon).
-        }
-        \label{preproc_fig_07}
-    \end{figure}
-
-    \section*{A Worked-Out Example on Animal Tracking Data}
-
-    We present a fully worked-out example of our pre-processing pipeline and residence patch method using movement data from three Egyptian fruit bats (\textit{Rousettus aegyptiacus}) tracked using the ATLAS system in the Hula Valley, Israel (33.1$^{\circ}$N, 35.6$^{\circ}$E) (\citealt{toledo2020, lourie2021}).
-    Code and data can be found in the Supplementary Material and Zenodo repository (see \textit{Processing Egyptian Fruit Bat Tracks}). 
-    Data selected for this example were collected over three nights (5\textsuperscript{th} -- 7\textsuperscript{th} May, 2018), with an average of 13,370 positions (SD = 2,173; range = 11,195 -- 15,542; interval = 8 seconds) per individual.
-    Plotting the tracks revealed potential location errors (see Fig.~\ref{preproc_fig_01}, see also Supplementary Material Fig.2.1), which we filtered out by removing observations with ATLAS SD $>$ 20 (see Supplementary Material Section 2.5), as well as removing observations calculated using fewer than four base stations, altogether trimming 22\% of the raw data (mean positions remaining = 10,447 per individual).
-    % We converted the ATLAS time format (milliseconds since the UNIX Epoch) to the more common UNIX format (seconds since the Epoch) by taking the floored value of the time divided by 1000.
-    Then, we removed unrealistic movement represented by positions with incoming and outgoing speeds $>$ 20 m/s that exceed the maximum flight speed recorded in this species (15 m/s; \citealt{tsoar2011}), leaving 10,337 positions per individual on average (98\% of previous step).
-    We median smoothed the data with a moving window $K$ size = 5, and no observations were lost.
-
-    We aimed to study bats' night-time foraging on fruit trees by quantifying the duration of bats' residence patches.
-    We began the construction of residence patches by finding the residence time within 50 metres of each position; this is the maximal radius of a `cloud of points' around fruit trees \citep{bracis2018}.
-    Foraging bats repeatedly traverse the same routes (\citealt{toledo2020, tsoar2011, lourie2021}) and this could artificially inflate the residence time of positions along these routes.
-    To avoid confusing revisits with residence, we limited the summation of residence times at each position to the period until the first departure of 5 minutes or more.
-    Thus, two nearby locations ($\leq$ 50m apart) each visited for one minute at a time, but separated by an interval of some hours would not be clustered together as a residence patch. 
-    To focus on bats' night-time foraging behaviour, we also excluded positions during the day (5 AM -- 8 PM), and at or near the roost-cave (see Fig.~\ref{preproc_fig_08}a) to focus on night-time foraging behaviour; 22,910 of 31,012 positions remained (73.9\%).
-    % Since bats departed and returned to their roost at different times each night, we also excluded locations with a residence time $>$ 200 minutes (approx. 3.3 hours), as this was more likely to represent daytime roosting than nighttime foraging; of 31,012 smoothed positions, 18,677 remained (60\%).
-    % From these positions, we calculated that between leaving the roost to forage, and returning, bats had a mean residence time at each position of 95.64 minutes (SD = 119.23) --- this value is still likely to be biased by some positions at the roost.
+    \lettrine{A}{nimal} movement is understood to be an individual response that integrates multiple internal and external stimuli, including environmental conditions and the presence of other animals \citep{nathan2008a}.
+    Various aspects of animal movement, such as the distance moved over time (speed), or the tortuosity of an animal's path, are now readily measured and quantified in free-living individuals, given significant advances in animal tracking technology \citep[][see Nathan et al. \textit{in prep.}]{cagnacci2010}.
+    This makes movement a sort of `model behaviour' that allows investigation of the underlying mechanisms --- the `how' and `why' of animal decision-making --- under natural conditions that cannot be replicated in experimental settings.
+    For example, tracking individual greenbuls \textit{Phyllastrephus sp.} in forested landscapes revealed that greenbuls moved more frequently to trees that were actually visible from their position, rather than trees that were obscured from view, indicating that visual cues are important in the movement decisions of forest birds \citep[][see also \citep{aben2018}]{aben2021}.
+    This illustrates a general tactic in animal movement studies, which is to treat an animal's use of a resource disproportionate to its availability \citep{manly2007,fortin2005,signer2019}, or prolonged residence in an area \citep{bracis2018} as indicators of adaptive movement decision-making mechanisms.
+    Simple simulation models show that differences in movement patterns --- such as path metrics, or emergent social interactions --- may reflect underlying differences in movement strategies \citep{spiegel2017}.
     
-    \graffito{
-        These and similar data are further analysed in \citet{lourie2021}.
-    }
-    To determine the true duration of foraging, we opted for a first-principles approach and first selected only locations with a residence time $>$ 5 minutes, reasoning that a flying animal stopping for $>$ 5 minutes at a location should plausibly indicate resource use or another interesting localised behaviour.
-    This step retained 5,736 positions per bat on average (17,208 total), or 72.4\% of the nighttime positions.
-    We then constructed residence patches with a buffer distance of 25m, a spatial independence limit of 100m, a temporal independence limit of 30 minutes, and rejected patches with fewer than three positions.
-    These values are meant as examples; users should determine the sensitivity of their results to parameter choices.
-    Bats spent 56.95 minutes at foraging sites (SD = 62.20), and were stationary in particular fruit trees and roosting trees during 83.8\% of their foraging time (Fig.~\ref{preproc_fig_08}).
-    Although all three bats roosted at the same cave during the day, and all their tracks are within the typical foraging area of bats roosting in this cave \citep{lourie2021}, they used distinct foraging sites across the area at night (Fig.~\ref{preproc_fig_08}.a). The lack of overlap among individuals in tree use, obtained with the residence patch algorithm, shows that although co-roosting bats share the same cave-specific foraging area \citep{lourie2021}, they often forage on different trees.
-    Contrasting the actual movement path with the linear path between residence patches can help reveal details of how animal cognition affects space use \citep{toledo2020}.
-    Bats tended to show prolonged residence near known food sources (fruit trees), but also where no fruit trees were recorded (Fig.~\ref{preproc_fig_08}.b, ~\ref{preproc_fig_08}.c), in line with previous evidence for their use of non-fruiting trees to rest, to handle and digest food, and presumably for social interactions \citep{tsoar2011}.
-
-    \begin{figure}[ht!]
+    Both differences in movement strategies, or the mechanisms controlling movement \citep{spiegel2017}, and differences in movement paths, which are the outcomes of movement mechansims \citep{abrahms2017,hertel2021}, are interpreted as facets of animal personality \citep{sih2004,sih2004a}.
+    Increasingly however, animal personality, or consistent individual differences in behaviour, are studied in empirical terms, and considered to be detected in a population when its behavioural responses possess certain statistical properties \citep{sanchez-tojar2021}.
+    In the context of animal movement, researchers apply sophisticated variance-partitioning approaches to common movement metrics --- such as daily distance moved --- and aim to determine how much behavioural variation in a population is explained by individual identity, rather than conditions that directly influence behaviour (e.g. diel cycle, temperature), or variation due to other, un-examined factors (e.g. weather differences between intervals) \citep{hertel2020, hertel2019, hertel2021}.
+    Another approach to investigate individual animals' decision-making mechanisms is to estimate their relative preferences for environmental conditions using step-selection analysis \citep[][see also resource selection analysis: \citealt{manly2007}]{fortin2005,thurfjell2014,avgar2016,signer2019,fieberg2021}.
+    Step-selection analysis compares environmental cues between animals' real steps --- the movements actually made, and their alternatives --- the movements that \textit{could have been made}, from the same starting location \citep{thurfjell2014,fieberg2021}.
+    The relative selection strengths, which are the coefficients of a step-selection function, can be compared between individuals \citep{thurfjell2014}, and should be expected to be different for individuals with different movement decision-making mechanisms.
+    
+    However, it is unclear whether individual consistency in the mechanisms underlying movement strategies can really be identified using current statistical tools.
+    Most researchers realise that there is a substantial gap between the environment animals perceive and to which they respond, and the often static representation of that environment that is measured in tracking studies.
+    For example, resources that are critical to animals are often ephemeral, and difficult to measure with both a high spatio-temporal extent and resolution using existing technologies such as remote sensing, leading researchers to fall back on more long-term resource proxies such as vegetation indices \citep{pettorelli2011}.
+    This issue is likely even more acute in the case of movements that have a social context, such as competition, as the social environment is expected to change even more rapidly than resource distributions, and to be even more sensitive to local consumer densities.
+    Consequently, it may be difficult to determine whether differences in movement reflect underlying differences in decision-making mechanisms, or whether they better represent stochastic differences in environmental conditions encountered by animals.
+    Applying current methods in animal movement ecology to individual-based simulation models of animal movement strategies \citep[see e.g.][]{getz2015,getz2016,netz2020,gupte2021a}can help explore whether these methods can reliably detect individual differences in movement decision-making mechanisms.
+    
+    Mechanistic models of intermediate complexity can simulate the main features of many spatial systems, such as heterogeneity in landscape productivity, and resource depletion due to mobile consumers \citep{getz2015,white2018,deangelis2019,netz2020,gupte2021a,diaz2021}.
+    Here, we work with an evolutionary, individual-based model of agent movement in the context of intraspecific competition \citep[both exploitation and interference]{gupte2021a}.
+    In our model, agent movement is the outcome of the interplay of simple movement decision-making mechanisms, a fluctuating resource landscape, and due to agent movement, a variable social landscape.
+    % Agents can be programmed to move according to specific movement rules, which are controlled by 
+    Agent movement strategies are controlled by their preferences for environmental cues, such as resource and competitor densities \citep[see e.g.][]{getz2015,white2018,netz2020, gupte2021a}.
+    % The movement weights are used to assess the fluctuating resource landscape, as well as changing local densities of competitors.
+    These preferences may be thought of as the coefficients of resource- or step-selection functions \citep[][]{white2018,gupte2021a}.
+    Importantly, in contrast with purely ecological models \citep[e.g.][]{white2018}, agents' preferences are outcomes of many generations of natural selection \citep[see also][]{getz2015,netz2020}.
+    We previously showed that in two scenarios of exploitation and interference competition, differences among individuals in how they assess local environmental cues evolve \citep[][]{gupte2021a}.
+    % Consequently, we would expect to see these differences in mechanisms reflected in the structure of emergent movement paths.
+    
+    We tackle three specific aspects of a general question in animal movement: what can applying statistical tools to animal tracking data tell us about individual differences in the movement decision-making mechanisms?
+    \textit{(1)} We first examine whether different movement types are indicated by simple exploratory data analysis.
+    \textit{(2)} We then investigate the results of a variance-partitioning approach (repeatability analysis; \citealt{nakagawa2010,hertel2019}) to detecting individual differences in populations with different movement types \textit{and} competition strategies.
+    % \textit{(2)} Are decision-making mechanisms good predictors of the structure of the paths they generate? Can environmental predictors better explain movement path structure?
+    \textit{(3)} Finally, we attempt a novel application of step-selection analysis to the study of consistent individual differences in movement strategies.
+    Overall, by treating a simulation model with simple movement rules as we would empirical animal-tracking data, we aim to explore whether individual differences in movement decision-making mechanisms can be reliably inferred from the emergent structure of animal movement paths.
+    
+    \section{Methods}
+    
+    \subsection*{The Model}
+    
+    We worked with an individual-based evolutionary simulation model of animal movement in a foraging context (\textit{Charadrii}; \citealt{gupte2021a}; model code: \citealt{netz2022a}).
+    We describe the model's ecological dynamics in brief here, and refer readers to \cite{gupte2021a} for a more detailed exploration of the evolutionary outcomes.
+    
+    \paragraph*{Model Setup and Landscape}
+    
+    Our model simulates a population with a fixed size (10,000 individuals), moving on a finely gridded landscape of 512\textsuperscript{2} cells; this is a population density of 1 individual for every 26 cells.
+    The landscape is wrapped at the boundaries so that individuals passing beyond the bounds at one end re-appear on the diametrically opposite side.
+    The model consists of $G$ generations (default = 250) of $T$ timesteps (default = 400); in each generation, individuals move and make foraging decisions to gain intake.
+    % , and is also an important mechanism influencing the structure of individual movement paths.
+    At the end of each generation, individuals reproduce and pass on their movement and foraging strategies to their offspring, the number of which is proportional to their intake in the 400 timesteps of their `lifetime'.
+    
+    The cells of the gridded landscape each have a cell-specific probability $r$ of generating a discrete resource, which we refer to as `prey items' (e.g. a mussel).
+    The cells are arranged into 1,024 regularly spaced clusters, or `resource peaks', in which the productivity of cells at the centre of the peak (called $r_{max}$) is five times greater than the cells at the periphery of the peak; resource peaks are approximately 16 cells away from each other (see {\color{red}Supplementary Material Fig. S1}).
+    We ran the model with a default $r_{max}$ of 0.01, and also at $r_{max}$ values between 0.001 and 0.03, to examine the effect of landscape.
+    For an $r_{max}$ = 0.01, the most productive cells (at the centres of a cluster) are likely to generate one item per 100 timesteps (or four items per generation, for $T$ = 400), while the least productive cells (at cluster peripheries) are likely to generate one item every 500 timesteps ($<$ than one item per generation, for $T$ = 400).
+    Cells in our landscape were modelled as having a uniform carrying capacity $K$ of 5 prey items, and while a cell is at carrying capacity its $r$ is 0.
+    
+    \paragraph*{Individual Foraging and Movement}
+    
+    Agents can perceive a cue indicating the number of all prey items $P$ in a cell, but have a probability $q$ of failing to detect a prey item, and a probability $q^P$ of not detecting any of $P$ prey items; foragers are thus successful in finding a prey item with a probability $1 - q^P$.
+    Individuals on a cell forage in a randomised sequence, and the probability of finding a prey item ($1 - q^P$) is updated as individuals find prey, reducing $P$.
+    Foragers that are assigned a prey item in timestep $t$ begin handling it, and are considered to be handlers for the next $T_H$ timesteps, during which they are immobile: this creates opportunities for kleptoparasitism \citep{holmgren1995}.
+    Foragers that are not assigned a prey item are considered idle, and are counted as non-handlers.
+    
+    Agent movement is a fine-scale process comprised of small, discrete steps of fixed size.
+    These steps are the outcome of short-term individual movement decisions, in which the agent selects a destination cell, after assessing potential destinations based on available cues \citep[similar to step selection or resource selection][]{fortin2005,manly2007}, an approach used previously by \cite{getz2015} and \cite{white2018}.
+    In brief, individuals scan the nine cells of their Moore neighbourhood for three environmental cues, \textit{(1)} an indication of the number of discrete prey items $P$, \textit{(2)} the number of individuals handling prey $H$ (called `handlers'), and \textit{(3)} the number of individuals not handling prey $N$ (called `non-handlers').
+    Based on these cues, agents rank their neighbouring cells by their `suitability score' $S$, where $S = s_PP + s_HH + s_NN$, and move to the cell to which they have individually assigned the highest suitability.
+    The weighing factors for each cue, $s_P$, $s_H$, and $s_N$, are genetically encoded and and transmitted from parents to their offspring.
+    All individuals move simultaneously, and then implement their foraging strategy to acquire prey.
+    
+    \paragraph*{Scenarios of Intraspecific Competition}
+    
+    We considered two scenarios of intraspecific foraging competition, a process that can strongly shape animal movement and population distributions \citep{fretwell1970,parker1978}.
+    %%
+    In the exploitation competition \textbf{scenario 1}, agents move about on the landscape according to their movement rules, and find, handle, and consume prey.
+    Agents must handle each prey item for a fixed handling time $T_H$ (default = 5) before they gain its energetic value.
+    Agents can be either in the handling or searching state \citep{holmgren1995}.
+    While handling, agents are immobile and do not make any movements.
+    Since there are no direct interactions among agents, the only way in which agents can affect each others' intake is by acquiring prey items before their competitors.
+    In this scenario, the only evolvable properties are the environmental cue weighing factors which determine the suitability scores and hence agent movement ($s_P$, $s_H$ and $s_N$).
+    
+    In \textbf{scenario 2}, agents can either search for prey items (foraging), or steal a prey item from a handler (kleptoparasitism).
+    Agents make movement decisions as in the exploitation competition scenario, but their competition strategy (foraging or kleptoparasitism) is fixed through life, genetically encoded, and heritable between generations.
+    For simplicity, agents are always successful in stealing from a handler; however, if multiple agents target the same handler, only one of them, randomly selected, is considered successful --- thus kleptoparasitic agents also compete exploitatively among themselves.
+    %%
+    Handlers that have been stolen from subsequently `flee' and are moved to a random cell within a Chebyshev distance of 5.
+    Having acquired prey, a kleptoparasite converts into a handler, but need only handle prey for $T_H - t_h$ timesteps, where $t_h$ is the time that the prey has already been handled by the previous handler; thus kleptoparasites save time on handling compared to a forager.
+    Unsuccessful kleptoparasites are considered idle, and are also counted as non-handlers.
+    Handlers that finish processing their prey in timestep $t$ return to the non-handler state and are assessed as such by other individuals when determining their movements.
+    
+    \paragraph*{Inheritance of Movement and Competition Rules}
+    
+    For simplicity, we modelled discrete, non-overlapping generations, with haploid, asexually reproducing individuals.
+    In the exploitation competition scenario, individuals have three active gene loci that encode the decision-making weights which control individual movement ($s_P$, $s_H$, $s_N$). 
+    In scenario 2, individuals additionally inherit their competition strategy from their parent.
+    % four further weights for foraging decisions ($w_P$, $w_H$, $w_N$, $w_0$) are also active.
+    We assume that the expected number of offspring per individual is proportional to the individual's total lifetime intake of resources (hence resource intake is used as a proxy for fitness). 
+    This is implemented as a weighted lottery (with weights proportional to lifetime resource intake) that selects a parent for each offspring in the subsequent generation \citep[see prior implementation in][]{netz2020}.
+    %%
+    Across scenarios, the movement decision-making weights are subject to independent random mutations with a probability of 0.001.
+    The mutational step size (either positive or negative) is drawn from a Cauchy distribution with a scale of 0.01 centred on zero.
+    This allows for a small number of very large mutations while the majority of mutations are small.
+    In scenario 2, agents have a probability of 0.001 of a mutation on their competition strategy, i.e., of transforming from a forager to a kleptoparasite, or vice versa.
+    Agents are intialised at a random location on the landscape, potentially forcing individuals to contend with different environmental conditions from those experienced by their parent.
+    
+    \subsection*{Model Output}
+    
+    \paragraph*{Agent Position and Preference Data}
+    
+    We previously established that in our model, the mean per-capita intake stabilises within 50 generations, and the fixation of certain movement rules (such as the preference for handlers) is complete by generation 100 (\citealt{gupte2021a}, see also Fig. 1).
+    % We expected that by generation 250, model populations could be considered to have been adapted to their environmental conditions and competition scenario for at least 200 generations (50 -- 250).
+    We wanted to determine whether agent path structure, and specifically, the distance moved, also has a clear trajectory over generations.
+    In order to do this, we focused on the positions of 1\% of the agents (N = 100) in each timestep, for every 10\textsuperscript{th} generation, up to generation 249 (25 generations, including \textit{G} = 249).
+    Overall, we collected 400 $\times$ 100 $\times$ 25 = 1,000,000 positions over each simulation run.
+    To apply methods commonly used in movement analyses, we let the final generation (\textit{G} = 250) run for 10,000 timesteps, and exported the positions of 100 agents in each timestep, for a further 10,000 $\times$ 100 = 1,000,000 positions.
+    We also exported the decision-making weights for movement ($s_P$, $s_H$, $s_N$) for each agent in the exploitation competition scenario, as well as the foraging strategy-decision weights ($w_P$, $w_H$, $w_N$, $w_0$) for agents in the interference competition scenario; we aimed to later relate these weights to the structure of movement paths.
+    
+    \paragraph*{Landscape Data}
+    
+    Animal movement is strongly influenced by the landscape, and must be taken into account to accurately compare among individuals.
+    The cell $r$ values may be seen as analogous to empirically measured long-term indicators of productivity, such as the normalised-difference vegetation index \citep[NDVI;][]{pettorelli2011}.
+    We took the known, fixed $r$ values for each cell, and linked them to agent positions as environmental covariates.
+    Animals likely cannot always sense underlying differences in the drivers of productivity of a resource landscape, but only an indicator of that productivity, such as prey items.
+    Nonetheless, long-term measures are frequently used as predictors in step-selection functions, because they are often easy to measure, and do have a mechanistic link with animal movement.
+    
+    % Long-term measures of productivity are insufficient to recover agent preferences for fine-scale environmental cues, such as resource densities and the presence of competitors, using step selection functions.
+    % This is both because (1) agents cannot sense $r$ directly, and (2) fluctuations in resource and competitor densities are related through complex feedbacks that are unlikely to be well correlated with $r$.
+    % Thus, we took a very fine-scale approach to recording environmental data for the final generation (G = 250).
+    % We exported `ecological snapshot' of the landscape in 250 timesteps (from T = 5,000 to T = 5,250); these snapshot contained counts of prey items, handlers, and non-handlers for each landscape cell.
+    % In the interference competition scenario, the non-handler counts were split into separate counts for agents that were searching for food (foragers), and agents that were seeking to target a handler (kleptoparasites).
+    % From this sequence of snapshots, we were able to determine the environmental cues available to agents while making movement decisions.
+    
+    \subsection*{Visualising the Evolutionary Equilibrium}
+    
+    \paragraph{Absolute and Functional Variation in Movement Weights}
+    
+    We first plotted the frequencies of the decision-making weights, scaled between -1 and +1 using a hyperbolic tangent tranform, over the 250 generations of each model run (see Fig. \ref{fig1}A).
+    We then visually examined the population at the evolutionary equilibrium for functional differences in movement rules.
+    Since distinct values, or morphs, of each weight might be correlated with distinct values of the other two weights, agents with seemingly different absolute values of the three weights could have the same relative preference for, or aversion to, a movement cue.
+    We did this by normalising each of the agents' three movement weights relative to the sum of the absolute values of the weights:
+    $W_i = W_i / (|s_P| + |s_H| + |s_N|)$, where $W_i$ is any one of the movement weights, $s_P$, $s_H$ or $s_N$.
+    We refer to these normalised weight values (ranging from -1, avoidance, to +1 preference) as the relative preferences.
+    Thus, for example, an agent prioritising movement towards handlers would have a normalised value for $s_H$ close to +1, and $s_P$ and $s_H$ $\equiv$ 0.
+    To visualise the spread of agents over the trait space, we plotted the scaled values of $s_H$ against the scaled values of $s_P$, colouring points by the scaled value of $s_N$ (see Fig. \ref{fig1}A).
+    
+    \paragraph{Agent Movement Types and Distance Covered}
+    
+    We classified the 100 agent paths exported in each simulation run based on the agents' relative preferences: (1) \textit{prey tracking}, if $s_P > 0.55$; (2) \textit{handler tracking}, if $s_H > 0.5$; (3) \textit{prey \& handler tracking}, if $s_P > 0,~s_H > 0,~|s_P - s_H| > 0$; (4) \textit{non-handler avoiding}, if $s_N < -0.5$; (5) \textit{handler avoiding}, if $s_H < -0.5$; and (6) \textit{mixed}, for all other combinations.
+    We plotted the distribution of total distance moved across equal intervals for each of these five strategies (or those present in the evolved populations; see Fig. \ref{fig3}).
+    We also plotted the movement paths of individuals from the strategies for a visual comparison of path structure and distance moved (see \textit{Supplementary Material}).
+    
+    \subsection*{Repeatability of Agent Movement}
+    
+    When animals are challenging to assay in captivity, researchers may attempt to detect individual consistency in movement behaviour from animal tracking data alone \citep[see a review in][see \citealt{hertel2019} for an example]{hertel2020}.
+    In this approach, a population is understood to comprise of `repeatable' individuals if the between-individual variance in behaviour is a substantial proportion of the total variation that is not explained by the fixed effects of a linear mixed model \citep[LMM][]{hertel2019}.
+    Individuals differing in behavioural mechanisms are expected to make differing movement decisions when presented with the same environmental cues; the cumulative and emergent effects of these decisions are thus expected to be reflected in the tracking data.
+    Consequently, a population with differences among individuals in movement decision-making mechanisms (`movement types') should be expected to be `repeatable' in movement behaviour.
+    This approach relies on repeated measures of an individual behaviour, such as daily distance moved \citep[][]{niemela2018, hertel2020}.
+    One way of obtaining such repeated measures is by summarising behaviour over equal time-intervals of an animal's track \citep[see e.g.][]{hertel2019}.
+    We investigated whether our agents' fixed movement decision-making weights would result in high population-wide repeatability in movement behaviour, and specifically, in the mean distance moved.
+    
+    We tried to determine whether repeatability analysis could detect that there was wide functional variation in the movement decision-making rules of our evolved agents.
+    To implement this approach, we divided agent paths from the final generation of 10,000 timesteps into 10 consecutive intervals of equal duration (1,000 timesteps each; similar to weeks), and calculated the mean distance travelled over 100 timestep-long segments (similar to days) in each interval.
+    Following \cite{hertel2019}, we calculated the between-individual variance using linear mixed models (LMMs) of the form
+    \begin{linenomath*}
+        \begin{equation}
+            \text{mean distance} \sim \bar{r} + (1 | \text{identity}) + (1 | \text{interval})
+        \end{equation}
+    \end{linenomath*}
+    where the mean cell productivity $\bar{r}$ was taken as fixed effects to account for differences in the environment experienced by each agent.
+    % While $r$ is fixed and known for each cell, we obtained item and agent counts from the most appropriate landscape snapshot for each interval (e.g. snapshot at \textit{t} = 4,000 for all timsteps between 3,500 and 4,500).
+    
+    Knowing that our scenario 2 reliably results in a population with both fixed-strategy foragers and kleptoparasites, we examined three ways of taking individuals' competition strategy into account when estimating repeatability.
+    \textit{First}, in the basic model, we used the repeatability model specified above, in which we ignored the differences in competition strategy among our agents.
+    \textit{Second}, in the fixed effect model, we included the competition strategy of each agent (forager or kleptoparasite) as a fixed effect in the model.
+    \textit{Third}, in the separate modelling approach, we fit the basic model to the data from foragers and kleptoparasites separately.
+    
+    Across model formulations, We scaled the movement distance and the predictor variables between 0 and 1, for each interval of each simulation run.
+    We set individual identity and the time interval to be random intercepts, following \citep{hertel2020}.
+    We fit separate GLMMs for each simulation run, and used the \textit{rptr} package in R \citep{nakagawa2010} to estimate the repeatability of total distance in our agent population (bootstraps = 100; permutations = 10; see Supplementary Material for code).
+    % Here too, we expected to find that agents would be repeatable for movement distance on higher productivity landscapes with reliable information for directed movement \citep{carter2013a}.
+    
+    \subsection*{Individual Differences in Habitat Selection}
+    
+    Finally, we investigated whether individual differences in movement rules would translate to differences in habitat selection, using a step-selection function framework.
+    Step-selection analysis essentially aims to determine why animals move where they do, given the alternative steps they could have made, by relating the animal's choice of step to differences in environmental conditions among the alternatives \citep{avgar2016, signer2019,thurfjell2014,fieberg2021}.
+    % This allows us to estimate animal preferences as coefficients for different environmental cues, potentially revealing decision-making mechanisms \citep[such as a reliance on visual information][]{aben2021}.
+    When an SSF is fit to each individual's tracking data, the estimated coefficients of a step-selection function (SSF) are analogous to the agent movement decision-making weights in our model \citep[see previous interpretation in][]{white2018,gupte2021a}.
+    % Real animals, as well as our agents, respond to environmental cues such as the presence of other individuals, at very fine timescales.
+    In empirical studies, it is difficult to measure the availability of fine-scale environmental cues, such as the abundance of depleteable resources, or the densities of conspecifics.
+    One common solution to this challenge is to compare selected and alternative steps on the basis of a slowly-changing environmental measure such as productivity \citep[e.g. NDVI, analogous to $r$][]{pettorelli2011}, that is broadly correlated with other phenomena.
+    When correctly chosen, productivity has a mechanistic relationship with other environmental cues: cells with higher $r$ should be expected to have more prey items by definition, and to attract more competitors, following expectations from Ideal Free Distribution theory \citep{fretwell1970,parker1978}.
+    Though animals likely cannot sense landscape productivity directly (and our agents cannot sense $r$), analysing step-selection in relation to productivity is still a common practice, and could help reveal relative differences among individuals' selection for habitats, potentially indicating variation in the underlying behavioural mechanisms.
+    
+    We prepared the data for SSF fitting by reducing data volumes to make computation faster: we thinned agent tracks to select only every 10\textsuperscript{th} position, and selected 8 alternative positions for each `true' step.
+    We customised the method of selecting alternative steps from the default implementation in \textit{amt} \citep{signer2019}: while accounting for the wrapped landscape, we selected eight cells within a distance of 10 units from the agent position, since these are only locations to which an agent could voluntarily move in 10 timesteps.
+    We excluded the true step end-point from among the alternatives, and considered remaining in place to be a valid option.
+    The resulting dataset consisted of the true and alternative step coordinates for each step, to which we linked the the cell-specific $r$.
+    We fit a step-selection function for each individual separately in each simulation run, relating whether a step was taken or not (the $case$, in \textit{amt} parlance) to the value of $r$.
+    We used an SSF of the form:
+    \begin{linenomath*}
+        \begin{equation}
+            \text{case} \sim r + \text{strata}(\text{step~identity})
+        \end{equation}
+    \end{linenomath*}
+    We visually investigated whether differences in selection strength for $r$ were revealed for populations with substantial polymorphisms in movement weights.
+    During earlier analyses, we had found that agents in the exploitation competition scenario could be classified into three `movement types', based on which weight (sP, sN, sH) had the largest absolute value.
+    We expected that agents whose largest weight was $s_P$, the preference for prey-items, would have larger selection strengths for cell $r$.
+    
+    \section{Results}
+    
+    \subsection*{Model Eco-Evolutionary Equilibrium}
+    
+    \paragraph{Evolution of Decision-making Weights}
+    
+    Both scenarios of our model --- as expected from previous analysis \citep{gupte2021a} --- reached an evolutionary equilibrium: a stabilisation of mean per-capita intake within 50 generations (index $r_{max}$ = 0.01; see Supplementary Material Figure X).
+    The two scenarios differed strongly in terms of the evolution of movement decision-making weights, again, as we already knew from earlier investigation \citep{gupte2021a}.
+    Briefly, in \textbf{scenario 1}, populations across replicates rapidly and consistently evolved to prefer moving to cells with prey-items (positive values of $sP$) and cells with handlers (positive values of $sH$) within 100 generations (Fig. \ref{fig1}A1).
+    Populations also evolved to avoid non-handlers (negative values of $sN$; Fig. \ref{fig1}A1).
+    All replicates showed substantial variation in the movement decision-making weights (Fig. \ref{fig1}A1).
+    %%
+    In \textbf{scenario 2}, we found an eco-evolutionary equilibrium with stable proportions of the two competition strategies (see Supplementary Material; see also \citealt{gupte2021a}).
+    As might be expected then, the evolution of populations' decision-making weights was quite different from that of scenario 1.
+    Agents had an evolved preference for moving to cells with prey-items, and an avoidance of cells with non-handlers (Fig. \ref{fig1}A2).
+    However, there was a strong dimorphism in the response to handlers, with most agents showing a strong preference for handlers, but with a sizeable minority of agents showing an avoidance of handlers (Fig. \ref{fig1}A2).
+    
+    \paragraph{Functional Variation in Movement Rules}
+    
+    The differences in evolved movement rules also translated to functional variation in relative preferences for the three environmental cues.
+    In \textbf{scenario 1}, most agents had a strong preference for prey-items, with a number of agents neutral to the other two cues (large values of $s_P$, see Fig. \ref{fig1}B1).
+    Nonetheless, many scenario 1 agents' movement rules also incorporated social information in the form of the presence of competitors, and these agents either avoided non-handlers (large negative values of $s_N$), or preferred to move towards handlers (positive values of $s_H$).
+    %%
+    In \textbf{scenario 2}, the two competition strategies differed dramatically in their relative preferences for movement cues.
+    Overall, most agents relied entirely on social information --- the presence and foraging status of competitors --- and on the abundance of prey-items almost not at all, when making movement decisions (Fig. \ref{fig1}B2).
+    Foragers sought to avoid all agents, with negative values for $s_H$ and $s_H$, but differed strongly in \textit{which}, of handlers and non-handlers, were most avoided.
+    Kleptoparasites, on the other hand, were almost exclusively handler-preferring, with strong positive values of $s_P$.
+    A small number of both foragers and kleptoparasites followed the movement rules of the opposite strategy; these likely represented a strategy mutation during reproduction, rather than a viable combination of movement and competition strategies.
+    
+    \paragraph{Movement Types and their Emergent Movement Paths}
+    
+    Our classification of agents based on evolved relative preferences for movement cues revealed that most agents in scenario 1 were either prey-tracking, prey and handler tracking, non-handler avoiding, or used a mixed strategy (Fig. \ref{fig2}A1).
+    On the other hand, agents in scenario 2 had a movement type strongly correlated with their competition strategy: most foragers were either handler- or non-handler-avoiding, while kleptoparasites were all handler-tracking (Fig. \ref{fig2}A2).
+    %%
+    We found that movement distance was strongly linked to competition strategy, and did not correlate with movement type, as foragers in both scenarios 1 and 2 had very similar movement distances, regardless of their movement type (Fig. \ref{fig2}B1, B2).
+    Kleptoparasites, however, moved nearly twice as much as foragers in scenario 2 (Fig. \ref{fig2}B2).
+    
+    \begin{figure}[h!]
         \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_08.png}
+        \includegraphics[width=0.90\textwidth]{figures/patternprocess/fig_01.png}
         \caption{
-            \textbf{Synthesising animal tracks into residence patches can reveal movement in relation to landscape features, prior exploration, and other individuals.}
-            \textbf{(a)} Linear approximations of the paths (coloured straight lines) between residence patches (circles) of three Egyptian fruit bats (\textit{Rousettus aegyptiacus}), tracked over three nights in the Hula Valley, Israel.
-            Real bat tracks are are shown as thin lines below the linear approximations, and colours show bat identity. The grey hexagon represents the roost-cave at Gar Hershom.
-            Black points represent known fruit trees.
-            Background is shaded by elevation at 30 metre resolution.
-            \textbf{(b)} Spatial representations of an individual bat's residence patches (green polygons) can be used to study site-fidelity by examining overlaps between patches, or to study resource selection by inspecting overlaps with known resources such as fruit trees (black circles).
-            In addition, the linear approximation of movement between patches (straight green lines) can be contrasted with the estimated real path between patches (irregular green lines), for instance, to determine the efficiency of movement between residence patches.
-            \textbf{(c)} Fine-scale tracks (thin coloured lines), large-scale movement (thick lines), residence patch polygons, and fruit tree locations show how high-throughput data can be used to study movement across scales.
-            Patches and lines are coloured by bat identity.
+            \textbf{Evolutionary equilibrium and functional variation in movement rules in a spatially explicit, individual-based model of animal movement.}
+            We find substantial polymorphism in movement rules in both scenarios of our spatially explicit, individual-based model of the joint evolution of animal movement and competition strategies.
+            Agents in both \textbf{(A1)} scenario 1 (exploitation competition only), and in \textbf{(A2)} scenario 2 (fixed, individual competition strategies), evolve multiple, distinct, co-existing values of each of the weights controlling movement rules in the forms of preferences for each cue: $s_P$ (prey-items), $s_H$ (agents handling prey, `handlers'), and $s_N$ (idle agents, `non-handlers').
+            The morphs persist across generations, indicating that they likely have equivalent foraging success, and hence, fitness outcomes.
+            \textbf{(B1)} In the exploitation competition scenario, the evolved population (at G = 250; blue line in panels A1 and A2) has wide individual variation in their relative preferences for environmental cues (the scaled weights $s_P, s_H, s_N$).
+            Most agents trade a preference for prey-items against either an avoidance of non-handlers (orange points), or a preference for handlers (yellow points with $s_H > 0.5$).
+            \textbf{(B2)} In the fixed-strategy scenario 2, agents of the two competition strategies (foragers and kleptoparasites) have very different relative preferences for environmental cues.
+            While foragers largely either avoid handlers (yellow points, $s_H < -0.5$), or avoid non-handlers (red points), most kleptoparasites prefer moving towards handlers, their direct resource.
+            A small number of both foragers and kleptoparasites follow the movement rules of the opposite strategy; these likely represent a strategy mutation during reproduction.
+            All panels show simulation runs with $r_{max}$ = 0.01, and show a single replicate for clarity (see the \textit{Supplementary Material} for more replicates).
         }
-        \label{preproc_fig_08}
+        \label{fig1}
     \end{figure}
-
-    \section*{Discussion and Perspective}
-
-    Recent technical advances in wildlife tracking have already yielded exciting new insights from massive high-resolution movement datasets \citep{aspillaga2021, aspillaga2021a, baktoft2017, baktoft2019, harel2016, harel2018, oudman2018, papageorgiou2019, tsoar2011, strandburg-peshkin2015, toledo2020, beardsworth2021a, beardsworth2021b, corl2020, vilk2021, lourie2021}, and high-throughput animal tracking is expected to become increasingly more common in the near future.
-    \graffito{
-        I also had the opportunity to test the residence patch method on pike tracked using YAPS \citet{baktoft2017}, and found it worked very well.
-    }
-    Tackling the very large datasets that high-throughput tracking generates requires a different approach from that used for traditionally smaller volumes of data.
-    We foresee that movement ecologists will have to adopt ever more practices from fields accustomed to dealing with `big data', and that the field will become increasingly computational \citep{peng2011}.
-
-    Researchers have long used some of these approaches \textit{ad hoc}, such as exploratory data analysis on small subsets before applying methods to the full data, using efficient tools, and basic batch-processing. 
-    Yet formally prescribing these steps can help practitioners avoid pitfalls and implement techniques that make their analyses quicker and more reliable.
-    Standardised principles, implemented a basic pipeline, for approaching data cleaning promote reproducibility across studies, making comparative inferences more robust.
-    While massive datasets make reliance on standardised pipelines necessary, the output of such pipeline should periodically manually double-checked to ensure `realistic' output.
-    The open-source \textit{R} package \textit{atlastools} serves as a starting point for methodological collaboration among movement ecologists, and as a simple working example on which researchers may wish to model their own tools.
-    Efficient location error modelling approaches \citep{fleming2020, aspillaga2021} may eventually make data-cleaning optional.
-    Yet cleaning tracking data even partially before modelling location error is faster than error-modelling on the full data, and the removal of large location errors may improve model fits.
-    Thus we see our pipeline as complementary to these approaches \citep{fleming2014, fleming2020}.
-
-    Finally, we recognise that the diversity and complexity of animal movement and data collection techniques often requires system-specific, even bespoke, pre-processing solutions.
-    Though the principles outlined here are readily generalised to numerous data sources (including terrestrial radio-based reverse-GPS: e.g. \citealt{toledo2020}, and marine acoustic reverse-GPS: e.g. \citealt{aspillaga2021}; high-resolution GPS such as \citealt{strandburg-peshkin2015}, and video-tracking: \citealt{rathore2020}), users' requirements will eventually exceed the particular tools we provide.
-    % For instance, relational databases are the standard for storing very large datasets, and extending pre-processing pipelines to deal with various data sources is relatively simple, as we show in our Supplementary Material.
-    We see the diversity of animal tracking datasets and studies as an incentive for more users to be involved in developing methods for their systems.
-    We offer our approach to large tracking datasets, and our pipeline and package as a foundation for system-specific tools in the belief that simple, robust concepts are key to methods development that balances system-specificity and broad applicability.
+    
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.90\textwidth]{figures/patternprocess/fig_02.png}
+        \caption{
+            \textbf{Movement types and competition strategies, and differences in movement paths.}
+            We classified agents in both scenario 1 \textbf{(A1)} and scenario 2 \textbf{(A2)} into intuitive `movement types', based on their relative preferences for environmental cues (see Fig. 1 and Main Text). 
+            We plotted them based on their weights for prey-items and handlers, adding a transparency to show the frequencies of the types.
+            By this simple classification, agents in scenario 1 \textbf{(A1)} mostly track prey-items, or both prey-items and handlers, while avoiding non-handlers.
+            Agents in the `mixed' strategy mostly track prey-items and avoid non-handlers.
+            In scenario 2 \textbf{(A2)}, most foragers avoid other agents, either handlers or non-handlers; meanwhile, kleptoparasites, as expected, track their primary resource, handlers.
+            Regardless of their movement type, agents in \textbf{(B1)} the exploitation scenario all move roughly the same distance in each interval.
+            \textbf{(B2)} However, in the kleptoparasitism scenario, the competition strategies differ strongly, with kleptoparasites moving nearly twice as much as foragers.
+            Despite moving according to quite different rules (avoid handlers, or avoid non-handlers), both types of foragers move nearly the same distance on average.
+            While kleptoparasites' greater movement should be expected to lead to less time for handling prey, and hence lower intake, they save on this time by taking advantage of pre-handled items stolen from foragers.
+            Panels A1 and A2 show 5,000 individuals from a single replicate of each scenario, while panels B1 and B2 show the mean movement distance of 100 agents over segments of 100 timesteps from all 10 replicates.
+        }
+        \label{fig2}
+    \end{figure}
+    
+    \subsection*{Movement Cues, Competition Strategies, and Repeatability of Movement Distance}
+    
+    Our simulation's populations, at the eco-evolutionary equilibrium (G = 250) were comprised of individuals with a broad range of movement strategies (Fig. \ref{fig3}A).
+    In \textbf{scenario 1}, a wider range of movement strategies were evolved on higher productivity landscapes ($r_{max}$ $\in$ 0.02, 0.03), than on lower productivity landscapes ($r_{max}$ = 0.01); the pure handler-tracking and handler avoiding strategies were seen only at at higher growth rates (Fig. \ref{fig3}A1).
+    This suggests that on higher productivity landscapes, a wider range of movement types have equivalent fitness.
+    The mechanism enabling this is the increased abundance of prey-items: as more agents find prey more easily and become handlers, the relative strength and frequency of the handler cue increases, and navigating using this social information alone becomes a viable movement strategy.
+    
+    The repeatability of movement distance is nearly five times as high on more productive landscapes ($r_{max}$ $\in$ 0.02, 0.03; repeatability $\approx$ 0.70), as on low productivity landscapes ($r_{max}$ = 0.01; repeatability $\approx$ 0.15; Fig. \ref{fig3}B1).
+    This large difference may be because there are more movement types on high-productivity landscapes (Fig. \ref{fig3}A1), with subtle differences in distance moved among them.
+    Yet, another plausible explanation is that on high productivity landscapes, there are simply more movement cues, in the form of prey-items and handlers.
+    Since the movement types differ in how they process and respond to cues, movement on landscapes with more cues might better reveal subtle differences among the behavioural types.
+    
+    In \textbf{scenario 2}, increasing productivity also allows a wider range of forager, but not kleptoparasite, movement strategies (Fig. \ref{fig3}A2).
+    At the index $r_{max}$ of 0.01, foragers are mostly agent avoiding, while kleptoparasites are handler tracking.
+    However, with increasing growth rates, the frequency of kleptoparasites decreases, until, at $r_{max}$ = 0.03, kleptoparasites are extinct in nearly all simulation replicates.
+    Thus, on high productivity landscapes, the scenario 2 population is functionally identical to the scenario 1 population, and all individuals follow a forager strategy (see also \citealt{gupte2021a}).
+    
+    Repeatability analyses on the movement distances of scenario 2 populations is sensitive to how the differences in competition strategy are treated, but not to landscape productivity (Fig. \ref{fig3}B2). Specifically,
+    \textit{(1)} When repeatability analysis ignores differences in competition strategy, our populations, comprised largely of handler and non-handler avoiding foragers, and handler tracking kleptoparasites, had repeatability scores $>$ 0.8 (Fig. \ref{fig3}B2a).
+    This would suggest that nearly all the variance in movement distance not explained by the fixed effect of environmental productivity is due to between-individual differences (which we know to be primarily differences in competition strategy).\\
+    %%
+    \textit{(2)} When competition strategy is included as a fixed effect in repeatability analysis, repeatability scores drop substantially to $<$ 0.5 (Fig. \ref{fig3}B2b).
+    This suggests that while competition strategies are important in explaining differences in movement distance, a substantial chunk of the unexplained variance is comprised of between-individual variance.\\ 
+    %%
+    \textit{(3)} Finally, in another plausible way of treating data when the existence of competition strategies is known, running separate repeatability analyses for foragers and kleptoparasites reveals very different repeatability scores for the two strategies (Fig. \ref{fig3}B2c).
+    While foragers have repeatabilities betwen 0.0 and 0.75, depending on the growth rate, kleptoparasites have repeatabilities close to zero.
+    
+    There did not appear to be an effect of landscape productivity as in scenario 1.
+    This may be because, in scenario 2, the presence of kleptoparasites (indeed, as the majority strategy) reduces prey-item extraction from the resource landscape.
+    Consequently, all scenario 2 landscapes eventually resemble scenario 1 landscapes at $r_{max}$ = 0.03.
+    We ran analyses only on growth rates of 0.01 and 0.02, as kleptoparasites rapidly go extinct early on in simulations with a growth rate of 0.03 \citep[see][for an explanation of the evolutionary dynamics]{gupte2021a}.
+    
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/patternprocess/fig_03.png}
+        \caption{
+            \textbf{Frequency of movement types, competition strategies, and environmental cues, and consequences for repeatability analyses to detect individual differences in movement.}
+            Increasing landscape productivity ($r_{max}$) beyond the index value of 0.01 leads to more prey-items on the landscape, and hence more available cues for movement decisions.
+            In \textbf{(A1)} scenario 1, this leads to a change in the frequencies of movement types, with the persistence of handler-avoiding and pure handler-tracking types.
+            In \textbf{(A2)} scenario 2, the frequencies of both movement types and competition types change with the increased availability of prey-items: at higher $r_{max}$ (0.03), foragers are both more common, and use more movement strategies, than at lower $r_{max}$ (0.01).
+            The repeatability of movement distance is greater for scenario 1 populations on landscapes with higher $r_{max}$, and hence more available movement cues \textbf{(B1)}.
+            This suggests that individual differences in movement decision-making mechanisms may be more readily detected when agents are actually able to process environmental cues using those mechanisms, rather than when agents move on relatively `clueless landscapes'.
+            When agents' competitive strategy strongly influences their movement, as in scenario 2 \textbf{(B2 panels)}, repeatability analyses are strongly affected by how this difference is treated.
+            \textbf{(B2a)} If differences in competitive strategies are not included in the model formulation, repeatability scores are consistently high ($>$ 0.9).
+            \textbf{(B2b)} When agents' competitive strategy is included as a fixed effect, repeatability scores are substantially lower ($< 0.5$).
+            Finally, \textbf{(B2c)}, repeatability models run separately for each of the competitive strategies would essentially reveal that competitive types with strong dimorphism (or clustering) in movement types (here, foragers) have a higher repeatability than competitive types with a monomorphic movement strategy (here, kleptoparasites).
+            Panels A1 and A2 show frequencies pooled over 100 agents from 10 replicate simulations, with agent data exported at G = 200, 210, \ldots 249.
+            Panels B1 and B2 used long-term movement paths from 100 agents in generation 250, over 10 replicates. B2 omits $r_{max}$ = 0.03, as kleptoparasites are often extinct.
+        }
+        \label{fig3}
+    \end{figure}
+    
+    \subsection*{Individual Differences in Habitat Selection}
+    
+    We fit 6,000 step-selection functions to thinned movement data from 60 simulation runs, with 10 replicates for each $r_{max}$ value (0.01, 0.02, 0.03) and scenario (1 and 2).
+    In \textbf{scenario 1}, all agents forage and have a substantial preference for moving towards prey-items.
+    Consequently, the estimated coefficients of their apparent selection for cell productivity $r$ are all positive, with no differences among the movement strategies (Fig. \ref{fig4}A1, B1).
+    On the other hand, in \textbf{scenario 2}, the dramatic difference in competition strategies is reflected in the estimated coefficients of apparent selection for cell $r$; foragers have substantially lower (and even negative) selection for $r$ than kleptoparasites (Fig. \ref{fig4}A2).
+    However, there is little difference between foragers moving mostly to avoid handlers or to avoid non-handlers (Fig. \ref{fig4}B2).
+    %%
+    As landscape productivity increases, scenario 2 populations, but not scenario 1 agents, show a shift in their selection for cell $r$.
+    At higher growth rates ($r$ = 0.02), scenario 2 populations --- still comprised of about equal proportions of foragers and kelptoparasites (see Fig. \ref{fig3}) --- show substantially more overlap between the two strategies' selection for $r$ (Fig. \ref{fig4}A2).
+    This is carried over as an overlap between the three main movement types (Fig. \ref{fig4}B2).
+    At the highest growth rates, scenario 1 and scenario 2 populations are essentially identical, and the few kleptoparasites remaining in scenario 2 apparently select for $r$ similar to foragers.
+    Overall, applying step-selection analysis to our model output suggests that differences between competition strategies, when associated with different movement types, could be revealed under certain conditions from animal movement paths.
+    
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.90\textwidth]{figures/patternprocess/fig_04.png}
+        \caption{
+            \textbf{Movement types and competition strategies revealed in step-selection analyses.}
+            Applying step-selection analysis to long-term movement paths from \textbf{(A1)} scenario 1, and \textbf{(A2)} scenario 2 reveals strong differences in apparent selection for landscape productivity between competition strategies ($r_{max}$ = 0.01).
+            In \textbf{(B1)} scenario 1 and \textbf{(B2)} scenario 2, the apparent selection strengths for productivity $r$ of foragers of different movement types overlaps.
+            Handler-tracking kleptoparasites in scenario 2, too, have apparent selection strengths for $r$ that overlap with those of some foragers, but which are substantially higher than those of most foragers, which avoid both handlers and non-handlers. 
+            These essentially opposing movement strategies are picked up as differences in selection for $r$.
+            Kleptoparasites track handlers, and the probability of a forager finding prey and handling are higher at the centres of resource peaks, i.e, cells with high $r$.
+            Conversely, foragers avoid other agents, and since high-productivity cells are more likely to have agents, they apparently select \textit{against} high productivity cells.
+            All panels show selection coefficients from 100 agents' long-term movement paths at G = 250, from 10 replicates of each simulation; only coefficients with $p \leq$ 0.05 are shown.
+        }
+        \label{fig4}
+    \end{figure}
+    
+    \section{Discussion}
+    
+    % % Detecting Individual Consistency from Agent Paths
+    
+    We used an evolutionary individual-based model of animal movement decision-making under two scenarios of foraging competition (\textit{Kleptomove}; \citealt{gupte2021a,netz2022a}), to investigate what we can learn about individual-differences by applying statistical analyses to animal movement data.
+    % %%
+    % We showed that the model, as expected, reached an ecological equilibrium in mean per-capita intake, as well as the mean per-capita distance moved.
+    Our evolved agent populations showed substantial between-individual differences in their relative preferences for environmental cues (`movement types'; \citealt{getz2015}): when presented with the same cues, agents could make substantially different decisions about where to move.
+    %%
+    We showed that despite very different relative differences among the movement types for environmental cues, the types did not consistently differ in their movement distance.
+    However, in our scenario 2, in which individuals had a fixed competition strategy (forager or kleptoparasite), kleptoparasites moved much more than foragers.
+    %%
+    With few between-type differences in movement distance, the repeatability of movement distance was low in scenario 1 at low growth rates, but increased substantially at higher growth rates.
+    In scenario 2, not accounting for differences in competition strategy led to repeatability scores $\approx$ 1.0, but correcting for these differences led to lower repeatability scores.
+    %%
+    Finally, applying step-selection analysis to estimate agents' apparent selection for landscape productivity showed no differences among movement types in scenario 1, but revealed clear differences between competition strategies (and their correlated movement types) in scenario 2.
+    %%
+    % Our application of relatively simple analyses to a model with highly dynamic agent distributions,arising from simple movement rules and foraging mechanisms, emphasise the challenge in relating animals' behavioural mechanisms to the movement paths that are their outcomes.
+    
+    \subsection*{Variation Among Movement Types and Competition Strategies}
+    
+    The co-existence of multiple movement types across multiple generations of scenario 1 suggests that multiple alternative movement rules are equally good for navigating our fluctuating resource and social landscapes \citep[see also][]{getz2015,netz2020}.
+    That movement types travel roughly the same distances is not surprising, as they must spend the same time handling, and gaining intake, to have equivalent fitness.
+    In scenario 2, there are essentially only two viable movement types that are strongly correlated with competition strategies at low growth rates ($r_{max}$ = 0.01).
+    Here, the handler-tracking kleptoparasites move more because their primary resource, handlers, are scarce; conversely, foragers move less, as prey-items are abundant \citep[see][]{gupte2021a}.
+    Yet both strategies have equivalent fitness because kleptoparasites make up for lost time by having to handle stolen prey-items for a shorter duration.
+    We suggest that for movement types to differ in their path metrics (e.g. distance, or speed; see \citealt{abrahms2017}), between-individual variation and within-individual consistency along a further axis of behaviour that equalises fitness between the types is likely necessary.
+    
+    \subsection*{Repeatability Analysis}
+    
+    Repeatability analysis of the scenario 1 movement paths showed that populations evolved on higher productivity landscapes had significantly higher repeatability scores.
+    The major difference between lower ($r_{max}$ = 0.01) and higher productivity landscapes ($r_{max}$ = 0.03) is that the latter have many more prey-items per cell.
+    While agents on low growth rate landscapes often encounter areas with few or no movement cues (`clueless regions'; \citealt{perkins1992}), this is much more rarely the case on high productivity landscapes.
+    Since our agents' decision-making mechanisms --- in common with animal cognitive systems --- require environmental cues to make movement decisions, between-individual differences in movement are more readily detected on landscapes with more movement cues \citep[see][]{carter2013a}.
+    Our result might suggest that populations with different movement types transplanted between information-poor and information-rich landscapes would show a marked increase in behavioural consistency.
+    We caution against this interpretation, as our populations have \textit{evolved}, rather than simply been tested on, landscapes across a productivity gradient.
+    On high productivity landscapes, a wider range of movement types is evolved, highlighting how measures such as repeatability are linked to the evolutionary trajectory of populations.
+    
+    Using scenario 2, we illustrated three different ways of implementing repeatability analysis for a population with correlated differences in movement type and competition strategy.
+    When differences in competition strategy were ignored, repeatability scores were close to 1.0, as the variance in movement distance due to competition strategy was picked up as between-individual variance instead.
+    Adding competition strategy as a fixed effect to the analysis resulted in lower repeatability values; this was expected, as differences among competition strategies explain the bulk of the variance.
+    Finally, performing separate repeatability analyses for foragers and kleptoparasites yielded very low repeatability scores for kleptoparasites, which foragers were still quite repeatable.
+    This last result is potentially because kleptoparasites are solidly monomorphic in their movement type, while foragers may be either handler- or non-handler-avoiding, and this difference in decision-making mechanism could result in subtle differences in movement metrics.
+    Overall, we suggest that extremely high repeatability scores might indicate that an important source of variation is not being taken into account, and should be sought for.
+    Multivariate methods can help identify within-individual behavioural co-variation in movement metrics, such as distance and displacement \citep{hertel2019,hertel2021}.
+    This approach could help reveal strong associations between movement types and competition strategies, as in our model, or responsiveness to social cues \citep{strandburg-peshkin2015}.
+    Identifying such behaviours from animal movement data is likely to require very high-resolution tracking and associated computational methods (Nathan et al. \textit{in prep.}).
+    
+    \subsection*{Individual Differences in Habitat Selection}
+    
+    In a novel application of step-selection analysis to the study of individual differences, we showed that agents of different competition strategies (scenario 2), but not of different movement types (both scenarios 1 and 2), had diverging selection for environmental conditions.
+    An important reminder is that our model's agents cannot actually detect cell productivity $r$, and therefore the preference for $r$ values is more correctly termed apparent selection.
+    This situation parallels empirical analysis of animal tracking data, in which researchers commonly use long-term indices of environmental conditions (e.g. NDVI; \citealt{pettorelli2011}) to approximate the ephemeral movement cues actually encountered and acted upon by individuals.
+    Nonetheless, strong between-individual differences (here, in competition strategy) are likely to be reflected in animals' apparent selection for environmental conditions.
+    In our model, the difference in apparent selection arises from the distribution of movement cues relative to cell growth $r$.
+    Handler-tracking kleptoparasites have a higher selection for $r$ because high-$r$ cells are more likely to have handlers, since foragers are more likely to find prey-items there and begin handling.
+    On the other hand, agent-avoiding foragers have a lower selection for $r$ as they avoid resource peaks, which are more likely to have more agents.
+    Some foragers will always be found on high-$r$ cells, as even a forager moving across the landscape at random (which they do not) is more likely to stop and begin handling on a high-$r$ cell than a cell at the periphery of a resource peak.
+    
+    \subsection*{Individual-based Models as a Check on Statistical Methods}
+    
+    Individual-based models are not new in movement ecology, and are increasingly used and prescribed to better understand animal movement \citep[see a review in][]{deangelis2019}.
+    Such models have been used to illustrate the importance of animal movement to phenomena such as disease outbreaks \citep{white2018}, and sympatric speciation \citep{getz2015}, while also showing how individual differences in animal movement strategies can have downstream effects on population-level phenomena such as habitat-selection and social interactions \citep{spiegel2017,spiegel2016a}.
+    There is also a rich tradition of individual-based models being used to assess the performance of methods intended for use on empirical tracking data.
+    For example, \citealt{gurarie2016}, \citealt{michelot2016}, and \citealt{patin2020a} simulated the paths of individuals with different behavioural modes to test the performance of tools to detect behavioural change-points, where the animal switches from one movement mode to another.
+    However, very few individual-based models that are used as checks on statistical methods actually model the fine-scale decisions --- comprising comparisons among, and eventual selection of --- steps that comprise animal movement \citep[but see recently][]{vissat2021}.
+    This is at least partially because few statistical methods seek to estimate animal movement preferences, and by implication, animal cognitive processes, at such fine scales.
+    Step-selection analysis has the potential to be among these methods, as it directly links what animals actually perceive, to where they go \citep[see recently][]{aben2021}.
+    This allows a fine-scale comparison between selected and alternative steps, which, at certain scales, may functionally approximate individuals' cognitive processes, at least in terms of preference or avoidance.
+    
+    Our model \citep{gupte2021a,netz2022a} and other mechanistic individual-based models that follow similar principles \citep{getz2015,getz2016,netz2020}, allow for the implementation of different movement decision-making mechanisms at very fine scales, in biologically plausible ways.
+    Our agents' movement decisions integrate locally available cues to make adaptive movement decisions, just as real animals are expected to do \citep{nathan2008a}.
+    While our agent responses are linear, they can in principle be much more complex, including convoluted relationships between the environmental cues, as well as separate weights for each cue combination.
+    Coupled with the ability to know the state of the environment, and of each agent, at any point in the simulation, we believe this and other similar models are suitable for the testing of a range of empirical methods.
+    For example, a better test of whether step-selection analysis can determine agent preferences for environmental cues, and individual differences therein, could involve the dynamic logging of selected and alternative steps, as well as the environmental covariates (prey-items and competitors) at those steps, in order to compare between them at fine scales.
+    Such logging would immediately reveal that often, agents have either very few direct local cues, or very few differences between conditions at alternative and selected steps, on which to base movement decisions at fine timescales \cite[relatively clueless regions, per][]{perkins1992}.
+    This highlights a potential challenge to such analyses from the ever increasing resolution of animal tracking and environmental monitoring data; for example, how should step-selection analysis be adapted to account for high spatial- and temporal-autocorrelation in animals' environments, while still taking advantage of high sampling frequencies.
+    
+    \section*{Conclusion}
+    
+    The analysis of our model's agent movement paths using contemporary statistical tools from movement ecology showed that it is often challenging to infer animals' decision-making processes, or even relative differences among individuals, from tracking data alone.
+    First, when seeking to assess individual consistency and between-individual differences from animal tracking data, it is key to include predictors that have a mechanistic relationship with the behavioural response being studied.
+    For species that are only poorly known, or difficult to study in captivity, this requires first collecting substantial knowledge on natural history and behavioural biology.
+    Researchers could potentially apply a model selection approach \citep{burnham2011}, to determine which fixed effects are best suited to their study species.
+    Second, uncovering individual behavioural tendencies in captivity may not be sufficient to describe animal movement in natural environments, which is likely to be affected by fine-scale fluctuations in resources, as well as the social environment.
+    Finally, attempting to recover animals' movement preferences at fine scales is a challenging task.
+    In part, this is due to a mismatch of scales: empirical researchers are rarely able to study fine-scale movement decisions, because suitably fine-scale data on the environmental cues that go into these decisions are not available.
+    While increasingly high-resolution animal tracking is becoming more common, there would need to be a concurrent increase in the resolution of environmental monitoring \textit{from the animal's point of view}.
+    The availability of such data sources would make the development of statistical tools that account for particular issues --- such as spatio-temporal autocorrelation --- a priority in movement ecology.
+    Individual-based models, in which simple mechanisms can give rise to substantial complexity in animal movement and population distributions, could be very useful as test-beds to investigate whether current and upcoming tools are truly capable of parsing patterns to recover the underlying processes.
+    
+    \section*{Data and Code Availability}
+    
+    The simulation code for the \textit{Kleptomove} model is on Zenodo as \citealt[(zenodo.org/record/4905476)]{netz2022a}, and on Github: github.com/pratikunterwegs/Kleptomove.
+    %
+    Simulation data are available from DataverseNL as a draft: \textbf{UPDATE WITH DRAFT DATA}.
+    Data will be at this persistent link after publication: \textbf{UPDATE WITH PERSISTENT DOI}.
+    Data analysis code is on Github: github.com/pratikunterwegs/pattern-process.
+    
+    \section*{Acknowledgments}
+    
+    The authors thank Christoph Netz and Hanno Hildenbrandt for contributing extensively to the coding of the simulation model \textit{Kleptomove};
+    Jakob Gismann and other members of the Modelling Adaptive Response Mechanisms Group at the University of Groningen for helpful discussions on the manuscript.
+    F.J.W. acknowledges funding from the European Research Council (ERC Advanced Grant No. 789240).
+    P.R.G was supported by an Adaptive Life Programme grant made possible by the Groningen Institute for Evolutionary Life Sciences (GELIFES).
 
     \newrefcontext[sorting=nyt]
     \section*{Literature Cited}

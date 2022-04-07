@@ -94,7 +94,7 @@
   doi=false,
   eprint=false,
   % style=science,%
-  style=oxyear, % Author 1999, 2010
+  style=authoryear,%oxyear, % Author 1999, 2010
   % bibstyle=authoryear,
   dashed=true, % dashed: substitute rep. author with ---
   sorting=ynt, % name, year, title
@@ -109,6 +109,11 @@
   natbib=true % natbib compatibility mode (\citep and \citet still work)
 }{biblatex}
 \usepackage{biblatex}
+
+% no volume, pages, or issue number
+\AtEveryBibitem{\clearfield{pages}}
+\AtEveryBibitem{\clearfield{volume}}
+\AtEveryBibitem{\clearfield{number}}
 
 \PassOptionsToPackage{fleqn}{amsmath}       % math environments and more by the AMS
   \usepackage{amsmath}
