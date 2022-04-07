@@ -99,7 +99,7 @@
   dashed=true, % dashed: substitute rep. author with ---
   sorting=ynt, % name, year, title
   % sortcites,
-  issuestyle=parens,
+  % issuestyle=parens,
   % sorting=none,
   maxcitenames=2,
   % maxbibnames=5
@@ -114,6 +114,25 @@
 \AtEveryBibitem{\clearfield{pages}}
 \AtEveryBibitem{\clearfield{volume}}
 \AtEveryBibitem{\clearfield{number}}
+
+% try to remove empty brackets
+% \renewbibmacro*{issue+date}{%
+%   \ifboolexpr{test {\iffieldundef{issue}} and test {\iffieldundef{year}}}
+%     {}
+%     {\printtext[parens]{%
+%        \printfield{issue}%
+%        \setunit*{\addspace}%
+%        \usebibmacro{date}}%
+%      \newunit}}
+
+% % more code to remove empty brackets
+% \renewbibmacro*{url+urldate}{%
+%   \iffieldundef{url}
+%     {}
+%     {\printtext[parens]{%
+%        \printfield{url}
+%        \setunit{\addsemicolon\space}%
+%        \printurldate}}}
 
 \PassOptionsToPackage{fleqn}{amsmath}       % math environments and more by the AMS
   \usepackage{amsmath}
