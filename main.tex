@@ -36,6 +36,8 @@
 \addbibresource{references/holeybirds.bib}
 \addbibresource{references/pathomove.bib}
 \addbibresource{references/personality.bib}
+\addbibresource{references/patternprocess.bib}
+\addbibresource{references/general.bib}
 
 % \addbibresource{Bibliography.bib}
 % \addbibresource[label=ownpubs]{AMiede_Publications.bib}
@@ -53,8 +55,10 @@
 %     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
 \setmainfont{Source Serif Pro}
 \setmathfont{Erewhon Math}
-\setsansfont{Oswald}%[Extension = .ttf]%, 
-    [UprightFont = *-Light,BoldFont = *-Regular]
+\setsansfont{DM Sans}%[Extension = .ttf]%, 
+    % [UprightFont = *-Light,BoldFont = *-Regular]
+
+\newfontfamily{\displayfont}{TeX Gyre Schola}
 
 \renewcommand*{\bibfont}{\footnotesize}
 
@@ -71,21 +75,21 @@
 \titleformat{\part}[display]
         {\ct@altfont\centering\LARGE\rmfamily}%
         {\thispagestyle{empty}\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
-        {\color{maroon}\scshape\huge\rmfamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+        {\huge\rmfamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\bfseries\rmfamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\rmfamily\itshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\relax}{\mbox{}\oldmarginpar{\bfseries\displayfont{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
+    {\raggedright\huge\rmfamily\itshape\bfseries}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\rmfamily\itshape\large}
+    {\relax}{\thesection}{1em}{\rmfamily\bfseries\itshape\large}
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\rmfamily\itshape}
+    {\relax}{\thesubsection}{1em}{\rmfamily\bfseries}
 
 % fix section format
 \titleformat{\paragraph}
@@ -122,11 +126,11 @@
 }
 
 % to format short titles
-\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\sffamily{Chapter \thechapter}}{\color{gray}\small\sffamily{#1}}}
-\renewcommand{\sectionmark}[1]{\markright{\small\sffamily\MakeUppercase{\thesection}\enspace{#1}}}
+\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\rmfamily{Chapter \thechapter}}{\color{gray}\small\rmfamily{#1}}}
+\renewcommand{\sectionmark}[1]{\markright{\small\rmfamily\MakeUppercase{\thesection}\enspace{#1}}}
 
 % to format page numbers
-\addtokomafont{pagenumber}{\color{gray}\small\sffamily}
+\addtokomafont{pagenumber}{\color{gray}\small\rmfamily}
 
 % paragraph spacing
 % \setlength{\parskip}{1em}
@@ -177,10 +181,10 @@
 % \ctparttext{}
 \part{Leveraging new methods to study animal movement and spatial ecology}
 
+\cleardoublepage \include{boxes/mapping}
+
 \cleardoublepage \include{chapters/preprocessing_header}
 \include{chapters/preprocessing_main}
-
-% \clearpage \include{boxes/mapping}
 
 \cleardoublepage \include{chapters/holeybirds_header} 
 \include{chapters/holeybirds_main}
@@ -188,11 +192,12 @@
 \cleardoublepage \include{chapters/hillybirds_header}
 \include{chapters/hillybirds_main}
 
+\cleardoublepage \include{boxes/clearances}
+
 \cleardoublepage \ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
 \part{Evolutionary contexts of animal movement strategies}
 
-% \clearpage
-% \include{boxes/details}
+\cleardoublepage \include{boxes/details}
 
 \cleardoublepage \include{chapters/kleptomove_header} 
 \include{chapters/kleptomove_main}
