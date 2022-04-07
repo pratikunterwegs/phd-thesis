@@ -179,16 +179,16 @@
 \include{frontbackmatter/Titlepage}
 \include{frontbackmatter/Titleback}
 \include{frontbackmatter/innertitle}
-\clearpage\include{frontbackmatter/propositions}
+\cleardoublepage \include{frontbackmatter/propositions}
 % % \clearpage\include{frontbackmatter/Dedication}
 % % \clearpage\include{frontbackmatter/Colophon}
 
-\clearpage\include{frontbackmatter/Contents}
+\cleardoublepage \include{frontbackmatter/Contents}
 
 \pagestyle{scrheadings}
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\clearpage\include{frontbackmatter/Abstract}
+\cleardoublepage \include{frontbackmatter/Abstract}
 
 %********************************************************************
 % Mainmatter
@@ -199,6 +199,7 @@
 
 \cleardoublepage \include{chapters/introduction}
 
+\cleardoublepage 
 % \ctparttext{}
 \part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
 
@@ -215,7 +216,8 @@
 
 \cleardoublepage \include{boxes/clearances}
 
-% \cleardoublepage \ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
+\cleardoublepage 
+\ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
 \part{Evolutionary Contexts of Animal Movement Strategies}
 
 \cleardoublepage \include{boxes/details}

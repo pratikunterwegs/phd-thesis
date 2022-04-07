@@ -56,7 +56,7 @@
     At the end of each generation, individuals reproduce and pass on their movement and foraging strategies to their offspring, the number of which is proportional to their intake in the 400 timesteps of their `lifetime'.
     
     The cells of the gridded landscape each have a cell-specific probability $r$ of generating a discrete resource, which we refer to as `prey items' (e.g. a mussel).
-    The cells are arranged into 1,024 regularly spaced clusters, or `resource peaks', in which the productivity of cells at the centre of the peak (called $r_{max}$) is five times greater than the cells at the periphery of the peak; resource peaks are approximately 16 cells away from each other (see {\color{red}Supplementary Material Fig. S1}).
+    The cells are arranged into 1,024 regularly spaced clusters, or `resource peaks', in which the productivity of cells at the centre of the peak (called $r_{max}$) is five times greater than the cells at the periphery of the peak; resource peaks are approximately 16 cells away from each other.
     We ran the model with a default $r_{max}$ of 0.01, and also at $r_{max}$ values between 0.001 and 0.03, to examine the effect of landscape.
     For an $r_{max}$ = 0.01, the most productive cells (at the centres of a cluster) are likely to generate one item per 100 timesteps (or four items per generation, for $T$ = 400), while the least productive cells (at cluster peripheries) are likely to generate one item every 500 timesteps ($<$ than one item per generation, for $T$ = 400).
     Cells in our landscape were modelled as having a uniform carrying capacity $K$ of 5 prey items, and while a cell is at carrying capacity its $r$ is 0.
@@ -214,7 +214,7 @@
     During earlier analyses, we had found that agents in the exploitation competition scenario could be classified into three `movement types', based on which weight (sP, sN, sH) had the largest absolute value.
     We expected that agents whose largest weight was $s_P$, the preference for prey-items, would have larger selection strengths for cell $r$.
     
-    \section{Results}
+    \section*{Results}
     
     \subsection*{Model Eco-Evolutionary Equilibrium}
     
@@ -370,7 +370,7 @@
         \label{fig4}
     \end{figure}
     
-    \section{Discussion}
+    \section*{Discussion}
     
     % % Detecting Individual Consistency from Agent Paths
     
@@ -461,13 +461,13 @@
     The availability of such data sources would make the development of statistical tools that account for particular issues --- such as spatio-temporal autocorrelation --- a priority in movement ecology.
     Individual-based models, in which simple mechanisms can give rise to substantial complexity in animal movement and population distributions, could be very useful as test-beds to investigate whether current and upcoming tools are truly capable of parsing patterns to recover the underlying processes.
     
-    \section*{Data and Code Availability}
+    % \section*{Data and Code Availability}
     
-    The simulation code for the \textit{Kleptomove} model is on Zenodo as \citealt[(zenodo.org/record/4905476)]{netz2022a}, and on Github: github.com/pratikunterwegs/Kleptomove.
-    %
-    Simulation data are available from DataverseNL as a draft: \textbf{UPDATE WITH DRAFT DATA}.
-    Data will be at this persistent link after publication: \textbf{UPDATE WITH PERSISTENT DOI}.
-    Data analysis code is on Github: github.com/pratikunterwegs/pattern-process.
+    % The simulation code for the \textit{Kleptomove} model is on Zenodo as \citealt[(zenodo.org/record/4905476)]{netz2022a}, and on Github: github.com/pratikunterwegs/Kleptomove.
+    % %
+    % Simulation data are available from DataverseNL as a draft: \textbf{UPDATE WITH DRAFT DATA}.
+    % Data will be at this persistent link after publication: \textbf{UPDATE WITH PERSISTENT DOI}.
+    % Data analysis code is on Github: github.com/pratikunterwegs/pattern-process.
     
     \section*{Acknowledgments}
     
