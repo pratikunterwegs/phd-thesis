@@ -53,13 +53,16 @@
 %\hyphenation{put special hyphenation here}
 
 \usepackage{fontspec}
-\usepackage[usefilenames,
-    RMstyle={Text,Semibold},
-    SSstyle={Text,Semibold},
-    TTstyle={Text,Semibold},
-    DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
-% \setmainfont{Source Serif Pro}
-\setmathfont{Erewhon Math}
+% \usepackage[usefilenames,
+%     RMstyle={Text,Semibold},
+%     SSstyle={Text,Semibold}, Pro
+%     TTstyle={Text,Semibold},
+%     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
+% \usepackage{clara}
+\usepackage[T1]{fontenc}
+\setmainfont{XCharter}
+\setsansfont[]{Oswald}
+% \setmathfont{Erewhon Math}
 \newfontfamily{\displayfont}{TeX Gyre Schola}
 
 \renewcommand*{\bibfont}{\footnotesize}
@@ -87,18 +90,18 @@
 % fix part heading format
 \titleformat{\part}[display]
         {\ct@altfont\centering\LARGE\rmfamily}%
-        {\thispagestyle{empty}\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
+        {\thispagestyle{empty}\scshape\bfseries\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
         {\huge\rmfamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\bfseries\displayfont{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\rmfamily\itshape\bfseries}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
+    {\raggedright\huge\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\rmfamily\bfseries\itshape\large}
+    {\relax}{\thesection}{1em}{\rmfamily\bfseries\large}
 
 % fix section format
 \titleformat{\subsection}
@@ -146,7 +149,7 @@
 }
 
 % to format short titles
-\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\rmfamily{Chapter \thechapter}}{\color{gray}\small\rmfamily{#1}}}
+\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\rmfamily{Chapter~\thechapter}}{\color{gray}\small\rmfamily{#1}}}
 \renewcommand{\sectionmark}[1]{\markright{\small\rmfamily\MakeUppercase{\thesection}\enspace{#1}}}
 
 % to format page numbers
@@ -179,16 +182,20 @@
 \include{frontbackmatter/Titlepage}
 \include{frontbackmatter/Titleback}
 \include{frontbackmatter/innertitle}
-\cleardoublepage \include{frontbackmatter/propositions}
+% \cleardoublepage \include{frontbackmatter/propositions}
 % % \clearpage\include{frontbackmatter/Dedication}
 % % \clearpage\include{frontbackmatter/Colophon}
 
 \cleardoublepage \include{frontbackmatter/Contents}
 
+\frontmatter
+\cleardoublepage \include{frontbackmatter/Abstract}
+
 \pagestyle{scrheadings}
 \pagenumbering{arabic}
-\setcounter{page}{1}
-\cleardoublepage \include{frontbackmatter/Abstract}
+% \setcounter{page}{1}
+
+\mainmatter
 
 %********************************************************************
 % Mainmatter
@@ -196,6 +203,7 @@
 % \titleformat{\section}{\relax}{\textsf{\thesection}}{1em}{}
 
 % use \clearpage here to avoid problems with pdfbookmark
+\clearpage
 
 \cleardoublepage \include{chapters/introduction}
 
@@ -203,40 +211,40 @@
 % \ctparttext{}
 \part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
 
-\cleardoublepage \include{chapters/preprocessing_header}
-\include{chapters/preprocessing_main}
+% \cleardoublepage \include{chapters/preprocessing_header}
+% \include{chapters/preprocessing_main}
 
-\cleardoublepage \include{boxes/mapping}
+% \cleardoublepage \include{boxes/mapping}
 
 \cleardoublepage \include{chapters/holeybirds_header}
 \include{chapters/holeybirds_main}
 
-\cleardoublepage \include{chapters/hillybirds_header}
-\include{chapters/hillybirds_main}
+% \cleardoublepage \include{chapters/hillybirds_header}
+% \include{chapters/hillybirds_main}
 
-\cleardoublepage \include{boxes/clearances}
+% \cleardoublepage \include{boxes/clearances}
 
-\cleardoublepage 
-\ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
-\part{Evolutionary Contexts of Animal Movement Strategies}
+% \cleardoublepage 
+% \ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
+% \part{Evolutionary Contexts of Animal Movement Strategies}
 
-\cleardoublepage \include{boxes/details}
+% \cleardoublepage \include{boxes/details}
 
-\cleardoublepage \include{chapters/kleptomove_header} 
-\include{chapters/kleptomove_main}
+% \cleardoublepage \include{chapters/kleptomove_header} 
+% \include{chapters/kleptomove_main}
 
-\cleardoublepage \include{chapters/pathomove_header}
-\include{chapters/pathomove_main}
+% \cleardoublepage \include{chapters/pathomove_header}
+% \include{chapters/pathomove_main}
 
-\cleardoublepage \include{chapters/patternprocess_header}
-\include{chapters/patternprocess_main}
+% \cleardoublepage \include{chapters/patternprocess_header}
+% \include{chapters/patternprocess_main}
 
 % % \include{Chapters/Chapter02}
 % %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
 % % \include{Chapters/Chapter03}
 % %\include{multiToC} % <--- just debug stuff, ignore for your documents
 
-\cleardoublepage \include{chapters/discussion}
+% \cleardoublepage \include{chapters/discussion}
 
 % \include{frontbackmatter/Acknowledgments}
 
@@ -249,7 +257,7 @@
 %\renewcommand{\thechapter}{\alph{chapter}}
 % \clearpage
 % \part{Appendix}
-
+\cleardoublepage
 %********************************************************************
 % Other Stuff in the Back
 %*******************************************************
@@ -257,7 +265,7 @@
 % \clearpage\include{FrontBackmatter/Declaration}
 
 % \clearpage\include{FrontBackmatter/Publications}
-% \clearpage\include{FrontBackmatter/Acknowledgments}
+\clearpage\include{FrontBackmatter/Acknowledgments}
 % ********************************************************************
 % Game Over: Restore, Restart, or Quit?
 %*******************************************************

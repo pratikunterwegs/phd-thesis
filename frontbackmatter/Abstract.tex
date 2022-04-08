@@ -1,20 +1,20 @@
 %*******************************************************
 % Abstract
 %*******************************************************
-%\renewcommand{\abstractname}{Abstract}
-% \pdfbookmark[1]{Summary}{Summary}
-\chapter*{Summary}
-\addcontentsline{toc}{chapter}{\tocEntry{Summary}}
-\begingroup
+\phantomsection
+% \addtocontents{toc}{\protect\vspace{\beforebibskip}}%
+\addcontentsline{toc}{chapter}{\tocEntry{Summary}}}%
+\chapter*{Summary}\label{ch:introduction}
+% \chaptermark{Summary}
 % \let\clearpage\relax
 % \let\cleardoublepage\relax
 % \let\cleardoublepage\relax
 
-% \begin{center}
-%     \emph{Spatial is special.}\\
-%     \medskip
-%     -- \small{A common maxim in data science}
-% \end{center}
+\begin{center}
+    \emph{Spatial is special.}\\
+    \medskip
+    -- \small{A common maxim in data science}
+\end{center}
 
 \lettrine{M}{ovement} is a fundamental phenomenon in the natural world, and active movement in response to environmental drivers is key to animal ecology.
 Individuals animals' positions in a landscape determine what they perceive, and with whom they associate and how.
@@ -24,7 +24,7 @@ Over the past twenty years, the field of \textit{movement ecology}, driven by ra
 
 \medskip
 
-\noindent Now, movement ecology is advancing on new frontiers, which are covered in Chapter~\ref{ch:introduction}.
+\noindent Now, movement ecology is advancing on new frontiers.%, which are covered in Chapter~\ref{ch:introduction}.
 I lay out the context for the rest of the chapters in this thesis, showing how there is strong, distinct need for the study of animal movement to make \textit{methodological advances}, borrowing from other fields that have undergone a `big-data revolution'.
 One frontier, the \textit{evolution of movement}, is especially challenging to explore, and I lay out the need for why the evolutionary feedbacks in animal movement ecology should be considered.
 
@@ -58,15 +58,15 @@ Combining large amounts of low-resolution citizen science data with appropriate 
 I show how movement strategies evolve to match individuals' competitive context as well as the availability of information on the resource landscape; there is substantial individual variation evolved in movement strategies among foragers, as well as tight correlations between evolved movement and foraging strategies.
 Modelling animal movement decisions in an eco-evolutionary context can help define the envelope of potential outcomes under different ecological scenarios in which there are complex feedback loops between individual movement and environmental cues.
 
-\adftripleflourishright~~ Chapter~\ref{ch:patternprocess} uses movement data from individuals in Chapter~\ref{ch:kleptomove} moving according to their evolved strategies, in which there is substantial variation, and examines whether these individual differences can be detected by mainstream statistical methods in animal ecology.
-I show that individual differences in movement strategies do not always result in differences in movement paths, and consequently, statistical tools including repeatability analysis and step-selection analysis, may not be able to detect often substantial underlying variation in animals' movement strategies.
-Applying statistical methods common in movement ecology to simulated movement data where the mechanisms controlling movement are known, can help reveal ecological and evolutionary scenarios which may confound these methods, enabling more precise inferences from tracking data.
-
 \adftripleflourishright~~ Chapter~\ref{ch:pathomove} looks at the evolution of animal movement strategies following the introduction of an infectious, chronic pathogen, and examines how animals balance the benefits of social information on resource distributions, against the risks of pathogen transmission, and the consequences of this evolutionary change for animal sociality.
 I show that introducing a pathogen to a population that has evolved to use social information leads to very rapid changes in movement strategies; this leads to cascading outcomes including more movement overall, fewer individual associations, lower intake, but also reduced pathogen transmission compared to non-adapted ancestral populations.
 Mechanistically modelling the introduction and spread of a novel infectious pathogen, a scenario of increasing global concern, can help to predict the direct and indirect consequences for individual-level outcomes, as well as impacts on the spatial-social organisation of animal societies.
 
-% \adftripleflourishright~~ Add about discussion.
+\adftripleflourishright~~ Chapter~\ref{ch:patternprocess} uses movement data from individuals in Chapter~\ref{ch:kleptomove} moving according to their evolved strategies, in which there is substantial variation, and examines whether these individual differences can be detected by mainstream statistical methods in animal ecology.
+I show that individual differences in movement strategies do not always result in differences in movement paths, and consequently, statistical tools including repeatability analysis and step-selection analysis, may not be able to detect often substantial underlying variation in animals' movement strategies.
+Applying statistical methods common in movement ecology to simulated movement data where the mechanisms controlling movement are known, can help reveal ecological and evolutionary scenarios which may confound these methods, enabling more precise inferences from tracking data.
+
+        % \adftripleflourishright~~ Add about discussion.
 
 % \medskip
 
