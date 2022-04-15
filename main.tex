@@ -6,7 +6,7 @@
     \WarningFilter{titlesec}{Non standard sectioning command detected}
 \documentclass[ twoside,openright,titlepage,numbers=noenddot,%1headlines,
                 headinclude,footinclude,clearpage=empty,abstract=on,toc=flat,
-                BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames
+                BCOR=5mm,paper=b5,fontsize=11pt,dvipsnames
                 ]{scrbook}
 \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
 \RedeclareSectionCommands[
@@ -53,16 +53,30 @@
 %\hyphenation{put special hyphenation here}
 
 \usepackage{fontspec}
-% \usepackage[usefilenames,
-%     RMstyle={Text,Semibold},
-%     SSstyle={Text,Semibold}, Pro
-%     TTstyle={Text,Semibold},
-%     DefaultFeatures={Ligatures=Common,Scale=0.92}]{plex-otf}
-% \usepackage{clara}
 \usepackage[T1]{fontenc}
-\setmainfont{XCharter}
+\setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
+
+% \defaultfontfeatures{
+%   RawFeature={+axis={wght=100}},
+%   UprightFont = {Source Serif 4 Variable}
+% }
+% \setmainfont[
+%   Path={}
+%   % BoldFeatures={RawFeature={+axis={wght=700}}},
+%   % ItalicFeatures={RawFeature={+axis={wght=300}}},
+%   % UprightFeatures={RawFeature={+axis={wght=450}}}
+% ]{SourceSerif4Variable-Roman.otf}
+% % \setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
+% % \setmainfont[
+% %     ItalicFont=SourceSerif4Variable-Italic.otf,
+% %     BoldFont=SourceSerif4Variable-Roman.otf,
+% %     BoldItalicFont=SourceSerif4Variable-Italic.otf,
+% %     BoldFeatures={RawFeature={+axis={wght=900}}},
+% %     BoldItalicFeatures={RawFeature={+axis={wght=900}}}
+% % ]{SourceSerif4Variable-Roman.otf}
+
 \setsansfont[]{Oswald}
-% \setmathfont{Erewhon Math}
+\setmathfont{Erewhon Math}
 \newfontfamily{\displayfont}{TeX Gyre Schola}
 
 \renewcommand*{\bibfont}{\footnotesize}
@@ -87,21 +101,24 @@
 %   \addcontentsline{toc}{#1}{\ifttl@toclabel\ttl@a\else\numberline{}\fi#2}% indent unnumbered ToC entries too
 %   \nobreak}
 
+% to prevent hyphens in toc
+\renewcommand{\@tocrmarg}{2.55em plus1fil}
+
 % fix part heading format
 \titleformat{\part}[display]
         {\ct@altfont\centering\LARGE\rmfamily}%
-        {\thispagestyle{empty}\scshape\bfseries\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
-        {\huge\rmfamily}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+        {\thispagestyle{empty}\scshape\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
+        {\huge\rmfamily\scshape\bfseries}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\huge\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\relax}{\mbox{}\oldmarginpar{\bfseries\sffamily{\tiny{Chapter}}~\displayfont\chapterNumber\thechapter}}{0pt}%
+    {\raggedright\large\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\rmfamily\bfseries\large}
+    {\relax}{\thesection}{1em}{\rmfamily\bfseries\scshape}
 
 % fix section format
 \titleformat{\subsection}
@@ -117,10 +134,10 @@
 
 % parts in toc
 \renewcommand{\thepart}{\Roman{part}}%
-\renewcommand{\cftpartfont}{\bfseries\itshape\rmfamily\large}%
+\renewcommand{\cftpartfont}{\bfseries\scshape\rmfamily\large}%
 \renewcommand{\cftpartpresnum}{Part~}%  \MakeTextLowercase
 % chapters in toc
-\renewcommand{\cftchappresnum}{\rmfamily}%
+\renewcommand{\cftchappresnum}{{\rmfamily}%
 \renewcommand{\cftchapaftersnumb}{\rmfamily}%
 \renewcommand{\cftchapfont}{\rmfamily}%
 \renewcommand{\cftchappagefont}{\rmfamily}%
@@ -179,8 +196,8 @@
 %*******************************************************
 
 % \include{FrontBackmatter/DirtyTitlepage}
-\include{frontbackmatter/Titlepage}
-\include{frontbackmatter/Titleback}
+% \include{frontbackmatter/Titlepage}
+% \include{frontbackmatter/Titleback}
 \include{frontbackmatter/innertitle}
 % \cleardoublepage \include{frontbackmatter/propositions}
 % % \clearpage\include{frontbackmatter/Dedication}
@@ -189,7 +206,7 @@
 \cleardoublepage \include{frontbackmatter/Contents}
 
 \frontmatter
-\cleardoublepage \include{frontbackmatter/Abstract}
+% \cleardoublepage \include{frontbackmatter/Abstract}
 
 \pagestyle{scrheadings}
 \pagenumbering{arabic}
@@ -207,37 +224,37 @@
 
 % \cleardoublepage \include{chapters/introduction}
 
-\cleardoublepage 
-% \ctparttext{}
-\part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
+% \cleardoublepage 
+% % \ctparttext{}
+% \part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
 
-\cleardoublepage \include{chapters/preprocessing_header}
-\include{chapters/preprocessing_main}
+% \cleardoublepage \include{chapters/preprocessing_header}
+% \include{chapters/preprocessing_main}
 
-\cleardoublepage \include{boxes/mapping}
+% \cleardoublepage \include{boxes/mapping}
 
-\cleardoublepage \include{chapters/holeybirds_header}
-\include{chapters/holeybirds_main}
+% \cleardoublepage \include{chapters/holeybirds_header}
+% \include{chapters/holeybirds_main}
 
-\cleardoublepage \include{chapters/hillybirds_header}
-\include{chapters/hillybirds_main}
+% \cleardoublepage \include{chapters/hillybirds_header}
+% \include{chapters/hillybirds_main}
 
-\cleardoublepage \include{boxes/clearances}
+% \cleardoublepage \include{boxes/clearances}
 
 \cleardoublepage 
 % \ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
 \part{Evolutionary Contexts of Animal Movement Strategies}
 
-\cleardoublepage \include{boxes/details}
+% \cleardoublepage \include{boxes/details}
 
-\cleardoublepage \include{chapters/kleptomove_header} 
-\include{chapters/kleptomove_main}
+% \cleardoublepage \include{chapters/kleptomove_header} 
+% \include{chapters/kleptomove_main}
 
 \cleardoublepage \include{chapters/pathomove_header}
 \include{chapters/pathomove_main}
 
-\cleardoublepage \include{chapters/patternprocess_header}
-\include{chapters/patternprocess_main}
+% \cleardoublepage \include{chapters/patternprocess_header}
+% \include{chapters/patternprocess_main}
 
 % % \include{Chapters/Chapter02}
 % %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
