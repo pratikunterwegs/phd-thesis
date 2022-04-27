@@ -89,11 +89,6 @@
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent}
 
-% for indenting summary - doesnt work
-% \newenvironment{unnumbered}%
-% {\setcounter{secnumdepth}{-1}}
-% {\setcounter{secnumdepth}{3}}
-
 \makeatletter
 
 % to indent unnumbered chapters - doesnt work
@@ -130,7 +125,7 @@
 
 % \usepackage[left]{lineno}
 \usepackage[skins,breakable]{tcolorbox}
-\usepackage{lipsum}
+% \usepackage{lipsum}
 
 % parts in toc
 \renewcommand{\thepart}{\Roman{part}}%
@@ -196,17 +191,17 @@
 %*******************************************************
 
 % \include{FrontBackmatter/DirtyTitlepage}
-% \include{frontbackmatter/Titlepage}
-% \include{frontbackmatter/Titleback}
+\include{frontbackmatter/Titlepage}
+\include{frontbackmatter/Titleback}
 \include{frontbackmatter/innertitle}
-% \cleardoublepage \include{frontbackmatter/propositions}
-% % \clearpage\include{frontbackmatter/Dedication}
+\cleardoublepage \include{frontbackmatter/propositions}
+\clearpage\include{frontbackmatter/Dedication}
 % % \clearpage\include{frontbackmatter/Colophon}
 
 \cleardoublepage \include{frontbackmatter/Contents}
 
 \frontmatter
-% \cleardoublepage \include{frontbackmatter/Abstract}
+\cleardoublepage \include{frontbackmatter/Abstract}
 
 \pagestyle{scrheadings}
 \pagenumbering{arabic}
@@ -222,48 +217,48 @@
 % use \clearpage here to avoid problems with pdfbookmark
 \clearpage
 
-% \cleardoublepage \include{chapters/introduction}
+\cleardoublepage \include{chapters/introduction}
 
-% \cleardoublepage 
+\cleardoublepage 
 % % \ctparttext{}
-% \part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
+\part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
 
-% \cleardoublepage \include{chapters/preprocessing_header}
-% \include{chapters/preprocessing_main}
+\cleardoublepage \include{chapters/preprocessing_header}
+\include{chapters/preprocessing_main}
 
 % \cleardoublepage \include{boxes/mapping}
 
-% \cleardoublepage \include{chapters/holeybirds_header}
-% \include{chapters/holeybirds_main}
+\cleardoublepage \include{chapters/holeybirds_header}
+\include{chapters/holeybirds_main}
 
-% \cleardoublepage \include{chapters/hillybirds_header}
-% \include{chapters/hillybirds_main}
+\cleardoublepage \include{chapters/hillybirds_header}
+\include{chapters/hillybirds_main}
 
 % \cleardoublepage \include{boxes/clearances}
 
 \cleardoublepage 
-% \ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
+\ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
 \part{Evolutionary Contexts of Animal Movement Strategies}
 
 % \cleardoublepage \include{boxes/details}
 
-% \cleardoublepage \include{chapters/kleptomove_header} 
-% \include{chapters/kleptomove_main}
+\cleardoublepage \include{chapters/kleptomove_header} 
+\include{chapters/kleptomove_main}
 
 \cleardoublepage \include{chapters/pathomove_header}
 \include{chapters/pathomove_main}
 
-% \cleardoublepage \include{chapters/patternprocess_header}
-% \include{chapters/patternprocess_main}
+\cleardoublepage \include{chapters/patternprocess_header}
+\include{chapters/patternprocess_main}
 
 % % \include{Chapters/Chapter02}
 % %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
 % % \include{Chapters/Chapter03}
 % %\include{multiToC} % <--- just debug stuff, ignore for your documents
 
-% \cleardoublepage \include{chapters/discussion}
+\cleardoublepage \include{chapters/discussion}
 
-% \include{frontbackmatter/Acknowledgments}
+\include{frontbackmatter/Acknowledgments}
 
 % \include{frontbackmatter/Publications}
 
