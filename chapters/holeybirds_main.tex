@@ -33,7 +33,7 @@ Overall, we show how birds' movement decisions, influenced by their immediate ph
 
 We studied bird molt and movement in the Hula Valley of northern Israel (33.10°N, 35.60°E), which includes reconstructed wetlands and reedbeds as well as agricultural areas (crops, plantations and fishponds; see \textit{SI Appendix}).
 
-\subsection{Bird capture and wing molt scoring}
+\subsection*{Bird capture and wing molt scoring}
 
 We captured 94 individuals of four species in 2016: 19 whitespectacled bulbuls (\textit{Pycnonotus xanthopygos}), 38 house sparrows (\textit{Passer domesticus}), 16 clamorous reed warblers (\textit{Acrocephalus stentoreus}), and 21 barn swallows (\textit{Hirundo rustica}).
 We caught all individuals before the molting season commenced but after breeding was completed, between June and October 2016.
@@ -53,7 +53,7 @@ Cutting the feather rather than tearing it out from the base, which is still inn
 For these experimentally manipulated birds, we calculated the wing gap size after the manipulation described here.
 Bird capture and handling, the experimental manipulation procedure, and tagging for position tracking (see below) were conducted under a permit from the Israel Nature and Parks Authority (NPA permit 2016/41402) and from the ethics committee of the Hebrew University of Jerusalem, Israel (NS-16-14801-2).
 
-\subsection{Forecasting daily changes in the wing gap size index}
+\subsection*{Forecasting daily changes in the wing gap size index}
 
 The size of the molt-related wing gap decreases slowly and constantly as feathers regrow, yet as a mature feather is shed, the wing gap size may also increase in gradual jumps.
 Over our tracking period of about 7 days per individual (see below), this is expected to represent small changes in the wing surface area, which could further influence movement decisions.
@@ -61,7 +61,7 @@ These changes in wing condition should be accounted for when relating movement c
 To do this, we calculated for each species the mean daily progress in the molt score, based on a sample of individuals documented twice during the molt process (mean $\pm$ SD and sample size by species: bulbul = 0.45 $\pm$ 0.15, n = 17; sparrow = 0.40 $\pm$ 0.25, n = 10; reed warbler = 0.69 $\pm$ 0.34, n = 24; swallow = 0.34 $\pm$ 0.18, n = 22). 
 Then, we estimated for each bird included in the study the expected daily change based on the measurement we made at the time of tagging (see \textit{SI Appendix}).
 
-\subsection{Tracking bird movement using ATLAS}
+\subsection*{Tracking bird movement using ATLAS}
 
 We tracked the movement of individual birds using ATLAS (Advanced Tracking and Localization of Animals in real-life Systems), a state-of-the-art high-throughput radio-telemetry system capable of tracking dozens of individuals at intervals as low as 4 seconds \citep{weiser2016,toledo2014,toledo2020,nathan2022}.
 We fit ATLAS tags (0.9 -- 1.6 g, depending on species) to birds after capture, and then released them.
@@ -69,7 +69,7 @@ Each individual was tracked for an average of 7.8 days (SD = 9.5 days; mean $\pm
 We collected 4.9 million position estimates overall, with $\approx$6,700 positions per individual per day, for an effective tracking interval of 4.67 positions per minute on average (SD = 3.59 positions; mean $\pm$ SD by species:  bulbul = 6.23 $\pm$ 3.81; sparrow = 5.13 $\pm$ 5.39; reed warbler = 4.64 $\pm$ 3.12; swallow = 2.65 $\pm$ 2.04).
 Since we were interested in exploring movement patterns, and these species are diurnally active, we removed all nighttime positions, leading to an approximate halving of the total dataset.
 
-\subsection{Pre-processing tracking data}
+\subsection*{Pre-processing tracking data}
 
 ATLAS systems can achieve a spatial resolution comparable to that of GPS position loggers \citep{weiser2016,beardsworth2021}, and this resolution can be improved with minimal pre-processing, or data cleaning \citep{beardsworth2021, gupte2022d}.
 We began data cleaning by removing locations near a so-called attractor position (at (257000.0,780000.0), Israeli grid; see file \textit{log\_preprocessing.log}); these are locations for which the positioning system had defaulted to a (wrong) estimate.
@@ -81,7 +81,7 @@ We deliberately used larger thresholds than these species' maximum speeds to avo
 Finally, we \textit{(iv)} accounted for small-scale errors --- noise around the true positions --- by applying a median smooth with a moving window $K$ = 7.
 Each individual's track was pre-processed separately.
 
-\subsection{Quantifying large-scale movements}
+\subsection*{Quantifying large-scale movements}
 
 We investigated the large-scale space-use of reed warblers, sparrows, and bulbuls by summarising their pre-processed movement paths into daily sequences of `residence patches' using the \textit{atlastools} package developed specifically with high-throughput ATLAS tracking data in mind \citep{gupte2022d}.
 The residence patch algorithm uses simple distance and duration thresholds, chosen based on the movement ecology of the tracked species, to efficiently and rapidly cluster-segment individuals' non-travelling positions \citep{gupte2022d}.
@@ -92,7 +92,7 @@ Doing so, we obtained 4,373 residence patches overall, and we extracted environm
 We handled swallows differently, as these are highly aerial birds whose movement is not easily clustered into residence patches.
 Instead, and because the relatively higher-flying swallows are more accurately tracked by ATLAS, we simply calculated the total distances moved along daily tracks from the cleaned, pre-processed data.
 
-\subsection{Visibility analysis to quantify sheltered habitats}
+\subsection*{Visibility analysis to quantify sheltered habitats}
 
 Many animals can gauge the risk posed by predators by estimating a predator's field of view (`spatial perspective taking') \cite{emery2000,bruce2003,davidson2016}, and select for sheltered locations outside of a predator's view \citep{hampton1994,krams2001,watve2002}.
 To assess the field of view of a hypothetical predator, and thus the estimated riskiness of the landscape, we took a viewshed ecology approach to determine how visible an area was from surrounding locations \citep{aben2018,aben2021}.
@@ -109,7 +109,7 @@ In line with experimental and observational work, we assumed an observer height 
 We used the `Visibility Analysis' plugin v1.2 for QGIS v3.20 to calculate visibility scores over the study area (https://github.com/zoran-cuckovic/QGIS-visibility-analysis).
 % This approach is corroborated by the findings that house sparrows were latent to feed for longer periods after simulated sparrowhawk attacks, and their response varied across habitats (REF).
 
-\subsection{Drawing alternative residence patches to examine habitat selection}
+\subsection*{Drawing alternative residence patches to examine habitat selection}
 
 In our landscape, it is mostly wooded areas that offer shelter from observation by aerial predators (see \textit{SI Appendix}).
 We examined the relative importance of the provisioning effects of vegetation (proxied by NDVI) \cite{pettorelli2011}, and its sheltering effects, on birds' movement decisions at the patch scale.
@@ -134,7 +134,7 @@ Our method, using between-patch movements as steps, is equivalent to large-scale
 
 \begin{figure}%[\sidecaptionrelwidth][!t]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/holeybirdsfig_02.png}
+\includegraphics[width=0.9\textwidth]{figures/holeybirds/fig_02.png}
 \caption{
     \textbf{Naturally molting bulbuls and sparrows, but not reed warblers, travel farther between residence patches during natural molt than following experimental feather manipulation.}
     White-spectacled bulbuls (\textit{Pycnonotus xanthopygos}) and house sparrows (\textit{Passer domesticus}) moved $\approx$251\% and $\approx$150\% as far between areas of prolonged use (`residence patches') when molting, compared to non-molting individuals (generalised additive model estimates: bulbuls, $F$ = 4.734, p = 0.01; sparrows, $F$ = 11.58, p < 0.001).
@@ -155,7 +155,7 @@ For aerial foraging swallows, we chose to quantify their large-scale movement by
 
 \begin{figure}%[\sidecaptionrelwidth][!t]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/holeybirdsfig_01.png}
+    \includegraphics[width=0.9\textwidth]{figures/holeybirds/fig_01.png}
     % width=8.7cm,height=8.7cm
     \caption{
         \textbf{Patch-switching behaviour in relation to the wing gap index of three species of non-migratory, sub-tropical passerines.}
@@ -198,7 +198,7 @@ Reed warblers did not show a change in patch-switching frequency in relation to 
 
 \begin{figure}%[\sidecaptionrelwidth][!t]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/holeybirdsfig_03.png}
+    \includegraphics[width=0.9\textwidth]{figures/holeybirds/fig_03.png}
     % width=8.7cm,height=8.7cm
     \caption{
         \textbf{Naturally molting bulbuls and warblers, but not sparrows, use residence patches for shorter durations than non-molting and artificially manipulated birds.}
@@ -238,7 +238,7 @@ This is consistent with the idea that birds avoid open agricultural fields, wher
 
 \begin{figure}%%[\sidecaptionrelwidth]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/holeybirdsfig_04.png}
+\includegraphics[width=0.9\textwidth]{figures/holeybirds/fig_04.png}
 % width=8.7cm,height=8.7cm
 \caption{
     \textbf{Bulbuls, sparrows, and reed warblers prefer sheltered habitats across wing condition.}
