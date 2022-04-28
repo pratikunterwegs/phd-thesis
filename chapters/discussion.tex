@@ -9,22 +9,175 @@
 
 To be completed.
 
-% \section*{Recapitulation of this thesis}
+\newrefcontext[sorting=ynt]
 
-% \section*{Case studies: why movement is key to ecological patterns}
+\section*{Recapitulation of this thesis}
 
-% \section*{Why include evolution in animal movement studies}
+\section*{Case studies: why movement is key to ecological patterns}
 
-% \subsection*{Importance of the individual-centric view}
+\section*{Why include evolution in animal movement studies}
 
-% \subsection*{How evolved movement strategies are different from random movement}
+\subsection*{Importance of the individual-centric view}
 
-% \subsection*{Evolution of complex traits can be very rapid}
+\subsection*{How evolved movement strategies are different from random movement}
 
-% \section*{Conceptual ingredients of eco-evolutionary individual-based models}
+\subsection*{Evolution of complex traits can be very rapid}
 
-% \section*{Practical aspects of implementing eco-evolutionary individual-based models}
+\section*{Conceptual ingredients of eco-evolutionary individual-based models}
 
-% \section*{Relating individual-based models with empirical approaches in movement ecology}
+\section*{Practical aspects of implementing eco-evolutionary individual-based models}
 
-% \section*{Conclusion: Where are we now, and where is focus necessary?}
+\subsection*{Modelling time}
+
+\subsection*{Modelling individuals}
+
+\subsection*{Modelling landscapes}
+
+The key question when modelling individuals' environment is whether the model has an implicit spatial component, or whether it is spatially explicit --- and indeed, whether the choice matters.
+
+\subsubsection*{Spatially implicit or explicit?}
+
+The cornerstone theoretical models of animals' movement ecology are not spatially explicit (and neither are they individual-based).
+Neither the Ideal Free Distribution \citep{fretwell1970}, nor Optimal Foraging Theory \citep{charnov1976} have a specifically spatial component.
+This is not to say that the two models do not have a clear spatial context, as both were inspired by specific scenarios --- the micro-scale distribution of New World warblers \citep[IFD:][]{fretwell1970}, and the movement of a forager between resource patches \citep{charnov1976}.
+It is rather the case that given the very simple assumptions of these models, that explicitly modelling space does not add substantially to the points they are attempting to make.
+
+When these assumptions are adjusted even slightly, taking space into account begins to make a difference to model outcomes [CITE HERE].
+For example, in models where individuals differ in competitive ability, there is a distinct spatial separation of more and less competitive types of individuals.
+Competitive animals occupy the most productive patches, where they have to contend with other competitive individuals, while less competitive individuals are displaced on to less productive patches [CITE HERE].
+This simple theoretical prediction is recovered in multiple systems and at multiple scales --- for example, in different species of geese, large families which as social units have high competitive ability relative to single birds, tend to occupy the profitable leading edge of grazing flocks (small spatial scale), and also the most profitable wintering sites following annual autumn migration [CITE BLACK AND SOMEONE BARNIES, SOMEONE BRENT GEESE].
+
+When modelling more complex links between individuals' ecological traits, an explicit spatial context becomes more important.
+For example, in producer-scrounger models \citep[e.g.][]{beauchamp2008}, or in the kleptoparasite model of Chapter~\ref{ch:kleptomove}, individuals' ability to profit from their landscape is mechanistically linked to \emph{which other individuals} are in the vicinity.
+Such models could still be represented in a spatially implicit way \citep{cressman2006,krivan2008,garay2015,garay2020}.
+These models are primarily concerned with either micro-scale, or very long term animal distributions, and omit the movement process.
+
+The point at which models tip over into requiring a spatially explicit context is when they consider movement as carrying a cost.
+Movement costs may be direct, in the form of the energy required for displacement over a certain distance, and this requires a distance calculation which implies a specific spatial configuration of the landscape.
+Yet movement costs may also be indirect, in the form of time or opportunity costs incurred when an individual moves between heterogeneously distributed resources --- this is how models in Chapters~\ref{ch:kleptomove} and \ref{ch:pathomove} are structured.
+In this latter case, the spatial structure of the landscape has a strong influence on the structure of movement costs, on which more below.
+
+\subsubsection*{Spatially implicit landscapes}
+
+Early theoretical models in animal spatial ecology were almost all spatially implicit \citep{fretwell1970,charnov1976}.
+
+mention movement between patches which is optimal --- movement that is random and taken from ideal gas theory --- random walks and animal spatial distributions resulting from random walks --- etc etc
+end with, this is not what we really want to cover here.
+
+cover some modern examples, lunn 2021 etc. mention also dinuzzo and griffen 2020.
+
+\subsubsection*{Spatially explicit landscapes}
+
+Spatially explicit representations of landscapes in animal movement models have become more common with the increase and proliferation of both computing power, and the programming skills of researchers in the field.
+
+give early examples --- mcnamara and houston --- deangelis' work --- deangelis review 2019 --- spiegel 2017, white 2018, etc etc --- talk about the different models and what they showed
+
+Spatially explicit landscapes can be challenging to implement, and involve multiple design decisions.
+These decisions are influenced by the biology of the system being modelled, as well as theory and previous implementations in the field.
+For example, many of the design decisions of Chapter~\ref{ch:kleptomove} are based on a previous implementation of a similar model in \citet{netz2021a}, and the spatial component of Chapter~\ref{ch:pathomove} is strongly influenced by the example models shown in \citet{spiegel2017}.
+Overall, two major design decisions are whether to implement discrete or continuous space, and whether to have this space host discrete or continuous resource items.
+
+\paragraph*{Discrete space implementations}
+
+In a discrete space implementation, the landscape has a finite number of locations at which an individual can reside, and to and from which it can move.
+Essentially, the landscape takes the form of a grid, and individuals can only occupy one tile or grid cell at a time.
+Individuals usually only move between connected cells, with cells connected with other cells depending on the implementation.
+Most grids are considered to be comprised of square cells, and these cells may be connected to those with which they share a side (4 cells, the von Neumann neighbourhood), or to those with which they share a corner (8 cells, the Moore neighbourhood).
+This square grid-cell implementation has a background in theoretical spatial ecology as the basis for cellular automata models \citep[even those concerned with animals][]{jeltschf.1997}, and it is widely used in animal movement modelling.
+For example, it is used in Chapter~\ref{ch:kleptomove}, as well as in \citet{white2018,dinuzzo2020,scherer2020} and \citet{netz2021a}.
+However, more complex implementations, including movements between un-connected cells, can also be implemented --- this is already done in Chapter~\ref{ch:kleptomove} for fleeing handlers.
+
+Implementing discrete space landscapes leads to the question of whether the cells and the landscape overall represent relative spatial scales correctly.
+In Chapter~\ref{ch:kleptomove}, the landscape has 512 cells per side, and this is 25\% larger than the maximum number of cells a model individuals could reach in their lifetimes.
+This large spatial scale, relative to individuals' per-timestep or per-lifetime movements, allows Chapter~\ref{ch:kleptomove} to present its gridded landscape as representing relatively small, yet not microscopic, resource patches.
+The cells in discrete-space models are as as large or as small as they need to be from the perspective of biological theory.
+In Chapter~\ref{ch:kleptomove}, the $512^2$ cells represent `patches' of intermediate size, and movement is limited to the Moore neighbourhood.
+It is important to remember that in such conceptual models, the insights are more important than the exact matching of the model's various spatial and temporal scales.
+
+Gridded landscapes with discrete cells are relatively easy to implement in a range of programming languages.
+The grid cells are easily captured by a simple, two dimensional matrix data type in most cases, and such data types are easily constructed in low level languages, or available by default in scripting languages such as R \citep{rcoreteam2020}.
+Multiple such matrices can be stacked into an array, with each layer representing some specific ecological aspect of the landscape, and the model.
+While one layer may hold the number of individuals in each cell, another can easily represent the quantity of resource items available in the cell, and yet more layers can represent a range of other environmental conditions that impose costs or confer benefits upon individuals.
+
+The advantage of gridded landscapes is that relations between cells, and between individuals and other landscape or model components, are strongly constrained.
+Individuals usually cannot affect the localised dynamics of any cell but their own; for example, they cannot interact with competitors or resources on a neighbouring cell.
+These limits on possible interactions have clear computational benefits in terms of reducing model run times.
+To calculate the number of potential social interactions on a cell for instance, it is sufficient to determine the set of all individuals occupying the same cell.
+This task can be sped up or made easier to code by assigning each cell a unique identifying index (with cell [0,0] being cell 1, cell [0,1] = 2), and so forth.
+This bounds the maximum number of comparisons required to find all the potential interaction partners of an individual to $N - 1$, as a single integer (the focal individual's cell) is matched with the remaining $N - 1$ individuals in a population of $N$ individuals.
+In contrast, the same task --- counting neighbours for potential interactions --- requires potentially much more computation in continuous space models (see below).
+
+Individual-based models using gridded landscapes are common extensions to an increasingly popular method in the empirical study of animal movement, step-selection analysis (SSA) \citep{fortin2005,avgar2016,fieberg2021}.
+The link between mechanistic movement modelling and step-selection analyses is covered below, as well as in Chapter~\ref{ch:patternprocess}.
+The main reason that SSA --- which is agnostic to how space is implemented --- uses grid-based landscapes in its simulations of animal movement and habitat use, is that environmental data is available in the from of gridded raster layers.
+Consequently, packages such as \emph{amt} analyse animals' movements in continuous space, but predict their habitat utilisation as discrete raster layers \citep{signer2017,signer2019}.
+
+Simplified interactions are also the main disadvantage of discrete, gridded landscapes.
+It is somewhat unrealistic to maintain that two individuals can be in adjacent grid cells and yet are unable to interact with each other.
+This has implications for the local, small scale population and resource density, which may be higher or lower when calculated separately per cell, than when calculated at the overall landscape scale.
+The commonest way of getting around this natural objection is to maintain that the cells are of a spatial scale that allows for probabilistic interactions within the cell, but only observation of the individuals in neighbouring cells.
+However, there is no specific constraint when implementing a model that an individual should \emph{not} be able to interact with individuals from neighbouring cells.
+Coding this latter case, though, discards the advantages of the gridded landscape (limited interactions), and researchers should probably consider implementing a continuous space landscape instead.
+
+While this section has focussed on two dimensional landscapes, it is often worth considering a one dimensional grid as well.
+One dimensional landscapes have a long history in animal spatial ecology, with an early appearance in the concept of the `selfish herd' [cite Hamilton 1969/7?].
+
+cite some other recent papers using one dimensional landscapes --- explain why they worked or did not etc etc.
+
+\paragraph*{Continuous space implementations}
+
+Models with continuous space implementations allow individuals (and discrete resources, if any) to take fractional positions on the model landscape.
+Examples of this approach include Chapter~\ref{ch:pathomove}, as well as \citet{spiegel2016,spiegel2017}, among many others [ADD MORE EXAMPLES].
+This modelling approach aligns closely with how spatial positions are usually represented in empirical methods, as pairs of decimal coordinates.
+Individuals' movement distances and angles are constrained only by the specifics of the implementation (see below).
+[TALK ABOUT THEORETICAL BACKGROUND --- IDEAL GAS EQUATION ETC.]
+
+Continuous space implementations can handle the issue of spatial scales somewhat better than discrete space models.
+For example, movement distances can be capped at a fraction of perception ranges, and both can be fractions of the total modelled landscape size.
+Similarly, the distribution of resources is also easier to implement in terms of a density ($N$ resources per unit area; but see below).
+In Chapter~\ref{ch:pathomove}, the landscape has an area of $60^2$ units$^2$, with an individual perception and movement range of 1.0 units, and a resource density of 0.5 food items per unit area.
+While the scaling of movement and perception in Chapter~\ref{ch:pathomove} is arbitrary (as the model aims primarily for insight), it is often easier to convince readers that continuous space models are `more realistic' than patch-based models with gridded landscapes.
+
+In some models, individuals simply move about on a landscape without interacting with a large number of landscape components \citep[see some models in][]{spiegel2017}.
+In such models it is sufficient to keep track of individuals' immediate coordinates, and such models are easily implemented as continuous space models or discrete space models.
+Continuous space implementations are better suited to models in which local interactions are especially important.
+For instance, Chapter~\ref{ch:pathomove} models two small-scale processes: exploitation competition, and pathogen transmission.
+Both of these processes are strongly dependent on exactly how many, and which, individuals are within interaction or transmission range.
+This makes the exact distance between individuals and features (such as resources) important, making the precise locations of individuals key to the model.
+This, combined with the capacity to handle multiple spatial scales, is continuous space landscapes' main advantage over grid-based landscapes.
+
+Continuous space landscapes can unlock model choices that would not be possible with a gridded landscape.
+For instance, individual movement can be modelled in much more flexible ways, with a variable number of potential movement locations, as opposed to gridded landscapes' fixed number of movement locations.
+Furthermore, individuals need not choose among movement locations, but can instead choose a movement distance and a heading, and move to that location (see details below) \citep{spiegel2017,mueller2011}. [CITE MORE].
+While it is also possible to combine this latter option with gridded landscapes, it is challenging to combine gridded and continuous space representations of related phenomena (landscape and movement).
+Continuous space also allows for multiple implementations of resource landscape structure, and is especially useful when trying to create an environment with patchily distributed resources (see below).
+
+Continuous space simulations are also widely available as extensions to popular analyses in the empirical study of animal movement \citep{noonan2019,calabrese2016,calabrese2018,fleming2014,fleming2015,gurarie2017,gurarie2016}.
+These implementations however, are not intended to take into account interactions with the environment, or with other individuals [BUT SEE THIS SINGLE AUTHOR PAPER - SPANISH NAME].
+Rather, these methods simulate plausible animal movement paths after fitting a continuous time movement model to empirical animal position-tracking data.
+Since these methods are not conditioned on environmental data, they are not constrained by the gridded structure of remote sensing data layers.
+
+The wide flexibility of continuous space, and the many interactions that may occur among landscape components (depending on model parameterisation) offer opportunities for complex model structures, but this can easily lead to drawbacks.
+First, because interactions between model components, such as individuals, are not neatly compartmentalised into cells, it is necessary to repeatedly determine whether any two interacting entities are within the appropriate range to do so.
+This problem is exacerbated when there are multiple types of interaction, each with their own ranges.
+For example, in Chapter~\ref{ch:pathomove}, individuals perceive food items, neighbours handling food items, and neighbours looking for food items.
+When infected, they also unknowingly transmit a pathogen to neighbours within range.
+This requires \emph{(1)} a distance calculation between each individual and each food item, and \emph{(2)} a distance calculation between all pairs of individuals --- this is repeated 500,000 times in the \emph{Pathomove} model.
+These calculations represent a substantial computational challenge, especially for studies requiring multiple replicates and parameter combinations.
+
+\paragraph*{Representing resources: Discrete and continuous implementations}
+
+\subsection*{Modelling animal movement}
+
+\subsection*{Modelling ecological interactions}
+
+\subsection*{Translating ecological outcomes into evolutionary consequences}
+
+\section*{Relating individual-based models with empirical approaches in movement ecology}
+
+\section*{Conclusion: Where are we now, and where is focus necessary?}
+
+\newrefcontext[sorting=nyt]
+\section*{Literature Cited}
+\printbibliography[title={Literature~Cited},heading=none]
+\end{refsection}
