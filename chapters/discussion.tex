@@ -186,13 +186,23 @@ In the latter case, the resource gradient is maintained, as at the lowest resour
 
 The same issues apply to two dimensional landscapes; however, the functions used to generate two dimensional spatial heterogeneity can be much more complex.
 Functions that were developed in the visual effects realm to create realistic variation on two-dimensional surfaces, such as \textit{Noise} \citep{perlin}, Simplex Noise \citep{simplexnoise}, and OpenSimplexNoise \citep{opensimplexnoise}, are good candidates for functions that can create smooth spatial variation on two dimensional landscapes.
+Noise has been used to represent [CITE WHERE NOISE HAS BEEN USED].
 
-Noise, while presenting 
+Advantages and disadvantages of continuous resource implementations --- advantages --- follow the assumptions of continuous input models, relatively easy to implement other assumptions such as interference competition and variations thereof \citep{tregenza1995,vandermeer1997} --- easy to scale intake as a function of the number of neighbours, or as a function of another layer of the landscape --- Noise and related implementations are almost indefinitely extensible in space --- multiple pre-built implementations are available\\
+--- disadvantages --- difficult to implement resource depletion, which is key to exploitation competition --- including complex noise functions in simulation models is not easy and requires substantial programming skills --- Noise and other two dimensional functions look realistic but should be remembered as abstract representations of natural patterns.
 
-Models which represent resources as discrete items (as in Chapters~\ref{ch:kleptomove} and \ref{ch:pathomove})
+Models which represent resources as discrete items (as in Chapters~\ref{ch:kleptomove} and \ref{ch:pathomove}) typically treat each item similarly to individuals --- in the parlance of programming, as an object with certain attributes and functions.
+How are item impemented --- how should they be implemented --- what are the options --- how are they different from continuous input/resource models --- what can be done with discrete resources that cannot be done with continuous input --- e.g. exploitation competition due to item depletion --- handling time and regeneration time for easy implementation of theoretical costs (e.g. costs of grouping near resources) --- rgeneration time allows landscape heterogeneity even without specific spatial structure, and allows individuals to shape their landscape --- what are the advantages --- what are the disadvantages [MAYBE split into two paras]
 
+Combinations of discrete and continuous resource landscapes --- briefly mention with examples, recommend against as they are difficult to combine.
 
 \subsection*{Modelling animal movement}
+
+What is the classical way of modelling animal movement --- movements between patches --- what are the assumptions (ideal, free) --- what are some other spatially explicit ways in which this can be implemented --- random walks etc. this section will focus on spatially explicit landscapes and not implicit ones
+
+Modelling random walks --- how to implement them --- parameters of the random walk --- combining two different random walks (e.g. levy flight and brownian motion) into a multi-stage movement process shaped by the environment --- including evolutionary dynamics in random walk parameters as attributes --- including evolutionary dynamics of other parts of the movement process, such as the explore-exploit tradeoff as a switch between random walks, or as the duration of a specific random walk phase (speigel 2017 paper)
+
+Modelling directed movement --- the optimal movement approach \citep{scherer2020} --- why is this not always suitable: assumes the importance of various cues to animals, and that the most important cues are captured in the model --- alternative: individuals use id-speicfic attributes to assign suitability and move to the most suitable location --- cite own chapters, cite also white et al and amt modelling of utilisation distribution
 
 \subsection*{Modelling ecological interactions}
 
