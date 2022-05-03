@@ -202,11 +202,38 @@ What is the classical way of modelling animal movement --- movements between pat
 
 Modelling random walks --- how to implement them --- parameters of the random walk --- combining two different random walks (e.g. levy flight and brownian motion) into a multi-stage movement process shaped by the environment --- including evolutionary dynamics in random walk parameters as attributes --- including evolutionary dynamics of other parts of the movement process, such as the explore-exploit tradeoff as a switch between random walks, or as the duration of a specific random walk phase (speigel 2017 paper)
 
-Modelling directed movement --- the optimal movement approach \citep{scherer2020} --- why is this not always suitable: assumes the importance of various cues to animals, and that the most important cues are captured in the model --- alternative: individuals use id-speicfic attributes to assign suitability and move to the most suitable location --- cite own chapters, cite also white et al and amt modelling of utilisation distribution
+Modelling directed movement --- the optimal movement approach \citep{scherer2020} --- why is this not always suitable: assumes the importance of various cues to animals, and that the most important cues are captured in the model --- alternative: individuals use id-speicfic attributes to assign suitability and move to the most suitable location --- cite own chapters, cite also white et al and amt modelling of utilisation distribution \citep{signer2017,signer2019}. 
+Individual-specific measures of suitability are evolved traits and should be outcomes of natural selection --- include evolution in ecological models (see below).
+
+Movement decisions in continuous space vs discrete space --- movement in discrete space is relatively constrained (in spatially explicit models) --- movement in the Moore neighbourhood has fixed steps --- movement in larger neighbourhoods is again a simple comparison of a discrete number of choices --- movement on continuous landscapes can be of two types, choosing between fixed locations, and choosing a movement distance and angle --- in both these options, perception distance is important [cite EVO PERCEPTION DISTANCE PAPER, PNAS paper from iain's lab on insect movement?] --- choosing a distance and angle can be done with simple linear functions, but this allows individuals little flexibility --- using neural networks to process local cues into a movement step is more complex, but possibly more realistic \cite*{mueller2011} --- State dependent movement, memory dependent movement can also be included --- maybe should be an entire section
 
 \subsection*{Modelling ecological interactions}
 
-\subsection*{Translating ecological outcomes into evolutionary consequences}
+Ecological interactions may be between individuals, or between individuals and their environment.
+Interactions between individuals and the environment, including resources, are covered above.
+Inter-individual interactions can be of as many different types as there are real, biological interactions, but for modelling purposes, they fall into two major categories: direct modification of interacting individual attributes, or modification of individual environment which has indirect effects on individual attributes later.
+
+The classic example is different types of competition, which are covered in chapter \ref{ch:kleptomove}.
+When modelling interactions, the type of landscape implemented imposes constraints on what kinds of interactions are possible (e.g. interactions between individuals on different grid cells in a discrete space model) --- and thus the entire model must be conceptualised in such as a way that the overall implementation suits the study.
+
+\subsection*{Translating ecological interactions into evolutionary consequences}
+
+\paragraph*{Intake and energy as proxies of fitness} 
+
+Theoretical models of animal movement and population distribution have an implicit evolutionary context --- movement and distributions are supposed to maximise fitness --- fitness is usually proxied by intake (chapters chapters).
+
+Fitness modifiers typically involve negative interactions with environment and other individuals --- environment may have areas where the individual net expends energy (similar to ODBA landscapes or energetic landscapes, see recent JAE paper luca borger).
+
+Negative interactions with other individuals can be competitive (interference, though it does not directly reduce fitness it does cause a time loss which results in lower intake see ch kleptomove) --- can also be predatory, where fitness goes to zero --- can also be a steady reduction in fitness after the transmission of an infectious pathogen (chapter pathomove).
+
+Mortality --- how to handle mortality? mortality alters the system and is challenging to implement, and has not been considered in models thus far --- mortality reduces indirect information available in a system and has consequences for social processes --- imposing an intake or energy threshold on survival is usually better suited to detailed predictive models rather than simpler conceptual models, where the link between intake, energy, and survival is better understood and often the focus of the model \citep{stillman2010}.
+this means that most conceptual models will have fixed population sizes --- what are the theoretical and biological bases for this.
+
+\paragraph*{Translating fitness proxies into trait frequencies}
+
+genetic Algorithms --- genetic annealing --- discuss \cite*{getz2015,getz2016} --- see kleptomove discussion and especially the part which was cut out from the first version --- approaches from computer science and the study of artificial life --- winner takes all etc.
+
+the alernative is the weighted lottery approach --- ref chapters kleptomove, pathomove, predator prey.
 
 \section*{Relating individual-based models with empirical approaches in movement ecology}
 
