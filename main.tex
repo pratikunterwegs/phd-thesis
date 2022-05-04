@@ -54,7 +54,7 @@
 
 \usepackage{fontspec}
 \usepackage[T1]{fontenc}
-\setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
+% \setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
 \setmainfont[Numbers={Proportional,Uppercase}]{Source Serif Pro}
 
 % \defaultfontfeatures{
@@ -161,8 +161,15 @@
   format=plain
 }
 
+%%% for full page area no margin notes
+% \areaset[current]{\dimexpr\textwidth+
+%   \marginparwidth+\marginparsep
+% }{\textheight}
+% \setlength{\marginparwidth}{0pt}
+% \setlength{\marginparsep}{0pt}
+
 % to format short titles
-\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\rmfamily{Chapter~\thechapter}}{\color{gray}\small\rmfamily{#1}}}
+\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\rmfamily{\thechapter}}{\color{gray}\small\rmfamily{#1}}}
 \renewcommand{\sectionmark}[1]{\markright{\small\rmfamily\MakeUppercase{\thesection}\enspace{#1}}}
 
 % to format page numbers
@@ -195,8 +202,8 @@
 \include{frontbackmatter/Titlepage}
 \include{frontbackmatter/Titleback}
 \include{frontbackmatter/innertitle}
-\cleardoublepage \include{frontbackmatter/propositions}
-\clearpage\include{frontbackmatter/Dedication}
+% \cleardoublepage \include{frontbackmatter/propositions}
+% \clearpage\include{frontbackmatter/Dedication}
 % % \clearpage\include{frontbackmatter/Colophon}
 
 \cleardoublepage \include{frontbackmatter/Contents}
@@ -218,7 +225,7 @@
 % use \clearpage here to avoid problems with pdfbookmark
 \clearpage
 
-\cleardoublepage \include{chapters/introduction}
+% \cleardoublepage \include{chapters/introduction}
 
 \cleardoublepage 
 % % \ctparttext{}
@@ -252,14 +259,14 @@
 \cleardoublepage \include{chapters/patternprocess_header}
 \include{chapters/patternprocess_main}
 
-% % \include{Chapters/Chapter02}
-% %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
-% % \include{Chapters/Chapter03}
-% %\include{multiToC} % <--- just debug stuff, ignore for your documents
+% \include{Chapters/Chapter02}
+%\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
+% \include{Chapters/Chapter03}
+%\include{multiToC} % <--- just debug stuff, ignore for your documents
 
-\cleardoublepage \include{chapters/discussion}
+% \cleardoublepage \include{chapters/discussion}
 
-\include{frontbackmatter/Acknowledgments}
+% \include{frontbackmatter/Acknowledgments}
 
 % \include{frontbackmatter/Publications}
 
