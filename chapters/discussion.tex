@@ -13,6 +13,8 @@ To be completed.
 
 \section*{Recapitulation of this thesis}
 
+In the two parts of this thesis, I showed how \ldots 
+
 \section*{Case studies: why movement is key to ecological patterns}
 
 \section*{Why include evolution in animal movement studies}
@@ -27,16 +29,26 @@ To be completed.
 
 \section*{Practical aspects of implementing eco-evolutionary individual-based models}
 
-\subsection*{Modelling time}
-
 \subsection*{Modelling individuals}
+
+Biological theory has usually considered broad abstract representations of individuals as members of a population, with the population having a set of traits that can be described by simple statistics, such as the mean and standard deviation.
+Individual-based models, by contrast, naturally require that each individual in a simulated population be considered separately \citep{macnamara-houston197x}.
+Individuals typically have attributes, and can `perform' specific actions, which are usually interactions with their environment or with other individuals. --- [add more].
+
+Taking an individual-centric view naturally suggests that simulations written in a computer language follow imperative, object oriented programming.
+In this paradigm, individuals are `objects', often of a specific class or type, and all objects of this type share a common set of attributes (which may be thought of as traits), as well as possible methods or functions (which may be thought of as actions).
+Indeed, object oriented programming designed in the 1960s was explicitly inspired by biological systems. [CITE]
+
+\begin{quotation}
+    I thought of objects being like biological cells and/or individual computers on a network, only able to communicate with messages (so messaging came at the very beginning --- it took a while to see how to do messaging in a programming language efficiently enough to be useful).
+\end{quotation}
+
+Individuals may differ in their trait values, creating population heterogeneity, and these differences may influence individuals' performance of certain actions --- for example, the frequency of updating a search strategy, the likelihood of adopting a specific competition strategy, or orientation of movement towards a resource \citep{swain2021}. --- [add more].
+At a core practical level, however, an implementation that considers an entire population as an object, rather than every individual, is also an `individual-based' model, so long as the population object stores individual traits separately.
 
 \subsection*{Modelling landscapes}
 
 The key question when modelling individuals' environment is whether the model has an implicit spatial component, or whether it is spatially explicit --- and indeed, whether the choice matters.
-
-\subsubsection*{Spatially implicit or explicit?}
-
 The cornerstone theoretical models of animals' movement ecology are not spatially explicit (and neither are they individual-based).
 Neither the Ideal Free Distribution \citep{fretwell1970}, nor Optimal Foraging Theory \citep{charnov1976} have a specifically spatial component.
 This is not to say that the two models do not have a clear spatial context, as both were inspired by specific scenarios --- the micro-scale distribution of New World warblers \citep[IFD:][]{fretwell1970}, and the movement of a forager between resource patches \citep{charnov1976}.
@@ -195,6 +207,23 @@ Models which represent resources as discrete items (as in Chapters~\ref{ch:klept
 How are item impemented --- how should they be implemented --- what are the options --- how are they different from continuous input/resource models --- what can be done with discrete resources that cannot be done with continuous input --- e.g. exploitation competition due to item depletion --- handling time and regeneration time for easy implementation of theoretical costs (e.g. costs of grouping near resources) --- rgeneration time allows landscape heterogeneity even without specific spatial structure, and allows individuals to shape their landscape --- what are the advantages --- what are the disadvantages [MAYBE split into two paras]
 
 Combinations of discrete and continuous resource landscapes --- briefly mention with examples, recommend against as they are difficult to combine.
+
+\subsection*{Modelling time}
+
+Animal behaviour also has a temporal context, which, similar to the spatial component of models, can be modelled as discrete or continuous.
+Classic theoretical models have considered both continuous time --- in the form of the rate of a process (such as intake -- [CITE], or diffusive movement -- [CITE]) --- and also discrete time in very small units \citep[e.g.][]{hamilton1971}.
+In contemporary individual-based models, continuous time is useful when modelling individuals that have intrinsic rates of some behaviour, such as scanning the landscape for a suitable movement destination \citep{netz2022}, and are hence called event-based models.
+The passage of time in such models is implemented using the Gillespie algorithm, which draws the time until the next `event' --- such as an individual's action --- from an exponential distribution whose mean is $\Sigma~r_i$, where $r_i$ is the individual rate of that action \citep{gillespie198x}.
+An individual is then picked, with the probability of being picked proportional to its rate of engaging in the action, and the picked individual then undergoes a state change, such as movement, finding a food item, or acquiring information \citep{netz2022}.
+In these models, individuals move asynchronously, i.e., not all at the same time.
+This is realistic, as no two individuals can move at exactly the same instant.
+However, because system components change asynchronously, it becomes necessary to recalculate individuals' local environment after each event.
+For example, if an individual in a population moves, the neighbour count of \emph{all} individuals would have to be updated to account for this change in local density.
+Since even-based models can have a variable number of events, each potentially requiring an update of system properties, they can add substantial computational overhead to the speed of a simulation.
+Therefore, these models, while not challenging to implement, do require discretised time-logging if data on individual states (such as energy, or associations with other individuals) are to be returned in tabular format of predictable size.
+
+On the other hand, discrete time models may be somewhat easier to understand as they are similar to common empirical animal tracking datasets --- the state of the system and its components potentially changes in a series of discrete steps. {\color{red} COME BACK TO THIS.}
+
 
 \subsection*{Modelling animal movement}
 
