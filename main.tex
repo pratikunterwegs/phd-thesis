@@ -4,10 +4,10 @@
     \WarningFilter{scrreprt}{Usage of package `titlesec'}
     %\WarningFilter{scrreprt}{Activating an ugly workaround}
     \WarningFilter{titlesec}{Non standard sectioning command detected}
-\documentclass[ twoside,openright,titlepage,numbers=noenddot,%1headlines,
-                headinclude,footinclude,clearpage=empty,abstract=on,toc=flat,
-                BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames
-                ]{scrbook}
+\documentclass[twoside,openright,titlepage,numbers=noenddot,%1headlines,
+              headinclude,footinclude,clearpage=empty,abstract=on,toc=flat,
+              BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames
+              ]{scrbook}
 \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
 \RedeclareSectionCommands[
   tocindent=0mm,
@@ -45,7 +45,6 @@
 \addbibresource{references/general.bib}
 
 % \addbibresource{Bibliography.bib}
-% \addbibresource[label=ownpubs]{AMiede_Publications.bib}
 
 %********************************************************************
 % Hyphenation
@@ -226,22 +225,22 @@
 % use \clearpage here to avoid problems with pdfbookmark
 \clearpage
 
-% \cleardoublepage \include{chapters/introduction}
+\cleardoublepage \include{chapters/introduction}
 
 \cleardoublepage 
-% % \ctparttext{}
+\ctparttext{Some text here.}
 \part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
 
 \cleardoublepage \include{chapters/preprocessing_header}
-\include{chapters/preprocessing_main}
+% \include{chapters/preprocessing_main}
 
 % \cleardoublepage \include{boxes/mapping}
 
 \cleardoublepage \include{chapters/holeybirds_header}
-\include{chapters/holeybirds_main}
+% \include{chapters/holeybirds_main}
 
 \cleardoublepage \include{chapters/hillybirds_header}
-\include{chapters/hillybirds_main}
+% \include{chapters/hillybirds_main}
 
 % \cleardoublepage \include{boxes/clearances}
 
@@ -257,21 +256,21 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 \include{chapters/kleptomove_main}
 
 \cleardoublepage \include{chapters/pathomove_header}
-\include{chapters/pathomove_main}
+% \include{chapters/pathomove_main}
 
 \cleardoublepage \include{chapters/patternprocess_header}
-\include{chapters/patternprocess_main}
+% \include{chapters/patternprocess_main}
 
 % \include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
 % \include{Chapters/Chapter03}
 %\include{multiToC} % <--- just debug stuff, ignore for your documents
 
-% \cleardoublepage \include{chapters/discussion}
+\cleardoublepage \include{chapters/discussion}
 
-% \include{frontbackmatter/Acknowledgments}
+\clearpage \include{frontbackmatter/Publications}
 
-% \include{frontbackmatter/Publications}
+\clearpage \include{frontbackmatter/Acknowledgments}
 
 % ********************************************************************
 % Backmatter
