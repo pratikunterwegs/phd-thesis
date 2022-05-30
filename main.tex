@@ -42,7 +42,7 @@
 \addbibresource{references/pathomove.bib}
 \addbibresource{references/personality.bib}
 \addbibresource{references/patternprocess.bib}
-\addbibresource{references/general.bib}
+\addbibresource{references/discussion.bib}
 
 % \addbibresource{Bibliography.bib}
 
@@ -60,6 +60,11 @@
 \newfontfamily{\displayfont}{TeX Gyre Schola}
 
 \renewcommand*{\bibfont}{\footnotesize}
+
+% for all authors in bibliography in certain sections
+\newtoggle{bbx:allnames}
+\togglefalse{bbx:allnames}
+\AtEveryBibitem{\iftoggle{bbx:allnames}{\defcounter{maxnames}{999}}{}}
 
 \usepackage{setspace}
 
@@ -97,7 +102,7 @@
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\rmfamily\bfseries}
+    {\relax}{\thesubsection}{1em}{\rmfamily\scshape}
 
 % fix section format
 \titleformat{\paragraph}
@@ -149,7 +154,7 @@
 % \setlength{\marginparsep}{0pt}
 
 % to format short titles
-\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\scshape\rmfamily{\thechapter}}{\color{gray}\small\scshape\rmfamily{#1}}}
+\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\scshape\rmfamily{{Chapter}~\thechapter}}{\color{gray}\small\scshape\rmfamily{#1}}}
 \renewcommand{\sectionmark}[1]{\markright{\small\rmfamily\MakeUppercase{\thesection}\enspace{#1}}}
 
 % to format page numbers
@@ -157,6 +162,7 @@
 
 % paragraph spacing
 % \setlength{\parskip}{1em}
+\setlength{\parskip}{3pt plus1pt minus1pt}
 
 % ********************************************************************
 % GO!GO!GO! MOVE IT!
