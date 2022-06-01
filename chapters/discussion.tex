@@ -48,7 +48,7 @@ We then demonstrate how considering movement as evolved habitat selection leads 
 Finally, we discuss developments and remaining challenges in linking our modelling approach with the individual-centric empirical study of animal movement using tracking data.
 Overall, we hope to convince readers that adopting mechanistic models of intermediate complexity, and including an evolutionary component, could provide much needed theoretical predictions in animal movement ecology.
 
-\section{A conceptual framework for mechanistic, eco-evolutionary individual-based models of animal movement}
+\section*{A conceptual framework for mechanistic, eco-evolutionary individual-based models of animal movement}
 
 % and habitat selection \citep{morris2003}
 
@@ -57,7 +57,7 @@ Overall, we hope to convince readers that adopting mechanistic models of interme
 % The key feature of the class of models we advocate is that \textit{(1)} individuals make decisions according to individual-specific preferences for available environmental cues, \textit{(2)} individuals' preferences for environmental cues, \textit{taken together}, form their behavioural strategy, and \textit{(3)} individuals' behavioural strategies have evolutionary consequences, i.e., the ecological outcomes in one generation determines the population mixture of behavioural strategies in the next generation.
 % Here we focus on movement preferences and movement strategies, which are among the behavioural strategies of individuals, and which may also facilitate or constrain which behavioural strategies individuals can employ \citep{nathan2008a,spiegel2017}.
 
-\section{Insights from mechanistic, evolved step selection compared with random walks and optimal movement}
+\section*{Insights from mechanistic, evolved step selection compared with random walks and optimal movement}
 
 We begin by demonstrating how the implementation of the movement process in IBMs can substantially alter model conclusions.
 We show that considering movement as the outcome of evolved preferences for locally available cues leads to very different ecological outcomes when compared to mainstream frameworks such as random walks and optimal local movement (see Box 2).
@@ -74,7 +74,7 @@ Items regenerate at the same location after a fixed number of timesteps, which w
 Individuals have a lifetime of 400 timesteps, over which they forage and move over the landscape.
 The model's four scenarios differ in their implementation of individual movement.
 
-\subsection{Random walks and optimal movement}
+\subsection*{Random walks and optimal movement}
 
 In \textit{scenario 1}, individuals perform a random walk, and have a uniform probability of either remaining in their current location, or moving in a direction chosen from among eight locations within 1 distance unit (see Fig.~\ref{fig:compare}A); here, movement is independent of local cues.
 In \textit{scenario 2}, individuals move in a way that is considered locally optimal in foraging ecology \citep{stephens2019,scherer2020}.
@@ -89,7 +89,7 @@ Overall, this comparison demonstrates the importance of active decision making i
 Such evolution is likely to be strongly dependent on fine-scale ecological conditions, primarily the \textit{availability} of information in the environment, as well as the energetic cost of evolving and maintaining sensory capabilities \citep{swain2021}.
 However, one overlooked aspect in such models is how exactly individuals should incorporate local cues into movement decisions, which we tackle in the next two scenarios.
 
-\subsection{Movement as evolved, mechanistic decision-making}
+\subsection*{Movement as evolved, mechanistic decision-making}
 
 Optimal movement models are often labelled mechanistic as they include environmental cues in decision making \citep[e.g.][]{scherer2020}, yet the potential payoff of a location is strongly influenced by the functional response of intake in relation to competitors --- this is often simply assumed by modellers \citep[][]{vandermeer1997}.
 Such implementations make the implicit evolutionary assumption that all individuals weigh cues from their social and resource environments similarly, as such weighting is supposed to be the stable outcome of selection fine-tuning individuals' preferences.
@@ -120,7 +120,7 @@ The `evolved' scenario 3 individuals had better ecological performance than thei
 Indeed, these populations outperformed both the random walk and optimal movement implementations as well.
 Adapting their movement strategies to the landscape also affected the social structure of scenario 3 populations --- there were fewer isolated individuals, more spatial clustering, and consequently, individuals encountered more unique conspecifics on average (higher mean degree; Fig.~\ref{fig:networks}).
 
-\subsection{Adding detail to mechanistic movement decision-making}
+\subsection*{Adding detail to mechanistic movement decision-making}
 
 A key feature of individual-based simulation models is their ability to incorporate great amounts of ecological detail \citep{deangelis2019}.
 With a simple extension to scenario 3, we show how to add biologically relevant details to models, and how these details can affect model outcomes.
@@ -141,7 +141,7 @@ These associations likely occur at or near resource clusters, leading to substan
 Scenario 4 individuals across replicates associated with more individuals (degree, mean $\pm$ SD = ) than in scenarios 1, 2 and 3.
 Spatial-social structure in animal populations can have important consequences for a wide range of processes and phenomena in animal ecology, including the transmission of animal culture \citep[such as foraging tactics or migration routes][]{romano2020,romano2021,jesmer2018,klump2021}, as well as the spread of infectious pathogens \citep{white2017,white2018,white2018b,webber2022,ezenwa2016,albery2020}.
 
-\subsection{Emergent model properties: Consequences for disease transmission}
+\subsection*{Emergent model properties: Consequences for disease transmission}
 
 To examine the consequences for disease ecology, we began by constructing social networks by recording individuals' pairwise associations (distance $<$ perception range) in all four scenarios \citep{farine2015}.
 We ran simple epidemiological models with SIR assumptions over the social networks emerging in each scenario \citep[25 replicates per network; 1 network per scenario replicate][]{white2017,csardi2006,bailey1975}, with a hypothetical disease (transmission probability $\beta$ = 2.0, recovery probability $\gamma$ = 1.0; see Fig.~\ref{fig:sir}).
@@ -160,7 +160,7 @@ The importance of network formation processes in epidemiological modelling is al
 Our model demonstrates how social networks emerging from individual-based movement models are sensitive to the modelling of the movement process, and how model details can affect predictions about disease outbreaks, and animal spatial-social ecology generally \citep{webber2018,webber2022}.
 Furthermore, including evolutionary dynamics in combined movement-disease models can reveal surprisingly rapid evolutionary transitions in social movement strategies that make populations more robust to the spread of pathogens \citep{gupte2022c}.
 
-\subsection{Discussion and Concluding paragraph}
+\subsection*{Discussion and Concluding paragraph}
 
 Importance of natal dispersal --- sexual reproduction and non-random mating --- the effect of landscape structure and productivity --- Implementation of the suitability scoring using complex functions such as neural networks (discuss \cite{mueller2011,deangelis2019}).
 
