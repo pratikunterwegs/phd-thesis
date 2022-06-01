@@ -147,17 +147,17 @@ In our model, individuals move on a landscape with patchily distributed food ite
 Food items, once consumed, regenerate at a rate $R$, and pathogen infection imposes a per-timestep cost $\delta E$.
 We classified individuals' social movement strategies in our model by the sign of their preferences for successful foragers handling a food item (`handlers', preference $s_H$), and for unsuccessful foragers still searching for food (`non-handlers', preference $s_N$).
 In our default scenario, $R$ = 2, food regenerates twice per generation, and $\delta E$ = 0.25, i.e., consuming 1 food item offsets 4 timesteps of infection. 
-Before the introduction of the pathogen, populations's social movement strategy was primarily to prefer moving towards both handlers and non-handlers (`agent tracking'; $s_H, s_N > 0$; but see below) (Fig.~\ref{fig1}A).
+Before the introduction of the pathogen, populations's social movement strategy was primarily to prefer moving towards both handlers and non-handlers (`agent tracking'; $s_H, s_N > 0$; but see below) (Fig.~\ref{patho_fig_01}A).
 The introduction of the infectious pathogen leads to a remarkably rapid evolutionary shift --- within only 25 generations of pathogen introduction --- in how social information is incorporated into agents' movement strategies.
-There is a marked increase in the frequency of individuals that track successful foragers, but avoid non-handlers (`handler tracking'; $s_H > 0$, but $s_N < 0$) (Fig.~\ref{fig1}A; 3,000 $< G <$ 3,025).
+There is a marked increase in the frequency of individuals that track successful foragers, but avoid non-handlers (`handler tracking'; $s_H > 0$, but $s_N < 0$) (Fig.~\ref{patho_fig_01}A; 3,000 $< G <$ 3,025).
 Surprisingly, after a brief period (in evolutionary terms) of handler tracking being the most common strategy, a third strategy emerges: avoiding both handlers and non-handlers (`agent avoiding'; $s_H, s_N < 0$).
-Agent avoiding rapidly becomes the commonest strategy within 100 generations of pathogen introduction, and remains so until the end of the simulation (a further 2,000 generations; Fig.~\ref{fig1}A).
+Agent avoiding rapidly becomes the commonest strategy within 100 generations of pathogen introduction, and remains so until the end of the simulation (a further 2,000 generations; Fig.~\ref{patho_fig_01}A).
 
 In addition to qualitative changes in social movement strategies, pathogen introduction also leads to social information becoming more important to movement decisions.
-Prior to pathogen introduction ($G <$ 3,000), individuals' handler- and non-handler preferences ($|s_H| + |s_N|$; taken together, social information) barely influence their movement strategies (Fig.~\ref{fig1}B); these are instead guided primarily by the preference for food items ($s_F$; see \textit{Model and Analysis}; see also \textit{Supplementary Material Fig. 1}).
+Prior to pathogen introduction ($G <$ 3,000), individuals' handler- and non-handler preferences ($|s_H| + |s_N|$; taken together, social information) barely influence their movement strategies (Fig.~\ref{patho_fig_01}B); these are instead guided primarily by the preference for food items ($s_F$; see \textit{Model and Analysis}; see also \textit{Supplementary Material Fig. 1}).
 Social movement decisions are joint outcomes of individual preferences for social cues and the cue value: consequently, in clustered populations (see below), even small positive values of $s_H$ and $s_N$ lead to strong emergent sociality.
-After pathogen introduction, there is a substantial increase in the average importance of individuals' preferences (or aversions) for the presence of other foragers (Fig.~\ref{fig1}B).
-There is also significant variation among individuals in the importance of social information to their movement strategies, with distinct evolved polymorphisms: for example, at $G =$ 4,000, social information comprises about 30\% of most individual's movement decisions, but for some individuals, that may be $>$40\%, or only about 20\% (Fig.~\ref{fig1}B).
+After pathogen introduction, there is a substantial increase in the average importance of individuals' preferences (or aversions) for the presence of other foragers (Fig.~\ref{patho_fig_01}B).
+There is also significant variation among individuals in the importance of social information to their movement strategies, with distinct evolved polymorphisms: for example, at $G =$ 4,000, social information comprises about 30\% of most individual's movement decisions, but for some individuals, that may be $>$40\%, or only about 20\% (Fig.~\ref{patho_fig_01}B).
 
 \begin{figure}[!h]
     \centering
@@ -173,29 +173,29 @@ There is also significant variation among individuals in the importance of socia
         Individuals, which have evolved strong aversions to other foragers, \textbf{(C)} move more on average, \textbf{(D)} have a mean per-capita intake of only 25\% of the pre-pathogen average, and \textbf{(E)} reduce associations with other individuals 100-fold.
         All panels show data averaged over 10 replicates, but shaded region in panel B shows only a single replicate for clarity.
     }
-    \label{fig1}
+    \label{patho_fig_01}
 \end{figure}
 
 \subsection*{Ecological-scale consequences of shift in movement strategies}
 
-In our default scenario ($R$ = 2, $\delta E$ = 0.25) the ecological and behavioural consequences of the evolutionary shift in movement strategies are drastic and similarly rapid (Fig.~\ref{fig1}C -- E; see \textit{Supplementary Material Fig. 3} for other scenarios).
-There is a sharp increase in mean distance moved by individuals; while pre-introduction individuals moved ~55\% of their lifetimes on average (i.e., 55 timesteps; handling for the remainder), post-introduction, individuals move for ~80\% of their lifetimes (i.e., 80 timesteps; Fig.~\ref{fig1}C).
+In our default scenario ($R$ = 2, $\delta E$ = 0.25) the ecological and behavioural consequences of the evolutionary shift in movement strategies are drastic and similarly rapid (Fig.~\ref{patho_fig_01}C -- E; see \textit{Supplementary Material Fig. 3} for other scenarios).
+There is a sharp increase in mean distance moved by individuals; while pre-introduction individuals moved ~55\% of their lifetimes on average (i.e., 55 timesteps; handling for the remainder), post-introduction, individuals move for ~80\% of their lifetimes (i.e., 80 timesteps; Fig.~\ref{patho_fig_01}C).
 One reason individuals move more post-introduction is that their strategy of avoiding searching foragers (or all foragers) likely leads them to mostly move away from other individuals.
 Since individuals are most likely to be found on or near resource clusters, this possibly leads to movement away from productive areas of the landscape.
-This idea is supported by the rapid, four-fold drop in mean per-capita intake after pathogen introduction (Fig.~\ref{fig1}D).
-The near 100-fold drop in encounters between individuals after pathogen introduction (Fig.~\ref{fig1}E) also supports this idea and suggests that most encounters were likely taking place on or near resource clusters.
+This idea is supported by the rapid, four-fold drop in mean per-capita intake after pathogen introduction (Fig.~\ref{patho_fig_01}D).
+The near 100-fold drop in encounters between individuals after pathogen introduction (Fig.~\ref{patho_fig_01}E) also supports this idea and suggests that most encounters were likely taking place on or near resource clusters.
 These reductions in intake are equivalent to those expected from halving landscape productivity (\textit{Supplementary Material Fig. 3}).
 Thus our model suggests that in addition to direct disease costs ($\delta E$), pathogen introduction, by influencing the evolution of movement strategies, may also have substantial indirect ecological effects.
 
 \subsection*{Individual differences in social movement strategies affect population-level social structure}
 
 The relationship between movement and avoiding associations (and further, infection) is mediated by individual differences in how exactly social information is incorporated into movement strategies.
-Individuals using the agent avoiding strategy move more than handler tracking ones (Fig.~\ref{fig2}A), about 85\% of their lifetime (default scenario: $R$ = 2; $\delta E$ = 0.25).
+Individuals using the agent avoiding strategy move more than handler tracking ones (Fig.~\ref{patho_fig_02}A), about 85\% of their lifetime (default scenario: $R$ = 2; $\delta E$ = 0.25).
 At this limit, every step moved allows them to avoid approximately 2 encounters with other individuals.
 Handler tracking individuals move much less ($\sim$ 60\% -- 80\%), but are able to avoid approximately 20 encounters with other individuals with every extra step.
-These differences may explain why agent avoiding and handler tracking individuals have very similar mean infection rates, at $\sim$ 25\% and $\sim$ 33\% respectively (Fig.~\ref{fig2}B).
-All other strategies, including the agent tracking strategy common in pre-introduction populations, are barely able to translate increased movement into fewer associations (Fig.~\ref{fig2}A).
-These strategies have a wide range of infection rates (Fig.~\ref{fig2}B), potentially because they are very rare --- these likely represent mutants that do not give rise to persistent lineages.
+These differences may explain why agent avoiding and handler tracking individuals have very similar mean infection rates, at $\sim$ 25\% and $\sim$ 33\% respectively (Fig.~\ref{patho_fig_02}B).
+All other strategies, including the agent tracking strategy common in pre-introduction populations, are barely able to translate increased movement into fewer associations (Fig.~\ref{patho_fig_02}A).
+These strategies have a wide range of infection rates (Fig.~\ref{patho_fig_02}B), potentially because they are very rare --- these likely represent mutants that do not give rise to persistent lineages.
 
 \begin{figure}[!h]
     \centering
@@ -208,42 +208,45 @@ These strategies have a wide range of infection rates (Fig.~\ref{fig2}B), potent
         \textbf{(B)} Avoiding all other foragers leads to marginally lower infection rates than tracking successful foragers (and avoiding unsuccessful ones; handler tracking).
         Surprisingly, rare pre-introduction strategies such as following any nearby individuals (agent tracking) may also have low infection rates, potentially due to their rarity.
         Panel A shows linear model fits with a log scale Y-axis; panel B shows infection rates; all data represent generation- and replicate-specific means (3,000 $< G <$ 3,500; $R$ = 2, $\delta E$ = 0.25).
-    }\label{fig2}
+    }\label{patho_fig_02}
 \end{figure}
 
 Following pathogen introduction, the mixture of individual-level movement strategies experiences a substantial re-organisation of emergent spatial and social structure at the population level (default scenario: $R$ = 2; $\delta E$ = 0.25).
-Pre-introduction populations are strongly clustered in space (Fig.~\ref{fig3}A), due to movement strategies that favour following most other foragers.
-This spatial proximity means that most individuals encounter each other at least once, leading to numerous unique partners (the `degree') for each forager (Fig.~\ref{fig3} inset A).
-In contrast, post-introduction populations are much more dispersed across the landscape (Fig.~\ref{fig3}B), reflecting movement strategies which lead to near-perpetual movement to avoid associations; a sort of dynamic social distancing \citep{pusceddu2021}.
-This dispersed population structure means that most foragers encounter fewer than 10\% of the population over their lifetime (Fig.~\ref{fig3} inset B).
+Pre-introduction populations are strongly clustered in space (Fig.~\ref{patho_fig_03}A), due to movement strategies that favour following most other foragers.
+This spatial proximity means that most individuals encounter each other at least once, leading to numerous unique partners (the `degree') for each forager (Fig.~\ref{patho_fig_03} inset A).
+In contrast, post-introduction populations are much more dispersed across the landscape (Fig.~\ref{patho_fig_03}B), reflecting movement strategies which lead to near-perpetual movement to avoid associations; a sort of dynamic social distancing \citep{pusceddu2021}.
+This dispersed population structure means that most foragers encounter fewer than 10\% of the population over their lifetime (Fig.~\ref{patho_fig_03} inset B).
 
-\begin{figure*}[!h]
-    \centering
-    \includegraphics[width=0.9\linewidth]{figures/pathomove/fig_03.png}
-    % width=8.7cm
-    \caption{
-        \textbf{Reduced spatial-social clustering in the presence of an infectious pathogen.}
-        Pre-introduction populations (\textbf{A}; G = 3,000) are substantially more spatially clustered than post-introduction populations (\textbf{B}; $G$ = 3,500).
-        This clustering means that pre-introduction individuals encounter many more unique neighbours (\textbf{inset A}) than do post-introduction individuals (\textbf{inset B}).
-        Dashed grey line represents 10\% of individuals encountered (N = 50).
-        The more spread-out networks in post-introduction populations suggest that most foragers move substantially from their initial locations over their lifetime, leading to associations with foragers from all over the landscape.
-        Main panels show social networks from a single replicate of the default scenario ($R$ = 2, $\delta E$ = 0.25); \textbf{(A)} shows all 500 individuals, which are extremely spatially clustered.
-        Nodes representing individuals, connections representing pairwise encounters, and node size representing the total number of encounters (larger circles = more encounters).
-        In main panels, colours indicate how long individuals have been infected: darker colours indicate longer infection, light blue indicates no infection.
-        Main panels show a single unique simulation run; inset shows degree distributions from 10 simulation replicates, and the X-axis is log-scaled.
-    }\label{fig3}
-\end{figure*}
+\afterpage{
+    \begin{sidewaysfigure}[!h]
+        \centering
+        \includegraphics[width=0.7\linewidth]{figures/pathomove/fig_03.png}
+        % width=8.7cm
+        \caption{
+            \textbf{Reduced spatial-social clustering in the presence of an infectious pathogen.}
+            Pre-introduction populations (\textbf{A}; G = 3,000) are substantially more spatially clustered than post-introduction populations (\textbf{B}; $G$ = 3,500).
+            This clustering means that pre-introduction individuals encounter many more unique neighbours (\textbf{inset A}) than do post-introduction individuals (\textbf{inset B}).
+            Dashed grey line represents 10\% of individuals encountered (N = 50).
+            The more spread-out networks in post-introduction populations suggest that most foragers move substantially from their initial locations over their lifetime, leading to associations with foragers from all over the landscape.
+            Main panels show social networks from a single replicate of the default scenario ($R$ = 2, $\delta E$ = 0.25); \textbf{(A)} shows all 500 individuals, which are extremely spatially clustered.
+            Nodes representing individuals, connections representing pairwise encounters, and node size representing the total number of encounters (larger circles = more encounters).
+            In main panels, colours indicate how long individuals have been infected: darker colours indicate longer infection, light blue indicates no infection.
+            Main panels show a single unique simulation run; inset shows degree distributions from 10 simulation replicates, and the X-axis is log-scaled.
+        }\label{patho_fig_03}
+    \end{sidewaysfigure}
+}
+
 
 \subsection*{Pathogen-adapted movement strategies make animal societies more resilient to the spread of disease}
 
 Nearly every individual in the generations just after pathogen introduction was infected.
-However, tracking the evolutionary change in movement strategies, the number of infected individuals fell to just about 50\% within 25 generations (Fig.~\ref{fig4}A).
+However, tracking the evolutionary change in movement strategies, the number of infected individuals fell to just about 50\% within 25 generations (Fig.~\ref{patho_fig_04}A).
 To examine potential pathogen spread in pre-introduction populations, we ran a simple epidemiological model on the social networks emerging from individuals' movements before and after pathogen introduction (pre-introduction: $G =$ 3,000; post-introduction: $G =$ 3,500).
 We modelled two diseases, \textit{(i)} first, a disease requiring one encounter,and \textit{(ii)} second, a disease requiring ten encounters between individuals for a potential transmission event (transmission rate $\beta$ = 5.0, recovery rate $\gamma$ = 1.0).
-Both the single encounter and multiple encounter diseases would infect 75\% -- 80\% of individuals when spreading through the networks of pre-introduction populations (Fig.~\ref{fig4}B).
-Pathogen-adapted populations' social networks are more resilient to both the single encounter and multiple encounter disease, compared to their pre-introduction, pathogen-naive ancestors (Fig.~\ref{fig4}B).
+Both the single encounter and multiple encounter diseases would infect 75\% -- 80\% of individuals when spreading through the networks of pre-introduction populations (Fig.~\ref{patho_fig_04}B).
+Pathogen-adapted populations' social networks are more resilient to both the single encounter and multiple encounter disease, compared to their pre-introduction, pathogen-naive ancestors (Fig.~\ref{patho_fig_04}B).
 Less than 50\% of post-introduction populations were finally infected by the single encounter disease, compared with $>$ 75\% of pre-introduction, pathogen-naive ancestors.
-In pathogen-adapted populations, the spread of the multiple encounter disease was even slower (ever infected: $\approx$ 20\%), as these social networks are sparser and individuals are more weakly connected (Fig.~\ref{fig4}B; see Fig.~\ref{fig3}B).
+In pathogen-adapted populations, the spread of the multiple encounter disease was even slower (ever infected: $\approx$ 20\%), as these social networks are sparser and individuals are more weakly connected (Fig.~\ref{patho_fig_04}B; see Fig.~\ref{patho_fig_03}B).
 
 \begin{figure}[!h]
     \centering
@@ -256,13 +259,13 @@ In pathogen-adapted populations, the spread of the multiple encounter disease wa
         \textbf{(B)} The progression of two hypothetical diseases (transmission rate $\beta$ = 5.0, recovery rate $\gamma$ = 1.0), requiring  a single encounter, or 10 encounters for a potential transmission.
         A simple SIR model on the emergent social networks of pre- (blue dots) and post-introduction (red triangles) populations ($G$ = 3,000, and $G$ = 3,500) shows that the transmission of both diseases is reduced in populations with disease-adapted movement strategies.
         Panels show means of 25 SIR model replicates, run on emergent social networks from each of 10 simulation replicates in the default scenario ($R$ = 2, $\delta E$ = 0.25).
-    }\label{fig4}
+    }\label{patho_fig_04}
 \end{figure}
 
 \subsection*{Landscape productivity and infection cost influence which social movement strategies evolve}
 
 We ran our model with nine different combinations of landscape productivity ($R \in $ 1, 2, 5) and infection cost per timestep ($\delta E \in$ 0.1, 0.25, 0.5).
-Initially, in the absence of the pathogen, landscape productivity alone determines the benefits of social information, and thus which social movement strategies evolve (Fig.~\ref{fig5}).
+Initially, in the absence of the pathogen, landscape productivity alone determines the benefits of social information, and thus which social movement strategies evolve (Fig.~\ref{patho_fig_05}).
 On low-productivity landscapes ($R$ = 1), social information is valuable as direct resource cues are scarce; here, the handler-tracking strategy persists.
 On high-productivity landscapes ($R \in$ 2, 5), social information is less valuable as individuals can directly detect food items more often; here, the agent tracking strategy is most common.
 %%
@@ -274,7 +277,7 @@ Landscape productivity can also directly balance infection costs: on high-produc
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/pathomove/fig_05.png}
+    \includegraphics[width=0.9\linewidth]{figures/pathomove/fig_05.png}
     % width=8.7cm
     \caption{
         \textbf{The balance of infection cost and the usefulness of social information together shape the rapid evolutionary change in movement strategies triggered by pathogen introduction.}
@@ -286,7 +289,7 @@ Landscape productivity can also directly balance infection costs: on high-produc
         In scenarios of high landscape productivity combined with low infection costs (e.g. $R$ = 5, $\delta E$ = 0.1), the agent tracking strategy persists beyond pathogen introduction.
         All panels show mean frequencies over 10 replicate simulations in 100 generation bins; frequencies are stacked.
         Grey areas show the relatively uncommon `non-handler' tracking strategy.
-    }\label{fig5}
+    }\label{patho_fig_05}
 \end{figure}
 
 \section*{Discussion}

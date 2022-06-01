@@ -27,7 +27,7 @@ Adopting a mechanistic, viewshed ecology approach \cite{olsoy2015,aben2018,aben2
 
 We explore the direct effects of wing molt on the movement of birds, focusing on four sympatric, non-migratory species: barn swallows (\textit{Hirundo rustica}), white-spectacled bulbuls (\textit{Pycnonotus xanthopygos}), house sparrows (\textit{Passer domesticus}), and clamorous reed-warblers (\textit{Acrocephalus stentoreus}).
 Scoring the molt-related wing gap size of naturally molting birds \citep{lind2001,kiat2016}, we manipulated a subset of molting individuals by trimming a number of flight feathers.
-We tracked birds during a 4-month period using the high-throughput ATLAS system, which brings unprecedented temporal and spatial resolution to small bird tracking \citep{toledo2014,weiser2016,toledo2020,nathan2022,beardsworth}.
+We tracked birds during a 4-month period using the high-throughput ATLAS system, which brings unprecedented temporal and spatial resolution to small bird tracking \citep{toledo2014,weiser2016,toledo2020,nathan2022,beardsworth2022mee}.
 We examined \textit{(i)} how the size of the molt-related wing gap affected bird movement, and \textit{(ii)} how the wing gap size influenced selection for more sheltered habitats.
 Overall, we show how birds' movement decisions, influenced by their immediate physiological condition, scale up to affect their space use, and how individuals' adaptive behavioral strategies have feedbacks with their evolutionary ecology.
 
@@ -89,7 +89,7 @@ Finally, we \textit{(iii)} filtered the data for unrealistic movements, removing
 We deliberately used larger thresholds than these species' maximum speeds to avoid removing valid, high-speed movements \citep{gupte2022d}.
 Finally, we \textit{(iv)} accounted for small-scale errors --- noise around the true positions --- by applying a median smooth with a moving window $K$ = 7.
 After excluding night time data and all other data filtering and smoothing, we analyzed 1.1 million locations from 86 individuals, keeping high per-minute sampling rate for all species (bulbuls = 4.85 $\pm$ 3.3, sparrows = 2.73 $\pm$ 3.0, reed-warblers = 2.09 $\pm$ 1.44, swallows = 2.07 $\pm$ 1.14).
-Compared with current technologies for tracking small birds ($<$ 50g) --- primarily radio triangulation and geolocators, which have low temporal (a few fixes per hour or day) and spatial resolution (error margins up to 200 km) \citep{bridge2013} --- ATLAS data represent an unprecedented sampling rate, with GPS-level accuracy \citep{beardsworth}.
+Compared with current technologies for tracking small birds ($<$ 50g) --- primarily radio triangulation and geolocators, which have low temporal (a few fixes per hour or day) and spatial resolution (error margins up to 200 km) \citep{bridge2013} --- ATLAS data represent an unprecedented sampling rate, with GPS-level accuracy \citep{beardsworth2022mee}.
 
 \subsection{Quantifying large-scale movements}
 
@@ -148,7 +148,7 @@ The time intervals between patches were not fixed, but step lengths were not dep
     %generalised additive model estimates: bulbuls, $F$ = 4.734, p = 0.01; sparrows, $F$ = 11.58, p < 0.001).
     However, when bulbuls' and sparrows' wings were heavily compromised by experimental manipulation (wing gap index $\geq$ 12), both species made shorter movements between residence patches.
     In contrast, clamorous reed-warblers (\textit{Acrocephalus stentoreus}) did not show a significant difference in large-scale movements with increasing wing gap index, possibly because they are already restricted to small patches of reedbeds.
-}\label{fig1}
+}\label{holey_fig_01}
 \end{figure}
 
 Of the four species we studied, bulbuls and sparrows are relatively wide-ranging birds, reed-warblers are strongly range restricted to patchy reedbeds, and swallows are very wide-ranging, largely aerial foragers.
@@ -173,18 +173,18 @@ We fit one GAM for bulbuls, sparrows, and reed-warblers (species included as bot
         %(generalised additive model [GAM] estimates: $F$ = 7.45, p $<$ 0.001).
         Molting sparrows switched residence patches less frequently with increasing wing gap index; naturally molting birds switched less than non-molting ones, and manipulated birds least of all. %(GAM estimates: $F$ = 3.52, p = 0.024).
         Reed-warblers did not show a significant difference in patch switching with increasing wing gap index, possibly because they are already restricted to small patches of reedbeds.
-    }\label{fig2}
+    }\label{holey_fig_02}
 \end{figure}
 
 \paragraph*{Distance between residence patches}
 
-We found that bulbuls and sparrows, but not reed-warblers, adjusted their daytime large-scale movements between residence patches to their wing gap size (Fig.~\ref{fig1}; GAM t-value = 2.13, p = 0.034; \textit{SI Appendix} Table S1).
+We found that bulbuls and sparrows, but not reed-warblers, adjusted their daytime large-scale movements between residence patches to their wing gap size (Fig.~\ref{holey_fig_01}; GAM t-value = 2.13, p = 0.034; \textit{SI Appendix} Table S1).
 Compared with non-molting individuals (wing gap = 0), naturally molting bulbuls with moderately large molt-related gaps (3 $<$ wing gap $\leq$ 10) actually moved 2.5 times as far per hour between residence patches (GAM estimate $F$ = 4.734, p = 0.01; distance between patches: non-molting = 54.11 m, molting = 135.89 m).
 Similarly, naturally molting sparrows moved {1.5 times} as far per hour between residence patches (GAM estimate $F$ = 11.58, p = 0.00002; distance between patches: non-molting = 208 m, molting = 307 m).
 This is consistent with the idea that wing molt is an energetically demanding period that requires actively seeking out high-quality food sources \citep{madsen1987a,fox1998}.
 
-Reed-warblers and swallows, which represent very rapid and very slow molt rates, respectively, showed no statistically significant change in large-scale movement with increasing size of the molt-related wing gap (Fig.~\ref{fig1}: reed-warblers).
-Rapidly-molting reed-warblers moved similar distances between residence patches when molting or non-molting (GAM estimate $F$ = 0.055, p = 0.815; Fig.~\ref{fig1}).
+Reed-warblers and swallows, which represent very rapid and very slow molt rates, respectively, showed no statistically significant change in large-scale movement with increasing size of the molt-related wing gap (Fig.~\ref{holey_fig_01}: reed-warblers).
+Rapidly-molting reed-warblers moved similar distances between residence patches when molting or non-molting (GAM estimate $F$ = 0.055, p = 0.815; Fig.~\ref{holey_fig_01}).
 This is presumably because reed-warblers 
 % are already very strongly constrained to a few clustered reedbed habitats, and thus 
 do not move between distant patches even when not molting (mean distance between residence patches: non-molting = 27.20 m, molting = 29.09 m, manipulated = 8.49 m) \citep{kiat2016}.
@@ -196,14 +196,14 @@ Swallows' slow molt rate likely represents an adaptation to their aerial foragin
 Our experimental manipulation involved removal of one to three primaries, in addition to the primaries missing as part of natural molt (see \emph{Methods}).
 Wing gap index scores after artificial manipulation showed differences among species corresponding to their natural molt rate, manipulated reed warblers had larger wing gaps than manipulated swallows, bulbuls, or sparrows {(swallows = 10.11 $\pm$ 2.5, bulbuls = 13.5 $\pm$ 2.35, sparrows = 12.56 $\pm$ 3.5, reed-warblers = 17.8 $\pm$ 1.1).}
 Bulbuls and sparrows whose flight feathers had been removed by manipulation (12 $<$ wing gap $<$ 20) moved shorter distances than naturally molting birds {(bulbuls: 68\% less, 43 m; sparrows: 16.7\% less, 256 m)}.
-% Bulbuls especially barely moved at all between residence patches when their wings were heavily compromised by artificial manipulation (wing gap $>$ 15; mean distance between residence patches / hr = 39.3 $\pm$ 42.2 m; Fig.~\ref{fig1}).
+% Bulbuls especially barely moved at all between residence patches when their wings were heavily compromised by artificial manipulation (wing gap $>$ 15; mean distance between residence patches / hr = 39.3 $\pm$ 42.2 m; Fig.~\ref{holey_fig_01}).
 These observations are in line with the direct effects of severely reduced flight capacity and allocating energy reserves to feather regrowth rather than movement, and an indirect effect of risk-avoidance during a vulnerable period.
 
 \paragraph*{Frequency of patch switching}
 
-We found that in addition to affecting the distance moved between residence patches, the wing gap resulting from natural molt or manipulation also affected the frequency of patch switching in bulbuls and sparrows, but not in reed-warblers (Fig.~\ref{fig2}).
+We found that in addition to affecting the distance moved between residence patches, the wing gap resulting from natural molt or manipulation also affected the frequency of patch switching in bulbuls and sparrows, but not in reed-warblers (Fig.~\ref{holey_fig_02}).
 Naturally molting bulbuls moved more often between residence patches than non-molting and artifically manipulated birds (GAM estimate $F$ = 7.45, p $<$ 0.001; see also \textit{SI Appendix} Table S2).
-However, naturally molting sparrows switched between residence patches as often as non-molting birds, but artificially manipulated sparrows switched patches less frequently than molting birds (GAM estimate $F$ = 3.515, p = 0.024; Fig.~\ref{fig2}).
+However, naturally molting sparrows switched between residence patches as often as non-molting birds, but artificially manipulated sparrows switched patches less frequently than molting birds (GAM estimate $F$ = 3.515, p = 0.024; Fig.~\ref{holey_fig_02}).
 Reed-warblers did not show a change in patch-switching frequency in relation to wing gap size (GAM estimate $F$ = 1.04, p = 0.31).
 
 \begin{figure}[!t]
@@ -218,13 +218,13 @@ Reed-warblers did not show a change in patch-switching frequency in relation to 
         The visibility of a patch to low-flying predators reduced the duration for which it was used, %(GAM parametric estimate = -0.70, p = 0.004), 
         but patch vegetation productivity (NDVI) had no effect. 
         %(GAM parametric estimate = 0.05, p = 0.86).
-    }\label{fig3}
+    }\label{holey_fig_03}
 \end{figure}
 
 \subsection*{Molt-related wing gap size and patch occupancy}
 
 We examined whether the time that bird spent in residence patches was affected by their wing gap size, with the expectation --- following the results for movements between patches --- that molting birds would spend less time in patches than non-molting and manipulated birds (see \textit{SI Appendix} for model specification).
-This was indeed the case for both bulbuls and reed-warblers, for which the mean patch duration for molting birds was only about half of that for non-molting and manipulated birds (Fig.~\ref{fig3}; GAM estimates: bulbuls, $F$ = 18.86, p $<$ 0.001; reed warblers, $F$ = 12.854, p $<$ 0.001).
+This was indeed the case for both bulbuls and reed-warblers, for which the mean patch duration for molting birds was only about half of that for non-molting and manipulated birds (Fig.~\ref{holey_fig_03}; GAM estimates: bulbuls, $F$ = 18.86, p $<$ 0.001; reed warblers, $F$ = 12.854, p $<$ 0.001).
 However, we found that sparrows had similar patch durations across different wing gap sizes (GAM estimate $F$ = 0.023, p = 0.878; \textit{SI Appendix} Table S3).
 
 We expected two environmental attributes --- vegetation productivity (NDVI), and visibility to predators --- to also affect patch durations.
@@ -237,27 +237,42 @@ However, patch durations increased with reduced patch visibility (GAM parametric
 \subsection*{Birds occupy sheltered areas across molt rates}
 
 Finding that patch visibility influenced patch durations, we examined whether birds' molt-related wing gaps directly influenced their use of sheltered areas (except swallows, which are aerial foragers).
-First, fitting a GAM with species-specific smooths for bulbuls, sparrows, and reed-warblers (see \textit{Methods}), we found that only reed-warblers had slightly more sheltered patches with larger wing gaps (GAM estimate $F$ = 9.30, p = 0.002; Fig.~\ref{fig4}; visibility: non-molting = 0.33 $\pm$ 0.17, molting = 0.31 $\pm$ 0.19, manipulated = 0.21 $\pm$ 0.06), potentially because their rapid molt rate severely reduces flight capacity and makes increased shelter necessary.
+First, fitting a GAM with species-specific smooths for bulbuls, sparrows, and reed-warblers (see \textit{Methods}), we found that only reed-warblers had slightly more sheltered patches with larger wing gaps (GAM estimate $F$ = 9.30, p = 0.002; Fig.~\ref{holey_fig_04}; visibility: non-molting = 0.33 $\pm$ 0.17, molting = 0.31 $\pm$ 0.19, manipulated = 0.21 $\pm$ 0.06), potentially because their rapid molt rate severely reduces flight capacity and makes increased shelter necessary.
 % only a moderate overall relationship between the visibility index of residence patches and the size of the molt-related wing gap (GAM t-value = 100.5, p $<$ 0.001; $R^2$ = 0.312).
 This suggests that bulbuls and sparrows, with intermediate molt rates, occupy sheltered areas of similar (low) visibility regardless of the size of their wing gap (visibility: bulbuls =  0.39 $\pm$ 0.18; sparrows = 0.47 $\pm$ 0.19; see \textit{SI Appendix} Table S4).
 
 We went one step further, and used a step-selection approach to sample patches to which individuals could have moved, and estimated birds' relative preference for visibility and NDVI when making movement decisions (see \textit{Methods}) \citep{avgar2016,aben2021}.
-Fitting separate step-selection functions for each species and each broad molt group (non-molting, molting, and manipulated), we found that across molt group, all three species preferred low-visibility sheltered sites over higher visibility ones (Fig.~\ref{fig4}; \textit{SI Appendix} Table S5).
+Fitting separate step-selection functions for each species and each broad molt group (non-molting, molting, and manipulated), we found that across molt group, all three species preferred low-visibility sheltered sites over higher visibility ones (Fig.~\ref{holey_fig_04}; \textit{SI Appendix} Table S5).
 Furthermore, NDVI did not signficantly affect birds' movement decisions at the patch scale (see \textit{SI Appendix} Table {S1}).
 This is consistent with the idea that birds of our study species mostly avoid open agricultural fields, where they might be exposed to potential predators, even though fields are highly productive.
 
-\begin{figure}%
-\centering
-\includegraphics[0.9\textwidth]{figures/holeybirds/fig_04.png}
-% width=8.7cm,height=8.7cm
-\caption{
-    \textbf{Bulbuls, sparrows, and reed-warblers prefer sheltered habitats across wing condition.}
-    Across the three species, a GAM indicated that molt-related wing gap index was a poor predictor of the visibility of areas actually occupied by individuals (`real' residence patches; small colored circles). 
-    A step-selection analysis at patch level, comparing real residence patches to sampled potential residence patches (grey crosses), showed strong selection for patches with low visibility index scores for all wing conditions, indicated by negative estimated selection coefficients ($\beta$ = natural logarithm of relative selection strength). 
-    All $\beta$ values were statistically significant (see \textit{SI Appendix}).
-    Filled circles and triangles, and error bars around them, show the mean visibility index of real and potential patches for each molt treatment (indicated by color).
-}\label{fig4}
-\end{figure}
+\afterpage{
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[0.9\textwidth]{figures/holeybirds/fig_04.png}
+        % width=8.7cm,height=8.7cm
+        \caption{
+            \textbf{Bulbuls, sparrows, and reed-warblers prefer sheltered habitats across wing condition.}
+            Across the three species, a GAM indicated that molt-related wing gap index was a poor predictor of the visibility of areas actually occupied by individuals (`real' residence patches; small colored circles). 
+            A step-selection analysis at patch level, comparing real residence patches to sampled potential residence patches (grey crosses), showed strong selection for patches with low visibility index scores for all wing conditions, indicated by negative estimated selection coefficients ($\beta$ = natural logarithm of relative selection strength). 
+            All $\beta$ values were statistically significant (see \textit{SI Appendix}).
+            Filled circles and triangles, and error bars around them, show the mean visibility index of real and potential patches for each molt treatment (indicated by color).
+        }\label{holey_fig_04}
+    \end{sidewaysfigure}
+}
+
+% \begin{figure}%
+% \centering
+% \includegraphics[0.9\textwidth]{figures/holeybirds/fig_04.png}
+% % width=8.7cm,height=8.7cm
+% \caption{
+%     \textbf{Bulbuls, sparrows, and reed-warblers prefer sheltered habitats across wing condition.}
+%     Across the three species, a GAM indicated that molt-related wing gap index was a poor predictor of the visibility of areas actually occupied by individuals (`real' residence patches; small colored circles). 
+%     A step-selection analysis at patch level, comparing real residence patches to sampled potential residence patches (grey crosses), showed strong selection for patches with low visibility index scores for all wing conditions, indicated by negative estimated selection coefficients ($\beta$ = natural logarithm of relative selection strength). 
+%     All $\beta$ values were statistically significant (see \textit{SI Appendix}).
+%     Filled circles and triangles, and error bars around them, show the mean visibility index of real and potential patches for each molt treatment (indicated by color).
+% }\label{holey_fig_04}
+% \end{figure}
 
 \section*{Discussion}
 

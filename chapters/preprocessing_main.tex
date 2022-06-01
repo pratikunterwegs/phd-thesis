@@ -73,25 +73,41 @@
     Finally, in our second example, we use ATLAS data from Egyptian fruit bats (\textit{Rousettus aegyptiacus}) tracked in the Hula Valley, Israel, to show a fully worked out example of the pre-processing pipeline and the residence patch method.
     While our approach to high-throughput tracking data, and our package of pre-processing functions was developed with reverse-GPS ATLAS systems in mind, both are broadly suitable to a wide range of high-throughput animal tracking data sources, from underwater acoustic reverse-GPS \citep{baktoft2019, baktoft2017, jung2015, aspillaga2021, aspillaga2021a}, high-resolution GPS \citep{strandburg-peshkin2015, papageorgiou2019, harel2016, klarevas-irby2021}, tracking radars \citep{horvitz2014}, and visual video tracking \citep{rathore2020, perez-escudero2014}.
 
-    \section*{Best-Practices for Pre-Processing Workflows}
+    \afterpage{
+        \begin{sidewaysfigure}[ht!]
+            \centering
+            \includegraphics[width=0.7\textwidth]{figures/preprocessing/fig_01.png}
+            \caption{
+                \textbf{Some best-practices for pre-processing high-throughput tracking data.}
+                Simple pre-processing of animal tracking data can improve the quality of animal tracking data, and the inferences that are drawn from it.
+                % The organisation of pre-processing workflows into a `pipeline' --- a set of steps that users apply to prepare the data for a specific analysis --- can help make research more reproducible and reliable.
+                Exploratory data analysis of representative subsets of the data can help to identify common issues with data quality, and to determine which pre-processing, steps such as filters and smooths, might be necessary (\textit{see also Fig.~\ref{preproc_fig_02}}).
+                Pre-processing steps implemented as programming code can be made reproducible and shareable by following best-practices for software development: (i) tracking changes to the steps, and the software used, using version control (e.g. \textit{git}, \textit{renv}), (ii) preferring pre-existing tools, such as \textit{R} packages, which are well documented and tested, (iii) encapsulating custom-written code as functions, and bundling related functions into a package, and (iv) checking the quality of both custom-written code (e.g. by testing functions), and the overall pipeline (e.g. data visualisation).
+                The efficiency of pre-processing steps can be increased by using strategies for dealing with large datasets, such as batch processing, or using a computing cluster.
+                The use of existing tools optimised for large datasets, or by writing code in a `fast' language such as \textit{C++}, can also speed up the pre-processing of large datasets (see main text for examples).
+                % See the \textit{Worked Out Example} on Egyptian fruit bats, as well as Supplementary Material 1, for more details on implementing pipelines.
+                % Fig.~\ref{preproc_fig_02} shows an example of such a pipeline.
+            }
+            \label{preproc_fig_01}
+        \end{sidewaysfigure}
+    }
+    
+    \afterpage{
+        \begin{sidewaysfigure}[ht!]
+            \centering
+            \includegraphics[width=0.7\textwidth]{figures/preprocessing/fig_02.png}
+            \caption{
+                \textbf{An example of a modular pipeline for pre-processing high-throughput tracking data from raw localisations to cleaned data, and optionally into residence patches.}
+                Users should apply the appropriate pre-processing modules and the steps therein until the data are suitable for their intended analysis, some of which are suggested here.
+                The \textit{atlastools} function that may be used to implement each pre-processing step is shown in the grey boxes underneath each step.
+                Popular statistical methods are shown underneath possible analyses (yellow boxes).
+                Users are strongly encouraged to visualise their data and scan it for location errors as they work through the pipeline, always asking the question, could the animal plausibly move this way?
+            }
+            \label{preproc_fig_02}
+        \end{sidewaysfigure}
+    }
 
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_01.png}
-        \caption{
-            \textbf{Some best-practices for pre-processing high-throughput tracking data.}
-            Simple pre-processing of animal tracking data can improve the quality of animal tracking data, and the inferences that are drawn from it.
-            % The organisation of pre-processing workflows into a `pipeline' --- a set of steps that users apply to prepare the data for a specific analysis --- can help make research more reproducible and reliable.
-            Exploratory data analysis of representative subsets of the data can help to identify common issues with data quality, and to determine which pre-processing, steps such as filters and smooths, might be necessary (\textit{see also Fig.~\ref{preproc_fig_02}}).
-            Pre-processing steps implemented as programming code can be made reproducible and shareable by following best-practices for software development: (i) tracking changes to the steps, and the software used, using version control (e.g. \textit{git}, \textit{renv}), (ii) preferring pre-existing tools, such as \textit{R} packages, which are well documented and tested, (iii) encapsulating custom-written code as functions, and bundling related functions into a package, and (iv) checking the quality of both custom-written code (e.g. by testing functions), and the overall pipeline (e.g. data visualisation).
-            The efficiency of pre-processing steps can be increased by using strategies for dealing with large datasets, such as batch processing, or using a computing cluster.
-            The use of existing tools optimised for large datasets, or by writing code in a `fast' language such as \textit{C++}, can also speed up the pre-processing of large datasets (see main text for examples).
-            % See the \textit{Worked Out Example} on Egyptian fruit bats, as well as Supplementary Material 1, for more details on implementing pipelines.
-            % Fig.~\ref{preproc_fig_02} shows an example of such a pipeline.
-        }
-        }
-        \label{preproc_fig_01}
-    \end{figure}
+    \section*{Best-Practices for Pre-Processing Workflows}
 
     Exploratory data analysis should be the first step towards pre-processing movement data \citep[see Fig.~\ref{preproc_fig_01};][]{slingsby2016}.
     Researchers with very large datasets of perhaps millions of rows should ideally select a representative subset of these data for exploratory data analysis, including individuals of different species, sexes, or seasonal cohorts.
@@ -141,23 +157,11 @@
     % }
     Finally, we show how users wishing simple, efficient segmentation-clustering of points where the animal showed prolonged residence, can classify their data into `residence patches' \citep{barraquand2008, bijleveld2016} based on the movement ecology of their study species, after filtering out travelling segments (see \textit{\textbf{System-Specific Pre-Processing Tools}}).
 
-    These pre-processing techniques and package were designed with ATLAS systems in mind, motivated to meet the rapid growth of studies using this high-throughput system worldwide: in Israel \citep{toledo2014, toledo2016, toledo2020, corl2020, vilk2021}, the UK \citep{beardsworth2021a, beardsworth2021b}, and the Netherlands \citep[][Bijleveld et al. \textit{in prep.}]{beardsworth2021}. 
+    These pre-processing techniques and package were designed with ATLAS systems in mind, motivated to meet the rapid growth of studies using this high-throughput system worldwide: in Israel \citep{toledo2014, toledo2016, toledo2020, corl2020, vilk2021}, the UK \citep{beardsworth2021a, beardsworth2021b}, and the Netherlands \citep[][]{beardsworth2022mee,bijleveld2021}. 
     However, the principles and functions presented here are ready for use with other massive high-resolution data collected by GPS \citep[e.g.][]{papageorgiou2019}, reverse-GPS \citep[e.g.][]{aspillaga2021} or any other high-throughput tracking system .
     Users may construct a pre-processing pipeline comprising of all the techniques we cover, or implement the modules most suitable for their data.
     Users are advised to visualise their data throughout their workflow, and especially to perform thorough exploratory data analysis, to check for evident location errors or other issues \citep{slingsby2016}.
-
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_02.png}
-        \caption{
-            \textbf{An example of a modular pipeline for pre-processing high-throughput tracking data from raw localisations to cleaned data, and optionally into residence patches.}
-            Users should apply the appropriate pre-processing modules and the steps therein until the data are suitable for their intended analysis, some of which are suggested here.
-            The \textit{atlastools} function that may be used to implement each pre-processing step is shown in the grey boxes underneath each step.
-            Popular statistical methods are shown underneath possible analyses (yellow boxes).
-            Users are strongly encouraged to visualise their data and scan it for location errors as they work through the pipeline, always asking the question, could the animal plausibly move this way?
-        }
-        \label{preproc_fig_02}
-    \end{figure}
+    
 
     \subsection*{Simulating Data to Demonstrate Pre-Processing Steps}
 
@@ -475,19 +479,21 @@
     % \end{lst{\color{red} Listing}}
 
     % % figure for aggregation thinning
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_05.png}
-        \caption{
-            \textbf{Thinning tracking data can aid computation but must be approached carefully}.
-            Aggregating a filtered and smoothed movement track \textbf{(a)} preserves track structure while reducing data-volume, but \textbf{(b)} aggregating before filtering gross location errors and unrealistic movement leads to the persistence of large-scale errors (such as prolonged spikes).
-            \textbf{(c)} Thinning before data cleaning can lead to significant misestimations of essential movement metrics such as speed at lower intervals.
-            Boxplots show the median and interquartile ranges for speed estimates of tracks aggregated over intervals of 3, 10, 30, and 120 seconds.
-            For comparison, the median and 95\textsuperscript{th} percentile of speed of the canonical track are shown as solid and dashed horizontal lines, respectively.
-            % The unfiltered data would have to be thinned to \sfrac{1}{30}\textsuperscript{th} volume to correctly estimate median speed.
-        }
-        \label{preproc_fig_05}
-    \end{figure}
+    \afterpage{
+        \begin{sidewaysfigure}[]
+            \centering
+            \includegraphics[width=0.7\textwidth]{figures/preprocessing/fig_05.png}
+            \caption{
+                \textbf{Thinning tracking data can aid computation but must be approached carefully}.
+                Aggregating a filtered and smoothed movement track \textbf{(a)} preserves track structure while reducing data-volume, but \textbf{(b)} aggregating before filtering gross location errors and unrealistic movement leads to the persistence of large-scale errors (such as prolonged spikes).
+                \textbf{(c)} Thinning before data cleaning can lead to significant misestimations of essential movement metrics such as speed at lower intervals.
+                Boxplots show the median and interquartile ranges for speed estimates of tracks aggregated over intervals of 3, 10, 30, and 120 seconds.
+                For comparison, the median and 95\textsuperscript{th} percentile of speed of the canonical track are shown as solid and dashed horizontal lines, respectively.
+                % The unfiltered data would have to be thinned to \sfrac{1}{30}\textsuperscript{th} volume to correctly estimate median speed.
+            }
+            \label{preproc_fig_05}
+        \end{sidewaysfigure}
+    }
 
     \section*{System-Specific Pre-processing Tools}
 
