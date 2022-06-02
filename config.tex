@@ -102,6 +102,7 @@
   % issuestyle=parens,
   % sorting=none,
   maxcitenames=2,
+  mincitenames=1,
   % maxbibnames=5
   maxbibnames=5, % default: 3, et al.
   %backref=true,%
@@ -110,10 +111,10 @@
 }{biblatex}
 \usepackage{biblatex}
 
-% no volume, pages, or issue number
+% REMOVE THE MONTH WHICH LEADS TO EMPTY () AFTER THE ENTRY
 % \AtEveryBibitem{\clearfield{pages}}
 % \AtEveryBibitem{\clearfield{volume}}
-% \AtEveryBibitem{\clearfield{number}}
+\AtEveryBibitem{\clearfield{month}}
 
 % try to remove empty brackets
 % \renewbibmacro*{issue+date}{%
