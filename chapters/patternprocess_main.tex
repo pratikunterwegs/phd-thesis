@@ -20,16 +20,16 @@
     For example, resources that are critical to animals are often ephemeral, and difficult to measure with both a high spatio-temporal extent and resolution using existing technologies such as remote sensing, leading researchers to fall back on more long-term resource proxies such as vegetation indices \citep{pettorelli2011}.
     This issue is likely even more acute in the case of movements that have a social context, such as competition, as the social environment is expected to change even more rapidly than resource distributions, and to be even more sensitive to local consumer densities.
     Consequently, it may be difficult to determine whether differences in movement reflect underlying differences in decision-making mechanisms, or whether they better represent stochastic differences in environmental conditions encountered by animals.
-    Applying current methods in animal movement ecology to individual-based simulation models of animal movement strategies \citep[see e.g.][]{getz2015,getz2016,netz2020,gupte2021a}can help explore whether these methods can reliably detect individual differences in movement decision-making mechanisms.
+    Applying current methods in animal movement ecology to individual-based simulation models of animal movement strategies \citep[see e.g.][]{getz2015,getz2016,netz2021,gupte2021a}can help explore whether these methods can reliably detect individual differences in movement decision-making mechanisms.
     
-    Mechanistic models of intermediate complexity can simulate the main features of many spatial systems, such as heterogeneity in landscape productivity, and resource depletion due to mobile consumers \citep{getz2015,white2018,deangelis2019,netz2020,gupte2021a,diaz2021}.
+    Mechanistic models of intermediate complexity can simulate the main features of many spatial systems, such as heterogeneity in landscape productivity, and resource depletion due to mobile consumers \citep{getz2015,white2018,deangelis2019,netz2021,gupte2021a,diaz2021}.
     Here, we work with an evolutionary, individual-based model of agent movement in the context of intraspecific competition \citep[both exploitation and interference]{gupte2021a}.
     In our model, agent movement is the outcome of the interplay of simple movement decision-making mechanisms, a fluctuating resource landscape, and due to agent movement, a variable social landscape.
     % Agents can be programmed to move according to specific movement rules, which are controlled by 
-    Agent movement strategies are controlled by their preferences for environmental cues, such as resource and competitor densities \citep[see e.g.][]{getz2015,white2018,netz2020, gupte2021a}.
+    Agent movement strategies are controlled by their preferences for environmental cues, such as resource and competitor densities \citep[see e.g.][]{getz2015,white2018,netz2021, gupte2021a}.
     % The movement weights are used to assess the fluctuating resource landscape, as well as changing local densities of competitors.
     These preferences may be thought of as the coefficients of resource- or step-selection functions \citep[][]{white2018,gupte2021a}.
-    Importantly, in contrast with purely ecological models \citep[e.g.][]{white2018}, agents' preferences are outcomes of many generations of natural selection \citep[see also][]{getz2015,netz2020}.
+    Importantly, in contrast with purely ecological models \citep[e.g.][]{white2018}, agents' preferences are outcomes of many generations of natural selection \citep[see also][]{getz2015,netz2021}.
     We previously showed that in two scenarios of exploitation and interference competition, differences among individuals in how they assess local environmental cues evolve \citep[][]{gupte2021a}.
     % Consequently, we would expect to see these differences in mechanisms reflected in the structure of emergent movement paths.
     
@@ -40,7 +40,7 @@
     \textit{(3)} Finally, we attempt a novel application of step-selection analysis to the study of consistent individual differences in movement strategies.
     Overall, by treating a simulation model with simple movement rules as we would empirical animal-tracking data, we aim to explore whether individual differences in movement decision-making mechanisms can be reliably inferred from the emergent structure of animal movement paths.
     
-    \section{Methods}
+    \section*{Methods}
     
     \subsection*{The Model}
     
@@ -102,7 +102,7 @@
     In scenario 2, individuals additionally inherit their competition strategy from their parent.
     % four further weights for foraging decisions ($w_P$, $w_H$, $w_N$, $w_0$) are also active.
     We assume that the expected number of offspring per individual is proportional to the individual's total lifetime intake of resources (hence resource intake is used as a proxy for fitness). 
-    This is implemented as a weighted lottery (with weights proportional to lifetime resource intake) that selects a parent for each offspring in the subsequent generation \citep[see prior implementation in][]{netz2020}.
+    This is implemented as a weighted lottery (with weights proportional to lifetime resource intake) that selects a parent for each offspring in the subsequent generation \citep[see prior implementation in][]{netz2021}.
     %%
     Across scenarios, the movement decision-making weights are subject to independent random mutations with a probability of 0.001.
     The mutational step size (either positive or negative) is drawn from a Cauchy distribution with a scale of 0.01 centred on zero.
@@ -391,7 +391,7 @@
     
     \subsection*{Variation Among Movement Types and Competition Strategies}
     
-    The co-existence of multiple movement types across multiple generations of scenario 1 suggests that multiple alternative movement rules are equally good for navigating our fluctuating resource and social landscapes \citep[see also][]{getz2015,netz2020}.
+    The co-existence of multiple movement types across multiple generations of scenario 1 suggests that multiple alternative movement rules are equally good for navigating our fluctuating resource and social landscapes \citep[see also][]{getz2015,netz2021}.
     That movement types travel roughly the same distances is not surprising, as they must spend the same time handling, and gaining intake, to have equivalent fitness.
     In scenario 2, there are essentially only two viable movement types that are strongly correlated with competition strategies at low growth rates ($r_{max}$ = 0.01).
     Here, the handler-tracking kleptoparasites move more because their primary resource, handlers, are scarce; conversely, foragers move less, as prey-items are abundant \citep[see][]{gupte2021a}.
@@ -440,7 +440,7 @@
     Step-selection analysis has the potential to be among these methods, as it directly links what animals actually perceive, to where they go \citep[see recently][]{aben2021}.
     This allows a fine-scale comparison between selected and alternative steps, which, at certain scales, may functionally approximate individuals' cognitive processes, at least in terms of preference or avoidance.
     
-    Our model \citep{gupte2021a,netz2022a} and other mechanistic individual-based models that follow similar principles \citep{getz2015,getz2016,netz2020}, allow for the implementation of different movement decision-making mechanisms at very fine scales, in biologically plausible ways.
+    Our model \citep{gupte2021a,netz2022a} and other mechanistic individual-based models that follow similar principles \citep{getz2015,getz2016,netz2021}, allow for the implementation of different movement decision-making mechanisms at very fine scales, in biologically plausible ways.
     Our agents' movement decisions integrate locally available cues to make adaptive movement decisions, just as real animals are expected to do \citep{nathan2008a}.
     While our agent responses are linear, they can in principle be much more complex, including convoluted relationships between the environmental cues, as well as separate weights for each cue combination.
     Coupled with the ability to know the state of the environment, and of each agent, at any point in the simulation, we believe this and other similar models are suitable for the testing of a range of empirical methods.
