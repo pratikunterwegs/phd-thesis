@@ -73,8 +73,8 @@
     Finally, in our second example, we use ATLAS data from Egyptian fruit bats (\textit{Rousettus aegyptiacus}) tracked in the Hula Valley, Israel, to show a fully worked out example of the pre-processing pipeline and the residence patch method.
     While our approach to high-throughput tracking data, and our package of pre-processing functions was developed with reverse-GPS ATLAS systems in mind, both are broadly suitable to a wide range of high-throughput animal tracking data sources, from underwater acoustic reverse-GPS \citep{baktoft2019, baktoft2017, jung2015, aspillaga2021, aspillaga2021a}, high-resolution GPS \citep{strandburg-peshkin2015, papageorgiou2019, harel2016, klarevas-irby2021}, tracking radars \citep{horvitz2014}, and visual video tracking \citep{rathore2020, perez-escudero2014}.
 
-    \afterpage{
-        \begin{sidewaysfigure}[ht!]
+    % \afterpage{
+        \begin{sidewaysfigure}[p]
             \centering
             \includegraphics[width=0.7\textwidth]{figures/preprocessing/fig_01.png}
             \caption{
@@ -90,10 +90,10 @@
             }
             \label{preproc_fig_01}
         \end{sidewaysfigure}
-    }
+    % }
     
     \afterpage{
-        \begin{sidewaysfigure}[ht!]
+        \begin{sidewaysfigure}[p]
             \centering
             \includegraphics[width=0.7\textwidth]{figures/preprocessing/fig_02.png}
             \caption{
@@ -167,7 +167,7 @@
 
     To demonstrate pre-processing steps, we simulated a realistic movement track of 5,000 positions using an unbiased correlated velocity model (UCVM) implemented via the \textit{R} package \textit{smoove} \citep[][see Fig.~\ref{preproc_fig_03}.a]{gurarie2017}.
     We added four kinds of error to the simulated track: (i) normally distributed small-scale offsets to the X and Y coordinates (small-scale error), (ii) normally distributed large-scale offsets to a random subset (0.5 \%) of the positions (spikes), (iii) large-scale displacement of a continuous sequence of 300 of the 5,000 positions (prolonged spikes; indices 500 -- 800), and (iv) we removed 10\% of the canonical track to simulate missing data (see Fig.~\ref{preproc_fig_03}.a).
-    To demonstrate the residence patch method, we obtained data, in the form of 1,000 positions, from a mechanistic, individual-based simulation model, in which agents move using simple decision making rules, and can find high-productivity patches using only ephemeral cues, such as the density of prey-items and other competitors \citep{gupte2021a, netz2022}.
+    To demonstrate the residence patch method, we obtained data, in the form of 1,000 positions, from a mechanistic, individual-based simulation model, in which agents move using simple decision making rules, and can find high-productivity patches using only ephemeral cues, such as the density of prey-items and other competitors \citep{gupte2021a, netz2022a}.
     % \graffito{
     %     Using movement tracks from Chapter~\ref{ch:kleptomove} to demonstrate the residence patch method led to the idea of using them to investigate empirical methods generally; this then became Chapter~\ref{ch:patternprocess}.
     % }
@@ -480,7 +480,7 @@
 
     % % figure for aggregation thinning
     \afterpage{
-        \begin{sidewaysfigure}[]
+        \begin{sidewaysfigure}[p]
             \centering
             \includegraphics[width=0.7\textwidth]{figures/preprocessing/fig_05.png}
             \caption{
