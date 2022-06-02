@@ -1,51 +1,51 @@
 
 \newrefcontext[sorting=ynt]
 
-\lettrine{I}{ntraspecific} competition is an important driver of population dynamics and the spatial distribution of organisms \citep{krebs1978}, and has two main types, `exploitation' and `interference'.
-In exploitation competition, individuals compete indirectly by depleting a common resource, while in interference competition, individuals compete directly by interacting with each other \citep{birch1957,case1974,keddy2001}.
-A special case of interference competition which is widespread among animal taxa is `kleptoparasitism', in which an individual steals a resource from its owner \citep{iyengar2008}.
-Since competition has an obvious spatial context, animals should account for the locations of competitors when deciding where to move \citep{nathan2008a}.
-This is expected to have downstream effects on animal distributions across spatial scales, from resource patches \citep{fretwell1970}, to species distributions \citep{duckworth2007,schlagel2020}.
+\lettrine{I}{ntraspecific} competition is an important driver of population dynamics and the spatial distribution of organisms \parencite{krebs1978}, and has two main types, `exploitation' and `interference'.
+In exploitation competition, individuals compete indirectly by depleting a common resource, while in interference competition, individuals compete directly by interacting with each other \parencite{birch1957,case1974,keddy2001}.
+A special case of interference competition which is widespread among animal taxa is `kleptoparasitism', in which an individual steals a resource from its owner \parencite{iyengar2008}.
+Since competition has an obvious spatial context, animals should account for the locations of competitors when deciding where to move \parencite{nathan2008a}.
+This is expected to have downstream effects on animal distributions across spatial scales, from resource patches \parencite{fretwell1970}, to species distributions \parencite{duckworth2007,schlagel2020}.
 Animal movement strategies are thus likely to be adaptive responses to landscapes of competition, with competitive strategies themselves being evolved responses to animal distributions.
 Empirical studies of this joint evolution are nearly impossible at large spatio-temporal scales.
 This makes models linking individual movement and competition strategies with population distributions necessary.
 
-Contemporary individual-to-population models of animal space-use \citep[reviewed in][]{deangelis2019} and competition, however, are only sufficient to represent very simple movement and prey-choice decisions.
+Contemporary individual-to-population models of animal space-use \parencite[reviewed in][]{deangelis2019} and competition, however, are only sufficient to represent very simple movement and prey-choice decisions.
 % \graffito{
 %     These classical foraging models correspond to real conditions as much as macro-economic models do with the real world.
 %     They are likely useful only at very broad scales.
 % }
-For example, models including the ideal free distribution \citep[IFD;][]{fretwell1970}, information-sharing models \citep[][]{giraldeau1999,folmer2012}, and producer-scrounger models \citep[][]{barnard1981,vickery1991,beauchamp2008}, often treat foraging competition in highly simplified ways.
-Most IFD models consider resource depletion unimportant or negligible \citep[continuous input models, see][]{tregenza1995, vandermeer1997}, make simplifying assumptions about interference competition, or even model an \textit{ad hoc} benefit of grouping \citep[e.g.][]{amano2006b}.
-Meanwhile, producer-scrounger models primarily examine the benefits of choosing either a producer or scrounger strategy given local conditions, such as conspecific density \citep{vickery1991}, or the order of arrival on a patch \citep{beauchamp2008}.
-Overall, these models simplify the mechanisms by which competition decisions are made, and downplay spatial structure \citep[see also][]{holmgren1995, garay2020, spencer2018}.
+For example, models including the ideal free distribution \parencite[IFD;][]{fretwell1970}, information-sharing models \parencite[][]{giraldeau1999,folmer2012}, and producer-scrounger models \parencite[][]{barnard1981,vickery1991,beauchamp2008}, often treat foraging competition in highly simplified ways.
+Most IFD models consider resource depletion unimportant or negligible \parencite[continuous input models, see][]{tregenza1995, vandermeer1997}, make simplifying assumptions about interference competition, or even model an \textit{ad hoc} benefit of grouping \parencite[e.g.][]{amano2006b}.
+Meanwhile, producer-scrounger models primarily examine the benefits of choosing either a producer or scrounger strategy given local conditions, such as conspecific density \parencite{vickery1991}, or the order of arrival on a patch \parencite{beauchamp2008}.
+Overall, these models simplify the mechanisms by which competition decisions are made, and downplay spatial structure \parencite[see also][]{holmgren1995, garay2020, spencer2018}.
 
-On the contrary, spatial structure is key to foraging (competition) decisions \citep{beauchamp2008}.
-How animals are assumed to integrate the costs (and potential benefits) of competition into their movement decisions has important consequences for theoretical expectations of population distributions \citep{vandermeer1997,hamilton2002,beauchamp2008}.
+On the contrary, spatial structure is key to foraging (competition) decisions \parencite{beauchamp2008}.
+How animals are assumed to integrate the costs (and potential benefits) of competition into their movement decisions has important consequences for theoretical expectations of population distributions \parencite{vandermeer1997,hamilton2002,beauchamp2008}.
 In addition to short-term, ecological effects, competition also likely has evolutionary consequences for individual \textit{movement strategies}, setting up feedback loops between ecology and evolution.
 Modelling competition and movement decisions jointly is thus a major challenge.
-Some models take an entirely ecological view, assuming that individuals move or compete ideally, or according to fixed strategies \citep{vickery1991,holmgren1995,tregenza1995,amano2006b}, but see \citep{hamilton2002}.
-Models that include evolutionary dynamics in movement \citep{dejager2011,dejager2020} and foraging competition strategies \citep{beauchamp2008,tania2012} are more plausible, but they too make arbitrary assumptions about the functional importance of environmental cues to individual decisions.
+Some models take an entirely ecological view, assuming that individuals move or compete ideally, or according to fixed strategies \parencite{vickery1991,holmgren1995,tregenza1995,amano2006b}, but see \parencite{hamilton2002}.
+Models that include evolutionary dynamics in movement \parencite{dejager2011,dejager2020} and foraging competition strategies \parencite{beauchamp2008,tania2012} are more plausible, but they too make arbitrary assumptions about the functional importance of environmental cues to individual decisions.
 
-Mechanistic, individual-based models are well suited to capturing the complexities of spatial structure, animal decision-making, and evolutionary dynamics \citep{guttal2010,kuijper2012,getz2015,getz2016,white2018,long2020,netz2021a}; for conceptual underpinnings see \textcite{huston1988,mueller2011,deangelis2019}.
+Mechanistic, individual-based models are well suited to capturing the complexities of spatial structure, animal decision-making, and evolutionary dynamics \parencite{guttal2010,kuijper2012,getz2015,getz2016,white2018,long2020,netz2021}; for conceptual underpinnings see \textcite{huston1988,mueller2011,deangelis2019}.
 % \graffito{
 %     I've been lucky enough to have been taught by, or to have met, many of these authors, including Vishu Guttal, Iain Couzin, Wayne Getz, Thomas M\"uller, and Don DeAngelis.
 % }
 % \graffito{
-%     Reading Lauren White's implementation of movement decisions as resource selection functions \citep{white2018} was instrumental in how I thought about my work.
+%     Reading Lauren White's implementation of movement decisions as resource selection functions \parencite{white2018} was instrumental in how I thought about my work.
 %     Her model also inspired Chapter~\ref{ch:pathomove}.
 % }
-Individual-based models can incorporate the often significant variation in movement and competition preferences found in populations, allowing individuals to make different decisions given similar cues \citep[][]{laskowski2013}.
+Individual-based models can incorporate the often significant variation in movement and competition preferences found in populations, allowing individuals to make different decisions given similar cues \parencite[][]{laskowski2013}.
 Individual-based models also force researchers to be explicit about their modelling assumptions, such as \textit{how exactly} competition affects fitness.
-Similarly, rather than taking a purely ecological approach and assuming individual differences \citep[e.g. in movement rules:][]{white2018}, allowing movement strategies to evolve in a competitive landscape can reveal whether individual variation emerges in plausible ecological scenarios \citep[as in][]{getz2015}.
-This allows the functional importance of environmental cues for movement \citep[see e.g.][]{scherer2020} and competition decisions in evolutionary models to be joint outcomes of selection, and lets different competition strategies to be associated with different movement strategies \citep[][]{getz2015}.
+Similarly, rather than taking a purely ecological approach and assuming individual differences \parencite[e.g. in movement rules:][]{white2018}, allowing movement strategies to evolve in a competitive landscape can reveal whether individual variation emerges in plausible ecological scenarios \parencite[as in][]{getz2015}.
+This allows the functional importance of environmental cues for movement \parencite[see e.g.][]{scherer2020} and competition decisions in evolutionary models to be joint outcomes of selection, and lets different competition strategies to be associated with different movement strategies \parencite[][]{getz2015}.
 
 Here, we present a spatially-explicit, mechanistic, individual-based model of intraspecific foraging competition, where movement and competition strategies jointly evolve on a resource landscape with discrete, depletable food items that need to be processed (`handled') before consumption.
 % \graffito{
 %     The Kleptomove model's source code is adapted from an earlier predator-prey model
-%     \citep{netz2021a}.
+%     \parencite{netz2021}.
 % }
-In our model, foragers make movement decisions using inherited, evolvable preferences for local ecological cues, such as resource and competitor densities; the combination of preferences for each cue forms individuals' movement strategy \citep[similar to relative step-selection:][]{fortin2005, avgar2016}.
+In our model, foragers make movement decisions using inherited, evolvable preferences for local ecological cues, such as resource and competitor densities; the combination of preferences for each cue forms individuals' movement strategy \parencite[similar to relative step-selection:][]{fortin2005, avgar2016}.
 Lifetime resource consumption is our proxy for fitness; more successful individuals produce more offspring, transmitting their movement and foraging strategies to future generations (with small mutations).
 We consider three scenarios: in the first scenario, we examine only exploitation competition.
 In the second scenario, we introduce kleptoparasitic interference as an inherited strategy, fixed through an individual's life.
@@ -60,7 +60,7 @@ We investigate \textit{(1)} which movement strategies evolve in our three compet
 
 Individual-based models have to explicitly specify numerous assumptions (e.g. spatial structure, individual interactions, event timescales), but this helps expose assumptions that are often hidden below the surface in analytical models. 
 We kept our model assumptions as simple and generic as possible, striving for general, conceptual insights.
-To keep the model realistic, we based it on the foraging behavior of shorebirds such as oystercatchers (\textit{Haematopus} spp.), which are extensively studied in the context of foraging competition, both empirically \citep[e.g.][]{vahl2005, vahl2005a,vahl2007, rutten2010, rutten2010a}, and using individual-based models \citep[reviewed in][]{stillman2010}.
+To keep the model realistic, we based it on the foraging behavior of shorebirds such as oystercatchers (\textit{Haematopus} spp.), which are extensively studied in the context of foraging competition, both empirically \parencite[e.g.][]{vahl2005, vahl2005a,vahl2007a, rutten2010, rutten2010a}, and using individual-based models \parencite[reviewed in][]{stillman2010}.
 
 % \graffito{
 %     We initially tried 100 timesteps, but settled on 400 as this allowed enough time for individuals' intake to be a function of their movement strategy, rather than their good fortune in being initialised in a productive part of the landscape.
@@ -69,7 +69,7 @@ Our environment is a fine grid of cells, and each grid cell can hold multiple in
 Resources are discrete, as is our conception of time within and between generations. 
 Our population, with a fixed number of individuals (N = 10,000), moves on a landscape of 512\textsuperscript{2} grid cells (approx. 1 individual per 26 cells), with wrapped boundaries (i.e., a torus); individuals passing beyond the bounds at one end re-appear on the opposite side.
 The model has two time scales, first, an ecological time scale of $T$ timesteps comprising one generation (default $T$ = 400), during which individuals move, make foraging decisions, and handle prey-items they find or steal.
-Individuals are immobile while handling food items, creating the conditions for kleptoparasitism \citep{brockmann1979,ruxton1992}.
+Individuals are immobile while handling food items, creating the conditions for kleptoparasitism \parencite{brockmann1979,ruxton1992}.
 At the end of each generation, individuals reproduce, transmitting their movement and foraging strategies to their offspring, whose number is proportional to individual intake at the ecological time scale.
 Our model has 1,000 generations, and this comprises the evolutionary timescale.
 
@@ -92,8 +92,8 @@ Cells are initialised with prey-items proportional to their $r$ (see e.g. Fig.~\
 
 Foragers perceive a cue indicating the number of prey-items $P$ in a cell, but fail to detect each item with a probability $q$, and are thus successful in finding a prey-item with a probability $1 - q^P$.
 Individuals on a cell forage in a randomised sequence, and the probability of finding a prey-item ($1 - q^P$) is updated as individuals find prey, reducing $P$.
-Foragers that find a prey-item must handle it for a fixed handling time $T_H$ (default = 5 timesteps), before consuming it \citep[][]{ruxton1992}.
-Natural examples include the time required for an oystercatcher to break through a mussel shell, or a raptor to subdue prey; overall, the handling action is obvious, and the prey is not fully under the control of the finder \citep{brockmann1979}.
+Foragers that find a prey-item must handle it for a fixed handling time $T_H$ (default = 5 timesteps), before consuming it \parencite[][]{ruxton1992}.
+Natural examples include the time required for an oystercatcher to break through a mussel shell, or a raptor to subdue prey; overall, the handling action is obvious, and the prey is not fully under the control of the finder \parencite{brockmann1979}.
 Foragers that do not find a prey-item are considered idle in that timestep, and are counted as `non-handlers'.
 Similarly, handlers that finish processing their prey in timestep $t$ can only forage again in timestep $t+1$, i.e., they are idle in the timestep $t$.
 
@@ -103,17 +103,17 @@ All individuals move simultaneously at the end of each timestep $t$, and then im
 However, handlers do not make any movements until they have fully handled and consumed their prey.
 We model movement as comprised of small, discrete steps between adjacent cells.
 Across scenarios, individuals make movement decisions using evolved cue preferences.
-Individuals select a destination cell, after assessing potential destinations based on available cues, similar to approaches used previously \citep{getz2015,getz2016,white2018,scherer2020,netz2021a}.
+Individuals select a destination cell, after assessing potential destinations based on available cues, similar to approaches used previously \parencite{getz2015,getz2016,white2018,scherer2020,netz2021}.
 
 % \graffito{
-%     Our individuals can use much more complex functions, encoded by neural networks, an idea that has been explored, but not widely used, in movement ecology \citep{mueller2011}.
+%     Our individuals can use much more complex functions, encoded by neural networks, an idea that has been explored, but not widely used, in movement ecology \parencite{mueller2011}.
 % }
 To move, individuals scan the nine cells of their Moore neighbourhood for three environmental cues, \textit{(1)} an indication of the number of discrete prey-items $P$, \textit{(2)} the number of individuals handling prey $H$ (`handlers'), and \textit{(3)} the number of individuals not handling prey $N$ (`non-handlers').
 Individuals rank the potential destinations (including their current cell) by their suitability $S$, where $S = s_PP + s_HH + s_NN$, and move to the most suitable cell in timestep $t+1$.
 The individual preferences for each cue, $s_P$, $s_H$, and $s_N$, have numeric values, are considered to be evolvable traits that can be transmitted between generations, and undergo independent mutation.
 Since individuals are constrained to perceiving and moving short distances, they may not always sense their best long-term move.
 
-It is the combination of cue preferences, and especially their value relative to each other, that determines individual movement decisions \citep[similar to relative selection coefficients,][]{fortin2005,avgar2016,white2018}. 
+It is the combination of cue preferences, and especially their value relative to each other, that determines individual movement decisions \parencite[similar to relative selection coefficients,][]{fortin2005,avgar2016,white2018}. 
 For example, an extreme value of $s_P$ relative to the other preferences would mean that an individual's movement decisions are guided primarily by differences in the local density of prey-items.
 We call an individual's combination of inherited preferences its \textit{movement strategy} (see e.g. Fig.~\ref{klepto_fig_01}E).
 
@@ -122,7 +122,7 @@ We call an individual's combination of inherited preferences its \textit{movemen
 \paragraph{Scenario 1: Exploitative Competition}
 
 In scenario 1, we simulate only exploitative competition; individuals (henceforth called `foragers') move about on the landscape and probabilistically find, handle, and consume prey-items.
-Foragers can be either in a `searching' or a `handling' state \citep{holmgren1995}.
+Foragers can be either in a `searching' or a `handling' state \parencite{holmgren1995}.
 
 \paragraph{Scenario 2: Foraging or Kleptoparasitism as Fixed Strategies}
 
@@ -130,8 +130,8 @@ Foragers can be either in a `searching' or a `handling' state \citep{holmgren199
 %     The Kleptomove simulation can be modified to change the probability of kleptoparasite success.
 % }
 In scenario 2, the competition strategy is genetically determined and transmitted from parents to offspring: exploitative competition (by foragers), or kleptoparasitic interference (by kleptoparasites).
-Kleptoparasites cannot extract prey-items directly from the landscape, and only steal from handlers \citep[see][]{holmgren1995}.
-Kleptoparasites are always successful in stealing from handlers, and such successful surprise attacks are commonly observed among birds \citep{brockmann1979}.
+Kleptoparasites cannot extract prey-items directly from the landscape, and only steal from handlers \parencite[see][]{holmgren1995}.
+Kleptoparasites are always successful in stealing from handlers, and such successful surprise attacks are commonly observed among birds \parencite{brockmann1979}.
 When multiple kleptoparasites target the same handler, only one (randomly selected) is considered successful --- thus kleptoparasites compete exploitatively among themselves.
 Kleptoparasites displace the handler that they robbed of prey up to 5 cells away from their location.
 Having acquired prey, kleptoparasites become handlers, but need only handle prey for $T_H - t_h$ timesteps, where $t_h$ is the time that the prey has already been handled by its previous owner.
@@ -171,7 +171,7 @@ The movement and competition cue preferences all mutate independently in scenari
 %     The implicit assumption here is fecundity effects, rather than mortality effects. This is consistent with many shorebirds, which often fail to breed in bad years, but have very high adult survival.
 % }
 Each individual's number of offspring is proportional to the individual's total lifetime intake of resources; hence, resource intake is used as a proxy for fitness. 
-A weighted lottery (with weights proportional to lifetime resource intake) selects a parent for each offspring in the subsequent generation \citep[see e.g.][]{tania2012,netz2021a}.
+A weighted lottery (with weights proportional to lifetime resource intake) selects a parent for each offspring in the subsequent generation \parencite[see e.g.][]{tania2012,netz2021}.
 Across scenarios, the cue preferences for movement decisions are subject to rare, independent mutations ($\mu$ = 0.001).
 The mutational step size (either positive or negative) is drawn from a Cauchy distribution with a scale of 0.01 centred on zero, allowing for a small number of very large mutations while most mutations are small.
 In scenario 2, foragers may infrequently mutate into a kleptoparasite (or \textit{vice versa}; $\mu$ = 0.001).
@@ -221,7 +221,7 @@ For each generation, we calculated the proportion of cells from which it was pos
 
 \paragraph{Testing the Input Matching Rule}
 
-A basic prediction of the IFD and the related matching rule is that the number of individuals on occupied patches should be proportional to patch productivity \citep{fretwell1970,parker1978,houston2008}.
+A basic prediction of the IFD and the related matching rule is that the number of individuals on occupied patches should be proportional to patch productivity \parencite{fretwell1970,parker1978,houston2008}.
 Patch productivity is challenging to measure in real world systems, but is among our model's building blocks, and we examined the correlation between the number of individuals (excluding handlers) and the cell-specific productivity $r$, expecting large positive values.
 
 \section*{Results}
@@ -232,28 +232,26 @@ In scenario 1, foragers deplete prey-items faster than they are replenished, dra
 The population activity budget is split between searching and handling (Fig.~\ref{klepto_fig_01}B); while handling and the mean per-capita intake are both initially low, they peak within ten generations (Fig.~\ref{klepto_fig_01}C), as individuals easily acquire prey-items from the fully stocked landscape in the first few generations.
 With dwindling prey-items, fewer searching foragers find prey, and handling as a share of the activity budget declines to a stable $\sim$ 45\% within 50 generations, and mean per-capita intake also stabilises (Fig.~\ref{klepto_fig_01}C).
 Across generations, the correlation between the number of foragers and cell productivity is only slightly positive (Fig.~\ref{klepto_fig_01}D).
-This is in contrast with the perfect correspondence between resource input rate and forager density (the `input matching rule'), which is a defining property of the IFD \citep{parker1978, houston2008}.
+This is in contrast with the perfect correspondence between resource input rate and forager density (the `input matching rule'), which is a defining property of the IFD \parencite{parker1978, houston2008}.
 Contrary to standard IFD assumptions, foragers cannot directly sense the local cell productivity $r$; instead they can only use the (small) number of prey-items available in a cell as a cue for local productivity.
 A wide range of movement strategies co-exist on the landscape (see all generations in Supplementary Material Fig.~2, 6).
 Some individuals mostly move up gradients of prey-items (Fig.~\ref{klepto_fig_01}E; $s_P$ $\approx$ 1.0), some move primarily towards successful foragers (handlers), while others move away from unsuccessful foragers which are potential competitors (more red $s_N$).
 
-\afterpage{
-    \begin{sidewaysfigure}[t!]
-        \centering
-        \includegraphics[width=0.9\textwidth]{figures/kleptomove/fig_01.png}
-        \caption{
-            \textbf{Eco-evolutionary implications of pure exploitation competition in scenario 1.}
-            \textbf{(A)} A population comprised solely of foragers seeking prey on a resource landscape swiftly depletes initially abundant prey-items within 10 generations (of 1,000 simulated).
-            Foragers maintain this prey-item scarcity throughout the remaining generations of the simulation, despite regular resource regeneration (see G = 950).
-            \textbf{(B)} Within 20 generations of evolution, the population reaches an equilibrium in the relative proportion of time spent on searching for prey and handling prey, and in \textbf{(C)} mean per-capita intake.
-            \textbf{(D)} The number of foragers per cell is only weakly correlated with cell productivity $r$, contrary to the input matching rule of Ideal Free Distribution theory.
-            \textbf{(E)} A wide range of movement strategies co-exist on the landscape over hundreds of generations.
-            Individuals may focus on moving up gradients of prey-items (sP $\approx$ 1.0: \textit{prefer}), moving towards successful foragers (handlers), or moving away from unsuccessful foragers which are potential competitors (sN $\approx$ red).
-            Panels \textbf{A, E} show a single replicate, panels \textbf{B, C, D} and \textbf{D} show three replicate simulations with log-scaled X-axes (lines overlap almost perfectly); all panels are for $r_{max}$ = 0.01; panel \textbf{E} shows 2,500 individuals.
-        }
-        \label{klepto_fig_01}
-    \end{sidewaysfigure}
-}
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/kleptomove/fig_01.png}
+    \caption{
+        \textbf{Eco-evolutionary implications of pure exploitation competition in scenario 1.}
+        \textbf{(A)} A population comprised solely of foragers seeking prey on a resource landscape swiftly depletes initially abundant prey-items within 10 generations (of 1,000 simulated).
+        Foragers maintain this prey-item scarcity throughout the remaining generations of the simulation, despite regular resource regeneration (see G = 950).
+        \textbf{(B)} Within 20 generations of evolution, the population reaches an equilibrium in the relative proportion of time spent on searching for prey and handling prey, and in \textbf{(C)} mean per-capita intake.
+        \textbf{(D)} The number of foragers per cell is only weakly correlated with cell productivity $r$, contrary to the input matching rule of Ideal Free Distribution theory.
+        \textbf{(E)} A wide range of movement strategies co-exist on the landscape over hundreds of generations.
+        Individuals may focus on moving up gradients of prey-items (sP $\approx$ 1.0: \textit{prefer}), moving towards successful foragers (handlers), or moving away from unsuccessful foragers which are potential competitors (sN $\approx$ red).
+        Panels \textbf{A, E} show a single replicate, panels \textbf{B, C, D} and \textbf{D} show three replicate simulations with log-scaled X-axes (lines overlap almost perfectly); all panels are for $r_{max}$ = 0.01; panel \textbf{E} shows 2,500 individuals.
+    }
+    \label{klepto_fig_01}
+\end{figure}
 
 \subsection*{Scenario 2: Co-existence of Foragers and Kleptoparasites}
 
@@ -316,7 +314,7 @@ Consequently, mean per-capita intake stabilises (after an initial spike, as in s
 While not as strong as predicted by IFD theory, the correlations between consumer abundance and cell productivity are weakly positive (Fig.~\ref{klepto_fig_04}D).
 
 The weak input matching is likely because all individuals prefer to move up gradients of prey density, and towards handlers, which are more likely to be found on resource peaks (Fig.~\ref{klepto_fig_04}E; see also Supplementary Material Fig.~4, 7).
-Using conditional foraging strategies, individuals are able to switch between resource types (prey and handlers) depending on which is more profitable \citep{emlen1966} (`opportunistic kleptoparasitism'; Fig.~\ref{klepto_fig_04}F; see Supplementary Material Fig. 6).
+Using conditional foraging strategies, individuals are able to switch between resource types (prey and handlers) depending on which is more profitable \parencite{emlen1966} (`opportunistic kleptoparasitism'; Fig.~\ref{klepto_fig_04}F; see Supplementary Material Fig. 6).
 All individuals would choose to steal when handlers are present, even when prey items are more common.
 Indeed, about 40\% of individuals would choose to steal even when prey are abundant and there are no handlers at all, showing the prevalence of a `fixed kleptoparasite' clade similar to scenario 2.
 In a further parallel with scenario 2, about 70\% of individuals have an intrinsic bias towards kleptoparasitism, i.e., they would by default attempt to steal when there are no cues to inform their decision (Fig.~\ref{klepto_fig_04}F: $P$ = 0, $H$ = 0).
@@ -341,8 +339,8 @@ In a further parallel with scenario 2, about 70\% of individuals have an intrins
 
 \subsection*{Movement Strategies on Depleted Landscapes}
 
-Orienting movement towards resources \citep[][\textit{where to move}]{nathan2008a} can be a challenge in a system with low densities of discrete prey-items, because the local prey \textit{density} may provide very limited information about local \textit{productivity}.
-In our model, prey-depletion leads parts of the resource landscape to become `clueless regions' \citep{perkins1992}, where foragers cannot make directed movements based on prey-item abundances alone, as all neighbouring item abundances are identical (see white areas in Fig.~\ref{klepto_fig_05}A; A1: scenario 1, A2: scenario 2, A3: scenario 3).
+Orienting movement towards resources \parencite[][\textit{where to move}]{nathan2008a} can be a challenge in a system with low densities of discrete prey-items, because the local prey \textit{density} may provide very limited information about local \textit{productivity}.
+In our model, prey-depletion leads parts of the resource landscape to become `clueless regions' \parencite{perkins1992}, where foragers cannot make directed movements based on prey-item abundances alone, as all neighbouring item abundances are identical (see white areas in Fig.~\ref{klepto_fig_05}A; A1: scenario 1, A2: scenario 2, A3: scenario 3).
 At the beginning of all three scenarios, about 75\% of landscape cells have a different number of prey-items from the cells around them; these are primarily cells with an intermediate $r$, which have more prey than peripheral cells of resource peaks, but fewer prey than the central cells.
 This proportion rapidly declines to a much lower value within 10 generations in all three scenarios.
 
@@ -422,42 +420,42 @@ In this sense, obligate kleptoparasites may be thought of as forming a higher tr
 %%
 Third, when foraging strategy is allowed to be conditional on local cues, \textit{(1)} the population's mean per capita intake is significantly higher than that of a population with fixed strategies, and \textit{(2)} unlike fixed strategy populations, kleptoparasitism as a strategy does not go extinct on high-productivity landscapes.
 %%
-However, across scenarios, individuals are broadly unable to match the productivity of the resource landscape, contrary to the predictions of IFD based models, which predict input matching for some \citep{parker1986,holmgren1995,hamilton2002}, or all of the competitive types \citep{korona1989}.
+However, across scenarios, individuals are broadly unable to match the productivity of the resource landscape, contrary to the predictions of IFD based models, which predict input matching for some \parencite{parker1986,holmgren1995,hamilton2002}, or all of the competitive types \parencite{korona1989}.
 
 \subsection*{Comparison with Existing Models}
 
-Existing models of competition and movement impose fixed movement rules on individuals to mimic either ideal or non-ideal individuals \citep{vickery1991,cressman2006,amano2006b,beauchamp2008,stillman2010,white2018}.
-When individual competitive strategies are included in models, they represent differences in competitive ability \citep[e.g.][]{parker1986,holmgren1995,hamilton2002}, or a probabilistic switch between producing and scrounging \citep{beauchamp2008}.
+Existing models of competition and movement impose fixed movement rules on individuals to mimic either ideal or non-ideal individuals \parencite{vickery1991,cressman2006,amano2006b,beauchamp2008,stillman2010,white2018}.
+When individual competitive strategies are included in models, they represent differences in competitive ability \parencite[e.g.][]{parker1986,holmgren1995,hamilton2002}, or a probabilistic switch between producing and scrounging \parencite{beauchamp2008}.
 In contrast, our model allows individuals' movement (and competition) decisions to be adaptive responses to local environmental cues.
-Similar to \cite{getz2015,getz2016} and \cite{white2018}, our individuals choose from among the available movement options after weighing the local environmental cues, similar to step selection functions \citep{fortin2005, avgar2016, white2018}.
-Local environmental cues are constantly changing, as we model discrete, depletable prey-items, contrasting with many IFD models \citep[][]{tregenza1995,amano2006b}.
+Similar to \textcite{getz2015,getz2016} and \textcite{white2018}, our individuals choose from among the available movement options after weighing the local environmental cues, similar to step selection functions \parencite{fortin2005, avgar2016, white2018}.
+Local environmental cues are constantly changing, as we model discrete, depletable prey-items, contrasting with many IFD models \parencite[][]{tregenza1995,amano2006b}.
 This allows for a more plausible, fine-scale consideration of exploitation competition, which is often neglected, and allows the cues sensed by individuals to strongly structure the distribution of competitors (see below).
 
 Adaptive responses must have an explicit evolutionary context, and consider multiple generations of the population.
-We follow \cite{beauchamp2008} and \cite{getz2015} in allowing the cue preferences that decide movement, and variation therein, to be the outcomes of natural selection.
-However, instead of using `evolutionary algorithms' \citep{beauchamp2008,getz2015,getz2016} to `optimise' individual movement rules, we consider a more plausible evolutionary process: \textit{(1)} Instead of allowing the fittest 50\% of the population to replicate, the number of offspring are proportional to individual fitness.
+We follow \textcite{beauchamp2008} and \textcite{getz2015} in allowing the cue preferences that decide movement, and variation therein, to be the outcomes of natural selection.
+However, instead of using `evolutionary algorithms' \parencite{beauchamp2008,getz2015,getz2016} to `optimise' individual movement rules, we consider a more plausible evolutionary process: \textit{(1)} Instead of allowing the fittest 50\% of the population to replicate, the number of offspring are proportional to individual fitness.
 \textit{(2)} The cue preferences are subject to mutations independently, rather than subjecting all preferences of an individual to simultaneous mutation.
 \textit{(3)} Finally, we avoided `simulated annealing', which adapts the mutation rate or the mutational step sizes to the rate of evolutionary change.
 Instead we drew mutation sizes from a Cauchy distribution, so that most mutations are very small, but large-effect mutations do rarely occur throughout the simulation.
-Similarly, rather than determining competition strategy probabilistically or ideally \citep{vickery1991,beauchamp2008,tania2012}, our individuals' competition decisions are also shaped by selection (in scenarios 2 and 3).
+Similarly, rather than determining competition strategy probabilistically or ideally \parencite{vickery1991,beauchamp2008,tania2012}, our individuals' competition decisions are also shaped by selection (in scenarios 2 and 3).
 
 \subsection*{Evolution of Movement Strategies Using Social Information}
 
-In scenario 1, depletion of discrete prey can leave many areas empty of prey-items: in such areas, movement informed by a resource gradient is impossible, and individuals may move randomly \citep[][]{perkins1992}.
-This lack of direct resource cues for locally optimal movement might be among the mechanisms by which unsuitable `matrix' habitats modify animal movement on heterogeneous landscapes \citep{kuefler2010}.
-When individuals do not sense resource gradients, the presence of more successful conspecifics may indicate a suitable foraging spot \citep[local enhancement;][]{giraldeau1999,beauchamp2008,cortes-avizanda2014}.
+In scenario 1, depletion of discrete prey can leave many areas empty of prey-items: in such areas, movement informed by a resource gradient is impossible, and individuals may move randomly \parencite[][]{perkins1992}.
+This lack of direct resource cues for locally optimal movement might be among the mechanisms by which unsuitable `matrix' habitats modify animal movement on heterogeneous landscapes \parencite{kuefler2010}.
+When individuals do not sense resource gradients, the presence of more successful conspecifics may indicate a suitable foraging spot \parencite[local enhancement;][]{giraldeau1999,beauchamp2008,cortes-avizanda2014}.
 The presence of unsuccessful individuals, meanwhile, may signal potential costs from exploitation or interference competition.
-This selects for movement strategies incorporating the presence and condition of competitors into individual movement decisions, or \textit{social movement strategies} \citep[see e.g.][]{guttal2010}.
-Consequently, consumer aggregation --- often explained by invoking external costs such as predation \citep{krause2002,folmer2012} --- could also be the outcome of movement strategies that have evolved to trade competition costs for valuable social information on the underlying spatial structure (here, $r$) of uninformative landscapes \citep[][]{folmer2010,cortes-avizanda2014}.
+This selects for movement strategies incorporating the presence and condition of competitors into individual movement decisions, or \textit{social movement strategies} \parencite[see e.g.][]{guttal2010}.
+Consequently, consumer aggregation --- often explained by invoking external costs such as predation \parencite{krause2002,folmer2012} --- could also be the outcome of movement strategies that have evolved to trade competition costs for valuable social information on the underlying spatial structure (here, $r$) of uninformative landscapes \parencite[][]{folmer2010,cortes-avizanda2014}.
 
 \subsection*{Individual Variation in Movement Strategies}
 
 Our movement strategies, comprising preferences for local ecological cues, may lead individuals to move in ways that are potentially unique to each individual.
 These strategies may not maximise their intake over short timescales (a few timesteps), but their coexistance implies equivalent fitness overall.
-This makes them consistent with prevalent ideas about consistent individual differences in behaviour, or `animal personalities' \citep{wolf2012,laskowski2013,spiegel2017,shaw2020}.
-In scenario 1, the persistence of multiple movement strategies across generations indicates that they have equivalent fitness \citep[see][]{getz2015}, and that there are multiple ways to navigate a heterogeneous environment \citep{wolf2010,shaw2020}.
-Such differences may help reduce competition as individuals make subtly different movement decisions when presented with the same cues \citep[][]{wolf2012,laskowski2013}.
-Interestingly, scenario 3 has the least individual variation in movement rules, presumably because plasticity in competition strategy reduces the need for such diversification \citep{pfennig2010}.
+This makes them consistent with prevalent ideas about consistent individual differences in behaviour, or `animal personalities' \parencite{wolf2012,laskowski2013,spiegel2017,shaw2020}.
+In scenario 1, the persistence of multiple movement strategies across generations indicates that they have equivalent fitness \parencite[see][]{getz2015}, and that there are multiple ways to navigate a heterogeneous environment \parencite{wolf2010,shaw2020}.
+Such differences may help reduce competition as individuals make subtly different movement decisions when presented with the same cues \parencite[][]{wolf2012,laskowski2013}.
+Interestingly, scenario 3 has the least individual variation in movement rules, presumably because plasticity in competition strategy reduces the need for such diversification \parencite{pfennig2010}.
 
 Scenario 2 cautions that \textit{(1)} Individual variation may only be evident when accounting for the main driver of movement decisions ($s_H$ or $s_N$; {see Supplementary Material Fig. 8 for scenario 3 as well).
 \textit{(2)} Spatial context determines whether individual differences in movement strategy lead to functional variation in movement outcomes.
@@ -467,28 +465,28 @@ Overall, then, \textit{(a)} measuring movement behaviour in settings that corres
 
 \subsection*{Competition Strategies and the Ideal Free Distribution}
 
-IFD models predict that individual movement should result in consumer distributions tracking the profitability of resource patches \citep{fretwell1970,parker1978}, with dominant competitive types (including kleptoparasites) monopolising the best patches \citep[][]{parker1986,holmgren1995,hamilton2002}, though \citet{korona1989} predicts otherwise.
+IFD models predict that individual movement should result in consumer distributions tracking the profitability of resource patches \parencite{fretwell1970,parker1978}, with dominant competitive types (including kleptoparasites) monopolising the best patches \parencite[][]{parker1986,holmgren1995,hamilton2002}, though \textcite{korona1989} predicts otherwise.
 In scenarios 2 and 3, kleptoparasitic individuals unsurprisingly and rapidly evolve to track handlers (a direct resource), while avoiding non-handlers (potential competitors).
 However, these evolved rules do not lead kleptoparasites to occupy the best cells as predicted by \citealp{parker1986}, \citealp{holmgren1995}, and \citealp{hamilton2002}.
 Across our scenarios (including scenario 1), local population density is only weakly correlated with cell productivity, and is not stronger than if individuals were moving randomly (see Supplementary Material Fig. 1).
-In scenario 2, this departure from predictions is driven by the contrasting movement rules of foragers, which evolve to \textit{avoid} handlers as well as non-handlers, both of which might be kleptoparasites \citep[cryptic interference; seen in interference-sensitive shorebirds][]{bijleveld2012}.
-Thus, foragers likely avoid resource peaks, which are more likely to have handlers \citep[due to the higher probability of forager-prey encounters][]{parker1986,holmgren1995,hamilton2002}.
-Fixed kleptoparasites cannot extract prey themselves, and must move off resource peaks to track and rob handlers \citep[similar to][]{parker1986}, breaking the link between individual density and productivity.
+In scenario 2, this departure from predictions is driven by the contrasting movement rules of foragers, which evolve to \textit{avoid} handlers as well as non-handlers, both of which might be kleptoparasites \parencite[cryptic interference; seen in interference-sensitive shorebirds][]{bijleveld2012a}.
+Thus, foragers likely avoid resource peaks, which are more likely to have handlers \parencite[due to the higher probability of forager-prey encounters][]{parker1986,holmgren1995,hamilton2002}.
+Fixed kleptoparasites cannot extract prey themselves, and must move off resource peaks to track and rob handlers \parencite[similar to][]{parker1986}, breaking the link between individual density and productivity.
 This shows the pitfalls of simplistically linking current ecological conditions with population distributions without considering competitive strategies or evolutionary history.
 
 \subsection*{Constraints on Competition Strategies}
 
 Foraging strategies involving specialisation on a resource type are expected to be constrained by the availability of that resource. 
-Thus kleptoparasitism, seen as a prey-choice problem, should be constrained by the density of targets \citep{ens1990}.
+Thus kleptoparasitism, seen as a prey-choice problem, should be constrained by the density of targets \parencite{ens1990}.
 In scenarios 2 and 3, more kleptoparasitism should be expected with increasing $r_{max}$, as prey and consequently, handlers, are expected to be more abundant.
-Instead, kleptoparasitism declines with increasing $r_{max}$, in line with \cite{emlen1966}, who predicted that the commoner food type (prey) rather than the more efficiently exploited one (handlers) should be preferred.
+Instead, kleptoparasitism declines with increasing $r_{max}$, in line with \textcite{emlen1966}, who predicted that the commoner food type (prey) rather than the more efficiently exploited one (handlers) should be preferred.
 This prey choice problem, playing out at evolutionary scales, leads kleptoparasites in scenario 2 to go extinct when prey are very common at high $r_{max}$.
 At stable population densities, the persistence of fixed kleptoparasitism depends on their intake \textit{relative to foragers}.
 Modelling discrete prey-items and individuals in a spatial context, then, leads to the finding that obligate kleptoparasitism is only a viable strategy when forager-prey encounters are less common than kleptoparasite-handler encounters.
 Reducing the relative profitability of kleptoparasitism in other ways --- such as imposing a cost on kleptoparasitic attacks for the initiator, or reducing the probability of success (currently, 1.0) --- would also lead to a reduced incidence of kleptoparasitism, and eventual extinction even on less productive landscapes.
 In scenario 3, about 40\% of individuals choose to attempt to steal even when prey are available and handlers are not.
 This suggests a more realistic proportion of consistently kleptoparasitic individuals among populations with flexible foraging strategies.
-Many seabirds, which forage for prey when they are super-abundant, but also readily harass other birds for prey, are a good example \citep{brockmann1979}.
+Many seabirds, which forage for prey when they are super-abundant, but also readily harass other birds for prey, are a good example \parencite{brockmann1979}.
 Finally, comparing across regrowth rates shows why possibly cryptic behavioral complexity should be considered in predictions of the long-term effect of environmental change on populations.
 While both scenario 1 and 2 populations appear identical at high $r_{max}$, even a small decrease in environmental productivity could lead to an abrupt drop in per-capita intake --- and potentially, strongly reduced growth or survival --- for fixed strategy populations due to unexpected, emergent kleptoparasitism.
 
@@ -509,21 +507,21 @@ While both scenario 1 and 2 populations appear identical at high $r_{max}$, even
 
 \subsection*{Individual-Based Models in Animal Movement Ecology}
 
-Linking individual-based models with empirical data is difficult, and is still rarely used \citep[see works tailored to management:][]{stillman2010,diaz2021}.
+Linking individual-based models with empirical data is difficult, and is still rarely used \parencite[see works tailored to management:][]{stillman2010,diaz2021}.
 Animal tracking technology is only on the cusp of allowing us to track entire populations (though small ones), and classifying their behaviour at the fine temporal scales of animal decision-making \cite[Nathan et al. in press. \textit{Science}; see e.g.][]{lieber2021, sankey2021}.
-Classifying dyadic and collective behaviour from animal tracking is especially challenging \citep{sankey2021,vissat2021}; this makes the detection of rapid competitive interactions in large populations unlikely.
-Instead, experimental approaches may reveal movement strategies that reduce competitive interactions \citep{vahl2005,vahl2005a,rutten2010, bijleveld2012}.
-However, consistent behaviour in cue-poor captive environments does not always translate to consistency in natural settings with abundant resource cues \citep{carter2013}.
+Classifying dyadic and collective behaviour from animal tracking is especially challenging \parencite{sankey2021,vissat2021}; this makes the detection of rapid competitive interactions in large populations unlikely.
+Instead, experimental approaches may reveal movement strategies that reduce competitive interactions \parencite{vahl2005,vahl2005a,rutten2010, bijleveld2012a}.
+However, consistent behaviour in cue-poor captive environments does not always translate to consistency in natural settings with abundant resource cues \parencite{carter2013}.
 
-Animal movement ecology takes an explicitly individual-based approach, centred around individual decisions \citep{nathan2008a}.
-This makes individual-based models a good choice when seeking general insights into the evolutionary ecology of animal movement strategies \citep[see e.g.][]{getz2015}, whose ultimate causes are otherwise difficult to study empirically.
-Modelling mechanistic movement decisions has substantial consequences for ecological outcomes \citep[e.g.][]{mueller2011,white2018,scherer2020}, yet few individual-based models in animal movement are mechanistic \citep[see review in:][]{deangelis2019}, and even fewer models include evolutionary dynamics \citep[but see][]{getz2015,getz2016,netz2021a}. 
-Yet explicitly modelling both ecological interactions and evolutionary dynamics, as we do here, can reveal surprising outcomes ranging from innovative predator-prey strategies \citep{netz2021a} to sympatric speciation \citep{getz2016}.
+Animal movement ecology takes an explicitly individual-based approach, centred around individual decisions \parencite{nathan2008a}.
+This makes individual-based models a good choice when seeking general insights into the evolutionary ecology of animal movement strategies \parencite[see e.g.][]{getz2015}, whose ultimate causes are otherwise difficult to study empirically.
+Modelling mechanistic movement decisions has substantial consequences for ecological outcomes \parencite[e.g.][]{mueller2011,white2018,scherer2020}, yet few individual-based models in animal movement are mechanistic \parencite[see review in:][]{deangelis2019}, and even fewer models include evolutionary dynamics \parencite[but see][]{getz2015,getz2016,netz2021}. 
+Yet explicitly modelling both ecological interactions and evolutionary dynamics, as we do here, can reveal surprising outcomes ranging from innovative predator-prey strategies \parencite{netz2021} to sympatric speciation \parencite{getz2016}.
 
-The use of resource- and step-selection functions in mechanistic modelling \citep[see][]{white2018} gives empirical movement ecologists a familiar starting point in individual-based modelling.
-Simulating an animal's potential space-use, conditional on environmental data (similar to our cues), and using selection coefficients estimated from tracking data (our cue preferences), is already accepted in movement ecology, and follows our grid-based approach \citep{avgar2016,signer2019,avgar2020,fieberg2021}.
+The use of resource- and step-selection functions in mechanistic modelling \parencite[see][]{white2018} gives empirical movement ecologists a familiar starting point in individual-based modelling.
+Simulating an animal's potential space-use, conditional on environmental data (similar to our cues), and using selection coefficients estimated from tracking data (our cue preferences), is already accepted in movement ecology, and follows our grid-based approach \parencite{avgar2016,signer2019,avgar2020,fieberg2021}.
 It is relatively easy to implement movement decisions in continuous space, by sampling cues at discrete locations and \textit{(1)} choosing among them, or \textit{(2)} translating these cues into a movement distance and turning angle.
-The second approach would require more complex functions with more coefficients (preferences), such as neural networks \citep{mueller2011}, and this could make it difficult to interpret the evolved movement strategies.
+The second approach would require more complex functions with more coefficients (preferences), such as neural networks \parencite{mueller2011}, and this could make it difficult to interpret the evolved movement strategies.
 Models could implement survival and reproduction (the key ingredients of natural selection), as well as other demographic processes, and reproduction and inheritance can be incorporated in a more realistic manner.
 
 We call for a substantial increase in mechanistic, evolutionary, individual-based modelling in animal movement ecology.
