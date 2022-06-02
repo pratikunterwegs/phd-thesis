@@ -65,9 +65,9 @@
 \renewcommand*{\bibfont}{\footnotesize}
 
 % for all authors in bibliography in certain sections
-% \newtoggle{bbx:allnames}
-% \togglefalse{bbx:allnames}
-% \AtEveryBibitem{\iftoggle{bbx:allnames}{\defcounter{maxnames}{999}}{}}
+\newtoggle{bbx:allnames}
+\togglefalse{bbx:allnames}
+\AtEveryBibitem{\iftoggle{bbx:allnames}{\defcounter{maxnames}{999}}{}}
 
 \usepackage{setspace}
 
