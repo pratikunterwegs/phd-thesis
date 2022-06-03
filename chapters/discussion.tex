@@ -5,29 +5,75 @@
 \chapter{Synthesis: Linking the Ecology and Evolution of Animal Movement with Mechanistic, Individual Based Models}\label{ch:discussion}
 \chaptermark{Synthesis}
 
-{{Pratik R. Gupte}}
-
-\section*{Recapitulation of this thesis}
-
-In the two parts of this thesis, I showed how \ldots MERGE RECAP WITH THIS INTRODUCTION.
-
 Movement is key to animal ecology across spatial and temporal scales, as nearly all ecological processes have an explicit spatial context \citep{nathan2008a}.
-By moving, animals can track seasonal fluctuations in resources \citep{geremia2019,abrahms2021a}, and facilitate or avoid ecological interactions such as inter- and intra-specific competition (e.g. \cite{duckworth2007}), predation \citep[e.g.][]{kohl2018}, parasitism \citep{weinstein2018}, mating displays and breeding site selection \citep{kempenaers2017}, as well as the transmission of animal culture \citep{jesmer2018,klump2021}, or infectious pathogens \citep{weinstein2018,monk2022,stroeymeyt2018}.
+By moving, animals can track seasonal fluctuations in resources \citep{geremia2019,abrahms2021a}, and facilitate or avoid ecological interactions such as inter- and intra-specific competition (e.g. \cite{duckworth2007}), predation \citep[e.g.][]{kohl2018}, parasitism \citep{weinstein2018}, mating displays and breeding site selection \citep{kempenaers2017}, as well as the transmission of animal culture \citep{jesmer2018,klump2021}, or infectious pathogens \citep[][see also Chapter~\ref{ch:pathomove}]{weinstein2018,monk2022,stroeymeyt2018}.
 Mobile animals engineer their local environments, transferring nutrients \citep{leroux2018}, inducing local green-up \citep{geremia2019}, and affecting the distributions of overlapping species \citep[see e.g.][]{kohl2018,leroux2018,duckworth2007,monk2022}.
 Perturbed natural regimes of animal movements (e.g. due to climate change), can severely impact humans, from direct conflict \citep{abrahms2021} to potential pathogen outbreaks \citep{carlson2022a,wille2022}; conversely, natural distributions of wildlife could aid climate mitigation by regulating key biotic and abiotic processes \citep{schmitz2018,malhi2022}.
-Animal movement is thus crucial to a sound understanding of ecological processes and patterns generally \citep{jeltsch2013,schlagel2020}, and is thus implicitly included in the cornerstone models of eco-evolutionary theory (group topology: \cite{hamilton1971}; resource exploitation: \cite{fretwell1970, charnov1976}; community assembly: \cite{macarthur1967}).
+Animal movement is thus crucial to a sound understanding of ecological processes and patterns generally \citep{jeltsch2013,schlagel2020}.
+
+\section*{Reflections on Part~\ref{part:eco}}
+
+\textbf{Part~\ref{part:eco}} of this thesis took an empirical approach to animal movements and distributions.
+Answering this question has benefited greatly from the adoption of advanced animal tracking technology, and especially from the proliferation of GPS loggers \citep{cagnacci2010}.
+Yet the majority of species of birds and mammals (leave alone reptiles or amphibians) cannot currently be tracked because most high-resolution loggers are much too heavy for them to bear safely.
+High-throughput tracking systems such as ATLAS with its lightweight tags can allow researchers to achieve, at regional scales, a far more detailed understanding of animal movement than sought by \textcite{wikelski2007} when floating the idea of ICARUS (see now \cite{jetz2022}).
+Yet data from these systems is not as conservatively `cleaned' as that from GPS tracking, and this is because the original end uses of each of these systems are very different.
+In Chapter~\ref{ch:preprocessing}, I showed how a set of simple techniques and workflows can be used to substantially improve the quality of raw ATLAS data.
+\textcite[]{beardsworth2022mee} have now shown that the accuracy of ATLAS systems (in this case, the Wadden Sea ATLAS system; \cite{bijleveld2021}) --- after applying these cleaning methods --- is comparable to GPS tracking, but with a much higher sampling rate.
+An interconnected network of such high-throughput systems could represent one option for how animals could be tracked at high spatio-temporal resolution at large, continental scales \citep{nathan2022}.
+
+Meanwhile, even data from earlier iterations of high-throughput systems can be made usable by robust filtering and cleaning.
+In Chapter~\ref{ch:holeybirds}, I used data from the original ATLAS system deployed in the Hula Valley in Israel, to study how moult --- the loss and regrowth of flight feathers --- affects bird movement and habitat selection.
+\graffito{
+    Before beginning this project, my primary experience with bird moult had been during my master's thesis fieldwork on Kolguev island in the Russian Arctic in 2016.
+    Geese breed there in the summer, undergoing full wing moult, which created a small window where they could be corralled into enclosures, to be tagged with GPS loggers.
+}
+While the project began with a focus on wing moult, and while some species do indeed show adaptive responses to compromised wing condition, it revealed the central role of avoiding of predation risk in the movement decisions of all three species we could study.
+Indeed, predation risk avoidance could be a possible mechanism by which some areas that appear productive become unsuitable for many bird species --- agricultural fields for instance provide little cover from aerial predators.
+Birds have long been anecdotally suspected to avoid certain features such as water bodies despite being powerful flyers, to the extent that this has prevented entire taxa from colonising archipelagos  \citep{diamondWaterFear}.
+Indeed, this effect is now much better quantified by studying the migration of raptors across open water \citep{nourhaniRaptorsWater}.
+Surprisingly, birds are also risk-averse when crossing even narrow open tracts, such as forest roads \citep{forestRoadsBirds}.
+Both behaviours seem bizarre to human observers, possibly because as a terrestrial species, we subconsciously think of flight as a certain kind of invulnerability, whether from environmental hazards or active hunters.
+It is much more likely that we simply do not --- and perhaps cannot --- really appreciate how complex flight is, and the many risks it holds.
+One of the main conclusions of Chapter~\ref{ch:holeybirds} (and of Part~\ref{part:evo}), then, is the importance of adopting the perspective of the study species, the \textit{individual in its context}, when seeking to understand the short- and long-term drivers of animals' behaviour.
+
+Individual movement and habitat selection scale up to produce species distributions and community composition \citep{schlagel2020a}.
+In Chapter~\ref{ch:hillybirds}, we showed mixed results for the effects of climate and land cover types on the distributions of birds in the Nilgiri and Anamalai Hills of southern India, a biodiversity hotspot.
+One drawback of individual-centric animal tracking studies has been small sample sizes due to the costs of tracking technologies; this means that most studies focus on tracking at most a few species.
+Citizen science studies allow researchers to accomplish two key goals at once: \textit{(i)} harness the spatial and temporal spread of amateur naturalists to collect ecological data, potentially from dozens of species at once, and \textit{(ii)} in so doing, strengthen public participation in the scientific process.
+The findings are not as clear as in \textcite{freeman2018}, who showed that Andean birds were on the ``escalator to extinction''.
+The current era of large ecological datasets being widespread is only about a decade old; for example, \textit{eBird} data from India span only a seven year period since 2015.
+This makes it especially challenging to compare the drivers of current species distributions across regions with different histories of being studied, or within a region that has not been long studied.
+The Nilgiri Hills offer a unique opportunity to integrate historical data from the 1820s onwards --- primarily birds shot as specimens by British colonial officials --- into modern species distribution analyses.
+This project, for which I gathered data from bird specimens stored in the Natural History Museum of London's Tring collections, is currently ongoing.
+When complete it could stand alongside efforts such as the Grinnell Resurvey \citep{tingley2009a,tingley2009b} in demonstrating how a century of land cover and climatic change has affected species distributions.
+
+\section*{Reflections on Part~\ref{part:evo}}
+
+Given its importance to animal ecology, movement is often implicitly included in the cornerstone models of eco-evolutionary theory (group topology: \cite{hamilton1971}; resource exploitation: \cite{fretwell1970, charnov1976}; community assembly: \cite{macarthur1967}).
 Yet we currently lack theory that links the short-term ecological drivers and outcomes of movement with its evolutionary causes --- essentially, there is no evolutionary extension to the `movement ecology paradigm' \citep{holyoak2008}.
 This hinders insight into how intensified selection on mobile species due to global change \citep[e.g.][]{vangils2016} would affect animal movement and related phenomena.
-
 % Ecological theory, in order to provide general insights, must necessarily simplify reality down to essential processes.
-Theory hitherto has usually considered movement to be a population-level property shared by all individuals.
+One such simplification has long been to consider movement to be a population-level property shared by all individuals.
 Work on consistent behavioural differences in animals, including in movement, suggests that this assumption is not well supported \citep{spiegel2017,shaw2020,stuber2022,webber2018,webber2020,abrahms2017}.
 Movement is also often modelled as either a random or an optimal process --- both of these assumptions are simplistic, and animals integrate many internal and external cues when making movement decisions \citep{nathan2008a}.
-Individual-based simulation models (IBMs) are well suited to representing movement as a decision made after integrating multiple cues in complex ecological contexts \citep{huston1988,deangelis2019}.
-IBMs can also readily include individual differences in movement rules \citep{spiegel2017}.
-Throughout this \textit{Perspective}, we advocate for a \emph{mechanistic}, individual-based approach to movement modelling that matches the individual-centric movement ecology paradigm.
-Specifically, we advocate that movement be modelled as a response to local cues rather than a random walk \citep[`mechanistic'; see][]{mueller2011}.
-Individuals in IBMs can be given different \emph{movement preferences} and thus make quite different decisions when presented with similar cues \citep{getz2015,white2018}.
+Individual-based simulation models (IBMs) are well suited to representing movement as a decision made after integrating multiple cues in complex ecological contexts \citep{huston1988,deangelis2019}, and can include simplified evolutionary dynamics \citep{getz2015,getz2016,netz2021}.
+This in the class of models I have used in Part~\ref{part:evo} for broad conceptual insight into the evolution of animal movement strategies.
+
+In Chapter~\ref{ch:kleptomove}, I showed how animal movement and competition strategies jointly evolve, using an individual-based model with 10,000 individuals moving about on a grid of over 250,000 cells --- among the largest IBMs in this field of study.
+The model had a number of interesting outcomes:
+
+In Chapter~\ref{ch:pathomove}, I tackled a scenario that in expected to become increasingly common --- the transmission of novel pathogens from one species to another \citep{carlson2022a}.
+Indeed currently the hitherto poorly known tropical African disease monkeypox is spreading across the globe, SARS-CoV-2 has seen multiple introductions to animals, including abundant wildlife \citep{kuchipudi2022}, and the H5N1 strain of avian influenza has been spreading through multiple temperate species \citep{wille2022}.
+My relatively simple model of the trade-off between social information use (in a foraging context), and the risk of pathogen transmission generated clear predictions for how such novel pathogen introductions should affect the evolution of host sociality.
+Worryingly, a cascading effect of decreased host sociality in most scenarios is poorer ecological performance in terms of harvesting resources from the landscape, leaving populations vulnerable to other environmental risks.
+The potential consequences for other members of an ecological community --- albeit via the mechanism of mortality --- are borne out by \citet{monk2022}, who studied the effects of the introduction of mange to vicu\~{n}as in Patagonia.
+The scenarios I modelled may actually be too mild, and novel pathogen spillovers could exterminate their hosts, rather than force the evolution of less gregarious social systems.
+The scale of future work required in this field is daunting: identifying outbreaks as they happen, often in remote areas and involving poorly known species; determining patterns of species' spatial overlap that could aid cross-species transmission beyond the initial spillover; determining which species --- for a range of reasons --- may be at heightened risk from an epi- or panzootic outbreak; and finally, determining a response that preserves species while minimising risk of further spillover.
+
+Specifically, I advocate that movement be modelled as a response to local cues rather than a random walk \citep[`mechanistic'; see][]{mueller2011}.
+This is the approach I have taken in Chapters~\ref{ch:kleptomove} and \ref{ch:pathomove}.
+In the models presented in those chapters, I used IBMs, in which individuals can be given different \emph{movement preferences} and thus make quite different decisions when presented with similar cues \citep{getz2015,white2018}.
 Yet an open question when including such behavioural variation is whether the emergent outcomes may be transient phenomena that are quite different from the dynamics obtained on evolutionary timescales.
 This is especially the case when modelling processes that have fitness consequences for some behavioural types (such as disease in \cite[]{white2018}).
 
@@ -47,6 +93,8 @@ We first demonstrate how movement as the outcome of natural selection on habitat
 We then demonstrate how considering movement as evolved habitat selection leads to important differences in the evolutionary dynamics of traits commonly linked to movement ---  perception range and body size.
 Finally, we discuss developments and remaining challenges in linking our modelling approach with the individual-centric empirical study of animal movement using tracking data.
 Overall, we hope to convince readers that adopting mechanistic models of intermediate complexity, and including an evolutionary component, could provide much needed theoretical predictions in animal movement ecology.
+
+\section{reproducibility and computation}
 
 \section*{A conceptual framework for mechanistic, eco-evolutionary individual-based models of animal movement}
 
