@@ -61,6 +61,7 @@
 \setsansfont[]{Oswald}
 \setmathfont{Erewhon Math}
 \newfontfamily{\displayfont}{TeX Gyre Schola}
+\newfontfamily{\barfont}[Ligatures={Rare}]{Vollkorn}
 
 \renewcommand*{\bibfont}{\footnotesize}
 
@@ -77,6 +78,24 @@
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent}
 
+% spacing between author names of different letters
+\setlength{\bibinitsep}{\baselineskip}
+% \newcommand\bibsection{\@startsection {section}{1}{-\leftmargin}%
+%                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
+%                                    {2.3ex \@plus.2ex}%
+%                                    {\normalfont\Large\bfseries}}
+
+% \bibinitsep=1pt %to trigger blx@initsep
+% \def\blx@initsep{%
+%   \blx@imc@iffieldundef{sortinit}
+%     {}
+%     {\ifnum\c@instcount>\@ne
+%        \blx@imc@iffieldequals{sortinit}\blx@previnit
+%          {}
+%          {\bibsection*{\printfield{sortinit}}\item}%instead of \addvspace
+%      \fi
+%      \global\let\blx@previnit\abx@field@sortinit}}
+
 \makeatletter
 
 % to indent unnumbered chapters - doesnt work
@@ -91,13 +110,13 @@
 \titleformat{\part}[display]
         {\ct@altfont\centering\rmfamily}%
         {\thispagestyle{empty}\scshape\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
-        {\huge\rmfamily\scshape\bfseries}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+        {\huge\rmfamily\color{Maroon}\scshape\bfseries}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\bfseries\rmfamily{\tiny{Chapter}}~\displayfont\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\large\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\relax}{\mbox{}\oldmarginpar{\bfseries\rmfamily{\color{Maroon}\tiny{Chapter}}~{\displayfont\chapterNumber{\color{Maroon}\thechapter}}}}{0pt}%
+    {\raggedright\color{Maroon}\large\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
@@ -217,38 +236,41 @@
 \cleardoublepage \include{chapters/introduction}
 
 \cleardoublepage 
-\ctparttext{Some text here.}
+\ctparttext{Some text here.\\ \centering\barfont{-.-}}
 \part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
+\label{part:eco}
 
-\cleardoublepage \include{chapters/preprocessing_header}
-\include{chapters/preprocessing_main}
 
-% \cleardoublepage \include{boxes/mapping}
+% \cleardoublepage \include{chapters/preprocessing_header}
+% \include{chapters/preprocessing_main}
 
-\cleardoublepage \include{chapters/holeybirds_header}
-\include{chapters/holeybirds_main}
+% % \cleardoublepage \include{boxes/mapping}
 
-\cleardoublepage \include{chapters/hillybirds_header}
-\include{chapters/hillybirds_main}
+% \cleardoublepage \include{chapters/holeybirds_header}
+% \include{chapters/holeybirds_main}
+
+% \cleardoublepage \include{chapters/hillybirds_header}
+% \include{chapters/hillybirds_main}
 
 % \cleardoublepage \include{boxes/clearances}
 
 \cleardoublepage 
 \ctparttext{Animal movement is neither random nor optimal, but the outcome of individuals making movement decisions based on local information. The strategies underlying these decisions are, like everything in biology, shaped by animals' evolutionary contexts. Yet evolution is rarely considered in animal movement models, possibly because it is considered to be too slow to be relevant to outcomes on human timescales. 
 
-In the second part of this thesis, I probe the evolution of animal movement, and show how evolutionary shifts in movement strategies can be very rapid.}
+In the second part of this thesis, I probe the evolution of animal movement, and show how evolutionary shifts in movement strategies can be very rapid.\\ \centering\barfont{-.-}}
 \part{Evolutionary Contexts of Animal Movement Strategies}
+\label{part:evo}
 
 % \cleardoublepage \include{boxes/details}
 
-\cleardoublepage \include{chapters/kleptomove_header} 
-\include{chapters/kleptomove_main}
+% \cleardoublepage \include{chapters/kleptomove_header} 
+% \include{chapters/kleptomove_main}
 
-\cleardoublepage \include{chapters/pathomove_header}
-\include{chapters/pathomove_main}
+% \cleardoublepage \include{chapters/pathomove_header}
+% \include{chapters/pathomove_main}
 
-\cleardoublepage \include{chapters/patternprocess_header}
-\include{chapters/patternprocess_main}
+% \cleardoublepage \include{chapters/patternprocess_header}
+% \include{chapters/patternprocess_main}
 
 % \include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
