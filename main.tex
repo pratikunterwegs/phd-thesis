@@ -8,7 +8,7 @@
     \WarningFilter{titlesec}{Non standard sectioning command detected}
 \documentclass[twoside,openright,titlepage,numbers=noenddot,%1headlines,
               headinclude,footinclude,clearpage=empty,abstract=on,toc=flat,
-              BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames
+              BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames,toc=indentunnumbered
               ]{scrbook}
 \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
 \RedeclareSectionCommands[
@@ -56,9 +56,9 @@
 
 \usepackage{fontspec}
 \usepackage[T1]{fontenc}
-\setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
-% \setmainfont[Numbers={Proportional,Uppercase}]{Source Serif Pro}
-\setsansfont[]{TeX Gyre Adventor}
+% \setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
+\setmainfont[Numbers={Tabular,Uppercase}]{Source Serif Pro}
+\setsansfont[]{Archivo Narrow}
 \setmathfont{Erewhon Math}
 \newfontfamily{\displayfont}{TeX Gyre Schola}
 \newfontfamily{\barfont}[Ligatures={Rare}]{Vollkorn}
@@ -116,7 +116,7 @@
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
     {\relax}{\mbox{}\oldmarginpar{\bfseries\rmfamily{\color{Maroon}\tiny{Chapter}}~{\displayfont\chapterNumber{\color{Maroon}\thechapter}}}}{0pt}%
-    {\raggedright\color{Maroon}\large\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\raggedright\bfseries\color{Maroon}\large\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
@@ -186,8 +186,9 @@
 % \setlength{\parskip}{1em}
 \setlength{\parskip}{3pt plus1pt minus1pt}
 
-\usepackage[indentunnumbered]{unnumberedtotoc}
-\KOMAoptions{toc=indentunnumbered}
+% for tables
+\usepackage{dcolumn}
+\usepackage{booktabs}
 
 % ********************************************************************
 % GO!GO!GO! MOVE IT!
@@ -217,8 +218,8 @@
 % \clearpage\include{frontbackmatter/Dedication}
 % % \clearpage\include{frontbackmatter/Colophon}
 
-% \cleardoublepage \include{frontbackmatter/Contents}
-\tableofcontents
+\cleardoublepage \include{frontbackmatter/Contents}
+% \tableofcontents
 
 \frontmatter
 \cleardoublepage \include{frontbackmatter/Abstract}
@@ -245,20 +246,20 @@
 \label{part:eco}
 
 
-\cleardoublepage \include{chapters/preprocessing_header}
-\include{chapters/preprocessing_main}
+% \cleardoublepage \include{chapters/preprocessing_header}
+% \include{chapters/preprocessing_main}
 
-% % \cleardoublepage \include{boxes/mapping}
+% % % \cleardoublepage \include{boxes/mapping}
 
-\cleardoublepage \include{chapters/holeybirds_header}
-\include{chapters/holeybirds_main}
+% \cleardoublepage \include{chapters/holeybirds_header}
+% \include{chapters/holeybirds_main}
 
-\cleardoublepage \include{chapters/hillybirds_header}
-\include{chapters/hillybirds_main}
+% \cleardoublepage \include{chapters/hillybirds_header}
+% \include{chapters/hillybirds_main}
 
 % \cleardoublepage \include{boxes/clearances}
 
-\cleardoublepage 
+\clearpage \cleardoublepage
 \ctparttext{Animal movement is neither random nor optimal, but the outcome of individuals making movement decisions based on local information. The strategies underlying these decisions are, like everything in biology, shaped by animals' evolutionary contexts. Yet evolution is rarely considered in animal movement models, possibly because it is considered to be too slow to be relevant to outcomes on human timescales. 
 
 In the second part of this thesis, I probe the evolution of animal movement, and show how evolutionary shifts in movement strategies can be very rapid.\\ \centering\barfont{-.-}}
@@ -273,22 +274,24 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 \cleardoublepage \include{chapters/pathomove_header}
 \include{chapters/pathomove_main}
 
-\cleardoublepage \include{chapters/patternprocess_header}
-\include{chapters/patternprocess_main}
+% \cleardoublepage \include{chapters/patternprocess_header}
+% \include{chapters/patternprocess_main}
 
 % \include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
 % \include{Chapters/Chapter03}
 %\include{multiToC} % <--- just debug stuff, ignore for your documents
 
-\cleardoublepage \include{chapters/discussion}
+% \cleardoublepage \include{chapters/discussion}
+
+\cleardoublepage
 
 % BIBLIOGRAPHY
 \begingroup
 \thispagestyle{empty}
 \newrefcontext[sorting=nyt]
 \addtocontents{toc}{\protect\vspace{\beforebibskip}}%
-\addchap{Literature Cited}
+\addchap{Literature Cited in this Thesis}
 \markboth{\color{gray}\small\scshape\rmfamily{Bibliography}}{\color{gray}\small\scshape\rmfamily{Bibliography}}
 \printbibliography[heading=none]
 \end{refsection}
