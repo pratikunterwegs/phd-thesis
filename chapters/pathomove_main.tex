@@ -12,7 +12,7 @@ The introduction of pathogens to animal societies often leads to rapid reduction
 Importantly, when a novel pathogen is first introduced into a population, such as during a spillover event, individuals may have no prior experience of cues that indicate infection \citep{power2004}, making fine-tuned adaptive individual or social avoidance responses less likely.
 If they reduce fitness, novel pathogens spreading through host-host contacts may select against host social behaviour, ultimately selecting against social connectivity itself \citep{altizer2003,cantor2021,romano2021,poulin2021,ashby2022}.
 This selective pressure may be modulated by landscape productivity \citep{hutchings2006} and the benefits of grouping \citep[][]{almberg2015,ezenwa2016}, especially if these can boost fitness in a way that offsets the cost of infection.
-Multiple animal taxa currently face novel pathogen outbreaks \citep{blehert2009,globconsorth5n82016,fereidouni2019,scheele2019}, and this number is likely to grow in the near future due to climate change \citep{sanderson2020,carlson2021}.
+Multiple animal taxa currently face novel pathogen outbreaks \citep{blehert2009,globconsorth5n82016,fereidouni2019,scheele2019}, and this number is likely to grow in the near future due to climate change \citep{sanderson2020,carlson2022a}.
 It is therefore especially important to know how rapid evolutionary changes following pathogen introduction will be, as well as their effect on social systems and the transmission of animal culture \citep{cantor2021, cantor2021a}.
 
 Analytical models suggest that animal sociality evolves to balance the value of social information against the risk of pathogen transmission \citep[][]{bonds2005,prado2009,ashby2022}.
@@ -26,7 +26,7 @@ Yet mechanistic movement-disease models thus far focus on immediate ecological o
 Limiting movement-disease models to an ecological scale could miss important feedbacks between the ecological outcomes of infectious disease and the consequences for the evolution of host behaviour \citep{cantor2021}.
 Incorporating an evolutionary component to movement-disease models could allow predictions on the long-term consequences of wildlife disease outbreaks, such as changes in the the emergent structure of animal societies.
 
-We examined the eco-evolutionary consequences of the introduction of a pathogen into a novel host population, such as during cross-species spillover, a scenario of increasing frequency and global concern \citep{blehert2009,globconsorth5n82016,fereidouni2019,scheele2019,sanderson2020,carlson2021,kuchipudi2022}.
+We examined the eco-evolutionary consequences of the introduction of a pathogen into a novel host population, such as during cross-species spillover, a scenario of increasing frequency and global concern \citep{blehert2009,globconsorth5n82016,fereidouni2019,scheele2019,sanderson2020,carlson2022a,kuchipudi2022}.
 We developed a mechanistic, evolutionary, spatially-explicit, individual-based simulation model in which we introduced an infectious pathogen to populations that had already evolved movement strategies in a foraging context \citep[see model code, analysis code, and reference data:][]{gupte2022,gupte2022a,gupte2022b}.
 In our model, the depletion of patchily distributed, discrete food items makes the use of social information key to finding food (see \textit{Supplementary Material Fig. 1 -- 2}; see also \citealt{gupte2021a}).
 %%
@@ -40,11 +40,11 @@ We used network epidemiological models to examine whether pathogen-adapted popul
 We examined the effect of two important model parameters, landscape productivity ($R$) and infection cost ($\delta E$), by running our model over nine different combinations of $R$ and $\delta E$.
 Overall, we provide a theoretical framework and reference implementation for the study and prediction of the evolutionary consequences of pathogen introduction for animal populations in a spatial context.
 
-\section*{Model and Analysis}
+\section*{The Pathomove Model of Novel Pathogen Introduction}
 
 We implemented an individual-based simulation model to represent foraging animals (`foragers') seeking discrete, immobile, depleteable food items \citep[as in][see \textit{Supplementary Material Fig. 1 -- 2}]{spiegel2017,gupte2021a}.
 Food items are distributed over a two-dimensional, continuous-space resource landscape with wrapped boundaries (a torus).
-Our model, similar to previous eco-evolutionary individual based models \citep{getz2015, netz2021a, gupte2021a}, has two distinct timescales: (1) an ecological timescale comprising of \textit{T} timesteps that make up one generation ($T$ = 100 by default), and (2) an evolutionary timescale consisting of 5,000 generations ($G$).
+Our model, similar to previous eco-evolutionary individual based models \citep{getz2015, netz2021, gupte2021a}, has two distinct timescales: (1) an ecological timescale comprising of \textit{T} timesteps that make up one generation ($T$ = 100 by default), and (2) an evolutionary timescale consisting of 5,000 generations ($G$).
 At the ecological timescale, individuals sense local counts of food items and competitors, move according to inherited movement strategies, and forage for food.
 At the same timescale, individuals that carry an infectious, fitness-reducing pathogen, may, when in close proximity with uninfected individuals, pass on the pathogen with a small probability (see \textit{Pathogen Transmission and Disease Cost}).
 At the evolutionary timescale, individuals reproduce and transmit their movement strategies (see \textit{Starting Location and Inheritance of Movement Rules}) to the their offspring. The number of offspring is linked both to individuals' success in finding and consuming food items, and to the duration that they were infected by the pathogen at the ecological timescale.
@@ -65,7 +65,7 @@ The handling time dynamic is well known from natural systems in which there is a
 
 \subsection*{Individual Foraging and Movement}
 
-\paragraph*{Foraging} Individuals forage in a randomised order, harvesting the first available food item within their movement and sensory range ($d_S$ = $d_M$, a circle with a radius of 1 unit (see \textit{Supplementary Material Fig. 1 -- 2}).
+Individuals forage in a randomised order, harvesting the first available food item within their movement and sensory range ($d_S$ = $d_M$, a circle with a radius of 1 unit (see \textit{Supplementary Material Fig. 1 -- 2}).
 A forager at the edge of the landscape senses food items (and other foragers, see below) on the wrapped landscape.
 Once harvested, the item is no longer available to other individuals, leading to exploitation competition among nearby foragers.
 Furthermore, the location of the item also yields no more cues to other foragers that an item will reappear there, reducing direct cues by which foragers can navigate to profitable clusters of food items.
@@ -74,11 +74,11 @@ All individuals not handling a food item are considered idle \citep{ruxton1992,g
 As handlers are immobilised at the location where they encountered food, they may be good indirect indicators of the location of a resource cluster \cite[`social information'][]{danchin2004,romano2020,gupte2021a}.
 Once individuals finish handling a food item, they return to the non-handling, searching state.
 
-\paragraph*{Movement} Our model individuals move in small, discrete steps of fixed size ($d_M$ = 1 unit).
-Each step is chosen based on the individuals' assessment of local environmental cues, and this assessment is made using evolved movement strategies \citep[as in][]{netz2021a,gupte2021a}.
+Our model individuals move in small, discrete steps of fixed size ($d_M$ = 1 unit).
+Each step is chosen based on the individuals' assessment of local environmental cues, and this assessment is made using evolved movement strategies \citep[as in][]{netz2021,gupte2021a}.
 First, individuals scan their current location, and five equally spaced points located on the arc of a circle with a radius of 0.5 units ($\sim$1\% of the landscape's side).
 around their position, at a distance of 1 unit for three cues ($d_S$, see \textit{Supplementary Material Fig. 1 -- 2}): the number of food items ($F$), the number of foragers handling a food item (`handlers': $H$) and the number of idle foragers not handling a food item (`non-handlers': $N$).
-Individuals assign a suitability \citep[see][]{netz2021a,gupte2021a} to their current position and each of the five locations, using their inherited preferences for each of the cues: $S = s_FF + s_HH + s_NN$ + $\epsilon$.
+Individuals assign a suitability \citep[see][]{netz2021,gupte2021a} to their current position and each of the five locations, using their inherited preferences for each of the cues: $S = s_FF + s_HH + s_NN$ + $\epsilon$.
 The preferences $s_F$, $s_F$, and $s_N$ for each of the three cues are heritable from parents to offspring, while $\epsilon$ is a very small error term drawn for each location, to break ties among locations.
 The values of each of the cue preferences \emph{relative to each other} determine individuals' movement strategies \citep{gupte2021a}
 All individuals move simultaneously to the location to which they have assigned the highest suitability (akin to step-selection; \citealp{avgar2016}); this may be their current location, in which case individuals are stationary for that timestep.
@@ -101,7 +101,7 @@ This is also realistic, as populations may repeatedly acquire pathogens through 
 For simplicity, we considered a population of haploid individuals with discrete, non-overlapping generations, and asexual inheritance.
 At the end of the parental generation, the net lifetime energy of each individual was determined as the difference of the total energy gained through food intake and the energy lost through infection. 
 In \textit{Supplementary Material Section 3.2}, we also consider an alternative implementation in which the pathogen reduces the value of each food item by a certain percentage.
-The parental population produced an offspring population (of the same size) as follows: to each offspring, a parent was assigned at random by a weighted lottery, with weights proportional to lifetime net energy \citep{netz2021a, gupte2021a}.
+The parental population produced an offspring population (of the same size) as follows: to each offspring, a parent was assigned at random by a weighted lottery, with weights proportional to lifetime net energy \citep{netz2021, gupte2021a}.
 This way, the expected number of offspring produced by a parent is proportional to the parent's lifetime net energy.
 The movement decision-making cue preferences $s_F$, $s_H$, and $s_N$ are subject to independent random mutations with a probability of 0.001.
 The mutational step size (either positive or negative) is drawn from a Cauchy distribution with a scale of 0.01 centred on zero.
@@ -110,13 +110,9 @@ As in real ecological systems, individuals in the new generation are intialised 
 
 \subsection*{Model Output}
 
-\paragraph{Social Information Use}
-
 To understand the evolution of movement strategies, and especially how individuals weighed social information, we exported the population's evolved cue preferences in every second generation.
 We classified individuals based on how they used social information --- the presence and status of competing foragers --- into four social movement classes: (1) agent avoiding, if $s_H, s_N < 0$, (2) agent tracking, if both $s_H, s_N > 0$, (3) handler tracking, if $s_H > 0, s_N < 0$, and (4) non-handler tracking, if $s_H < 0, s_N > 0$.
 We calculated the relative importance of social cues --- $H, N$ --- to each individual's movement strategy as $ SI_{imp} = (|s_H| + |s_N|) / (|s_H| + |s_N| + |s_F|)$, with higher values indicating a greater importance of social cues.
-
-\paragraph{Proximity-Based Social Network}
 
 Animal movements and foraging distributions provide opportunities for between-individual associations, which usually have a spatial context.
 Associations which depend on spatial proximity can be captured at the individual- and population-level by proximity-based animal social networks \citep{whitehead2008,farine2015}.
@@ -130,8 +126,6 @@ We logged encounters and constructed social networks after every 10\% of the tot
 We constructed adjacency matrices using Rcpp \citep[][]{eddelbuettel2013}, and converted them to networks using the \textit{igraph} \citep{csardi2006} and \textit{tidygraph} \citep{pedersen2020} libraries for R.
 We omitted ephemeral pairwise associations with a weight $<$ 5.
 
-\subsection*{Model Analysis}
-
 We plotted the mix of social information-based movement strategies evolved across generations in each parameter combination.
 Focusing on our default scenario ($\delta E$ = 0.25, $R$ = 2), we visualised the mean per-capita distance moved, mean per-capita intake, and mean per-capita encounters with other foragers.
 We examined how the three main social movement strategies --- agent avoidance, agent tracking, and handler tracking --- changed in frequency over generations.
@@ -139,9 +133,9 @@ We also examined differences among strategies in the movement distance, associat
 We visualised the proximity based social networks of populations in a representative scenario ($\delta E$ = 0.25, $R$ = 2), focusing on the generations just before and after the pathogen introduction events begin (pre-introduction: $G$ = 3,000; post-introduction: $G$ = 3,500).
 We compared the time taken for diseases to spread across these social networks by running simple network epidemiological models on the emergent networks \citep{bailey1975,white2017,stroeymeyt2018} using the \textit{igraph} \citep{csardi2006} library.
 
-\section*{Results}
+\section*{Outcomes from the Pathomove Model}
 
-\subsection*{Rapid evolutionary shift in social movement strategies following pathogen introduction}
+\subsection*{Rapid Evolutionary Shift in Social Movement Strategies Following Pathogen Introduction}
 
 In our model, individuals move on a landscape with patchily distributed food items, and select where next to move in their vicinity, based on inherited preferences for environmental cues --- food items, and other individuals (see \textit{Supplementary Material Fig. 1}).
 Food items, once consumed, regenerate at a rate $R$, and pathogen infection imposes a per-timestep cost $\delta E$.
@@ -176,7 +170,7 @@ There is also significant variation among individuals in the importance of socia
     \label{patho_fig_01}
 \end{figure}
 
-\subsection*{Ecological-scale consequences of shift in movement strategies}
+\subsection*{Ecological-scale Consequences of Shift in Movement Strategies}
 
 In our default scenario ($R$ = 2, $\delta E$ = 0.25) the ecological and behavioural consequences of the evolutionary shift in movement strategies are drastic and similarly rapid (Fig.~\ref{patho_fig_01}C -- E; see \textit{Supplementary Material Fig. 3} for other scenarios).
 There is a sharp increase in mean distance moved by individuals; while pre-introduction individuals moved ~55\% of their lifetimes on average (i.e., 55 timesteps; handling for the remainder), post-introduction, individuals move for ~80\% of their lifetimes (i.e., 80 timesteps; Fig.~\ref{patho_fig_01}C).
@@ -187,7 +181,7 @@ The near 100-fold drop in encounters between individuals after pathogen introduc
 These reductions in intake are equivalent to those expected from halving landscape productivity (\textit{Supplementary Material Fig. 3}).
 Thus our model suggests that in addition to direct disease costs ($\delta E$), pathogen introduction, by influencing the evolution of movement strategies, may also have substantial indirect ecological effects.
 
-\subsection*{Individual differences in social movement strategies affect population-level social structure}
+\subsection*{Individual Differences in Social Movement Strategies Affect Population-level Social Structure}
 
 The relationship between movement and avoiding associations (and further, infection) is mediated by individual differences in how exactly social information is incorporated into movement strategies.
 Individuals using the agent avoiding strategy move more than handler tracking ones (Fig.~\ref{patho_fig_02}A), about 85\% of their lifetime (default scenario: $R$ = 2; $\delta E$ = 0.25).
@@ -236,8 +230,7 @@ This dispersed population structure means that most foragers encounter fewer tha
     \end{sidewaysfigure}
 }
 
-
-\subsection*{Pathogen-adapted movement strategies make animal societies more resilient to the spread of disease}
+\subsection*{Pathogen-adapted Movement Strategies Make Animal Societies More Resilient to the Spread of Disease}
 
 Nearly every individual in the generations just after pathogen introduction was infected.
 However, tracking the evolutionary change in movement strategies, the number of infected individuals fell to just about 50\% within 25 generations (Fig.~\ref{patho_fig_04}A).
@@ -262,7 +255,7 @@ In pathogen-adapted populations, the spread of the multiple encounter disease wa
     }\label{patho_fig_04}
 \end{figure}
 
-\subsection*{Landscape productivity and infection cost influence which social movement strategies evolve}
+\subsection*{Landscape Productivity and Infection Cost Influence Which Social Movement Strategies Evolve}
 
 We ran our model with nine different combinations of landscape productivity ($R \in $ 1, 2, 5) and infection cost per timestep ($\delta E \in$ 0.1, 0.25, 0.5).
 Initially, in the absence of the pathogen, landscape productivity alone determines the benefits of social information, and thus which social movement strategies evolve (Fig.~\ref{patho_fig_05}).
@@ -292,11 +285,13 @@ Landscape productivity can also directly balance infection costs: on high-produc
     }\label{patho_fig_05}
 \end{figure}
 
-\section*{Discussion}
+\section*{Contextualising the Outcomes of the Pathomove Model}
 
 Our model is among the first to demonstrate the tension inherent to sociality under the risk of an infectious pathogen, in an explicitly spatial context.
 We show how populations, initially evolved to find patchily distributed food using social information, rapidly evolve to eschew social encounters when an infectious pathogen is introduced.
 Our work shows how qualitatively and quantitatively different social movement strategies --- each making a different trade-off between social information and infection risk --- can co-exist in a single population.
+
+\subsection*{Social Information Use and Pathogen Introduction}
 
 We expected that prior to pathogen introduction, exploitation competition should promote the use of high-quality social information, and the avoidance of potential competitors \citep[handler tracking;][]{gupte2021a}.
 We found that the usefulness of social information affected this outcome quite strongly, as handler tracking was most common on low-productivity landscapes ($R$ = 1), where social information is crucial to finding resources (see \textit{Model and Analysis}).
@@ -307,7 +302,7 @@ This leads to the persistence of the indiscriminately social agent tracking stra
 We found an unexpectedly rapid evolutionary shift, within 25 generations, in individual movement strategies following pathogen introduction.
 This is much more rapid than the timescales usually associated with the evolution of complex traits such as sociality.
 This change actually occurs over fewer generations than over which key aspects of animal culture and ecology, such as migration routes, are established through social learning \citep{jesmer2018,cantor2021}.
-Current and expected cross-species transmissions of novel pathogens \citep{carlson2021,pusceddu2021} should thus prompt concern that the evolutionary consequences of pathogen introduction could slow the transmission of, and erode, animal culture \citep{cantor2021}.
+Current and expected cross-species transmissions of novel pathogens \citep{carlson2022a,pusceddu2021} should thus prompt concern that the evolutionary consequences of pathogen introduction could slow the transmission of, and erode, animal culture \citep{cantor2021}.
 
 Avoiding potentially infectious individuals is a key component of navigating the `landscape of disgust' \citep{weinstein2018}.
 To navigate this landscape effectively, animals must first be sensitive, or become more sensitive, to cues of high transmission risk.
@@ -317,6 +312,8 @@ However, there was substantial between-individual variation in the importance of
 A mix of individuals with different sensitivities to social cues, relative to resource cues, is key to the evolution of large-scale collective behaviours, such as migration \citep{guttal2010}.
 Our work suggests how in the long term (about 500 generations), by leading to the necessary diversity in social movement strategies, a novel pathogen may actually lay the groundwork for the evolution of more complex collective behaviour.
 The emergence of individual variation in social movement strategies, and especially the trade-off between movement, associations, and infection risk also suggests a clear mechanism by which sociality could evolve as a personality trait \citep[][]{gartland2021}.
+
+\subsection*{Ecological Causes and Consequences of Social Movement Strategies}
 
 The evolutionary changes triggered by pathogen introduction were strongly and predictably controlled by the combination of landscape productivity ($R$) and infection cost ($\delta E$).
 Productivity can be seen in another context: as a proxy for the usefulness of social information.
@@ -336,12 +333,14 @@ Our network epidemiological models suggest that the spread of pathogens and para
 On one hand, this could reduce the prevalence and disease burden of previous endemic pathogens adapted to a more social host.
 On the other hand, increased dispersal over the landscape may make animals more likely to widely transmit certain pathogens to their environment, and pick up these pathogens in turn \citep[][]{rimbach2015,weinstein2018,scherer2020}.
 
+\subsection*{Feedbacks with Pathogen Chracteristics}
+
 Our infectious pathogen is easily transmitted through proximity, and causes a chronic yet non-fatal disease; though realistic, these assumptions cannot capture the full diversity of pathogens and their dynamics \citep{white2018,scherer2020, lunn2021}.
 More detailed mechanistic modelling would have to account for the differential effects of proximity and actual social contacts on transmission \citep{rimbach2015}.
 The most pressing epizootics are fatal, causing mass mortality in mammals \citep{blehert2009, fereidouni2019} and amphibians \citep{scheele2019,sanderson2020}.
 Whether such sharp, temporally restricted outbreaks result in substantial evolutionary pressure against sociality is unclear.
 Comparing sociality before and after an unexpected pathogen spillover \citep[as in][]{kuchipudi2022} is likely to be challenging, not least because data on past and ongoing host-pathogen introduction events is sparse.
-Our model then is especially suited to longer-term outbreaks in which populations are repeatedly exposed to novel pathogens (or strains), such as wild boar swine fever outbreaks \citep{scherer2020}, avian influenza in Arctic migratory birds \citep{globconsorth5n82016}, or the recent introduction of Covid-19 to deer \citep{kuchipudi2022}.
+Our model then is especially suited to longer-term outbreaks in which populations are repeatedly exposed to novel pathogens (or strains), such as wild boar swine fever outbreaks \citep{scherer2020}, avian influenza in Arctic migratory birds \citep{globconsorth5n82016}, or the recent introduction of SARS-CoV-2 to deer \citep{kuchipudi2022}.
 
 Pathogens also typically have much shorter generation times than their hosts.
 Analytical models expect pathogen attributes to rapidly co-evolve to match host population attributes (e.g. sociality and immune resistance) \citep[][]{bonds2005,prado2009,ashby2022}.
@@ -350,6 +349,8 @@ Pathogens are primarily expected to evolve to a virulence that promotes between-
 Our mechanistic model does not explicitly consider host-pathogen co-evolutionary dynamics, as this complexity was beyond the scope of our general, conceptual model.
 Adding pathogen evolutionary dynamics to a mechanistic individual-based model would require careful consideration of \textit{(i)} the costs the pathogen imposes on its hosts, and \textit{(ii)} how it transmits between hosts, both within and between generations.
 We expect that multiple pathogen strategies could coexist in a host population that itself has multiple social movement strategies.
+
+\subsection*{Towards Hypothesis-testing and Predictive Modelling}
 
 Our mechanistic model, combining animal movement and plausible disease transmission, extends current understanding of the evolutionary consequences of individual spatial-social ecology \citep{webber2018,albery2021,webber2022}.
 We generate consistent predictions of marked and swift evolutionary shifts in social movement strategies that could plausibly be tested over the timescales of some long-term animal tracking studies \citep{wilber2022}.
@@ -374,7 +375,234 @@ Finally, our general modelling framework, correctly parameterised to suit specif
 % J.G. was supported by a grand from the Netherlands Organization for Scientific Research (NWO-ALW; ALWOP.668).
 % F.J.W. acknowledges funding from the European Research Council (ERC Advanced Grant No. 789240).
 
-% \newrefcontext[sorting=nyt]
-% \section*{Literature Cited}
-% \printbibliography[title={Literature~Cited},heading=none]
-% \end{refsection}
+{ \begin{center} \barfont{-.-} \end{center} }
+
+\newpage
+
+\begingroup
+
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\let\cleardoublepage\relax
+
+{\chapter*{Supplementary Information}}
+
+\section*{Data and Code}
+
+The \textit{Pathomove} simulation model code is available on Zenodo at https://zenodo.org/record/6331816, and on Github at github.com/pratikunterwegs/pathomove.
+A reference dataset with 10 replicates of the parameter combinations presented here is archived on Zenodo at: https://zenodo.org/record/6331757.
+Code to run the simulations and analyse the output is on Zenodo at https://zenodo.org/record/6341440, and on Github at: 
+github.com/pratikunterwegs/patho-move-evol.
+
+\section*{Description of the Pathomove Model}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/pathomove/fig_schematic.png}
+    \caption{
+        \textbf{Model implementation of discrete movement steps in continuous space, with movement steps selected based on inherited preferences for environmental cues.} 
+        In our model, \textbf{(A)} individuals search for food items (\textbf{green circles}), which may be immediately available (\textbf{filled green circles}; \emph{F}), or may be available only in the future (\textbf{open green circles}). 
+        Individuals can sense only available items, and not unavailable ones. However, given our landscape structure, food items are clustered, making available items a good indicator of where resource clusters are (see next figure). 
+        Individuals can also sense other foraging individuals, and can sense whether they have successfully found, and are handling, a food item (handlers; \textbf{blue circles}), or whether they are unsuccessful foragers still searching for food (non-handlers; \textbf{filled grey circles}; \emph{N}). 
+        To decide where to move, individuals sample their environment for these three cues (\emph{F, H, N}) at 5 locations around themselves (\textbf{large open grey circles}), and have a sensory range of \(d_S\). 
+        When the sensory range is relatively large (default = 1.0 units), there is some small overlap in samples. 
+        Individuals assign each potential direction a \emph{suitability}, \(S = s_FF + s_HH + s_NN + \epsilon\), where the coefficients \(s_F, s_H, s_N\) are inherited preferences for environmental cues, and \(\epsilon\) is a small error term that helps break ties between locations. 
+        In our implementation, the sensory distance (\(d_S\)) and the movement distance (\(d_M\)) are the same, 1.0 units. 
+        \textbf{(B)} Our infectious pathogen is transmitted between infected (\textbf{orange circles}) and susceptible (\textbf{filled grey circles}) individuals, with a probability \(p\) = 0.05, when they are within a distance \(d_\beta\) of each other. 
+        In our implementation, \(d_\beta\) is the same as \(d_S, d_M\) = 1.0 units.
+    }\label{fig:patho_schematic}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/pathomove/fig_landscape.png}
+    \caption{
+        \textbf{An example of the resource landscape used in our simulations.} 
+        Our simulation's resource landscape consists of 60 randomly distributed clusters of food items (`resource patches'), with 1800 discrete food items divided among the clusters (30 items per cluster). 
+        The landscape is a square of 60 units per side, with wrapped boundaries (i.e., a torus). 
+        The food item density in our scenarios is 0.5 food items per unit area. 
+        Items are distributed around the centre of each cluster, within a standard deviation of 1.0 unit. 
+        Items, once consumed by foragers, are unavailable for a fixed number of timesteps (the regeneration time $R$, expressed in terms of the foragers' generation time), after which they regenerate in the same location. 
+        While regenerating (i.e., unavailable). While regenerating, items cannot be sensed by foragers. 
+        The sensory ranges of individuals (\(d_S\)) are shown for each potential step (\textbf{red circles}, including the current location: \textbf{blue circle}). 
+        Food item clustering means that available items, as well as foragers handling a food item (handlers) are good indicators of the location of a resource cluster.
+    }\label{fig:patho_landscape}
+\end{figure}
+
+\section*{Comparing ecological outcomes across parameter combinations}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/pathomove/fig_eco_compare_default.png}
+    \caption{
+        \textbf{Rapid changes in ecological outcomes following pathogen introduction.} 
+        The introduction of the infectious pathogen leads to rapid evolutionary changes in movement strategies (see Figures 1 and 5; main text) across most combinations of landscape productivity and infection cost. 
+        In all combinations where there is rapid evolutionary shift in social-movement strategies, there is a similar change in the population's ecological outcomes: more movement, less intake, and fewer associations. 
+        Only in scenarios where the mix of social-movement strategies does not change (\(R \in\) 2, 5; $\delta~E$ = 0.1), is there broadly no change in population ecological outcomes. 
+        Each subplot in each panel shows the mean and standard error of the per-capita values for \textbf{(A)} distance moved, \textbf{(B)} intake, \textbf{(C)} number of associations, or encounters, with other individuals. 
+        Means and standard deviations are shown before (G = 3,000) and after (G = 3,500) pathogen introduction; each data point represents 10 replicates of the relevant parameter combination.
+    }\label{fig:patho_eco_compare}
+\end{figure}
+
+\section*{Effect of Modelling Choices}
+
+Modelling choices can have a substantial effect on the outcomes of simulations with multiple, complex interactions among components \parencite{scherer2020,gupte2021a,netz2021}.
+We show the effect of varying implementation on two key aspects of our model: \textit{(1)} where individuals are initialised, or `born', on the landscape (natal dispersal), \textit{(2)} how the infectious pathogen imposes fitness costs.
+
+\subsection*{Global Natal Dispersal of Individuals}
+
+Some models initialise the individuals in each new generation at random locations on the landscape (see e.g. \cite*{gupte2021a}; Chapter~\ref{ch:kleptomove}); this can be called `global' natal dispersal.
+This is a reasonable choice when modelling animals during a specific stage of their life cycle, such as after arriving on a wintering or breeding site after migration.
+Our default choice, on the other hand, is `local' natal dispersal, where individuals are initialised close to their parent's last position.
+This is also defensible, as many organisms do not disperse very far from their ancestors.
+When animals do not disperse very far, they may not evolve movement rules that can be generalised across all landscape conditions, especially when the landscape is ecologically heterogeneous.
+Instead, animals may adapt their strategies to the local conditions which they inherit from their parents ({`ecological inheritance'}; \cite{badyaev2009}).
+
+Successful individuals are likely to have more offspring than unsuccessful individuals, and successful individuals are likely to be found --- in our simulation and in real natural systems --- on or near profitable resource patches.
+This means that many individuals are initialised near profitable patches.
+In this case, and because of the sparse distribution of resource patches on the landscape, individuals adapt to tolerate their many neighbours (who are often kin), as avoiding them would lead to also moving away from a profitable patch.
+
+By forcing animals in each new generation to encounter ecological circumstances potentially different from those of their parents, implementing global dispersal can help investigate whether animals' evolved movement strategies are truly `optimal' at the global scale.
+We implementated global dispersal by running 10 replicates of each parameter combination (9 combinations of $\delta~E$ and $R$; 90 simulations in all), with dispersal set to 10.
+This means that individuals' initial positions are drawn from a normal distribution with standard deviation = 10, centred on the location of their parent (see Fig.~\ref{fig:patho_dispersal}; blue circles).
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/pathomove/fig_global_dispersal.png}
+    \caption{
+        \textbf{Differences between local and global dispersal.} 
+        Initialising individuals in each new generation within a standard deviation of 10 units around their parent (\textbf{blue}; parent at [30, 30]) places can lead them to encounter potentially very different ecological, and social, circumstances from those of their parent. 
+        In contrast, individuals initialised close to their parents (within a standard deviation of 2 units; \textbf{red}) encounter very similar conditions as their parent. 
+        The latter also leads to substantial competition among kin. 
+        We used 10 units to represent (nearly) global dispersal, and 2 units to represent local dispersal; this is controlled by the simulation parameter \emph{dispersal}, which takes a numeric argument.
+    }\label{fig:patho_dispersal}
+\end{figure}
+
+\subsubsection*{Evolutionary Outcomes of the Global Dispersal Implementation}
+
+In the global dispersal scenario (see Fig.~\ref{fig:}), there is a marked difference in which social movement strategy is evolved before pathogen introduction.
+Since individuals are initialised relatively far away from their parent's position, they encounter potentially very different ecological conditions, both in terms of the number of other individuals, and the local availability of food items.
+
+As a result, most individuals evolve a `handler tracking' social movement strategy before the introduction of the novel pathogen.
+This strategy allows individuals to gain the benefits of social information on the location of a resource patch (of which handlers are an indirect cue), while avoiding potential competitors, as well as potentially moving away from areas without many food items.
+
+After pathogen introduction, there is a rapid evolutionary shift in social movement strategies, similar to the shift seen in our default implementation of local dispersal.
+In brief, \emph{(1)} when the benefits of social information cannot compensate for the costs of infection risk ($\delta~E$ = 0.5; $\delta~E$ = 0.25, $R$ = 1, 2), the population shifts to the agent avoiding strategy, similar to the local dispersal case. \emph{(2)} When the costs of infection are lower than the benefits of social information, or when the resource landscape's productivity can offset the cost of infection, the handler tracking strategy persists as the dominant strategy (see Fig.~\ref{fig:patho_evo_global}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/pathomove/fig_evo_change_global_dispersal.png}
+    \caption{
+        \textbf{Pathogen introduction triggers similar evolutionary change under global dispersal as under local dispersal.} 
+        In our alternative, global natal dispersal implementation, the handler tracking strategy is the dominant strategy across most parameter combinations. 
+        Following pathogen introduction, there is a rapid shift in the mix of movement strategies, and, as in the default local dispersal implementation, the agent avoiding strategy becomes common. 
+        When infection costs are low ($\delta~E$ = 0.1) and landscape productivity is high ($R \geq$ 2), pathogen introduction does not alter the mix of movement strategies.}
+    \label{fig:patho_evo_global}
+\end{figure}
+
+\subsection*{Ecological Consequences in the Global Dispersal Implementation}
+
+In the global dispersal implementation, there is little to no change in population-level ecological outcomes --- mean distance moved, mean per-capita intake, and the mean number of associations --- following pathogen introduction (Fig.~\ref{fig:patho_global_eco}).
+This is despite the drastic shift in evolved social movement strategies.
+This is likely because a large part of individual's lifetimes (at low $R$, up to 90 timesteps), are spent moving, likely to find resource clusters.
+Since intake depends on finding these clusters, and associations mostly take place at or near resource clusters, these are also reduced compared to our local dispersal implementation.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/pathomove/fig_eco_compare_global.png}
+    \caption{
+        \textbf{Little to no change in ecological outcomes when implementing global dispersal.} 
+        Despite strong and rapid evolutionary shifts in social movement strategies, the ecological outcomes for populations with global natal dispersal are very similar before and after the introduction of the infectious pathogen. 
+        Each subplot in each panel shows the mean and standard error of the per-capita values for \textbf{(A)} distance moved, \textbf{(B)} intake, \textbf{(C)} number of associations, or encounters, with other individuals. 
+        Means and standard deviations are shown before (G = 3,000) and after (G = 3,500) pathogen introduction; each data point represents 10 replicates of the relevant parameter combination.
+    }\label{fig:patho_global_eco}
+\end{figure}
+
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/pathomove/fig_networks_global.png}
+    \caption{
+        \textbf{Less spatial-social clustering before pathogen introduction in the global dispersal scenario than the local dispersal scenario.} 
+        The social network in generation 3,000, when the pathogen is introduced, shows strong social connections among individuals, even though they are spatially dispersed. 
+        After pathogen introduction (G = 3,500), the population remains spatially dispersed, and social connections are also reduced. 
+        The figure shows networks from a single replicate where $\delta~E$ = 0.25, and $R$ = 2.
+    }\label{fig:patho_network_global}
+\end{sidewaysfigure}
+
+\subsection*{Infection Cost as a Percentage of Intake}
+
+In our model's default implementation, the infectious pathogen imposes a direct cost, $\delta~E$, on individuals, in each timestep that they are infected.
+For an individual with intake $N$, the net energetic gain $E$ after being infected by a pathogen for $t$ timesteps is $E = N - (\delta E \times t)$.
+In this scenario, \emph{infection costs are independent of intake}.
+
+In an alternative implementation, the infectious pathogen may be considered to reduce an animal's ability to process intake, or to require a portion of daily intake to resist.
+Such an implementation is used in \ldots{}
+For an individual with intake $N$, the net energetic gain $E$ after being infected by a pathogen for $t$ timesteps is $E = N \times (1 - \delta E) ^ t$.
+Naturally, the two cost structures are not easy to compare, but a comparison of the potential outcomes is shown in Fig.~\ref{fig:compare_cost_structure}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/pathomove/fig_cost_structure.png}
+    \caption{
+        Calculated net energy for different combinations of intake and time infected. 
+        In the \emph{Direct cost} scenario, and with a $\delta~E$ of 0.25 (shown here), which is our default implementation, an individual foraging on an item (handling time = 5 timesteps) would gain 1.0 unit of intake, and lose 1.25 units of energy in that same period if it were infected, for a net energy balance in that period of -0.25. 
+        Individuals' energetic balance is normalised (0 -- 1) with reference to the lowest value in each generation. 
+        Here, individuals' infection cost is \emph{independent} of their intake. 
+        In the \emph{percentage cost} scenario, individuals' infection costs are linked to their intake. 
+        For a per-timestep 5\% loss of intake (shown here), individuals infected for $>$25 timesteps already have a net energy balance close to, but never less than, zero. 
+        In this implementation, individuals' energy balances are \emph{not normalised} with reference to the lowest net energy, as no individual's energy is ever less than zero.
+    }\label{fig:compare_cost_structure}
+\end{figure}
+
+\subsection*{Evolutionary Outcomes of the Percentage Cost Implementation}
+
+The social movement strategies evolved prior to pathogen introduction are identical to those seen in our default implementation.
+This is because the percentage cost implementation differs from the default only after the pathogen is introduced.
+After pathogen introduction, there is a rapid evolutionary shift in movement strategies.
+This shift is similar to that in our default implementation, but the strategies evolved are different.
+Rather than the agent avoiding strategy of the default implementation, it is the handler tracking strategy that is most common across parameter combinations.
+When the costs of infection are low, the agent tracking strategy persists; when the resource landscape's productivity can offset the cost of infection, agent tracking is the commonest strategy.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/pathomove/fig_evo_change_percent_cost.png}
+    \caption{
+        \textbf{Rapid evolutionary change, but different evolutionary outcomes, in an alternative implementation of disease costs.} 
+        In our alternative, percentage costs implementation of the infectious pathogen, there is a rapid shift in the mix of movement strategies after pathogen introduction. 
+        The handler tracking strategy becomes common across most parameter combinations, except when social information is not very useful (high productivity \(R \geq\) 2), and the cost of disease is relatively low ($\delta~E$ = 2.5\%).
+    }
+\end{figure}
+
+\subsection*{Ecological Consequences in the Percentage Cost Implementation}
+
+Surprisingly, the implementation of a different cost structure for the novel, infectious pathogen does not affect ecological, population level outcomes when compared with outcomes in our default implementation of direct costs.
+Across parameter combinations where there is a rapid evolutionary transition from agent tracking to handler tracking as the dominant strategy, there is also an increase in distance moved, a reduction in intake, and a reduction in associations.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/pathomove/fig_eco_compare_percent.png}
+    \caption{
+        \textbf{Rapid ecological changes accompany evolutionary shifts in an alternative implementation of disease costs, and are similar to the default implementation.} 
+        In the alternative percentage-costs implementation of the infectious pathogen, the outcomes are very similar to those in our default implementation of direct costs. 
+        Across most paramter combinations, there is an increase in movement, a reduction in intake, and a reduction in associations with other foragers.
+        Each subplot in each panel shows the mean and standard error of the per-capita values for \textbf{(A)} distance moved, \textbf{(B)} intake, \textbf{(C)} number of associations, or encounters, with other individuals.
+        Means and standard deviations are shown before (G = 3,000) and after (G = 3,500) pathogen introduction; each data point represents 10 replicates of the relevant parameter combination.
+    }
+\end{figure}
+
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/pathomove/fig_networks_percent.png}
+    \caption{
+        \textbf{Social networks emerging from the implementation of the percentage infection costs scenario.} 
+        The social network in generation 3,000, when the pathogen is introduced, is very similar to pre-pathogen networks in the default implementation, with substantial social and spatial clustering.
+        After novel pathogen introduction (G = 3,500), spatial-social networks are more dispersed, but not as much as the default direct costs implementation.
+        Many more individuals are infected than in the default implementation.
+        The figure shows networks from a single replicate where $\delta~E$ = 5\%, and $R$ = 2.
+    }
+\end{sidewaysfigure}
+
+{ \begin{center} \barfont{-.-} \end{center} }
+
+\endgroup
+
