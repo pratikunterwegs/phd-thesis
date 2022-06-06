@@ -1,5 +1,5 @@
 
-\begin{refsection}
+% \begin{refsection}
 
 \newrefcontext[sorting=ynt]
 
@@ -31,11 +31,11 @@ We tracked birds during a 4-month period using the high-throughput ATLAS system,
 We examined \textit{(i)} how the size of the moult-related wing gap affected bird movement, and \textit{(ii)} how the wing gap size influenced selection for more sheltered habitats.
 Overall, we show how birds' movement decisions, influenced by their immediate physiological condition, scale up to affect their space use, and how individuals' adaptive behavioral strategies have feedbacks with their evolutionary ecology.
 
-\section*{Methods}
+\section*{Examining the Movement of Moulting Birds}
 
 We studied bird moult and movement in the Hula Valley of northern Israel (33.10°N, 35.60°E), which includes reconstructed wetlands and reedbeds as well as agricultural areas (crops, plantations and fishponds; see \textit{SI Appendix}).
 
-\subsection*{Bird capture, wing moult scoring and experimental manipulation}
+\subsection*{Bird Capture, Wing Moult Scoring and Experimental Manipulation}
 
 We captured 86 individuals of four species in 2016: 16 barn swallows, 19 white-spectacled bulbuls, 35 house sparrows, and 16 clamorous reed-warblers, for which we also measured the wing gap index.
 All individuals were trapped after breeding was completed and before the molting season commenced, between June and October 2016.
@@ -56,7 +56,7 @@ Cutting the feather rather than tearing it out from the base, which is still inn
 For these experimentally manipulated birds, we calculated the wing gap size after the procedure described here.
 Bird capture and handling, the experimental manipulation procedure, and tagging for position tracking (see below) were conducted under a permit from the Israel Nature and Parks Authority (NPA permit 2016/41402) and from the ethics committee of the Hebrew University of Jerusalem, Israel (NS-16-14801-2).
 
-\subsection*{Forecasting daily changes in the wing gap size index}
+\subsection*{Forecasting Daily Changes in the Wing Gap Size Index}
 
 The size of the moult-related wing gap decreases slowly and constantly as feathers regrow, yet as a mature feather is shed, the wing gap size may also increase in gradual jumps.
 Over our tracking period of about 7 days per individual (see below), this is expected to represent small changes in the wing surface area, which could further influence movement decisions.
@@ -64,7 +64,7 @@ These changes in wing condition should be accounted for when relating movement c
 To do this, we calculated for each species the mean daily progress in the moult score, based on a sample of individuals documented twice during the moult process (bulbul = 0.45 $\pm$ 0.15, n = 17; sparrow = 0.40 $\pm$ 0.25, n = 10; reed-warbler = 0.69 $\pm$ 0.34, n = 24; swallow = 0.34 $\pm$ 0.18, n = 22). 
 Then, we estimated for each bird included in the study the expected daily change based on the measurement we made at the time of tagging (see \textit{SI Appendix}).
 
-\subsection*{Tracking bird movement using ATLAS}
+\subsection*{Tracking Bird Movement Using ATLAS}
 
 We tracked the movement of individual birds using ATLAS (Advanced Tracking and Localization of Animals in real-life Systems), a state-of-the-art high-throughput radio-telemetry system capable of tracking dozens of individuals at intervals as low as 4 seconds \citep{weiser2016,toledo2014,toledo2020,nathan2022}.
 We glued ATLAS tags (0.9 -- 1.6 g, depending on species) to birds' dorsal feathers after capture, and then released them (tag weights as percent of body mass: bulbuls = 3.85\% $\pm$ 0.21\%; sparrows = 4.21 $\pm$ 0.13; reed-warblers = 4.75\% $\pm$ 0.19\%; swallows = 4.9\% $\pm$ 0.13\%).
@@ -73,7 +73,7 @@ Each individual was tracked for an average of 8.23 $\pm$ 3.24 days (bulbul = 9.8
 We collected 4.3 million position estimates overall, with 7,276 positions per individual per day, for an effective tracking interval of 5.05 $\pm$ 1.85 positions per minute on average (bulbuls = 6.14 $\pm$ 3.93; sparrows = 5.98 $\pm$ 5.57; reed warblers = 5.80 $\pm$ 3.16; swallows = 2.28 $\pm$ 1.42).
 Since we were interested in exploring movement patterns, and these species are diurnally active, we removed all nighttime positions, leading to an approximate halving of the total dataset.
 
-\subsection*{Processing tracking data}
+\subsection*{Processing Tracking Data}
 
 ATLAS conservatively filters out location estimates that are clearly wrong (e.g., too far from the study area), letting users inspect most location estimates, which come with several measures of quality, 
 % (estimated covariance matrix, quality of fit to constraints, and the norm of the gradient of the objective function), 
@@ -91,7 +91,7 @@ Finally, we \textit{(iv)} accounted for small-scale errors --- noise around the 
 After excluding night time data and all other data filtering and smoothing, we analyzed 1.1 million locations from 86 individuals, keeping high per-minute sampling rate for all species (bulbuls = 4.85 $\pm$ 3.3, sparrows = 2.73 $\pm$ 3.0, reed-warblers = 2.09 $\pm$ 1.44, swallows = 2.07 $\pm$ 1.14).
 Compared with current technologies for tracking small birds ($<$ 50g) --- primarily radio triangulation and geolocators, which have low temporal (a few fixes per hour or day) and spatial resolution (error margins up to 200 km) \citep{bridge2013} --- ATLAS data represent an unprecedented sampling rate, with GPS-level accuracy \citep{beardsworth2022mee}.
 
-\subsection*{Quantifying large-scale movements}
+\subsection*{Quantifying Large-scale Movements}
 
 We investigated the large-scale space-use of bulbuls, sparrows, and reed-warblers by summarising their processed movement paths into daily sequences of `residence patches' using the \textit{atlastools} package developed specifically with high-throughput ATLAS tracking data in mind \citep{gupte2022d}.
 The residence patch algorithm uses simple distance and duration thresholds, chosen based on the movement ecology of the tracked species, to efficiently and rapidly cluster-segment individuals' non-travelling positions \citep{gupte2022d}.
@@ -102,7 +102,7 @@ Doing so, we obtained 4,373 residence patches overall and extracted environmenta
 We handled swallows differently, as these are highly aerial birds whose movement is not easily clustered into residence patches.
 Instead, and because the relatively higher-flying swallows are more accurately tracked by ATLAS, we simply calculated the total distances moved along daily tracks from the cleaned, processed data.
 
-\subsection*{Visibility analysis to quantify sheltered habitats}
+\subsection*{Visibility Analysis to Quantify Sheltered Habitats}
 
 Many animals can gauge the risk posed by predators by estimating a predator's field of view (`spatial perspective taking') \cite{emery2000,bruce2003,davidson2016}, and select for sheltered locations outside of a predator's view \citep{hampton1994,krams2001,watve2002}.
 To assess the field of view of a hypothetical predator, and thus the estimated riskiness of the landscape, we took a viewshed ecology approach to determine how visible an area was from surrounding locations \citep{aben2018,aben2021}.
@@ -118,7 +118,7 @@ Sparrowhawks and other bird-preying raptors hunt by surprising their prey via lo
 In line with experimental and observational work, we assumed an observer height of 1.5m above surfaces (tree canopy, fields, or other) \citep{seress2011,krams2020}, and an observer visual range of 50m.
 We used the `Visibility Analysis' plugin v1.2 for QGIS v3.20 to calculate visibility scores over the study area \citep{cuckovic2016}.
 
-\subsection*{Drawing alternative residence patches to examine habitat selection}
+\subsection*{Drawing Alternative Residence Patches to Examine Habitat Selection}
 
 In our landscape, it is mostly wooded areas that offer shelter from observation by aerial predators (see \textit{SI Appendix}).
 We examined the relative importance of the provisioning effects of vegetation (proxied by NDVI) \cite{pettorelli2011}, and its sheltering effects (section F above), on birds' movement decisions at the patch scale.
@@ -135,7 +135,7 @@ We sampled the NDVI and visibility index at real and potential patch coordinates
 With between-patch movements as steps, we performed species- and moult-status specific step-selection analysis (SSA) to determine how these predictors affected habitat selection (see \textit{SI Appendix}) \cite{avgar2016}.
 The time intervals between patches were not fixed, but step lengths were not dependent on step duration, and so we implemented a simple SSA.
 
-\section*{Results}
+\section*{Effect of Wing Moult on Bird Movement and Habitat Selection}
 
 \subsection*{Moult-related wing gap size}
 
@@ -156,7 +156,7 @@ Bulbuls and sparrows moult more slowly than reed-warblers, but more rapidly than
 Thus reed-warblers have the largest moult-related wing gaps, swallows the smallest, while bulbuls and sparrows are intermediate between them {(wing gap index, mean $\pm$ SD: swallows = 4.3 $\pm$ 0.95, bulbuls = 4.95 $\pm$ 1.37, sparrows = 5.9 $\pm$ 2.1, reed warblers = 9.5 $\pm$ 1.38)}.
 All non-molting birds had a wing gap index score of zero.
 
-\subsection*{Moult-related wing gap size and large-scale movements}
+\subsection*{Moult-related Wing Gap Size and Large-scale Movements}
 
 For bulbuls, sparrows, and reed-warblers, we quantified large-scale movements as both the displacements between areas of prolonged residence, called `residence patches' \cite{gupte2022d}, as well as the frequency of these displacements.
 Since swallows constantly fly while foraging, we chose to quantify their large-scale movement by simply calculating the total distance moved, adjusting for the daily duration of daytime tracking.
@@ -176,7 +176,7 @@ We fit one GAM for bulbuls, sparrows, and reed-warblers (species included as bot
     }\label{holey_fig_02}
 \end{figure}
 
-\paragraph*{Distance between residence patches}
+\subsection*{Distance Between Residence Patches}
 
 We found that bulbuls and sparrows, but not reed-warblers, adjusted their daytime large-scale movements between residence patches to their wing gap size (Fig.~\ref{holey_fig_01}; GAM t-value = 2.13, p = 0.034; \textit{SI Appendix} Table S1).
 Compared with non-molting individuals (wing gap = 0), naturally molting bulbuls with moderately large moult-related gaps (3 $<$ wing gap $\leq$ 10) actually moved 2.5 times as far per hour between residence patches (GAM estimate $F$ = 4.734, p = 0.01; distance between patches: non-molting = 54.11 m, molting = 135.89 m).
@@ -191,7 +191,7 @@ do not move between distant patches even when not molting (mean distance between
 Slow-molting swallows also moved similar (large) distances per hour when they were either non-molting, molting, or artificially manipulated (GAM estimate $F$ = 0.129, p = 0.723).
 Swallows' slow moult rate likely represents an adaptation to their aerial foraging habit, allowing them to maintain flight performance across moult stages (non-molting = 3.48 $\pm$ 1.36 km, molting = 3.36 $\pm$ 1.17 km, manipulated = 3.64 $\pm$ 1.96 km).
 
-\paragraph*{Effect of artificial manipulation}
+\subsection*{Effect of Artificial Manipulation}
 
 Our experimental manipulation involved removal of one to three primaries, in addition to the primaries missing as part of natural moult (see \emph{Methods}).
 Wing gap index scores after artificial manipulation showed differences among species corresponding to their natural moult rate, manipulated reed warblers had larger wing gaps than manipulated swallows, bulbuls, or sparrows {(swallows = 10.11 $\pm$ 2.5, bulbuls = 13.5 $\pm$ 2.35, sparrows = 12.56 $\pm$ 3.5, reed-warblers = 17.8 $\pm$ 1.1).}
@@ -199,7 +199,7 @@ Bulbuls and sparrows whose flight feathers had been removed by manipulation (12 
 % Bulbuls especially barely moved at all between residence patches when their wings were heavily compromised by artificial manipulation (wing gap $>$ 15; mean distance between residence patches / hr = 39.3 $\pm$ 42.2 m; Fig.~\ref{holey_fig_01}).
 These observations are in line with the direct effects of severely reduced flight capacity and allocating energy reserves to feather regrowth rather than movement, and an indirect effect of risk-avoidance during a vulnerable period.
 
-\paragraph*{Frequency of patch switching}
+\subsection*{Frequency of Patch Switching}
 
 We found that in addition to affecting the distance moved between residence patches, the wing gap resulting from natural moult or manipulation also affected the frequency of patch switching in bulbuls and sparrows, but not in reed-warblers (Fig.~\ref{holey_fig_02}).
 Naturally molting bulbuls moved more often between residence patches than non-molting and artifically manipulated birds (GAM estimate $F$ = 7.45, p $<$ 0.001; see also \textit{SI Appendix} Table S2).
@@ -221,7 +221,7 @@ Reed-warblers did not show a change in patch-switching frequency in relation to 
     }\label{holey_fig_03}
 \end{figure}
 
-\subsection*{Moult-related wing gap size and patch occupancy}
+\subsection*{Moult-related Wing Gap size and Patch Occupancy}
 
 We examined whether the time that bird spent in residence patches was affected by their wing gap size, with the expectation --- following the results for movements between patches --- that molting birds would spend less time in patches than non-molting and manipulated birds (see \textit{SI Appendix} for model specification).
 This was indeed the case for both bulbuls and reed-warblers, for which the mean patch duration for molting birds was only about half of that for non-molting and manipulated birds (Fig.~\ref{holey_fig_03}; GAM estimates: bulbuls, $F$ = 18.86, p $<$ 0.001; reed warblers, $F$ = 12.854, p $<$ 0.001).
@@ -234,7 +234,7 @@ Areas with taller vegetation such as orchards, and built-up areas such as settle
 We found that NDVI did not appear to influence patch duration (GAM parametric estimate = 0.056, p = 0.86).
 However, patch durations increased with reduced patch visibility (GAM parametric estimate = -0.70, p = 0.004).
 
-\subsection*{Birds occupy sheltered areas across moult rates}
+\subsection*{Birds Occupy Sheltered Areas across Moult Rates}
 
 Finding that patch visibility influenced patch durations, we examined whether birds' moult-related wing gaps directly influenced their use of sheltered areas (except swallows, which are aerial foragers).
 First, fitting a GAM with species-specific smooths for bulbuls, sparrows, and reed-warblers (see \textit{Methods}), we found that only reed-warblers had slightly more sheltered patches with larger wing gaps (GAM estimate $F$ = 9.30, p = 0.002; Fig.~\ref{holey_fig_04}; visibility: non-molting = 0.33 $\pm$ 0.17, molting = 0.31 $\pm$ 0.19, manipulated = 0.21 $\pm$ 0.06), potentially because their rapid moult rate severely reduces flight capacity and makes increased shelter necessary.
@@ -261,7 +261,7 @@ This is consistent with the idea that birds of our study species mostly avoid op
     \end{sidewaysfigure}
 }
 
-\section*{Discussion}
+\section*{Interpreting the Effect of Wing Moult on Bird Movement}
 
 Our study is among the first to quantify how the compromised wing surface associated with moult directly affects movement and habitat selection in wild birds.
 Our high-throughput tracking system enabled tracking small birds at temporal (several times per minute) and spatial resolutions (a few metres) far surpassing current technologies for tracking such small birds ($<$ 50g) --- mainly through radio triangulation and geolocators, that have low temporal (a few fixes per hour or day, respectively) and spatial resolution (error margins up to 200 km) \citep{bridge2013}.
@@ -301,13 +301,13 @@ Furthermore, our findings suggest that avoidance of high-visibility areas may be
 An unwillingness to break cover from sheltered areas, and move through high-visibility habitat, may explain how individual movement decisions can scale up to restrict animal space use, from short home-range moves to longer dispersal events \cite{schlagel2020}.
 Overall, our work provides a template for combining simple experimental methods with technological advances in tracking technology, and with a mechanistic approach to landscape ecology, in animal movement research.
 
-\section*{Acknowledgments}
+% \section*{Acknowledgments}
 
-This study was supported by the Minerva Center for Movement Ecology, the Minerva Foundation, and ISF grant ISF-965/15 to R.N and S.T, and ISF grant 1919/19 to S.T. We also thank the Survey of Israel for their generous help. 
-P.R.G was supported by an Adaptive Life Programme grant made possible by the Groningen Institute for Evolutionary Life Sciences (GELIFES), and by the European Research Council (ERC Advanced Grant No. 789240 awarded to F. J. Weissing).
-R.N also acknowledges support from the Adelina and Massimo Della Pergola Chair of Life Sciences.
+% This study was supported by the Minerva Center for Movement Ecology, the Minerva Foundation, and ISF grant ISF-965/15 to R.N and S.T, and ISF grant 1919/19 to S.T. We also thank the Survey of Israel for their generous help. 
+% P.R.G was supported by an Adaptive Life Programme grant made possible by the Groningen Institute for Evolutionary Life Sciences (GELIFES), and by the European Research Council (ERC Advanced Grant No. 789240 awarded to F. J. Weissing).
+% R.N also acknowledges support from the Adelina and Massimo Della Pergola Chair of Life Sciences.
 
-\newrefcontext[sorting=nyt]
-\section*{Literature Cited}
-\printbibliography[title={Literature~Cited},heading=none]
-\end{refsection}
+% \newrefcontext[sorting=nyt]
+% \section*{Literature Cited}
+% \printbibliography[title={Literature~Cited},heading=none]
+% \end{refsection}

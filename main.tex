@@ -58,7 +58,7 @@
 \usepackage[T1]{fontenc}
 \setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
 % \setmainfont[Numbers={Proportional,Uppercase}]{Source Serif Pro}
-\setsansfont[]{Oswald}
+\setsansfont[]{TeX Gyre Adventor}
 \setmathfont{Erewhon Math}
 \newfontfamily{\displayfont}{TeX Gyre Schola}
 \newfontfamily{\barfont}[Ligatures={Rare}]{Vollkorn}
@@ -120,11 +120,11 @@
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\rmfamily\bfseries\scshape}
+    {\relax}{\thesection}{1em}{\raggedright\rmfamily\bfseries\scshape}
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\rmfamily\scshape}
+    {\relax}{\thesubsection}{1em}{\raggedright\rmfamily\scshape}
 
 % fix section format
 \titleformat{\paragraph}
@@ -139,14 +139,14 @@
 \renewcommand{\cftpartfont}{\bfseries\scshape\rmfamily\large\raggedleft}%
 \renewcommand{\cftpartpresnum}{\small Part~}%  \MakeTextLowercase
 % chapters in toc
-\renewcommand{\cftchappresnum}{\rmfamily}%
+\renewcommand{\cftchappresnum}{\rmfamily\small Chapter~}%
 \renewcommand{\cftchapaftersnumb}{\rmfamily}%
 \renewcommand{\cftchapfont}{\rmfamily}%
 \renewcommand{\cftchappagefont}{\rmfamily}%
 
 % handle extended part and chapter numbers due to text
 \newlength\mylen
-\settowidth\mylen{\bfseries\cftpartpresnum\cftpartaftersnum}
+\settowidth\mylen{\bfseries\cftchappresnum\cftchapaftersnum}
 \addtolength\cftpartnumwidth{\mylen}
 \addtolength\cftchapnumwidth{\mylen}
 
@@ -186,6 +186,9 @@
 % \setlength{\parskip}{1em}
 \setlength{\parskip}{3pt plus1pt minus1pt}
 
+\usepackage[indentunnumbered]{unnumberedtotoc}
+\KOMAoptions{toc=indentunnumbered}
+
 % ********************************************************************
 % GO!GO!GO! MOVE IT!
 %*******************************************************
@@ -214,7 +217,8 @@
 % \clearpage\include{frontbackmatter/Dedication}
 % % \clearpage\include{frontbackmatter/Colophon}
 
-\cleardoublepage \include{frontbackmatter/Contents}
+% \cleardoublepage \include{frontbackmatter/Contents}
+\tableofcontents
 
 \frontmatter
 \cleardoublepage \include{frontbackmatter/Abstract}
@@ -241,16 +245,16 @@
 \label{part:eco}
 
 
-% \cleardoublepage \include{chapters/preprocessing_header}
-% \include{chapters/preprocessing_main}
+\cleardoublepage \include{chapters/preprocessing_header}
+\include{chapters/preprocessing_main}
 
 % % \cleardoublepage \include{boxes/mapping}
 
-% \cleardoublepage \include{chapters/holeybirds_header}
-% \include{chapters/holeybirds_main}
+\cleardoublepage \include{chapters/holeybirds_header}
+\include{chapters/holeybirds_main}
 
-% \cleardoublepage \include{chapters/hillybirds_header}
-% \include{chapters/hillybirds_main}
+\cleardoublepage \include{chapters/hillybirds_header}
+\include{chapters/hillybirds_main}
 
 % \cleardoublepage \include{boxes/clearances}
 
@@ -263,14 +267,14 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 
 % \cleardoublepage \include{boxes/details}
 
-% \cleardoublepage \include{chapters/kleptomove_header} 
-% \include{chapters/kleptomove_main}
+\cleardoublepage \include{chapters/kleptomove_header} 
+\include{chapters/kleptomove_main}
 
-% \cleardoublepage \include{chapters/pathomove_header}
-% \include{chapters/pathomove_main}
+\cleardoublepage \include{chapters/pathomove_header}
+\include{chapters/pathomove_main}
 
-% \cleardoublepage \include{chapters/patternprocess_header}
-% \include{chapters/patternprocess_main}
+\cleardoublepage \include{chapters/patternprocess_header}
+\include{chapters/patternprocess_main}
 
 % \include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
@@ -279,9 +283,20 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 
 \cleardoublepage \include{chapters/discussion}
 
+% BIBLIOGRAPHY
+\begingroup
+\thispagestyle{empty}
+\newrefcontext[sorting=nyt]
+\addtocontents{toc}{\protect\vspace{\beforebibskip}}%
+\addchap{Literature Cited}
+\markboth{\color{gray}\small\scshape\rmfamily{Bibliography}}{\color{gray}\small\scshape\rmfamily{Bibliography}}
+\printbibliography[heading=none]
+\end{refsection}
+\endgroup
+
 \clearpage \include{frontbackmatter/Publications}
 
-\clearpage \include{frontbackmatter/Acknowledgments}
+% \clearpage \include{frontbackmatter/Acknowledgments}
 
 % ********************************************************************
 % Backmatter
