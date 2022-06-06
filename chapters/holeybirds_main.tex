@@ -33,7 +33,7 @@ Overall, we show how birds' movement decisions, influenced by their immediate ph
 
 \section*{Examining the Movement of Moulting Birds}
 
-We studied bird moult and movement in the Hula Valley of northern Israel (33.10°N, 35.60°E), which includes reconstructed wetlands and reedbeds as well as agricultural areas (crops, plantations and fishponds; see \textit{SI Appendix}).
+We studied bird moult and movement in the Hula Valley of northern Israel (33.10°N, 35.60°E), which includes reconstructed wetlands and reedbeds as well as agricultural areas (crops, plantations and fishponds; see \textit{Supplementary Information}).
 
 \subsection*{Bird Capture, Wing Moult Scoring and Experimental Manipulation}
 
@@ -62,7 +62,7 @@ The size of the moult-related wing gap decreases slowly and constantly as feathe
 Over our tracking period of about 7 days per individual (see below), this is expected to represent small changes in the wing surface area, which could further influence movement decisions.
 These changes in wing condition should be accounted for when relating movement characteristics to wing gap size.
 To do this, we calculated for each species the mean daily progress in the moult score, based on a sample of individuals documented twice during the moult process (bulbul = 0.45 $\pm$ 0.15, n = 17; sparrow = 0.40 $\pm$ 0.25, n = 10; reed-warbler = 0.69 $\pm$ 0.34, n = 24; swallow = 0.34 $\pm$ 0.18, n = 22). 
-Then, we estimated for each bird included in the study the expected daily change based on the measurement we made at the time of tagging (see \textit{SI Appendix}).
+Then, we estimated for each bird included in the study the expected daily change based on the measurement we made at the time of tagging (see \textit{Supplementary Information}).
 
 \subsection*{Tracking Bird Movement Using ATLAS}
 
@@ -110,7 +110,7 @@ To assess the field of view of a hypothetical predator, and thus the estimated r
 We first obtained a 50cm canopy height model (CHM) \citep{aben2021} of the majority of our study area (courtesy of the Survey of Israel).
 For each cell of the CHM, we calculated a \textit{visibility index}, which is the proportion of surrounding cells from which the focal cell is visible, given that lines of sight can be blocked by intervening structures (also called cumulative viewshed analysis, or a `fearscape') \cite{olsoy2015}.
 Open areas, such as agricultural fields or water bodies, are likely to be visible from all directions and have a visibility score $\approx$ 1.0.
-In contrast, locations inside woodland or reedbeds are likely to be hidden from view, with a lower visibility index (see \textit{SI Appendix}).
+In contrast, locations inside woodland or reedbeds are likely to be hidden from view, with a lower visibility index (see \textit{Supplementary Information}).
 
 Importantly, the visibility index depends upon the hypothetical observer's height above surface level; observers higher up may be able to see locations that are obstructed from a terrestrial viewpoint.
 We parameterised our visibility index calculations based on the hunting flight altitude of a raptor that commonly preys on small birds, the Eurasian sparrowhawk (\textit{Accipiter nisus}).
@@ -120,7 +120,7 @@ We used the `Visibility Analysis' plugin v1.2 for QGIS v3.20 to calculate visibi
 
 \subsection*{Drawing Alternative Residence Patches to Examine Habitat Selection}
 
-In our landscape, it is mostly wooded areas that offer shelter from observation by aerial predators (see \textit{SI Appendix}).
+In our landscape, it is mostly wooded areas that offer shelter from observation by aerial predators (see \textit{Supplementary Information}).
 We examined the relative importance of the provisioning effects of vegetation (proxied by NDVI) \cite{pettorelli2011}, and its sheltering effects (section F above), on birds' movement decisions at the patch scale.
 To do this, we combined our residence patch approach for bulbuls, sparrows, and reed warblers with a step-selection approach \citep{thurfjell2014,avgar2016} using the \textit{amt} package \citep{signer2019}.
 While barn swallows could potentially make use of sheltering vegetation by flying very low \cite{warrick2016}, we could not detect their altitude above the ground --- a key component of shelter --- and so did not include them in this analysis.
@@ -132,7 +132,7 @@ For each alternative patch with median coordinates ($X_\text{alt}, Y_\text{alt}$
 
 To control for the resource-provisioning effect of vegetation, we also obtained the normalised difference vegetation index (NDVI) as a metric of vegetation growth \citep{pettorelli2011} across our study area, using Copernicus Sentinel-2 MultiSpectral Instrument, Level-1C data (10m resolution; June -- October 2016).
 We sampled the NDVI and visibility index at real and potential patch coordinates, and calculated averages per patch.
-With between-patch movements as steps, we performed species- and moult-status specific step-selection analysis (SSA) to determine how these predictors affected habitat selection (see \textit{SI Appendix}) \cite{avgar2016}.
+With between-patch movements as steps, we performed species- and moult-status specific step-selection analysis (SSA) to determine how these predictors affected habitat selection (see \textit{Supplementary Information}) \cite{avgar2016}.
 The time intervals between patches were not fixed, but step lengths were not dependent on step duration, and so we implemented a simple SSA.
 
 \section*{Effect of Wing Moult on Bird Movement and Habitat Selection}
@@ -161,7 +161,7 @@ All non-molting birds had a wing gap index score of zero.
 For bulbuls, sparrows, and reed-warblers, we quantified large-scale movements as both the displacements between areas of prolonged residence, called `residence patches' \cite{gupte2022d}, as well as the frequency of these displacements.
 Since swallows constantly fly while foraging, we chose to quantify their large-scale movement by simply calculating the total distance moved, adjusting for the daily duration of daytime tracking.
 We related total large-scale movements (controlling for daily, daytime tracking duration) with wing gap size using generalised additive models (GAM).
-We fit one GAM for bulbuls, sparrows, and reed-warblers (species included as both fixed and random effect), and a separate GAM for swallows (see \textit{Methods}; see \textit{SI Appendix} for model specification).
+We fit one GAM for bulbuls, sparrows, and reed-warblers (species included as both fixed and random effect), and a separate GAM for swallows (see \textit{Methods}; see \textit{Supplementary Information} for model specification).
 
 \begin{figure}[!t]
     \centering
@@ -178,7 +178,7 @@ We fit one GAM for bulbuls, sparrows, and reed-warblers (species included as bot
 
 \subsection*{Distance Between Residence Patches}
 
-We found that bulbuls and sparrows, but not reed-warblers, adjusted their daytime large-scale movements between residence patches to their wing gap size (Fig.~\ref{holey_fig_01}; GAM t-value = 2.13, p = 0.034; \textit{SI Appendix} Table S1).
+We found that bulbuls and sparrows, but not reed-warblers, adjusted their daytime large-scale movements between residence patches to their wing gap size (Fig.~\ref{holey_fig_01}; GAM t-value = 2.13, p = 0.034; \textit{Supplementary Information} Table~\ref{table:coef_distance}).
 Compared with non-molting individuals (wing gap = 0), naturally molting bulbuls with moderately large moult-related gaps (3 $<$ wing gap $\leq$ 10) actually moved 2.5 times as far per hour between residence patches (GAM estimate $F$ = 4.734, p = 0.01; distance between patches: non-molting = 54.11 m, molting = 135.89 m).
 Similarly, naturally molting sparrows moved {1.5 times} as far per hour between residence patches (GAM estimate $F$ = 11.58, p = 0.00002; distance between patches: non-molting = 208 m, molting = 307 m).
 This is consistent with the idea that wing moult is an energetically demanding period that requires actively seeking out high-quality food sources \citep{madsen1987,fox1998}.
@@ -202,7 +202,7 @@ These observations are in line with the direct effects of severely reduced fligh
 \subsection*{Frequency of Patch Switching}
 
 We found that in addition to affecting the distance moved between residence patches, the wing gap resulting from natural moult or manipulation also affected the frequency of patch switching in bulbuls and sparrows, but not in reed-warblers (Fig.~\ref{holey_fig_02}).
-Naturally molting bulbuls moved more often between residence patches than non-molting and artifically manipulated birds (GAM estimate $F$ = 7.45, p $<$ 0.001; see also \textit{SI Appendix} Table S2).
+Naturally molting bulbuls moved more often between residence patches than non-molting and artifically manipulated birds (GAM estimate $F$ = 7.45, p $<$ 0.001; see also \textit{Supplementary Information} Table~\ref{table:coef_switches}).
 However, naturally molting sparrows switched between residence patches as often as non-molting birds, but artificially manipulated sparrows switched patches less frequently than molting birds (GAM estimate $F$ = 3.515, p = 0.024; Fig.~\ref{holey_fig_02}).
 Reed-warblers did not show a change in patch-switching frequency in relation to wing gap size (GAM estimate $F$ = 1.04, p = 0.31).
 
@@ -223,14 +223,14 @@ Reed-warblers did not show a change in patch-switching frequency in relation to 
 
 \subsection*{Moult-related Wing Gap size and Patch Occupancy}
 
-We examined whether the time that bird spent in residence patches was affected by their wing gap size, with the expectation --- following the results for movements between patches --- that molting birds would spend less time in patches than non-molting and manipulated birds (see \textit{SI Appendix} for model specification).
+We examined whether the time that bird spent in residence patches was affected by their wing gap size, with the expectation --- following the results for movements between patches --- that molting birds would spend less time in patches than non-molting and manipulated birds (see \textit{Supplementary Information} for model specification).
 This was indeed the case for both bulbuls and reed-warblers, for which the mean patch duration for molting birds was only about half of that for non-molting and manipulated birds (Fig.~\ref{holey_fig_03}; GAM estimates: bulbuls, $F$ = 18.86, p $<$ 0.001; reed warblers, $F$ = 12.854, p $<$ 0.001).
-However, we found that sparrows had similar patch durations across different wing gap sizes (GAM estimate $F$ = 0.023, p = 0.878; \textit{SI Appendix} Table S3).
+However, we found that sparrows had similar patch durations across different wing gap sizes (GAM estimate $F$ = 0.023, p = 0.878; \textit{Supplementary Information} Table~\ref{table:coef_duration}).
 
 We expected two environmental attributes --- vegetation productivity (NDVI), and visibility to predators --- to also affect patch durations.
 To quantify patch visibility, we calculated the visibility index across our study area \cite{olsoy2015,aben2018,aben2021}.
 The visibility index represents whether a location can be observed from surrounding areas, for example by a commonly occurring predator, the Eurasian Sparrowhawk (\textit{Accipiter nisus}; see \textit{Methods}).
-Areas with taller vegetation such as orchards, and built-up areas such as settlements have lower visibility indices and are more sheltered (see \textit{SI Appendix}), as predators' lines of sight are obstructed by intervening objects \cite{olsoy2015}.
+Areas with taller vegetation such as orchards, and built-up areas such as settlements have lower visibility indices and are more sheltered (see \textit{Supplementary Information}), as predators' lines of sight are obstructed by intervening objects \cite{olsoy2015}.
 We found that NDVI did not appear to influence patch duration (GAM parametric estimate = 0.056, p = 0.86).
 However, patch durations increased with reduced patch visibility (GAM parametric estimate = -0.70, p = 0.004).
 
@@ -239,11 +239,11 @@ However, patch durations increased with reduced patch visibility (GAM parametric
 Finding that patch visibility influenced patch durations, we examined whether birds' moult-related wing gaps directly influenced their use of sheltered areas (except swallows, which are aerial foragers).
 First, fitting a GAM with species-specific smooths for bulbuls, sparrows, and reed-warblers (see \textit{Methods}), we found that only reed-warblers had slightly more sheltered patches with larger wing gaps (GAM estimate $F$ = 9.30, p = 0.002; Fig.~\ref{holey_fig_04}; visibility: non-molting = 0.33 $\pm$ 0.17, molting = 0.31 $\pm$ 0.19, manipulated = 0.21 $\pm$ 0.06), potentially because their rapid moult rate severely reduces flight capacity and makes increased shelter necessary.
 % only a moderate overall relationship between the visibility index of residence patches and the size of the moult-related wing gap (GAM t-value = 100.5, p $<$ 0.001; $R^2$ = 0.312).
-This suggests that bulbuls and sparrows, with intermediate moult rates, occupy sheltered areas of similar (low) visibility regardless of the size of their wing gap (visibility: bulbuls =  0.39 $\pm$ 0.18; sparrows = 0.47 $\pm$ 0.19; see \textit{SI Appendix} Table S4).
+This suggests that bulbuls and sparrows, with intermediate moult rates, occupy sheltered areas of similar (low) visibility regardless of the size of their wing gap (visibility: bulbuls =  0.39 $\pm$ 0.18; sparrows = 0.47 $\pm$ 0.19; see \textit{Supplementary Information} Table~\ref{table:coef_vis}).
 
 We went one step further, and used a step-selection approach to sample patches to which individuals could have moved, and estimated birds' relative preference for visibility and NDVI when making movement decisions (see \textit{Methods}) \citep{avgar2016,aben2021}.
-Fitting separate step-selection functions for each species and each broad moult group (non-molting, molting, and manipulated), we found that across moult group, all three species preferred low-visibility sheltered sites over higher visibility ones (Fig.~\ref{holey_fig_04}; \textit{SI Appendix} Table S5).
-Furthermore, NDVI did not signficantly affect birds' movement decisions at the patch scale (see \textit{SI Appendix} Table {S1}).
+Fitting separate step-selection functions for each species and each broad moult group (non-molting, molting, and manipulated), we found that across moult group, all three species preferred low-visibility sheltered sites over higher visibility ones (Fig.~\ref{holey_fig_04}; \textit{Supplementary Information} Table S5).
+Furthermore, NDVI did not signficantly affect birds' movement decisions at the patch scale (see \textit{Supplementary Information} Table {S1}).
 This is consistent with the idea that birds of our study species mostly avoid open agricultural fields, where they might be exposed to potential predators, even though fields are highly productive.
 
 \afterpage{
@@ -255,7 +255,7 @@ This is consistent with the idea that birds of our study species mostly avoid op
             \textbf{Bulbuls, sparrows, and reed-warblers prefer sheltered habitats across wing condition.}
             Across the three species, a GAM indicated that moult-related wing gap index was a poor predictor of the visibility of areas actually occupied by individuals (`real' residence patches; small colored circles). 
             A step-selection analysis at patch level, comparing real residence patches to sampled potential residence patches (grey crosses), showed strong selection for patches with low visibility index scores for all wing conditions, indicated by negative estimated selection coefficients ($\beta$ = natural logarithm of relative selection strength). 
-            All $\beta$ values were statistically significant (see \textit{SI Appendix}).
+            All $\beta$ values were statistically significant (see \textit{Supplementary Information}).
             Filled circles and triangles, and error bars around them, show the mean visibility index of real and potential patches for each moult treatment (indicated by color).
         }\label{holey_fig_04}
     \end{sidewaysfigure}
@@ -300,6 +300,369 @@ This pre-emptive caution may explain why wing condition, which should be expecte
 Furthermore, our findings suggest that avoidance of high-visibility areas may be an overlooked, yet potentially broadly applicable mechanism by which agricultural `green deserts' exclude avian biodiversity.
 An unwillingness to break cover from sheltered areas, and move through high-visibility habitat, may explain how individual movement decisions can scale up to restrict animal space use, from short home-range moves to longer dispersal events \cite{schlagel2020}.
 Overall, our work provides a template for combining simple experimental methods with technological advances in tracking technology, and with a mechanistic approach to landscape ecology, in animal movement research.
+
+{ \begin{center} \barfont{-.-} \end{center} }
+
+\newpage
+
+%%%%%%%%%%%%% Supplement %%%%%%%%%%%%%%%
+
+\begingroup
+
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\let\cleardoublepage\relax
+
+{\chapter*{Supplementary Information}}
+
+\section*{Individuals' Wing Gap Sizes across the Study Period}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/holeybirds/fig_spm_01}
+    \caption{
+        \textbf{Forecast daily change in wing gap index, per individual.}
+        The size of the molt-related wing gap decreases slowly and constantly as feathers regrow, but the wing gap size may also increase in gradual jumps as a feather is shed during molt.
+        We calculated the mean daily progress in the molt score, based on a sample of individuals of each species documented twice during the molt process.
+        For each bird included in the study, we calculated the expected daily change in molt-related wing gap size based on the measurement we made at the time of tagging (day 1 in each panel).
+    }
+    \label{fig:wgi-daily}
+\end{figure}
+
+\section*{Vegetation, visibility, and land use across the study area}
+
+\subsection*{Land cover}
+
+We manually constructed spatial polygons of the land-cover types in our study area, based on aerial imagery and field experience (see Fig.~\ref{fig:hula-maps}A).
+We categorised the study area into five main land-cover classes: settlements and built-up areas, open or agricultural areas, naturally occurring reedbeds, areas with trees (including orchards), and water (including canals and streams). 
+
+\subsection*{Vegetation Productivity}
+
+We obtained a standard measure of vegetation productivity, the normalised difference vegetation index (NDVI), which is widely used in animal ecology \cite{pettorelli2011}.
+We did this by accessing the European Space Agency Copernicus mission's Sentinel 2 imagery from the multi-spectral instrument, at a resolution of 10m.
+We accessed data from the Level-1C collection, which covered the study area during the period in which we were interested (June -- October, 2016), rather than using the somewhat better Level-2A data, which covers the study area only from 2017 onwards.
+We calculated NDVI using the standard formula $\text{NDVI} = (\text{NIR} - \text{Red}) / (\text{NIR} + \text{Red})$, where \textit{NIR} is the near infra-red band, and \textit{Red} is the red band.
+We used Sentinel band 8 (near infra-red; 835.1 nm or 833 nm) and band 4 (red; 664.5 nm or 665 nm) to
+calculate NDVI, with minor differences in the band wavelengths due to small differences between the two Sentinel-2 satellites, S2A and S2B.
+We performed the full pipeline of NDVI calculation on Google Earth Engine \cite{gorelick2017}, using the Python API (http://code.google.com/p/earthengine-api/) and the \textit{geemap} library \cite{wu2020}.
+NDVI across our study area varied between small negative values (indicating water), 0 (usually indicating bare ground), and large positive values up to 0.7 (indicating strong vegetation growth; see Fig.~\ref{fig:hula-maps}B).
+The largest NDVI values were associated with some agricultural fields, as well as with orchards with growing trees, and with natural reedbeds (compare see Fig.~\ref{fig:hula-maps}A -- B; see correlation below).
+
+\subsection*{Visibility Index}
+
+We obtained a canopy height model (CHM) of the majority of our study area from the Survey of Israel at 50cm resolution.
+We could not access CHM data for some peripheral areas as this is a border region.
+In contrast to the more conventional elevational model, CHMs can pick up fine-scale variation in the heights of objects above the ground surface.
+This makes CHMs suitable for investigating animals' interactions with their three-dimensional environment, with substantial spatial detail.
+CHMs are especially useful in exploring how animal movement decisions are linked to animals' lines of sight \cite{aben2018,aben2021}.
+We used the Visibility Index plugin v1.2 (https://github.com/zoran-cuckovic/QGIS-visibility-analysis) for QGIS v3.x (i.e., 3.0 or higher) to calculate the visibility index across the CHM.
+We downsampled the CHM to 1m resolution to speed up computation without losing much detail.
+We used an observer height of 1.5 m above the canopy surface; this is the height above either the actual tree canopy, or over any other surface present in our landscape (water, open fields, settlements etc.).
+We used an observer perception distance of 50 m, and calculated the proportion of 16 surrounding angles from which any cell of the CHM could be observed (option \textit{Incoming Views}).
+This yielded a layer with as many cells as the CHM, and with the same (1 m) resolution, with values of the visibility between 0 and 1.
+
+In biological terms, the visibility index is an estimate of how exposed any location is to a low-flying aerial predator, up to 50 m away.
+We modelled these values based on the hunting flights of a common bird-preying raptor, the Eurasian sparrowhawk (\textit{Accipiter nisus}) \cite{seress2011,krams2001,krams2020}.
+We also considered the visibility index of our study site from the point of view of a typically high-flying raptor, the common kestrel (\textit{Falco tinnunculus}), and repeated the visibility index calculations for an observer height of 15m (Fig.~\ref{fig:hula-maps}D).
+Kestrels hovering above the landscape surface are conspicuous to prey species whose avoidance mechanisms are primarily visual, such as small birds which rely on spotting predators early and taking cover \cite{krams2001,krams2020}.
+Thus the strategy of bird-preying raptors such as sparrowhawks is to fly low over the landscape surface (canopy or ground), and to attempt to surprise birds while they have broken cover \cite{krams2001,seress2011,krams2020}.
+Accounting for these natural history and behavioural aspects of birds' predator-prey interactions, we chose the 1.5m visibility index layer for our analyses.
+
+The visibility index of locations in our study area was strongly tied to land-cover, as expected (Fig.~\ref{fig:hula-maps}C; compare Fig.~\ref{fig:hula-maps}A).
+Agricultural areas have visibility index values $\approx$1.0, and are unlikely to offer much shelter from aerial predators.
+Orchards and areas of natural vegetation such as reedbeds are much more sheltered, with visibility index values $<$ 0.2.
+Built-up areas such as settlements, surprisingly, have lower visibility scores than open agricultural fields, as human-made structures are relatively tall and effectively obstruct the lines of sight of predators (Fig.~\ref{fig:hula-maps}C; compare Fig.~\ref{fig:hula-maps}A).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/holeybirds/fig_spm_02}
+    \caption{
+        \textbf{Vegetation productivity, exposure to potential predators, and land-cover across the Hula Valley, Israel.}
+        \textbf{(A)} Our study site in the Hula Valley in northern Israel is an agricultural-natural habitat matrix.
+        \textbf{(B)} There is substantial fine-scale variation in vegetation cover and productivity (here, the normalised difference vegetation index: NDVI), even within areas of similar land-cover. Areas shown in white are water bodies.
+        \textbf{(C)} Despite substantial areas being covered by growing vegetation, the majority of the study area is relatively exposed to a low-flying aerial predator (such as Eurasian sparrowhawk \textit{Accipiter nisus}, with a visibility index score $\approx$1.0. Sheltered areas, with lower visibility index scores ($<$ 0.4), form fine-scale refugia within the agricultural landscape.
+        However, areas covered by fruit tree orchards are very sheltered from low-flying predators, with visibility index scores $<$ 0.2.
+        \textbf{(D)} The visibility of an area is strongly dependent on the height of the observer, and nearly the entire study area is heavily exposed to a high-flying aerial predator such as the common kestrel (\textit{Falco tinnunculus}), hovering at 15m above the surface.
+        However, this also makes high-flying predators conspicuous to visually oriented prey such as small birds.
+        To counter this, bird-preying raptors such as sparrowhawks typically fly at low heights to surprise small birds emerging from cover.
+    }
+    \label{fig:hula-maps}
+\end{figure}
+
+\subsection*{Relationship between Vegetation Productivity and Visibility}
+
+Fine-scale variation in vegetation structure, and especially in plant height, creates three-dimensional habitat complexity, which translates into the sheltering effect of vegetated habitats.
+This suggests that vegetation indices such as NDVI could be used to examine the availability of shelter.
+We tested this hypothesis by examining the relationship between NDVI and the visibility index using a generalised additive model (GAM).
+We extracted the NDVI, visibility index, and land-cover type for 10,000 equally spaced locations across our study area, and excluded areas which were covered by water.
+We fit a GAM with the formula: 
+\begin{linenomath*}
+    $$\text{visibility~index} \sim s(\text{NDVI}, by = \text{landcover}) + s(\text{landcover}, bs = \text{``re''})$$
+\end{linenomath*}
+This fit a separate smooth visibility-NDVI curve for each land-cover class, and also modelled land-cover as a random effect \cite{wood2017}.
+
+We found that the relation between NDVI and visibility index was statistically significant, but the shape of the relationship was strongly influenced by land-cover (Fig.~\ref{fig:vis-ndvi}; GAM degrees of freedom [DOF] = 2.99, estimate $F$ = 1,004.02, p $<$ 0.001; $R^2$ = 0.596).
+In areas covered by trees, NDVI values $>$ 0.2 were uniformly associated with low visibility ($<$ 0.25), and thus, potentially more shelter from aerial predators (GAM DOF = 5.117, estimate $F$ = 28.0, p $<$ 0.001).
+In natural reedbeds, we found a nearly linear relationship, with visibility declining with increasing NDVI (GAM DOF = 2.227, estimate $F$ = 27.13, p $<$ 0.001).
+Surprisingly, in settlements and built-up areas, visibility was consistently $<$ 0.5, despite relatively low NDVI values overall $<$ 0.5 (GAM DOF = 1.0, estimate $F$ = 14.85, p $<$ 0.001).
+This is likely because tall structures such as houses block lines of sight quite effectively.
+Agricultural fields and open areas had predictably high visibility values ($>$ 0.7) regardless of their NDVI values (GAM DOF = 6.827, estimate $F$ = 26.41, p $<$ 0.001).
+Overall, in landscapes with mixed vegetation types, or with substantial topological complexity, NDVI does not have a simple relationship with the availability of shelter (GAM DOFs $>$ 1.0).
+Selection for NDVI in animal movement studies should thus be interpreted as selection for shelter only with some caution.
+It is more accurate to obtain and use canopy height models to calculate visibility indices and so to get an estimate of shelter with a basis in the mechanisms of visual cognition.
+Where this is challenging, such as at larger spatial scales, accounting for land-cover in habitat selection models may be one alternative.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/holeybirds/fig_spm_03}
+    \caption{Generalised additive model fits showing the relationship between NDVI and the visibility index. Visibility index shown here was calculated with an observer height of 1.5m, which is representative of the hunting flight of bird-preying raptors (see Fig. S2C).}
+    \label{fig:vis-ndvi}
+\end{figure}
+
+\section*{Modelling the Effect of Wing Gap Size on Large-scale Movements}
+
+We modelled the effect of wing gap size, given by the wing gap index, on large-scale movements using GAMs.
+We examined data from four non-migratory birds common to our study area in northern Israel: barn swallows (\textit{Hirundo rustica}), white-spectacled bulbuls (\textit{Pycnonotus xanthopygos}), house sparrows (\textit{Passer domesticus}), and clamorous reed warblers (\textit{Acrocephalus stentoreus}).
+For bulbuls, sparrows, and reed warblers, we fit one GAM with species-specific curves to relate the average hourly distance moved between areas of prolonged residence (``residence patches'') \cite{gupte2022d}, and the individual wing gap index
+We used the GAM formula:
+\begin{linenomath*}
+    $$
+        \text{distance between patches per hour} \sim s(\text{wing gap index}, by = \text{species}, k = 3) +\\
+    s(\text{species}, bs = \text{``re''})      
+    $$
+\end{linenomath*}
+This fit a GAM with wing gap index as a smoothed term with three knots allowed, and species as a random effect \cite{wood2017}.
+Model coefficients are in Table~\ref{table:coef_distance}.
+
+\begin{table}
+    \begin{center}
+    \begin{tabular}{l D{)}{)}{11)3}}
+    \hline
+     & \multicolumn{1}{c}{Coefficients} \\
+    \hline
+    Intercept          & 136.89 \; (60.97)^{*} \\
+    WGI - bulbul       & 1.90 \;  (1.99)^{*}   \\
+    WGI - sparrow      & 1.92 \;  (1.99)^{***} \\
+    WGI - warbler      & 1.00 \;  (1.00)       \\
+    Species            & 1.96 \;  (2.00)^{***} \\
+    \hline
+    AIC                & 2590.40               \\
+    BIC                & 2619.82               \\
+    Log Likelihood     & -1286.41              \\
+    Deviance           & 2573521.55            \\
+    Deviance explained & 0.52                  \\
+    Dispersion         & 12726.89              \\
+    R$^2$              & 0.50                  \\
+    GCV score          & 13217.10              \\
+    Num. obs.          & 210                   \\
+    Num. smooth terms  & 4                     \\
+    \hline
+    \multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$}}
+    \end{tabular}
+    \caption{Generalised additive model coefficients for distance between residence patches.}
+    \label{table:coef_distance}
+    \end{center}
+\end{table}
+
+To determine whether the molt-related wing gap's size also affected the frequency with which birds moved from one putative foraging patch to another, we fit a GAM to the number of patch switches (essentially, the number of patches) per hour of daytime tracking, using the formula:
+\begin{linenomath*}
+    $$
+        \text{number of patches visited per hour} \sim s(\text{wing gap index}, by = \text{species}, k = 3) +\\
+    s(\text{species}, bs = \text{``re''})
+    $$
+\end{linenomath*}
+Model coefficients are in Table~\ref{table:coef_switches}.
+For swallows, we fit a GAM with distance travelled per hour of tracking as the response, and the individual wing gap index as the smooth predictor.
+This fit a GAM with wing gap index as a smoothed term with three knots allowed:
+\begin{linenomath*}
+$$\text{distance per hour} \sim s(\text{wing gap index}, k = 3)$$
+\end{linenomath*}
+These results are reported in the main text.
+
+\begin{table}
+    \begin{center}
+    \begin{tabular}{l D{)}{)}{8)3}}
+    \hline
+     & \multicolumn{1}{c}{Coefficients} \\
+    \hline
+    Intercept          & 0.76 \; (0.13)^{***} \\
+    WGI - bulbul       & 1.93 \; (2.00)^{**}  \\
+    WGI - sparrow      & 1.36 \; (1.59)^{*}   \\
+    WGI - warbler      & 1.00 \; (1.00)       \\
+    Species            & 1.92 \; (2.00)^{***} \\
+    \hline
+    AIC                & 175.48               \\
+    BIC                & 202.97               \\
+    Log Likelihood     & -79.52               \\
+    Deviance           & 26.22                \\
+    Deviance explained & 0.29                 \\
+    Dispersion         & 0.13                 \\
+    R$^2$              & 0.27                 \\
+    GCV score          & 0.13                 \\
+    Num. obs.          & 210                  \\
+    Num. smooth terms  & 4                    \\
+    \hline
+    \multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$}}
+    \end{tabular}
+    \caption{Generalised additive model coefficients for residence patch switches.}
+    \label{table:coef_switches}
+    \end{center}
+\end{table}
+
+\section*{Modelling the Effect of Wing Gap Size on Patch Occupancy}
+
+We examined whether birds' molt-related wing gap size affected the duration that they spent in each residence patch.
+Following from the results of the models described above (see main text Figs. 1 -- 2), we expected that molting birds would spend a shorter duration in each patch, as this is the only way to achieve both farther distances between patches, as well as more frequent patches, given a constant flight speed.
+We fit a GAM to the duration (in hours) of each residence patch as:
+\begin{linenomath*}
+    $$
+        \text{patch duration} \sim s(\text{wing gap index}, by = \text{species}, k = 3) + \\
+        \text{visibility index} + \text{ndvi} +
+        s(\text{species}, bs = \text{``re''})
+    $$
+\end{linenomath*}
+Here, we also included the visibility index and NDVI as parametric fixed effects.
+Model coefficients are in Table~\ref{table:coef_duration}.
+
+\begin{table}
+    \begin{center}
+    \begin{tabular}{l D{)}{)}{9)3}}
+    \hline
+     & \multicolumn{1}{c}{Coefficients} \\
+    \hline
+    Intercept          & 1.15 \; (0.20)^{***}  \\
+    Visibility index   & -0.80 \; (0.21)^{***} \\
+    NDVI               & 0.09 \; (0.27)        \\
+    WGI - bulbul       & 1.98 \; (2.00)^{***}  \\
+    WGI - sparrow      & 1.00 \; (1.00)        \\
+    WGI - warbler      & 1.82 \; (1.96)^{*}    \\
+    Species            & 1.84 \; (2.00)^{***}  \\
+    \hline
+    AIC                & 6919.17               \\
+    BIC                & 6979.39               \\
+    Log Likelihood     & -3448.94              \\
+    Deviance           & 3230.34               \\
+    Deviance explained & 0.06                  \\
+    Dispersion         & 1.53                  \\
+    R$^2$              & 0.06                  \\
+    GCV score          & 1.54                  \\
+    Num. obs.          & 2115                  \\
+    Num. smooth terms  & 4                     \\
+    \hline
+    \multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$}}
+    \end{tabular}
+    \caption{Generalised additive model coefficients for residence patch duration.}
+    \label{table:coef_duration}
+    \end{center}
+\end{table}
+
+\section*{Modelling the Effect of Wing Gap Size on Visibility of Residence Patches}
+
+We fit GAMs with species-specific smooths to examine the effect of wing gap size on the availability of shelter in individual birds' areas of prolonged residence (``residence patches'') \cite{gupte2022d}.
+We included NDVI as a smoothed term to account for the effect of vegetation productivity, using the formula:
+\begin{linenomath*}
+$$ \text{visibility} \sim s(\text{wing gap index}, by = \text{species}, k = 3) + \\
+    s(\text{NDVI}, k = 5) + s(\text{species}, bs = \text{``re''})
+$$
+\end{linenomath*}
+Here, the wing gap index is allowed 3 knots, while NDVI is allowed five knots for a potentially more complex relationship.
+We did not find a significant effect of wing gap index on species' use of more sheltered patches.
+The one exception was clamorous reed warblers, in which the visibility of residence patches decreased linearly with increasing wing gap index (GAM DOF = 1.0 [a linear fit], $F$ = 16.354, p < 0.001).
+Full model coefficients are reported in Table~\ref{table:coef_vis}.
+NDVI had a significant, non-linear relationship with visibility, as expected from our analysis of the visibility-NDVI relationship above (GAM DOF = 3.885, $F$ = 172.493, p < 0.001).
+Model results are version controlled at \textit{github.com/pratikunterwegs/holeybirds} in the file ``data/results/mod\_summary\_rrv\_visibility.txt''
+
+\begin{table}
+    \begin{center}
+    \begin{tabular}{l D{)}{)}{8)3}}
+    \hline
+     & \multicolumn{1}{c}{Coefficients} \\
+    \hline
+    Intercept          & 0.33 \; (0.02)^{***} \\
+    NDVI               & 1.00 \; (1.00)^{**}  \\
+    WGI - bulbul       & 1.00 \; (1.00)       \\
+    WGI - sparrow      & 1.76 \; (1.94)       \\
+    WGI - warbler      & 3.90 \; (3.99)^{***} \\
+    Species            & 1.88 \; (2.00)^{***} \\
+    \hline
+    AIC                & -2108.51             \\
+    BIC                & -2046.84             \\
+    Log Likelihood     & 1065.79              \\
+    Deviance           & 22.94                \\
+    Deviance explained & 0.35                 \\
+    Dispersion         & 0.01                 \\
+    R$^2$              & 0.34                 \\
+    GCV score          & 0.02                 \\
+    Num. obs.          & 1550                 \\
+    Num. smooth terms  & 5                    \\
+    \hline
+    \multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$}}
+    \end{tabular}
+    \caption{Generalised additive model coefficients for residence patch visibility.}
+    \label{table:coef_vis}
+    \end{center}
+\end{table}
+
+\section*{Examining the Effects of Visibility and Vegetation Productivity on Habitat Selection}
+
+Finding a correlation between vegetation growth in the form of NDVI, and visibility, we adopted a step-selection approach \cite{fieberg2010,signer2019,fieberg2021} to disentangle the effects of these two factors on the movements of molting birds.
+We performed this analysis on the movements of bulbuls, sparrows, and reed warblers between their residence patches.
+We excluded swallows because we had not constructed residence patches for these birds, and because we could not resolve their flight altitude, making it difficult to determine whether they were using shelter.
+
+We drew 9 alternative patch movements for every real patch movement, that is from patch $N$ to patch $N+1$, and sampled 15 locations distributed around the alternative moves.
+We drew the locations of the 9 alternative movements by drawing first a distance from a gamma distribution fitted to each individual's daily movements between patches, and second, an angle drawn from a von Mises distribution fitted to the individual's turning angles during large-scale movements between patches (see main text Fig. 1).
+For each of these alternative moves, we drew 15 locations from a normal distribution centred on the coordinates of the move, with a standard deviation of 20 m.
+In this way, we constructed `alternative residence patches', which we could compare with the patches that birds actually used.
+At each of the 135 alternative locations (15 locations $\times$ 9 patches) we obtained the NDVI and visibility index.
+
+We compared the NDVI and visibility of the 15 points in each potential patch, with the NDVI and visibility of a flexible number of real positions of patches actually used by individuals, by fitting a conditional logistic regression to the patch status (real or alternative).
+On average, across species and molt status, there were 28.1 real positions (SD = 25.3) compared against 251 potential positions (SD = 228).
+In this way, we were able to determine how birds selected for vegetation productivity and shelter when moving.
+Since most birds' residence patches are in high-NDVI low-visibility areas (see main text Fig. 4), but are surrounded by high-NDVI, high-visibility areas, this allowed us to disentangle the provisioning effects of vegetation from its sheltering effects.
+
+We fit separate regressions for each molt status for each of the three species, using the formula:
+\begin{linenomath*}
+$$ \text{case\_} \sim \text{visibility} + \text{NDVI} + \text{strata}(\text{step~identity}) $$
+\end{linenomath*}
+We chose the ``approximate'' fitting method to reduce computational time.
+Model coefficients are presented in Table~\ref{table:coef_ssa}; negative coefficients indicate selection against visibility, and for shelter.
+
+\begin{sidewaystable}
+    \setlength{\tabcolsep}{4pt}
+    
+    \begin{center}
+    
+        \resizebox{\textwidth}{!}{%
+        \begin{tabular}{l D{.}{.}{3.5} D{.}{.}{4.5} D{.}{.}{4.5} D{.}{.}{4.5} D{.}{.}{4.5} D{.}{.}{4.5} D{.}{.}{3.3} D{.}{.}{4.5} D{.}{.}{3.4}}
+        \toprule
+        & \multicolumn{3}{c}{White-spectacled bulbul} & \multicolumn{3}{c}{House sparrow} & \multicolumn{3}{c}{Clamorous reed warbler} \\
+        \cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10}
+        & \multicolumn{1}{c}{Non-moulting} & \multicolumn{1}{c}{Molting} & \multicolumn{1}{c}{Manipulated} & \multicolumn{1}{c}{Non-moulting} & \multicolumn{1}{c}{Molting} & \multicolumn{1}{c}{Manipulated} & \multicolumn{1}{c}{Non-moulting} & \multicolumn{1}{c}{Molting} & \multicolumn{1}{c}{Manipulated} \\
+        \midrule
+        Visibility index & -8.27^{***} & -5.01^{***} & -5.84^{***} & -5.34^{***} & -6.68^{***} & -3.90^{***} & -3.58^{*} & -5.46^{***} & -16.78^{**} \\
+                        & (1.70)      & (0.51)      & (0.56)      & (0.29)      & (0.67)      & (0.41)      & (1.44)    & (0.81)      & (5.39)      \\
+        NDVI             & -0.45       & 0.99        & -1.47       & -0.69^{*}   & 0.42        & -0.04       & 1.22      & -0.00       & -3.04       \\
+                        & (1.57)      & (0.67)      & (0.84)      & (0.35)      & (0.82)      & (0.70)      & (2.33)    & (1.20)      & (6.77)      \\
+        \midrule
+        AIC              & 279.66      & 3014.80     & 1874.35     & 5333.12     & 1190.49     & 1173.51     & 421.54    & 977.53      & 90.57       \\
+        R$^2$            & 0.12        & 0.08        & 0.09        & 0.10        & 0.12        & 0.08        & 0.06      & 0.09        & 0.13        \\
+        Max. R$^2$       & 0.55        & 0.67        & 0.63        & 0.68        & 0.58        & 0.61        & 0.57      & 0.65        & 0.50        \\
+        Num. events      & 42          & 300         & 209         & 522         & 164         & 140         & 54        & 103         & 16          \\
+        Num. obs.        & 415         & 2983        & 2085        & 5209        & 1614        & 1373        & 538       & 1022        & 160         \\
+        Missings         & 0           & 0           & 0           & 209         & 1           & 42          & 0         & 0           & 0           \\
+        \bottomrule
+        \multicolumn{10}{l}{\scriptsize{$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$}}
+        \end{tabular}
+        }
+        \caption{Log relative selection strengths (RSS; also denoted by $\beta$) for patch visibility and NDVI.}
+        \label{table:coef_ssa}
+    \end{center}
+
+\end{sidewaystable}
+
+\endgroup
+
+{ \begin{center} \barfont{-.-} \end{center} }
 
 % \section*{Acknowledgments}
 
