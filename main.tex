@@ -80,10 +80,15 @@
 
 % spacing between author names of different letters
 \setlength{\bibinitsep}{\baselineskip}
-% \newcommand\bibsection{\@startsection {section}{1}{-\leftmargin}%
-%                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
-%                                    {2.3ex \@plus.2ex}%
-%                                    {\normalfont\Large\bfseries}}
+
+% new kind of chapter
+\newcounter{interludes}
+\renewcommand{\theinterludes}{\Alph{interludes}}
+\newcommand{\interlude}[1]{\refstepcounter{interludes}
+                           \chapter*{#1}
+                           \addtocontents{toc}{\protect\vspace{\beforebibskip}}%
+                           \addcontentsline{toc}{chapter}{\small~Interlude \theinterludes~ #1}
+                           }
 
 \newenvironment{interludeenv}{
     \titleformat{name=\chapter}[display]
@@ -143,7 +148,7 @@
 
 % handle extended part and chapter numbers due to text
 \newlength\mylen
-\settowidth\mylen{\bfseries\cftchappresnum\cftchapaftersnum}
+\settowidth\mylen{\bfseries{Interlude}\cftchapaftersnum}
 \addtolength\cftpartnumwidth{\mylen}
 \addtolength\cftchapnumwidth{\mylen}
 
@@ -186,6 +191,9 @@
 % for tables
 \usepackage{dcolumn}
 \usepackage{booktabs}
+
+% for box
+\usepackage{pdfpages}
 
 % ********************************************************************
 % GO!GO!GO! MOVE IT!
@@ -243,18 +251,21 @@
 \label{part:eco}
 
 
-% \cleardoublepage \include{chapters/preprocessing_header}
-% \include{chapters/preprocessing_main}
+\cleardoublepage \include{chapters/preprocessing_header}
+\include{chapters/preprocessing_main}
 
-% % % \cleardoublepage \include{boxes/mapping}
+\clearpage \cleardoublepage
+\begin{interludeenv}
+\include{boxes/mapping}
+\end{interludeenv}
 
-% \cleardoublepage \include{chapters/holeybirds_header}
-% \include{chapters/holeybirds_main}
+\cleardoublepage \include{chapters/holeybirds_header}
+\include{chapters/holeybirds_main}
 
-% \cleardoublepage \include{chapters/hillybirds_header}
-% \include{chapters/hillybirds_main}
+\cleardoublepage \include{chapters/hillybirds_header}
+\include{chapters/hillybirds_main}
 
-% \cleardoublepage \include{boxes/clearances}
+\cleardoublepage \include{boxes/clearances}
 
 \clearpage \cleardoublepage
 \ctparttext{Animal movement is neither random nor optimal, but the outcome of individuals making movement decisions based on local information. The strategies underlying these decisions are, like everything in biology, shaped by animals' evolutionary contexts. Yet evolution is rarely considered in animal movement models, possibly because it is considered to be too slow to be relevant to outcomes on human timescales. 
@@ -265,11 +276,11 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 
 % \cleardoublepage \include{boxes/details}
 
-\cleardoublepage \include{chapters/kleptomove_header} 
-\include{chapters/kleptomove_main}
+% \cleardoublepage \include{chapters/kleptomove_header}
+% \include{chapters/kleptomove_main}
 
-\cleardoublepage \include{chapters/pathomove_header}
-\include{chapters/pathomove_main}
+% \cleardoublepage \include{chapters/pathomove_header}
+% \include{chapters/pathomove_main}
 
 % \cleardoublepage \include{chapters/patternprocess_header}
 % \include{chapters/patternprocess_main}
@@ -281,20 +292,9 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 
 % \cleardoublepage \include{chapters/discussion}
 
-\cleardoublepage
+% \clearpage \include{frontbackmatter/Bibliography}
 
-% BIBLIOGRAPHY
-\begingroup
-\thispagestyle{empty}
-\newrefcontext[sorting=nyt]
-\addtocontents{toc}{\protect\vspace{\beforebibskip}}%
-\addchap{Literature Cited in this Thesis}
-\markboth{\color{gray}\small\scshape\rmfamily{Bibliography}}{\color{gray}\small\scshape\rmfamily{Bibliography}}
-\printbibliography[heading=none]
-\end{refsection}
-\endgroup
-
-\clearpage \include{frontbackmatter/Publications}
+% \clearpage \include{frontbackmatter/Publications}
 
 % \clearpage \include{frontbackmatter/Acknowledgments}
 
