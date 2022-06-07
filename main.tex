@@ -85,16 +85,13 @@
 %                                    {2.3ex \@plus.2ex}%
 %                                    {\normalfont\Large\bfseries}}
 
-% \bibinitsep=1pt %to trigger blx@initsep
-% \def\blx@initsep{%
-%   \blx@imc@iffieldundef{sortinit}
-%     {}
-%     {\ifnum\c@instcount>\@ne
-%        \blx@imc@iffieldequals{sortinit}\blx@previnit
-%          {}
-%          {\bibsection*{\printfield{sortinit}}\item}%instead of \addvspace
-%      \fi
-%      \global\let\blx@previnit\abx@field@sortinit}}
+\newenvironment{interludeenv}{
+    \titleformat{name=\chapter}[display]
+    {}
+    {}
+    {0pt}
+    {\raggedright\bfseries\color{Maroon}\rmfamily\scshape{\huge{Interlude~{\theinterludes}\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
+  }
 
 \makeatletter
 
