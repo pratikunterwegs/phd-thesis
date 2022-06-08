@@ -86,19 +86,54 @@
 \renewcommand{\theinterludes}{\Alph{interludes}}
 \newcommand{\interlude}[1]{\refstepcounter{interludes}
                            \chapter*{#1}
-                           \addtocontents{toc}{\protect\vspace{\beforebibskip}}%
+                           \markboth{}{}
+                           \addtocontents{toc}{\protect\vspace{5pt}}%
                            \addcontentsline{toc}{chapter}{\small~Interlude \theinterludes~ #1}
+                           \addtocontents{toc}{\protect\vspace{5pt}}%
                            }
 
 \newenvironment{interludeenv}{
-    \titleformat{name=\chapter}[display]
-    {}
-    {}
-    {0pt}
-    {\raggedright\bfseries\color{Maroon}\rmfamily\scshape{\huge{Interlude~{\theinterludes}\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
-  }
+  \titleformat{name=\chapter}[display]
+  {}
+  {}
+  {0pt}
+  {\raggedright\bfseries\color{Maroon}\rmfamily\scshape{\huge{Interlude~{\theinterludes}\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
+}
+
+\newenvironment{bibenv}{
+  \titleformat{name=\chapter}[display]
+  {}
+  {}
+  {0pt}
+  {\raggedright\bfseries\color{Maroon}\rmfamily\scshape{\huge{Bibliography\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
+}
+
+% for handling author prefixes
+% \renewbibmacro*{begentry}{\midsentence}
 
 \makeatletter
+
+% to handle prefixes in author names
+% \AtBeginDocument{\toggletrue{blx@useprefix}}
+
+% for a bibliography split into alphabetical sections
+% \def\ifskipbib{\iftoggle{blx@skipbib}}
+% \makeatother
+
+\bibinitsep=\baselineskip %to trigger blx@initsep
+% \setlength{\bibinitsep}{\baselineskip}
+\def\blx@initsep{%
+  \blx@imc@iffieldundef{sortinit}
+    {}
+    {%
+      \ifnum\c@instcount>\@ne
+      \blx@imc@iffieldequals{sortinit}\blx@previnit
+        {}
+        {\leavevmode\marginline{\color{Maroon}\bfseries\scshape\huge\printfield{sortinit}}}%
+      \fi
+      \global\let\blx@previnit\abx@field@sortinit
+  }%
+}
 
 % to indent unnumbered chapters - doesnt work
 % \def\ttl@addcontentsline#1#2{%
@@ -251,8 +286,8 @@
 \label{part:eco}
 
 
-\cleardoublepage \include{chapters/preprocessing_header}
-\include{chapters/preprocessing_main}
+% \cleardoublepage \include{chapters/preprocessing_header}
+% \include{chapters/preprocessing_main}
 
 \clearpage \cleardoublepage
 \begin{interludeenv}
@@ -262,10 +297,13 @@
 \cleardoublepage \include{chapters/holeybirds_header}
 \include{chapters/holeybirds_main}
 
-\cleardoublepage \include{chapters/hillybirds_header}
-\include{chapters/hillybirds_main}
+% \cleardoublepage \include{chapters/hillybirds_header}
+% \include{chapters/hillybirds_main}
 
-\cleardoublepage \include{boxes/clearances}
+\clearpage \cleardoublepage
+\begin{interludeenv}
+\include{boxes/clearances}
+\end{interludeenv}
 
 \clearpage \cleardoublepage
 \ctparttext{Animal movement is neither random nor optimal, but the outcome of individuals making movement decisions based on local information. The strategies underlying these decisions are, like everything in biology, shaped by animals' evolutionary contexts. Yet evolution is rarely considered in animal movement models, possibly because it is considered to be too slow to be relevant to outcomes on human timescales. 
@@ -274,7 +312,8 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 \part{Evolutionary Contexts of Animal Movement Strategies}
 \label{part:evo}
 
-% \cleardoublepage \include{boxes/details}
+\clearpage \cleardoublepage
+\include{boxes/details}
 
 % \cleardoublepage \include{chapters/kleptomove_header}
 % \include{chapters/kleptomove_main}
@@ -290,9 +329,9 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 % \include{Chapters/Chapter03}
 %\include{multiToC} % <--- just debug stuff, ignore for your documents
 
-% \cleardoublepage \include{chapters/discussion}
+\cleardoublepage \include{chapters/discussion}
 
-% \clearpage \include{frontbackmatter/Bibliography}
+\cleardoublepage \include{frontbackmatter/Bibliography}
 
 % \clearpage \include{frontbackmatter/Publications}
 
