@@ -62,9 +62,9 @@ Individual-based models have to explicitly specify numerous assumptions (e.g. sp
 We kept our model assumptions as simple and generic as possible, striving for general, conceptual insights.
 To keep the model realistic, we based it on the foraging behavior of shorebirds such as oystercatchers (\textit{Haematopus} spp.), which are extensively studied in the context of foraging competition, both empirically \parencite[e.g.][]{vahl2005, vahl2005a,vahl2007a, rutten2010, rutten2010a}, and using individual-based models \parencite[reviewed in][]{stillman2010}.
 
-\graffito{
-    We initially tried 100 timesteps, but settled on 400 as this allowed enough time for individuals' intake to be a function of their movement strategy, rather than their good fortune in being initialised in a productive part of the landscape.
-}
+% \graffito{
+%     We initially tried 100 timesteps, but settled on 400 as this allowed enough time for individuals' intake to be a function of their movement strategy, rather than their good fortune in being initialised in a productive part of the landscape.
+% }
 Our environment is a fine grid of cells, and each grid cell can hold multiple individuals.
 Resources are discrete, as is our conception of time within and between generations. 
 Our population, with a fixed number of individuals (N = 10,000), moves on a landscape of 512\textsuperscript{2} grid cells (approx. 1 individual per 26 cells), with wrapped boundaries (i.e., a torus); individuals passing beyond the bounds at one end re-appear on the opposite side.
@@ -75,9 +75,9 @@ Our model has 1,000 generations, and this comprises the evolutionary timescale.
 
 \subsection*{Resource Landscape}
 
-\graffito{
-    Early versions of this model had one giant resource peak; this was dropped as it was relatively easy for individuals to find their way to productive areas.
-}
+% \graffito{
+%     Early versions of this model had one giant resource peak; this was dropped as it was relatively easy for individuals to find their way to productive areas.
+% }
 We considered our discrete resources, called `prey-items' to represent mussels, a common prey of many shorebirds, whose abundances are largely driven by external gradients.
 We assigned each cell a constant probability of generating a new prey-item per timestep, which we refer to as the cell-specific growth rate $r$.
 We modelled clustering in landscape productivity by having the distribution of $r$ across the grid take the form of 1,024 resource peaks, placed at regular distances of 16 grid cells from the peaks around them; $r$ declines from the centre of each peak (called $r_{max}$) to its periphery (see Fig.~\ref{klepto_fig_01}A).
@@ -99,9 +99,9 @@ We model movement as comprised of small, discrete steps between adjacent cells.
 Across scenarios, individuals make movement decisions using evolved cue preferences.
 Individuals select a destination cell, after assessing potential destinations based on available cues, similar to approaches used previously \parencite{getz2015,getz2016,white2018,scherer2020,netz2021}.
 
-\graffito{
-    Our individuals can use much more complex functions, encoded by neural networks, an idea that has been explored, but not widely used, in movement ecology \parencite{mueller2011}.
-}
+% \graffito{
+%     Our individuals can use much more complex functions, encoded by neural networks, an idea that has been explored, but not widely used, in movement ecology \parencite{mueller2011}.
+% }
 To move, individuals scan the nine cells of their Moore neighbourhood for three environmental cues, \textit{(1)} an indication of the number of discrete prey-items $P$, \textit{(2)} the number of individuals handling prey $H$ (`handlers'), and \textit{(3)} the number of individuals not handling prey $N$ (`non-handlers').
 Individuals rank the potential destinations (including their current cell) by their suitability $S$, where $S = s_PP + s_HH + s_NN$, and move to the most suitable cell in timestep $t+1$.
 The individual preferences for each cue, $s_P$, $s_H$, and $s_N$, have numeric values, are considered to be evolvable traits that can be transmitted between generations, and undergo independent mutation.
@@ -116,9 +116,9 @@ We call an individual's combination of inherited preferences its \textit{movemen
 In scenario 1, we simulate only exploitative competition; individuals (henceforth called `foragers') move about on the landscape and probabilistically find, handle, and consume prey-items.
 Foragers can be either in a `searching' or a `handling' state \parencite{holmgren1995}.
 
-\graffito{
-    The Kleptomove simulation can be modified to change the probability of kleptoparasite success.
-}
+% \graffito{
+%     The Kleptomove simulation can be modified to change the probability of kleptoparasite success.
+% }
 In scenario 2, the competition strategy is genetically determined and transmitted from parents to offspring: exploitative competition (by foragers), or kleptoparasitic interference (by kleptoparasites).
 Kleptoparasites cannot extract prey-items directly from the landscape, and only steal from handlers \parencite[see][]{holmgren1995}.
 Kleptoparasites are always successful in stealing from handlers, and such successful surprise attacks are commonly observed among birds \parencite{brockmann1979}.
@@ -129,9 +129,9 @@ Once a kleptoparasite becomes a handler, it can also be targeted by other klepto
 Unsuccessful kleptoparasites are considered idle, and are counted as non-handlers.
 Movement strategies evolve independently of the competition strategy, as in scenario 1; however, the optimal movement strategy for foragers need not be the same as that for kleptoparasites.
 
-\graffito{
-    Similar to movement decisions, competition decisions can also be encoded by a neural network.
-}
+% \graffito{
+%     Similar to movement decisions, competition decisions can also be encoded by a neural network.
+% }
 In scenario 3, each individual can either act as a forager, or as a kleptoparasite, depending on its assessment of local conditions.
 Similar to how movement decisions are made based on local cues, individuals process cell-specific environmental cues in timestep $t$ to determine their competition strategy in the next timestep as
 % \begin{linenomath*}
@@ -155,9 +155,9 @@ For simplicity, we assume that individuals are haploid and reproduction is asexu
 In scenarios 1 and 2, individuals only inherit and transmit their cue preferences ($s_P$, $s_H$, $s_N$) which determine movement decisions.
 In scenario 3, individuals also inherit cue preferences for competition decisions ($w_P$, $w_H$, $w_N$, $w_0$), and transmit them to offspring.
 The movement and competition cue preferences all mutate independently in scenario 3.
-\graffito{
-    The implicit assumption here is fecundity effects, rather than mortality effects. This is consistent with many shorebirds, which often fail to breed in bad years, but have very high adult survival.
-}
+% \graffito{
+%     The implicit assumption here is fecundity effects, rather than mortality effects. This is consistent with many shorebirds, which often fail to breed in bad years, but have very high adult survival.
+% }
 Each individual's number of offspring is proportional to the individual's total lifetime intake of resources; hence, resource intake is used as a proxy for fitness. 
 A weighted lottery (with weights proportional to lifetime resource intake) selects a parent for each offspring in the subsequent generation \parencite[see e.g.][]{tania2012,netz2021}.
 Across scenarios, the cue preferences for movement decisions are subject to rare, independent mutations ($\mu$ = 0.001).
@@ -169,9 +169,9 @@ We chose this option because it allows us to focus on adaptive movement strategi
 
 \subsection*{Simulation Output and Analysis}
 
-\graffito{
-    The simulation output, in a Windows-specific compressed format, required a number of specialised functions to extract useful information.
-}
+% \graffito{
+%     The simulation output, in a Windows-specific compressed format, required a number of specialised functions to extract useful information.
+% }
 We ran all three scenarios at a default $r_{max}$ of 0.01, which we present in the \textsc{Results}, and also across a range of $r_{max}$ values between 0.001 and 0.05 (see Fig.~\ref{klepto_fig_06} and Supplementary Material Figs. 7 -- 9).
 We initialised the cue preferences with values drawn from a Cauchy distribution with a scale of 0.01 centred on zero; this allows a very small amount of variation in the population (see e.g. Fig.~\ref{klepto_fig_01}E), and is equivalent to a single generation of mutation from all preferences initialised at zero (see \textsc{Reproduction and Inheritance} above).
 Normalising each individual's cue preferences by the sum of the absolute values of all preferences $s_I = s_I / (|s_P| + |s_H| + |s_N|)$, for $s_I \in s_P, s_H, s_N$, makes it possible to visualise individuals on a three-dimensional trait space of relative preferences bounded by (-1.0: \textit{strongly avoid}, +1.0: \textit{strongly prefer}).

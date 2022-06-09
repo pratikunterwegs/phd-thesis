@@ -178,7 +178,7 @@
     \subsection*{Spatial Filtering Using Bounding Boxes and Polygons}
 
     First, users should exclude positions outside the spatial bounds of a study area by comparing position coordinates with the range of acceptable coordinates (the bounding box), and removing positions outside them (Fig.~\ref{preproc_fig_03}.a). 
-    A bounding box filter does not require a geospatial representation such as a shapefile, and can help remove unreliable data from a tracking system that is less accurate beyond a certain range \citep[][]{beardsworth2021}.
+    A bounding box filter does not require a geospatial representation such as a shapefile, and can help remove unreliable data from a tracking system that is less accurate beyond a certain range \citep[][]{beardsworth2022mee}.
     In some special cases, users may wish to remove positions \textit{inside} a bounding box, either because movement behaviour within an area is not the focus of a study, or because positions recorded within an area are known to be erroneous.
     An example of the former is studies of transit behaviour between features which can be approximated by their bounding boxes. 
     Instances of the latter are likely to be system specific, but are known from ATLAS systems. 
@@ -257,14 +257,14 @@
 
     \subsection*{Filtering on Data Quality Attributes}
 
-    Tracking data attributes can be good indicators of the reliability of positions calculated by a tracking system \citep{beardsworth2021}.
+    Tracking data attributes can be good indicators of the reliability of positions calculated by a tracking system \citep{beardsworth2022mee}.
     % \graffito{
     %     I wasn't fully convinced that ATLAS systems solve for X and Y coordinates independently. The assumption of independence underlies the formula for `SD' --- but \citet{weiser2016} does not make it perfectly clear whether it is correct.
     % }
     GPS systems provide direct measures of location error during localisation \citep[Horizontal Dilution of Precision, HDOP in GPS]{ranacher2016}, while  in reverse-GPS systems, a measure referred to as Standard Deviation (SD in many datasets), can be calculated from the variance-covariance matrix of each position as: $\text{SD} = \sqrt{\text{Var X} + \text{Var Y} + \text{Cov XY}}$ \citep[see details in][]{maccurdy2009, maccurdy2019, weiser2016, ranacher2016}.
     Tracking data can also include indirect indicators of data quality.
     For instance, GPS systems' location error may be indicated indirectly by the number of satellites involved in the localisation.
-    In reverse-GPS systems too, the number of base stations involved in each localisation is an indirect indicator of data quality, and positions localised using more receivers are usually more reliable \citep[the minimum required for an ATLAS localisation is 3; see][]{weiser2016, beardsworth2021}.
+    In reverse-GPS systems too, the number of base stations involved in each localisation is an indirect indicator of data quality, and positions localised using more receivers are usually more reliable \citep[the minimum required for an ATLAS localisation is 3; see][]{weiser2016,beardsworth2022mee}.
     % A location error measure associated with each coordinate pair (similar to GPS HDOP) can be calculated and assigned to a new column \textit{SD} using the formula for the sum of correlated random variables
     % \begin{linenomath*}
     %     \begin{equation*}
@@ -566,8 +566,8 @@
     \subsection*{A Real-World Test of User-Built Pre-Processing Tools}
 
     We applied the pre-processing pipeline using \textit{atlastools} functions described above to an ATLAS dataset to verify that the residence patch method could correctly identify known stopping points (see Fig.~\ref{preproc_fig_07}).
-    We collected the data (n = 50,816) on foot and by boat, with a hand-held WATLAS tag (sampling interval = 1s) around the island of Griend (53.25$^{\circ}$N, 5.25$^{\circ}$E) in August 2020 \citep[WATLAS: Wadden Sea ATLAS system][Bijleveld et al. \textit{in prep.}]{beardsworth2021}.
-    Since the data were intended to test the accuracy of the WATLAS system, we were able to log stops in the track as waypoints using a handheld GPS device, and manually annotate the WATLAS data with the timestamp of each waypoint (Garmin Dakota 10; see \citealt{beardsworth2021}).
+    We collected the data (n = 50,816) on foot and by boat, with a hand-held WATLAS tag (sampling interval = 1s) around the island of Griend (53.25$^{\circ}$N, 5.25$^{\circ}$E) in August 2020 \citep[WATLAS: Wadden Sea ATLAS system][]{beardsworth2022mee,bijleveld2021}.
+    Since the data were intended to test the accuracy of the WATLAS system, we were able to log stops in the track as waypoints using a handheld GPS device, and manually annotate the WATLAS data with the timestamp of each waypoint (Garmin Dakota 10; see \citealt{beardsworth2022mee}).
     We estimated the real duration of each stop as the time difference between the first and last position recorded within 50m of each waypoint, within a 10 minute window before and after the waypoint timestamp (to avoid biased durations from revisits).
     Stops had a median duration of 10.28 minutes (range: 1.75 minutes -- 20 minutes; see Supplementary Material).
     We cleaned the data before constructing residence patches by (i) removing a single outlier ($>$ 15 km away), removing unrealistic movement ($\geq$ 15 m/s), smoothing the data ($K$ = 5), and (iv) thinning the data by subsampling over a 30 second interval.
