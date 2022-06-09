@@ -47,8 +47,6 @@
 \addbibresource{references/discussion.bib}
 \addbibresource{references/general.bib}
 
-% \addbibresource{Bibliography.bib}
-
 %********************************************************************
 % Hyphenation
 %*******************************************************
@@ -64,11 +62,6 @@
 \newfontfamily{\barfont}[Ligatures={Rare}]{Vollkorn}
 
 \renewcommand*{\bibfont}{\footnotesize}
-
-% for all authors in bibliography in certain sections
-\newtoggle{bbx:allnames}
-\togglefalse{bbx:allnames}
-\AtEveryBibitem{\iftoggle{bbx:allnames}{\defcounter{maxnames}{999}}{}}
 
 \usepackage{setspace}
 
@@ -108,26 +101,23 @@
   {\raggedright\bfseries\color{Maroon}\rmfamily\scshape{\huge{Bibliography\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
 }
 
-% for handling author prefixes
-% \renewbibmacro*{begentry}{\midsentence}
-
 \makeatletter
 
-% for a bibliography split into alphabetical sections as margin notes
-\def\ifskipbib{\iftoggle{blx@skipbib}}
-\bibinitsep=\baselineskip %to trigger blx@initsep
-\def\blx@initsep{%
-	\blx@imc@iffieldundef{sortinit}
-	{}
-	{%
-		\ifnum\c@instcount>\@ne
-		\blx@imc@iffieldequals{sortinit}\blx@previnit
-		{}
-		{\leavevmode\marginline{\color{Maroon}\bfseries\scshape\huge\printfield{sortinit}}}%
-		\fi
-		\global\let\blx@previnit\abx@field@sortinit
-	}%
-}
+% % for a bibliography split into alphabetical sections as margin notes
+% \def\ifskipbib{\iftoggle{blx@skipbib}}
+% \bibinitsep=\baselineskip %to trigger blx@initsep
+% \def\blx@initsep{%
+% 	\blx@imc@iffieldundef{sortinit}
+% 	{}
+% 	{%
+% 		\ifnum\c@instcount>\@ne
+% 		\blx@imc@iffieldequals{sortinit}\blx@previnit
+% 		{}
+% 		{\leavevmode\marginline{\color{Maroon}\bfseries\scshape\huge\printfield{sortinit}}}%
+% 		\fi
+% 		\global\let\blx@previnit\abx@field@sortinit
+% 	}%
+% }
 
 % to correctly handle author name prefixes
 \AtBeginDocument{\toggletrue{blx@useprefix}}
@@ -187,6 +177,9 @@
 \usepackage{afterpage}
 
 \makeatother
+
+% required to make author name prefixes lowercase
+\renewbibmacro*{begentry}{\midsentence}
 
 \usepackage{caption}
 \setcapindent{0pt}
@@ -266,7 +259,6 @@
 %********************************************************************
 % Mainmatter
 % *******************************************************
-% \titleformat{\section}{\relax}{\textsf{\thesection}}{1em}{}
 
 % use \clearpage here to avoid problems with pdfbookmark
 \clearpage
@@ -278,9 +270,8 @@
 \part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
 \label{part:eco}
 
-
-% \cleardoublepage \include{chapters/preprocessing_header}
-% \include{chapters/preprocessing_main}
+\cleardoublepage \include{chapters/preprocessing_header}
+\include{chapters/preprocessing_main}
 
 \clearpage \cleardoublepage
 \begin{interludeenv}
@@ -290,8 +281,8 @@
 \cleardoublepage \include{chapters/holeybirds_header}
 \include{chapters/holeybirds_main}
 
-% \cleardoublepage \include{chapters/hillybirds_header}
-% \include{chapters/hillybirds_main}
+\cleardoublepage \include{chapters/hillybirds_header}
+\include{chapters/hillybirds_main}
 
 \clearpage \cleardoublepage
 \begin{interludeenv}
@@ -308,14 +299,14 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 \clearpage \cleardoublepage
 \include{boxes/details}
 
-% \cleardoublepage \include{chapters/kleptomove_header}
-% \include{chapters/kleptomove_main}
+\cleardoublepage \include{chapters/kleptomove_header}
+\include{chapters/kleptomove_main}
 
-% \cleardoublepage \include{chapters/pathomove_header}
-% \include{chapters/pathomove_main}
+\cleardoublepage \include{chapters/pathomove_header}
+\include{chapters/pathomove_main}
 
-% \cleardoublepage \include{chapters/patternprocess_header}
-% \include{chapters/patternprocess_main}
+\cleardoublepage \include{chapters/patternprocess_header}
+\include{chapters/patternprocess_main}
 
 % \include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
@@ -326,7 +317,7 @@ In the second part of this thesis, I probe the evolution of animal movement, and
 
 \cleardoublepage \include{frontbackmatter/Bibliography}
 
-% \clearpage \include{frontbackmatter/Publications}
+\clearpage \include{frontbackmatter/Publications}
 
 % \clearpage \include{frontbackmatter/Acknowledgments}
 
