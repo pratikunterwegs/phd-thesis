@@ -86,30 +86,27 @@
 
 \usepackage{csquotes}
 \PassOptionsToPackage{%
-  backend=biber,bibencoding=utf8, %instead of bibtex
+  backend=biber,
+  hyperref,
+  % bibencoding=utf8, %instead of bibtex
   % backend=bibtex8,bibencoding=ascii,%
-  language=auto,%
+  % language=auto,%
   url=false,
   isbn=false,
   doi=false,
   eprint=false,
-  % style=science,%
   style=oxyear,%oxyear, % Author 1999, 2010
-  % bibstyle=authoryear,
   dashed=true, % dashed: substitute rep. author with ---
-  sorting=ynt, % name, year, title
-  % sortcites,
-  % issuestyle=parens,
-  % sorting=none,
   maxcitenames=1,
   % mincitenames=1,
   % maxbibnames=5
   maxbibnames=99, % default: 3, et al.
-  %backref=true,%
   date=year,
   uniquename=false,
-  useprefix=true,
+  useprefix=false,
   sortcites=true,
+  sorting=ynt, % name, year, title
+  % sortfirstinits=true, % for handling names with prefixes, e.g. le Roux to be with Romano, not Leclerc.
   natbib=true % natbib compatibility mode (\citep and \citet still work)
 }{biblatex}
 \usepackage{biblatex}
