@@ -113,32 +113,25 @@
 
 \makeatletter
 
-% to handle prefixes in author names
-% \AtBeginDocument{\toggletrue{blx@useprefix}}
-
-% for a bibliography split into alphabetical sections
-% \def\ifskipbib{\iftoggle{blx@skipbib}}
-% \makeatother
-
+% for a bibliography split into alphabetical sections as margin notes
+\def\ifskipbib{\iftoggle{blx@skipbib}}
 \bibinitsep=\baselineskip %to trigger blx@initsep
-% \setlength{\bibinitsep}{\baselineskip}
 \def\blx@initsep{%
-  \blx@imc@iffieldundef{sortinit}
-    {}
-    {%
-      \ifnum\c@instcount>\@ne
-      \blx@imc@iffieldequals{sortinit}\blx@previnit
-        {}
-        {\leavevmode\marginline{\color{Maroon}\bfseries\scshape\huge\printfield{sortinit}}}%
-      \fi
-      \global\let\blx@previnit\abx@field@sortinit
-  }%
+	\blx@imc@iffieldundef{sortinit}
+	{}
+	{%
+		\ifnum\c@instcount>\@ne
+		\blx@imc@iffieldequals{sortinit}\blx@previnit
+		{}
+		{\leavevmode\marginline{\color{Maroon}\bfseries\scshape\huge\printfield{sortinit}}}%
+		\fi
+		\global\let\blx@previnit\abx@field@sortinit
+	}%
 }
 
-% to indent unnumbered chapters - doesnt work
-% \def\ttl@addcontentsline#1#2{%
-%   \addcontentsline{toc}{#1}{\ifttl@toclabel\ttl@a\else\numberline{}\fi#2}% indent unnumbered ToC entries too
-%   \nobreak}
+% to correctly handle author name prefixes
+\AtBeginDocument{\toggletrue{blx@useprefix}}
+%\AtBeginBibliography{\togglefalse{blx@useprefix}}
 
 % to prevent hyphens in toc
 \renewcommand{\@tocrmarg}{2.55em plus1fil}
