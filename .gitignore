@@ -277,3 +277,4 @@ TSWLatexianTemp*
 
 # ignore htme
 chapters/htme.tex
+temp/
