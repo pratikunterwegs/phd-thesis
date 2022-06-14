@@ -20,17 +20,17 @@
     For example, resources that are critical to animals are often ephemeral, and difficult to measure with both a high spatio-temporal extent and resolution using existing technologies such as remote sensing, leading researchers to fall back on more long-term resource proxies such as vegetation indices \citep{pettorelli2011}.
     This issue is likely even more acute in the case of movements that have a social context, such as competition, as the social environment is expected to change even more rapidly than resource distributions, and to be even more sensitive to local consumer densities.
     Consequently, it may be difficult to determine whether differences in movement reflect underlying differences in decision-making mechanisms, or whether they better represent stochastic differences in environmental conditions encountered by animals.
-    Applying current methods in animal movement ecology to individual-based simulation models of animal movement strategies \citep[see e.g.][]{getz2015,getz2016,netz2021,gupte2021a}can help explore whether these methods can reliably detect individual differences in movement decision-making mechanisms.
+    Applying current methods in animal movement ecology to individual-based simulation models of animal movement strategies \citep[see e.g.][]{getz2015,getz2016,netz2021} can help explore whether these methods can reliably detect individual differences in movement decision-making mechanisms.
     
-    Mechanistic models of intermediate complexity can simulate the main features of many spatial systems, such as heterogeneity in landscape productivity, and resource depletion due to mobile consumers \citep{getz2015,white2018,deangelis2019,netz2021,gupte2021a,diaz2021}.
-    Here, we work with an evolutionary, individual-based model of agent movement in the context of intraspecific competition \citep[both exploitation and interference]{gupte2021a}.
+    Mechanistic models of intermediate complexity can simulate the main features of many spatial systems, such as heterogeneity in landscape productivity, and resource depletion due to mobile consumers \citep{getz2015,white2018,deangelis2019,netz2021,diaz2021}.
+    Here, we work with an evolutionary, individual-based model of agent movement in the context of intraspecific competition (both exploitation and interference, as described in Chapter~\ref{ch:kleptomove}).
     In our model, agent movement is the outcome of the interplay of simple movement decision-making mechanisms, a fluctuating resource landscape, and due to agent movement, a variable social landscape.
     % Agents can be programmed to move according to specific movement rules, which are controlled by 
-    Agent movement strategies are controlled by their preferences for environmental cues, such as resource and competitor densities \citep[see e.g.][]{getz2015,white2018,netz2021, gupte2021a}.
+    Agent movement strategies are controlled by their preferences for environmental cues, such as resource and competitor densities \citep[see e.g.][]{getz2015,white2018,netz2021}.
     % The movement weights are used to assess the fluctuating resource landscape, as well as changing local densities of competitors.
-    These preferences may be thought of as the coefficients of resource- or step-selection functions \citep[][]{white2018,gupte2021a}.
+    These preferences may be thought of as the coefficients of resource- or step-selection functions \citep[][]{white2018}.
     Importantly, in contrast with purely ecological models \citep[e.g.][]{white2018}, agents' preferences are outcomes of many generations of natural selection \citep[see also][]{getz2015,netz2021}.
-    We previously showed that in two scenarios of exploitation and interference competition, differences among individuals in how they assess local environmental cues evolve \citep[][]{gupte2021a}.
+    We previously showed that in two scenarios of exploitation and interference competition, differences among individuals in how they assess local environmental cues evolve.
     % Consequently, we would expect to see these differences in mechanisms reflected in the structure of emergent movement paths.
     
     We tackle three specific aspects of a general question in animal movement: what can applying statistical tools to animal tracking data tell us about individual differences in the movement decision-making mechanisms?
@@ -42,13 +42,10 @@
     
     \section*{Methods}
     
-    \subsection*{The Model}
+    \subsection*{Basic Model Setup}
     
-    We worked with an individual-based evolutionary simulation model of animal movement in a foraging context (\textit{Charadrii}; \citealt{gupte2021a}; model code: \citealt{netz2022a}).
-    We describe the model's ecological dynamics in brief here, and refer readers to \cite{gupte2021a} for a more detailed exploration of the evolutionary outcomes.
-    
-    \paragraph*{Model Setup and Landscape}
-    
+    We worked with an individual-based evolutionary simulation model of animal movement in a foraging context, previously developed for use in Chapter~\ref{ch:kleptomove}.
+    We describe the model's ecological dynamics in brief here, and refer readers to Chapter~\ref{ch:kleptomove} for a more detailed exploration of the evolutionary outcomes.    
     Our model simulates a population with a fixed size (10,000 individuals), moving on a finely gridded landscape of 512\textsuperscript{2} cells; this is a population density of 1 individual for every 26 cells.
     The landscape is wrapped at the boundaries so that individuals passing beyond the bounds at one end re-appear on the diametrically opposite side.
     The model consists of $G$ generations (default = 250) of $T$ timesteps (default = 400); in each generation, individuals move and make foraging decisions to gain intake.
@@ -61,7 +58,7 @@
     For an $r_{max}$ = 0.01, the most productive cells (at the centres of a cluster) are likely to generate one item per 100 timesteps (or four items per generation, for $T$ = 400), while the least productive cells (at cluster peripheries) are likely to generate one item every 500 timesteps ($<$ than one item per generation, for $T$ = 400).
     Cells in our landscape were modelled as having a uniform carrying capacity $K$ of 5 prey items, and while a cell is at carrying capacity its $r$ is 0.
     
-    \paragraph*{Individual Foraging and Movement}
+    \subsection*{Individual Foraging and Movement}
     
     Agents can perceive a cue indicating the number of all prey items $P$ in a cell, but have a probability $q$ of failing to detect a prey item, and a probability $q^P$ of not detecting any of $P$ prey items; foragers are thus successful in finding a prey item with a probability $1 - q^P$.
     Individuals on a cell forage in a randomised sequence, and the probability of finding a prey item ($1 - q^P$) is updated as individuals find prey, reducing $P$.
@@ -75,7 +72,7 @@
     The weighing factors for each cue, $s_P$, $s_H$, and $s_N$, are genetically encoded and and transmitted from parents to their offspring.
     All individuals move simultaneously, and then implement their foraging strategy to acquire prey.
     
-    \paragraph*{Scenarios of Intraspecific Competition}
+    \subsection*{Scenarios of Intraspecific Competition}
     
     We considered two scenarios of intraspecific foraging competition, a process that can strongly shape animal movement and population distributions \citep{fretwell1970,parker1978}.
     %%
@@ -95,7 +92,7 @@
     Unsuccessful kleptoparasites are considered idle, and are also counted as non-handlers.
     Handlers that finish processing their prey in timestep $t$ return to the non-handler state and are assessed as such by other individuals when determining their movements.
     
-    \paragraph*{Inheritance of Movement and Competition Rules}
+    \subsection*{Inheritance of Movement and Competition Rules}
     
     For simplicity, we modelled discrete, non-overlapping generations, with haploid, asexually reproducing individuals.
     In the exploitation competition scenario, individuals have three active gene loci that encode the decision-making weights which control individual movement ($s_P$, $s_H$, $s_N$). 
@@ -110,19 +107,15 @@
     In scenario 2, agents have a probability of 0.001 of a mutation on their competition strategy, i.e., of transforming from a forager to a kleptoparasite, or vice versa.
     Agents are intialised at a random location on the landscape, potentially forcing individuals to contend with different environmental conditions from those experienced by their parent.
     
-    \subsection*{Model Output}
+    \paragraph*{Agent Positions, Agent Preferences, and Landscape Data}
     
-    \paragraph*{Agent Position and Preference Data}
-    
-    We previously established that in our model, the mean per-capita intake stabilises within 50 generations, and the fixation of certain movement rules (such as the preference for handlers) is complete by generation 100 (\citealt{gupte2021a}, see also Fig. 1).
+    We previously established that in our model, the mean per-capita intake stabilises within 50 generations, and the fixation of certain movement rules (such as the preference for handlers) is complete by generation 100 (see Fig. 1).
     % We expected that by generation 250, model populations could be considered to have been adapted to their environmental conditions and competition scenario for at least 200 generations (50 -- 250).
     We wanted to determine whether agent path structure, and specifically, the distance moved, also has a clear trajectory over generations.
     In order to do this, we focused on the positions of 1\% of the agents (N = 100) in each timestep, for every 10\textsuperscript{th} generation, up to generation 249 (25 generations, including \textit{G} = 249).
     Overall, we collected 400 $\times$ 100 $\times$ 25 = 1,000,000 positions over each simulation run.
     To apply methods commonly used in movement analyses, we let the final generation (\textit{G} = 250) run for 10,000 timesteps, and exported the positions of 100 agents in each timestep, for a further 10,000 $\times$ 100 = 1,000,000 positions.
     We also exported the decision-making weights for movement ($s_P$, $s_H$, $s_N$) for each agent in the exploitation competition scenario, as well as the foraging strategy-decision weights ($w_P$, $w_H$, $w_N$, $w_0$) for agents in the interference competition scenario; we aimed to later relate these weights to the structure of movement paths.
-    
-    \paragraph*{Landscape Data}
     
     Animal movement is strongly influenced by the landscape, and must be taken into account to accurately compare among individuals.
     The cell $r$ values may be seen as analogous to empirically measured long-term indicators of productivity, such as the normalised-difference vegetation index \citep[NDVI;][]{pettorelli2011}.
@@ -137,9 +130,7 @@
     % In the interference competition scenario, the non-handler counts were split into separate counts for agents that were searching for food (foragers), and agents that were seeking to target a handler (kleptoparasites).
     % From this sequence of snapshots, we were able to determine the environmental cues available to agents while making movement decisions.
     
-    \subsection*{Visualising the Evolutionary Equilibrium}
-    
-    \paragraph{Absolute and Functional Variation in Movement Weights}
+    \subsection*{Quantifying Model Ecological Outcomes}
     
     We first plotted the frequencies of the decision-making weights, scaled between -1 and +1 using a hyperbolic tangent tranform, over the 250 generations of each model run (see Fig. \ref{fig1}A).
     We then visually examined the population at the evolutionary equilibrium for functional differences in movement rules.
@@ -149,12 +140,10 @@
     We refer to these normalised weight values (ranging from -1, avoidance, to +1 preference) as the relative preferences.
     Thus, for example, an agent prioritising movement towards handlers would have a normalised value for $s_H$ close to +1, and $s_P$ and $s_H$ $\equiv$ 0.
     To visualise the spread of agents over the trait space, we plotted the scaled values of $s_H$ against the scaled values of $s_P$, colouring points by the scaled value of $s_N$ (see Fig. \ref{fig1}A).
-    
-    \paragraph{Agent Movement Types and Distance Covered}
-    
+        
     We classified the 100 agent paths exported in each simulation run based on the agents' relative preferences: (1) \textit{prey tracking}, if $s_P > 0.55$; (2) \textit{handler tracking}, if $s_H > 0.5$; (3) \textit{prey \& handler tracking}, if $s_P > 0,~s_H > 0,~|s_P - s_H| > 0$; (4) \textit{non-handler avoiding}, if $s_N < -0.5$; (5) \textit{handler avoiding}, if $s_H < -0.5$; and (6) \textit{mixed}, for all other combinations.
     We plotted the distribution of total distance moved across equal intervals for each of these five strategies (or those present in the evolved populations; see Fig. \ref{fig3}).
-    We also plotted the movement paths of individuals from the strategies for a visual comparison of path structure and distance moved (see \textit{Supplementary Material}).
+    We also plotted the movement paths of individuals from the strategies for a visual comparison of path structure and distance moved.
     
     \subsection*{Repeatability of Agent Movement}
     
@@ -184,7 +173,7 @@
     
     Across model formulations, We scaled the movement distance and the predictor variables between 0 and 1, for each interval of each simulation run.
     We set individual identity and the time interval to be random intercepts, following \citep{hertel2020}.
-    We fit separate GLMMs for each simulation run, and used the \textit{rptr} package in R \citep{nakagawa2010} to estimate the repeatability of total distance in our agent population (bootstraps = 100; permutations = 10; see Supplementary Material for code).
+    We fit separate GLMMs for each simulation run, and used the \textit{rptr} package in R \citep{nakagawa2010} to estimate the repeatability of total distance in our agent population (bootstraps = 100; permutations = 10).
     % Here too, we expected to find that agents would be repeatable for movement distance on higher productivity landscapes with reliable information for directed movement \citep{carter2013a}.
     
     \subsection*{Individual Differences in Habitat Selection}
@@ -192,7 +181,7 @@
     Finally, we investigated whether individual differences in movement rules would translate to differences in habitat selection, using a step-selection function framework.
     Step-selection analysis essentially aims to determine why animals move where they do, given the alternative steps they could have made, by relating the animal's choice of step to differences in environmental conditions among the alternatives \citep{avgar2016, signer2019,thurfjell2014,fieberg2021}.
     % This allows us to estimate animal preferences as coefficients for different environmental cues, potentially revealing decision-making mechanisms \citep[such as a reliance on visual information][]{aben2021}.
-    When an SSF is fit to each individual's tracking data, the estimated coefficients of a step-selection function (SSF) are analogous to the agent movement decision-making weights in our model \citep[see previous interpretation in][]{white2018,gupte2021a}.
+    When an SSF is fit to each individual's tracking data, the estimated coefficients of a step-selection function (SSF) are analogous to the agent movement decision-making weights in our model \citep[see previous interpretation in][]{white2018}.
     % Real animals, as well as our agents, respond to environmental cues such as the presence of other individuals, at very fine timescales.
     In empirical studies, it is difficult to measure the availability of fine-scale environmental cues, such as the abundance of depleteable resources, or the densities of conspecifics.
     One common solution to this challenge is to compare selected and alternative steps on the basis of a slowly-changing environmental measure such as productivity \citep[e.g. NDVI, analogous to $r$][]{pettorelli2011}, that is broadly correlated with other phenomena.
@@ -218,20 +207,16 @@
     
     \subsection*{Model Eco-Evolutionary Equilibrium}
     
-    \paragraph{Evolution of Decision-making Weights}
-    
-    Both scenarios of our model --- as expected from previous analysis \citep{gupte2021a} --- reached an evolutionary equilibrium: a stabilisation of mean per-capita intake within 50 generations (index $r_{max}$ = 0.01; see Supplementary Material Figure X).
-    The two scenarios differed strongly in terms of the evolution of movement decision-making weights, again, as we already knew from earlier investigation \citep{gupte2021a}.
+    Both scenarios of our model --- as expected from previous analysis --- reached an evolutionary equilibrium: a stabilisation of mean per-capita intake within 50 generations (index $r_{max}$ = 0.01).
+    The two scenarios differed strongly in terms of the evolution of movement decision-making weights, again, as we already knew from earlier investigation in Chapter~\ref{ch:kleptomove}.
     Briefly, in \textbf{scenario 1}, populations across replicates rapidly and consistently evolved to prefer moving to cells with prey-items (positive values of $sP$) and cells with handlers (positive values of $sH$) within 100 generations (Fig. \ref{fig1}A1).
     Populations also evolved to avoid non-handlers (negative values of $sN$; Fig. \ref{fig1}A1).
     All replicates showed substantial variation in the movement decision-making weights (Fig. \ref{fig1}A1).
     %%
-    In \textbf{scenario 2}, we found an eco-evolutionary equilibrium with stable proportions of the two competition strategies (see Supplementary Material; see also \citealt{gupte2021a}).
+    In \textbf{scenario 2}, we found an eco-evolutionary equilibrium with stable proportions of the two competition strategies.
     As might be expected then, the evolution of populations' decision-making weights was quite different from that of scenario 1.
     Agents had an evolved preference for moving to cells with prey-items, and an avoidance of cells with non-handlers (Fig. \ref{fig1}A2).
     However, there was a strong dimorphism in the response to handlers, with most agents showing a strong preference for handlers, but with a sizeable minority of agents showing an avoidance of handlers (Fig. \ref{fig1}A2).
-    
-    \paragraph{Functional Variation in Movement Rules}
     
     The differences in evolved movement rules also translated to functional variation in relative preferences for the three environmental cues.
     In \textbf{scenario 1}, most agents had a strong preference for prey-items, with a number of agents neutral to the other two cues (large values of $s_P$, see Fig. \ref{fig1}B1).
@@ -243,7 +228,7 @@
     Kleptoparasites, on the other hand, were almost exclusively handler-preferring, with strong positive values of $s_P$.
     A small number of both foragers and kleptoparasites followed the movement rules of the opposite strategy; these likely represented a strategy mutation during reproduction, rather than a viable combination of movement and competition strategies.
     
-    \paragraph{Movement Types and their Emergent Movement Paths}
+    % \subsection*{Movement Types and their Emergent Movement Paths}
     
     Our classification of agents based on evolved relative preferences for movement cues revealed that most agents in scenario 1 were either prey-tracking, prey and handler tracking, non-handler avoiding, or used a mixed strategy (Fig. \ref{fig2}A1).
     On the other hand, agents in scenario 2 had a movement type strongly correlated with their competition strategy: most foragers were either handler- or non-handler-avoiding, while kleptoparasites were all handler-tracking (Fig. \ref{fig2}A2).
@@ -264,7 +249,7 @@
             \textbf{(B2)} In the fixed-strategy scenario 2, agents of the two competition strategies (foragers and kleptoparasites) have very different relative preferences for environmental cues.
             While foragers largely either avoid handlers (yellow points, $s_H < -0.5$), or avoid non-handlers (red points), most kleptoparasites prefer moving towards handlers, their direct resource.
             A small number of both foragers and kleptoparasites follow the movement rules of the opposite strategy; these likely represent a strategy mutation during reproduction.
-            All panels show simulation runs with $r_{max}$ = 0.01, and show a single replicate for clarity (see the \textit{Supplementary Material} for more replicates).
+            All panels show simulation runs with $r_{max}$ = 0.01, and show a single replicate for clarity.
         }
         \label{fig1}
     \end{figure}
@@ -303,7 +288,7 @@
     In \textbf{scenario 2}, increasing productivity also allows a wider range of forager, but not kleptoparasite, movement strategies (Fig. \ref{fig3}A2).
     At the index $r_{max}$ of 0.01, foragers are mostly agent avoiding, while kleptoparasites are handler tracking.
     However, with increasing growth rates, the frequency of kleptoparasites decreases, until, at $r_{max}$ = 0.03, kleptoparasites are extinct in nearly all simulation replicates.
-    Thus, on high productivity landscapes, the scenario 2 population is functionally identical to the scenario 1 population, and all individuals follow a forager strategy (see also \citealt{gupte2021a}).
+    Thus, on high productivity landscapes, the scenario 2 population is functionally identical to the scenario 1 population, and all individuals follow a forager strategy.
     
     Repeatability analyses on the movement distances of scenario 2 populations is sensitive to how the differences in competition strategy are treated, but not to landscape productivity (Fig. \ref{fig3}B2). Specifically,
     \textit{(1)} When repeatability analysis ignores differences in competition strategy, our populations, comprised largely of handler and non-handler avoiding foragers, and handler tracking kleptoparasites, had repeatability scores $>$ 0.8 (Fig. \ref{fig3}B2a).
@@ -318,7 +303,7 @@
     There did not appear to be an effect of landscape productivity as in scenario 1.
     This may be because, in scenario 2, the presence of kleptoparasites (indeed, as the majority strategy) reduces prey-item extraction from the resource landscape.
     Consequently, all scenario 2 landscapes eventually resemble scenario 1 landscapes at $r_{max}$ = 0.03.
-    We ran analyses only on growth rates of 0.01 and 0.02, as kleptoparasites rapidly go extinct early on in simulations with a growth rate of 0.03 \citep[see][for an explanation of the evolutionary dynamics]{gupte2021a}.
+    We ran analyses only on growth rates of 0.01 and 0.02, as kleptoparasites rapidly go extinct early on in simulations with a growth rate of 0.03 (see Chapter~\ref{ch:kleptomove} for an explanation of the evolutionary dynamics).
     
     \begin{figure}[h!]
         \centering
@@ -370,11 +355,11 @@
         \label{fig4}
     \end{figure}
     
-    \section*{Discussion}
+    \section*{Lessons for Data Analysis from the Performance of Statistical Methods on Simulated Data}
     
     % % Detecting Individual Consistency from Agent Paths
     
-    We used an evolutionary individual-based model of animal movement decision-making under two scenarios of foraging competition (\textit{Kleptomove}; \citealt{gupte2021a,netz2022a}), to investigate what we can learn about individual-differences by applying statistical analyses to animal movement data.
+    We used an evolutionary individual-based model of animal movement decision-making under two scenarios of foraging competition (\textit{Kleptomove}; as described here and in Chapter~\ref{ch:kleptomove}), to investigate what we can learn about individual-differences by applying statistical analyses to animal movement data.
     % %%
     % We showed that the model, as expected, reached an ecological equilibrium in mean per-capita intake, as well as the mean per-capita distance moved.
     Our evolved agent populations showed substantial between-individual differences in their relative preferences for environmental cues (`movement types'; \citealt{getz2015}): when presented with the same cues, agents could make substantially different decisions about where to move.
@@ -394,7 +379,7 @@
     The co-existence of multiple movement types across multiple generations of scenario 1 suggests that multiple alternative movement rules are equally good for navigating our fluctuating resource and social landscapes \citep[see also][]{getz2015,netz2021}.
     That movement types travel roughly the same distances is not surprising, as they must spend the same time handling, and gaining intake, to have equivalent fitness.
     In scenario 2, there are essentially only two viable movement types that are strongly correlated with competition strategies at low growth rates ($r_{max}$ = 0.01).
-    Here, the handler-tracking kleptoparasites move more because their primary resource, handlers, are scarce; conversely, foragers move less, as prey-items are abundant \citep[see][]{gupte2021a}.
+    Here, the handler-tracking kleptoparasites move more because their primary resource, handlers, are scarce; conversely, foragers move less, as prey-items are abundant.
     Yet both strategies have equivalent fitness because kleptoparasites make up for lost time by having to handle stolen prey-items for a shorter duration.
     We suggest that for movement types to differ in their path metrics (e.g. distance, or speed; see \citealt{abrahms2017}), between-individual variation and within-individual consistency along a further axis of behaviour that equalises fitness between the types is likely necessary.
     
@@ -440,7 +425,7 @@
     Step-selection analysis has the potential to be among these methods, as it directly links what animals actually perceive, to where they go \citep[see recently][]{aben2021}.
     This allows a fine-scale comparison between selected and alternative steps, which, at certain scales, may functionally approximate individuals' cognitive processes, at least in terms of preference or avoidance.
     
-    Our model \citep{gupte2021a,netz2022a} and other mechanistic individual-based models that follow similar principles \citep{getz2015,getz2016,netz2021}, allow for the implementation of different movement decision-making mechanisms at very fine scales, in biologically plausible ways.
+    Our model and other mechanistic individual-based models that follow similar principles \citep{getz2015,getz2016,netz2021}, allow for the implementation of different movement decision-making mechanisms at very fine scales, in biologically plausible ways.
     Our agents' movement decisions integrate locally available cues to make adaptive movement decisions, just as real animals are expected to do \citep{nathan2008a}.
     While our agent responses are linear, they can in principle be much more complex, including convoluted relationships between the environmental cues, as well as separate weights for each cue combination.
     Coupled with the ability to know the state of the environment, and of each agent, at any point in the simulation, we believe this and other similar models are suitable for the testing of a range of empirical methods.
