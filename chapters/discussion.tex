@@ -6,41 +6,46 @@
 
 {\noindent \textbf{Pratik R. Gupte}}
 
+\lettrine{T}{his} thesis, as the abstract promises, is relatively episodic, and the various chapters are only loosely tied together inasmuch as they discuss different aspects of animal behaviour.
+Nonetheless, I hope to have put forward a cogent view of one approach to studying animal movement --- this approach is essentially to take as mechanistic a perspective as possible.
+Here, I reflect upon the findings and methods in this thesis.
+
 \section*{Reflections on Part~\ref{part:eco}}
 
-\textbf{Part~\ref{part:eco}} of this thesis took an empirical approach to animal movements and distributions.
+\textbf{Part~\ref{part:eco}} of this thesis took an empirical approach to animal movements and space-use.
 Animal movement ecology has benefited greatly from the adoption of advanced animal tracking technology, and especially from the proliferation of GPS loggers \citep{cagnacci2010}.
 Yet the majority of species of birds and mammals (leave alone reptiles or amphibians) cannot currently be tracked because most high-resolution loggers are much too heavy for them to bear safely \parencite{kays2015}.
 High-throughput tracking systems --- which we described in \textcite{nathan2022} --- such as ATLAS with its lightweight tags, can allow researchers to achieve at regional scales, a far more detailed understanding of animal movement than sought by \textcite{wikelski2007} when floating the idea of ICARUS (see now \cite{jetz2022}).
 Yet data from these systems is not as conservatively `cleaned' as that from GPS tracking, and this is because the original end uses of each of these systems are very different.
 In Chapter~\ref{ch:preprocessing}, I showed how a set of simple techniques and workflows can be used to substantially improve the quality of raw ATLAS data.
-\textcite[]{beardsworth2022mee} have now shown that the accuracy of ATLAS systems (in this case, the Wadden Sea ATLAS system; \cite{bijleveld2021}) --- after applying these cleaning methods --- is comparable to GPS tracking, but with a much higher sampling rate.
+\textcite[]{beardsworth2022mee} have now shown that the accuracy of ATLAS systems (in this case, the Wadden Sea ATLAS system; \cite{bijleveld2021}) --- after applying my cleaning methods --- is comparable to GPS tracking, but with a much higher sampling rate.
 An interconnected network of such high-throughput systems could represent one option for how animals could be tracked at high spatio-temporal resolution at large, continental scales \citep{nathan2022}.
+The methods that I set out in Chapter~\ref{ch:preprocessing} were borrowed from a range of fields that have already made the transition to being `big data' disciplines; among them, remote sensing of the earth, and molecular biology and biochemistry.
+It is entirely unclear whether, and to my mind actually unlikely, that the full extent of these recommendations (version control, open science, well tested pipelines) will be adapted by the majority of researchers; this is simply because the correct incentive structures to promote their adoption are currently quite weak.
 
-Meanwhile, even data from earlier iterations of high-throughput systems can be made usable by robust filtering and cleaning.
 In Chapter~\ref{ch:holeybirds}, I used data from the original ATLAS system deployed in the Hula Valley in Israel, to study how moult --- the loss and regrowth of flight feathers --- affects bird movement and habitat selection.
-% \graffito{
-%     Before beginning this project, my primary experience with bird moult had been during my master's thesis fieldwork on Kolguev island in the Russian Arctic in 2016.
-%     Geese breed there in the summer, undergoing full wing moult, which created a small window where they could be corralled into enclosures, to be tagged with GPS loggers.
-% }
-This work is supported by recent findings that birds' flight characteristics affect whether they will risk crossing even narrow open tracts, such as forest roads \citep{claramunt2022}.
+This project demonstrates how data from more developmental versions of high-throughput systems can be made usable by robust filtering and cleaning.
+I found that birds, regardless of their moult status, strongly avoid open areas which they presumably perceive as having a higher risk of predation.
+This finding is interestingly in contrast with an example presented in the Introduction: small southern African herbivores actually prefer open areas when seeking to avoid predation, as unlike with birds, it is mammalian predators rather than prey that use cover to ambush their prey \parencite[][]{leroux2018}.
+This highlights the challenges in generalising even broad findings about movement across taxa.
+Within birds, however, my results are in line with recent findings that flight characteristics affect whether bird species will risk crossing even narrow open tracts, such as forest roads \citep{claramunt2022}.
 The results here suggest that predation risk avoidance could be a possible mechanism by which some areas that appear productive become unsuitable for many bird species --- agricultural fields for instance provide little cover from aerial predators.
-Birds have long been anecdotally known to avoid certain features such as water bodies despite being powerful flyers, to the extent that this has prevented entire taxa from colonising archipelagos \citep{diamond1981}.
+Birds have long been anecdotally known to avoid certain features such as water bodies despite being powerful flyers, to the extent that this has prevented entire groups from colonising archipelagos in the absence of land bridges \citep{diamond1981}.
 This effect is now much better quantified by studying the migration of raptors across open water \citep{nourani2020}.
 Both road- and water-crossing avoidance seem bizarre to human observers, possibly because as a terrestrial species, we subconsciously think of flight as a certain kind of invulnerability, whether from environmental hazards or active hunters.
 It is much more likely that we simply do not --- and perhaps cannot --- really appreciate how complex flight is, and the many risks it holds.
 One of the main conclusions of Chapter~\ref{ch:holeybirds} (and of Part~\ref{part:evo}), then, is the importance of adopting the perspective of the study species, the \textit{individual in its context}, when seeking to understand the short- and long-term drivers of animals' behaviour.
 
-Individual movement and habitat selection scale up to produce species distributions and community composition \citep{schlagel2020a}.
-In Chapter~\ref{ch:hillybirds}, we showed mixed results for the effects of climate and land cover types on the distributions of birds in the Nilgiri and Anamalai Hills of southern India, a biodiversity hotspot.
-One drawback of individual-centric animal tracking studies has been small sample sizes due to the costs of tracking technologies; this means that most studies focus on tracking at most a few species.
-Citizen science studies allow researchers to accomplish two key goals at once: \textit{(i)} harness the spatial and temporal spread of amateur naturalists to collect ecological data, potentially from dozens of species at once, and \textit{(ii)} in so doing, strengthen public participation in the scientific process.
-% The findings are not as clear as in \textcite{freeman2018}, who showed that Andean birds were on the ``escalator to extinction''.
-The current era of large ecological datasets being widespread is only about a decade old; for example, \textit{eBird} data from India span only a seven year period since 2015.
-This makes it especially challenging to compare the drivers of current species distributions across regions with different histories of monitoring, or within a region that has not been long monitored.
-The Nilgiri Hills offer a unique opportunity to integrate historical data from the 1820s onwards --- primarily birds shot as specimens by British colonial officials --- into modern species distribution analyses.
-This project, for which I gathered data from bird specimens stored in the Natural History Museum of London's Tring collections, is currently ongoing.
-When complete it could stand alongside efforts such as the Grinnell Resurvey \citep{tingley2009a,tingley2009b} in demonstrating how nearly two centuries of land cover and climatic change have affected species distributions.
+% Individual movement and habitat selection scale up to produce species distributions and community composition \citep{schlagel2020a}.
+% In Chapter~\ref{ch:hillybirds}, we showed mixed results for the effects of climate and land cover types on the distributions of birds in the Nilgiri and Anamalai Hills of southern India, a biodiversity hotspot.
+% One drawback of individual-centric animal tracking studies has been small sample sizes due to the costs of tracking technologies; this means that most studies focus on tracking at most a few species.
+% Citizen science studies allow researchers to accomplish two key goals at once: \textit{(i)} harness the spatial and temporal spread of amateur naturalists to collect ecological data, potentially from dozens of species at once, and \textit{(ii)} in so doing, strengthen public participation in the scientific process.
+% % The findings are not as clear as in \textcite{freeman2018}, who showed that Andean birds were on the ``escalator to extinction''.
+% The current era of large ecological datasets being widespread is only about a decade old; for example, \textit{eBird} data from India span only a seven year period since 2015.
+% This makes it especially challenging to compare the drivers of current species distributions across regions with different histories of monitoring, or within a region that has not been long monitored.
+% The Nilgiri Hills offer a unique opportunity to integrate historical data from the 1820s onwards --- primarily birds shot as specimens by British colonial officials --- into modern species distribution analyses.
+% This project, for which I gathered data from bird specimens stored in the Natural History Museum of London's Tring collections, is currently ongoing.
+% When complete it could stand alongside efforts such as the Grinnell Resurvey \citep{tingley2009a,tingley2009b} in demonstrating how nearly two centuries of land cover and climatic change have affected species distributions.
 
 \section*{Reflections on Part~\ref{part:evo}}
 
@@ -50,27 +55,24 @@ For instance, I showed that individual variation in preferences for environmenta
 When individuals can adopt a kleptoparasitic strategy, they may do so even when environmental cues indicate that a `producer' strategy \parencite{beauchamp2008} might be more suitable.
 In this sense, certain competition and foraging strategies may actually represent `personalities' as they were originally conceived of --- suboptimal choices despite countervailing information \parencite{sih2004}.
 Unlike other chapters in this thesis, I cannot be sure that this one will lead to substantial developments in eco-evolutionary theory, and see it more as a culmination of theory in the once-key field of foraging competition studies.
-Chapter~\ref{ch:patternprocess} is a direct development of of Chapter~\ref{ch:kleptomove}.
+Chapter~\ref{ch:patternprocess} is a direct development of of Chapter~\ref{ch:kleptomove}, even though it is presented later.
 Here, I adapted movement paths generated in Chapter~\ref{ch:kleptomove} to investigate popular statistical tools in movement ecology: repeatability analysis, and step-selection analysis.
 Inferring processes (mechanisms) from observed patterns (phenomena) is a common pursuit in movement ecology.
 My analysis shows that there are substantial risks to doing so naively --- spatial personalities \parencite{stuber2022} may actually result from underlying differences in movement and competition strategies.
 This highlights the importance of a detailed natural history understanding of the study species and its ecological context.
 
 Finally, Chapter~\ref{ch:pathomove}, I tackled a scenario that in expected to become increasingly common --- the transmission of novel pathogens from one species to another \citep{carlson2022a}.
-Indeed currently the hitherto poorly known tropical African disease monkeypox is spreading across the globe, SARS-CoV-2 has seen multiple introductions to animals, including abundant wildlife \citep{kuchipudi2022}, and the H5N1 strain of avian influenza has been spreading through multiple temperate species \citep{wille2022}.
+Indeed currently the hitherto poorly known tropical African disease monkeypox is currently breaking out in multiple countries where it is not usually found, with the key risk that it could become endemic in rodent and other animals in those regions.
+Additionally, SARS-CoV-2 has seen multiple introductions to animals, including abundant wildlife such as deer in the United States \citep{kuchipudi2022}, and the H5N1 strain of avian influenza has been spreading through multiple temperate species, primarily of shore- and seabirds \citep{wille2022}.
 My relatively simple model of the trade-off between social information use (in a foraging context), and the risk of pathogen transmission generated clear predictions for how such novel pathogen introductions should affect the evolution of host sociality.
-Worryingly, a cascading effect of decreased host sociality in most scenarios is poorer ecological performance in terms of harvesting resources from the landscape, leaving populations vulnerable to other environmental risks.
+Worryingly, a cascading effect of decreased host sociality in most scenarios could be poorer ecological performance in terms of harvesting resources from the landscape, leaving populations vulnerable to other environmental risks.
 The potential consequences for other members of an ecological community --- albeit via the mechanism of mortality --- are borne out by \citet{monk2022}, who studied the effects of the introduction of mange to vicu\~{n}as in Patagonia.
 The scenarios I modelled may actually be too mild, and novel pathogen spillovers could exterminate their hosts, rather than force the evolution of less gregarious social systems.
 The scale of future work required in this field is daunting: identifying outbreaks as they happen, often in remote areas and involving poorly known species; determining patterns of species' spatial overlap that could aid cross-species transmission beyond the initial spillover; determining which species --- for a range of reasons --- may be at heightened risk from an epi- or panzootic outbreak; and finally, determining a response that preserves species while minimising risk of further spillover.
 
-% \subsection*{Discussion and Concluding paragraph}
-
-% Importance of natal dispersal --- sexual reproduction and non-random mating --- the effect of landscape structure and productivity --- Implementation of the suitability scoring using complex functions such as neural networks (discuss \cite{mueller2011,deangelis2019}).
-
 \section*{Estimating the Evolutionary Consequences of Movement Strategies from Empirical Data}
 
-Finally, a key barrier to achieving a unified evolutionary ecology of animal movement is understanding the evolutionary consequences of animal movement strategies.
+A key barrier to achieving a unified evolutionary ecology of animal movement is understanding the evolutionary consequences of animal movement strategies.
 These consequences may be broken down into two key components, survival, and fecundity; together these determine lifetime fitness.
 Ecologists, taking a phenomenological approach, have been able to make some headway in examining the evolutionary consequences of some movements, such as annual migrations.
 % This has involved classifying animals' whole migration tracks into broad categories, to investigate whether there are survival or breeding success differences among migratory strategies.
@@ -98,10 +100,3 @@ Integrating the analysis of tri-axial acceleration data, could help refine curre
 At larger temporal scales, individuals' preferences for energy landscapes could be linked to their survival or reproductive success, for global comparisons of the potential evolutionary consequences of movement strategies.
 
 { \begin{center} \barfont{-.-} \end{center} }
-
-% Finally, global changes --- especially the ubiquitous presence of people --- severely impact animal movements \parencite*[]{tucker2018}.
-% This makes it challenging to determine whether the movements we can observe are truly reflective of animals' natural, evolved movement preferences (this is always tricky, see Chapter~\ref{ch:patternprocess}) --- apart from a clear avoidance of humans.
-% Significant methodological roadblocks do remain: it is still challenging to link animal tracking data with other outcomes, such as multi-year breeding success.
-% That is partially because lifetime animal tracking \parencite{getz2008,nathan2008a} is still beyond current technologies \parencite{kays2015,hussey2015,nathan2022,jetz2022}.
-%  --- and this is primarily an issue of increasing data-loggers' battery life so that they can collect data over many years rather than months.
-% Reducing loggers' temporal resolution is one possible solution, but low-resolution data are often insufficient to detect key aspects of the movement process \parencite{nathan2022}, such as nesting success \parencite{picardi2020}.
