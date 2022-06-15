@@ -159,9 +159,8 @@ Finally, in Chapter~\ref{ch:discussion}, I reflect upon the findings of this the
 This would not be my first time expressing an opinion on the role of individual-based models to study the evolution of animal movement.
 In \textcite{nathan2022}, we wrote,
 \begin{quotation}
-    \emph{
-        Using genetic algorithms, initial candidate rulesets for individual decision-making can evolve into a robust ruleset that is able to reproduce the unique range and quality of spatial and temporal patterns in high-throughput data (``reinforcement learning').
-    }
+    
+        Using \emph{genetic algorithms}, initial candidate rulesets for individual decision-making can evolve into a robust ruleset that is able to reproduce the unique range and quality of spatial and temporal patterns in high-throughput data \emph{(``reinforcement learning')}~[emphasis mine].
 \end{quotation}
 This approach seeks to recover patterns seen in real empirical data from simulations, with the hope that the simulated mechanisms (`candidate rulesets') that produced them are similar to those animating real individuals (`true mechanisms').
 However, a wide range of mechanisms can produce very similar phenomena, making it difficult to determine whether the `true' mechanism is approximated by any of the candidate simulated mechanisms.
@@ -172,13 +171,15 @@ First, open questions remain about how rulesets, or mechanisms, should be encode
 % Below I show how the choice of mechanism --- in this case, habitat selection rules --- can affect model conclusions quite substantially.
 Habitat selection rules which are complex functions of the information available to individuals are likely to be challenging to interpret.
 For example, movement decisions based on outputs computed by artificial neural networks were first proposed over a decade ago \parencite{mueller2011}, but they have not seen widespread adoption in the ecology and evolution literature (but see \cite{netz2021}).
-Furthermore, it is also unclear how these mechanisms should undergo evolution --- in \textcite{nathan2022}, we suggested reinforcement learning acting on the simulated mechanisms, based on the similarity of simulated movement paths with real animal movements.
-The concept of genetic algorithms is borrowed from the fields of artificial intelligence and computer science \parencite{deangelis2019}, and represents their idea of biological processes.
-The solution-oriented approach of artificial intelligence is poorly suited to ecology and evolution, in which there \textit{are} no single correct solutions --- and in which, moreover, individuals interact not only with the environment, but also with each other.
-Consequently, the implementation of genetic algorithms such as `simulated annealing' \parencite{getz2015}, is not a good choice for conceptual eco-evolutionary models.
+Furthermore, it is also unclear how these mechanisms should undergo evolution --- in \textcite{nathan2022}, we suggested using both genetic algorithms and reinforcement learning acting on the simulated mechanisms, based on the similarity of simulated movement paths with real animal movements.
+The concept of genetic algorithms and reinforcement learning is borrowed from the fields of artificial intelligence and computer science, and represents their idea of biological processes \parencite[evolution and learning, respectively][]{deangelis2019}.
+However, these approaches are explicitly designed with a specific goal in mind, and the success of agents employing these algorithms can be --- and is --- usually measured using single, simple metrics (e.g. classification accuracy, task completion time).
+This solution-oriented approach of artificial intelligence is poorly suited to ecology and evolution, in which there \textit{are} no single correct solutions --- and in which, moreover, individuals interact not only with the environment, but also with each other, making `optimal' solutions heavily dependent on local ecological contexts.
+Consequently, I believe that neither the implementation of genetic algorithms such as `simulated annealing' \parencite{getz2015}, nor the use of reinforcement learning is a good choice for conceptual eco-evolutionary models.
 
 I propose a different way forward: rather than working backwards from empirical phenomena to potential mechanisms, to instead \textit{work forwards from plausible mechanisms to potential emergent outcomes}.
-This requires first accepting that individual-based models are best suited to broad conceptual insight into `What if \ldots?' scenarios, such as in Chapter~\ref{ch:pathomove} (although detailed predictive frameworks do exist, e.g. \cite{bocedi2014}).
+This first requires a change in perspective on individual-based models, from being highly detailed simulations of specific empirical systems (such as in \cite{diaz2021,stillman2010,bocedi2014}), to being used to obtain broad conceptual insight into `What if \ldots?' scenarios.
+Such conceptual implementations, in addition to being demonstrated below, are also included in Chapters~\ref{ch:kleptomove} and~\ref{ch:pathomove}.
 Second, I suggest beginning with plausible, well-supported movement mechanisms, such as individual perception and integration of local cues when making movement decisions \parencite{nathan2008a}.
 % Of course, any biological mechanism is an emergent outcome of constituent sub-mechanisms, down to the molecular level; some abstraction is therefore necessary.
 Having selected salient mechanisms, a plausible ecological context is also key --- a population foraging on a landscape is a solid starting point.
@@ -197,7 +198,7 @@ In addition to an initial understanding of how mechanisms can lead to unexpected
 \let\cleardoublepage\relax
 \let\cleardoublepage\relax
 
-{\chapter*{Comparing Mechanistic, Evolved Step Selection Compared with Random Walks and Optimal Movement}}
+{\chapter*{A Demonstration of Mechanistic, Individual-based Models as Conceptual Tools in Evolutionary Ecology}}
 
 Here, by way of introduction to chapters appearing further in this thesis (Chapters~\ref{ch:kleptomove} and \ref{ch:pathomove}), I present a very basic version of the models in those chapters, in order to show how my approach differs from approaches used thus far.
 I show that considering movement as the outcome of evolved preferences for locally available cues leads to very different ecological outcomes when compared to mainstream frameworks such as random walks and optimal local movement.
