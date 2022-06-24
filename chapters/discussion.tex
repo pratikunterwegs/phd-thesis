@@ -15,7 +15,7 @@ Here, I reflect upon the findings and methods in this thesis.
 \textbf{Part~\ref{part:eco}} of this thesis took an empirical approach to animal movements and space-use.
 Animal movement ecology has benefited greatly from the adoption of advanced animal tracking technology, and especially from the proliferation of GPS loggers \citep{cagnacci2010}.
 Yet the majority of species of birds and mammals (leave alone reptiles or amphibians) cannot currently be tracked because most high-resolution loggers are much too heavy for them to bear safely \parencite{kays2015}.
-High-throughput tracking systems --- which we described in \textcite{nathan2022} --- such as ATLAS with its lightweight tags, can allow researchers to achieve at regional scales, a far more detailed understanding of animal movement than sought by \textcite{wikelski2007} when floating the idea of ICARUS (see now \cite{jetz2022}).
+High-throughput tracking systems --- which we described in \textcite{nathan2022} --- such as ATLAS with its lightweight tags, can allow researchers to achieve at regional scales a far more detailed understanding of animal movement than sought by \textcite{wikelski2007} when floating the idea of ICARUS (see now \cite{jetz2022}).
 Yet data from these systems is not as conservatively `cleaned' as that from GPS tracking, and this is because the original end uses of each of these systems are very different.
 In Chapter~\ref{ch:preprocessing}, I showed how a set of simple techniques and workflows can be used to substantially improve the quality of raw ATLAS data.
 \textcite[]{beardsworth2022mee} have now shown that the accuracy of ATLAS systems (in this case, the Wadden Sea ATLAS system; \cite{bijleveld2021}) --- after applying my cleaning methods --- is comparable to GPS tracking, but with a much higher sampling rate.
@@ -51,7 +51,7 @@ One of the main conclusions of Chapter~\ref{ch:holeybirds} (and of Part~\ref{par
 
 In Chapter~\ref{ch:kleptomove}, I showed how animal movement and competition strategies jointly evolve, using an individual-based model with 10,000 individuals moving about on a grid of over 250,000 cells --- among the largest IBMs in this field of study.
 The model demonstrated a number of interesting outcomes that could form the basis for future work.
-For instance, I showed that individual variation in preferences for environmental cues is reliably evolved in simple foraging contexts, without apparent trade-offs in foraging strategies, and that social information is key to moving and foraging in consumer populations.
+For instance, I showed that individual variation in preferences for environmental cues reliably evolves in simple foraging contexts, without apparent trade-offs in foraging strategies, and that social information is key to moving and foraging in consumer populations.
 When individuals can adopt a kleptoparasitic strategy, they may do so even when environmental cues indicate that a `producer' strategy \parencite{beauchamp2008} might be more suitable.
 In this sense, certain competition and foraging strategies may actually represent `personalities' as they were originally conceived of --- suboptimal choices despite countervailing information \parencite{sih2004}.
 Unlike other chapters in this thesis, I cannot be sure that this one will lead to substantial developments in eco-evolutionary theory, and see it more as a culmination of theory in the once-key field of foraging competition studies.
@@ -61,7 +61,7 @@ Inferring processes (mechanisms) from observed patterns (phenomena) is a common 
 My analysis shows that there are substantial risks to doing so naively --- spatial personalities \parencite{stuber2022} may actually result from underlying differences in movement and competition strategies.
 This highlights the importance of a detailed natural history understanding of the study species and its ecological context.
 
-Finally, Chapter~\ref{ch:pathomove}, I tackled a scenario that in expected to become increasingly common --- the transmission of novel pathogens from one species to another \citep{carlson2022a}.
+Finally, in Chapter~\ref{ch:pathomove}, I tackled a scenario that is expected to become increasingly common --- the transmission of novel pathogens from one species to another \citep{carlson2022a}.
 Indeed currently the hitherto poorly known tropical African disease monkeypox is currently breaking out in multiple countries where it is not usually found, with the key risk that it could become endemic in rodent and other animals in those regions.
 Additionally, SARS-CoV-2 has seen multiple introductions to animals, including abundant wildlife such as deer in the United States \citep{kuchipudi2022}, and the H5N1 strain of avian influenza has been spreading through multiple temperate species, primarily of shore- and seabirds \citep{wille2022}.
 My relatively simple model of the trade-off between social information use (in a foraging context), and the risk of pathogen transmission generated clear predictions for how such novel pathogen introductions should affect the evolution of host sociality.
@@ -69,6 +69,39 @@ Worryingly, a cascading effect of decreased host sociality in most scenarios cou
 The potential consequences for other members of an ecological community --- albeit via the mechanism of mortality --- are borne out by \citet{monk2022}, who studied the effects of the introduction of mange to vicu\~{n}as in Patagonia.
 The scenarios I modelled may actually be too mild, and novel pathogen spillovers could exterminate their hosts, rather than force the evolution of less gregarious social systems.
 The scale of future work required in this field is daunting: identifying outbreaks as they happen, often in remote areas and involving poorly known species; determining patterns of species' spatial overlap that could aid cross-species transmission beyond the initial spillover; determining which species --- for a range of reasons --- may be at heightened risk from an epi- or panzootic outbreak; and finally, determining a response that preserves species while minimising risk of further spillover.
+
+\section*{What Role for Models in Understanding the Evolution of Movement?}
+
+This would not be my first time expressing an opinion on the role of individual-based models to study the evolution of animal movement.
+In \textcite{nathan2022}, we wrote,
+\begin{quotation}    
+        Using \emph{genetic algorithms}, initial candidate rulesets for individual decision-making can evolve into a robust ruleset that is able to reproduce the unique range and quality of spatial and temporal patterns in high-throughput data \emph{(``reinforcement learning')}~[emphasis mine].
+\end{quotation}
+This approach seeks to recover patterns seen in real empirical data from simulations, with the hope that the simulated mechanisms (`candidate rulesets') that produced them are similar to those animating real individuals (`true mechanisms').
+However, a wide range of mechanisms can produce very similar phenomena, making it difficult to determine whether the `true' mechanism is approximated by any of the candidate simulated mechanisms.
+Essentially, it is challenging to determine processes from patterns (as I cover in Chapter~\ref{ch:patternprocess}).
+I rather disagree with this view, which appears in the final paper, so I shall counter it with the view I have developed over my PhD.
+
+First, open questions remain about how rulesets, or mechanisms, should be encoded in models.
+% Below I show how the choice of mechanism --- in this case, habitat selection rules --- can affect model conclusions quite substantially.
+Habitat selection rules which are complex functions of the information available to individuals are likely to be challenging to interpret.
+For example, movement decisions based on outputs computed by artificial neural networks were first proposed over a decade ago \parencite{mueller2011}, but they have not seen widespread adoption in the ecology and evolution literature (but see \cite{netz2021}).
+Furthermore, it is also unclear how these mechanisms should undergo evolution --- in \textcite{nathan2022}, we suggested using both genetic algorithms and reinforcement learning acting on the simulated mechanisms, based on the similarity of simulated movement paths with real animal movements.
+The concept of genetic algorithms and reinforcement learning is borrowed from the fields of artificial intelligence and computer science, and represents their idea of biological processes \parencite[evolution and learning, respectively][]{deangelis2019}.
+However, these approaches are explicitly designed with a specific goal in mind, and the success of agents employing these algorithms can be --- and is --- usually measured using single, simple metrics (e.g. classification accuracy, task completion time).
+This solution-oriented approach of artificial intelligence is poorly suited to ecology and evolution, in which there \textit{are} no single correct solutions --- and in which, moreover, individuals interact not only with the environment, but also with each other, making `optimal' solutions heavily dependent on local ecological contexts.
+Consequently, I believe that neither the implementation of genetic algorithms such as `simulated annealing' \parencite{getz2015}, nor the use of reinforcement learning is a good choice for conceptual eco-evolutionary models.
+
+I propose a different way forward: rather than working backwards from empirical phenomena to potential mechanisms, to instead \textit{work forwards from plausible mechanisms to potential emergent outcomes}.
+This first requires a change in perspective on individual-based models, from being highly detailed simulations of specific empirical systems (such as in \cite{diaz2021,stillman2010,bocedi2014}), to being used to obtain broad conceptual insight into `What if \ldots?' scenarios.
+Such conceptual implementations, in addition to being demonstrated below, are also included in Chapters~\ref{ch:kleptomove} and~\ref{ch:pathomove}.
+Second, I suggest beginning with plausible, well-supported movement mechanisms, such as individual perception and integration of local cues when making movement decisions \parencite{nathan2008a}.
+% Of course, any biological mechanism is an emergent outcome of constituent sub-mechanisms, down to the molecular level; some abstraction is therefore necessary.
+Having selected salient mechanisms, a plausible ecological context is also key --- a population foraging on a landscape is a solid starting point.
+The main feature of these models, however, is to let the ecological outcomes for individuals in one generation (such as intake) determine the mixture of movement decision-making mechanisms in the next generation, through inheritance (with variation arising \textit{via} mutations; see below, or Chapters~\ref{ch:kleptomove},~\ref{ch:pathomove}).
+For simplicity, as seen in the example models here, and in Chapters~\ref{ch:kleptomove} and~\ref{ch:pathomove}, some ecological and evolutionary aspects will have to be set aside.
+% This is not to say that issues such as sexual selection, non-random mating, or flexible population sizes are not important, but rather that researchers should make their own judgments about which features of biological systems are important to their study.
+In addition to an initial understanding of how mechanisms can lead to unexpected emergent outcomes, the class of models I advocate are well suited to examining how these emergent outcomes could change following perturbations in environmental regimes, as I do in Chapter~\ref{ch:pathomove} (see also \cite{botero2015}).
 
 \section*{Estimating the `Fitness' Consequences of Movement Strategies from Tracking Data}
 
