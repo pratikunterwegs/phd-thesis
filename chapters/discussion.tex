@@ -15,13 +15,15 @@ Here, I reflect upon the findings and methods in this thesis.
 \textbf{Part~\ref{part:eco}} of this thesis took an empirical approach to animal movements and space-use.
 Animal movement ecology has benefited greatly from the adoption of advanced animal tracking technology, and especially from the proliferation of GPS loggers \citep{cagnacci2010}.
 Yet the majority of species of birds and mammals (leave alone reptiles or amphibians) cannot currently be tracked because most high-resolution loggers are much too heavy for them to bear safely \parencite{kays2015}.
-High-throughput tracking systems --- which we described in \textcite{nathan2022} --- such as ATLAS with its lightweight tags, can allow researchers to achieve at regional scales, a far more detailed understanding of animal movement than sought by \textcite{wikelski2007} when floating the idea of ICARUS (see now \cite{jetz2022}).
+High-throughput tracking systems --- which \textcite{nathan2022} described --- such as ATLAS with its lightweight tags, can allow researchers to achieve at regional scales a far more detailed understanding of animal movement than sought by \textcite{wikelski2007} when floating the idea of ICARUS (see now \cite{jetz2022}).
 Yet data from these systems is not as conservatively `cleaned' as that from GPS tracking, and this is because the original end uses of each of these systems are very different.
+
 In Chapter~\ref{ch:preprocessing}, I showed how a set of simple techniques and workflows can be used to substantially improve the quality of raw ATLAS data.
 \textcite[]{beardsworth2022mee} have now shown that the accuracy of ATLAS systems (in this case, the Wadden Sea ATLAS system; \cite{bijleveld2021}) --- after applying my cleaning methods --- is comparable to GPS tracking, but with a much higher sampling rate.
 An interconnected network of such high-throughput systems could represent one option for how animals could be tracked at high spatio-temporal resolution at large, continental scales \citep{nathan2022}.
-The methods that I set out in Chapter~\ref{ch:preprocessing} were borrowed from a range of fields that have already made the transition to being `big data' disciplines; among them, remote sensing of the earth, and molecular biology and biochemistry.
-It is entirely unclear whether, and to my mind actually unlikely, that the full extent of these recommendations (version control, open science, well tested pipelines) will be adapted by the majority of researchers; this is simply because the correct incentive structures to promote their adoption are currently quite weak.
+The methods that I set out in Chapter~\ref{ch:preprocessing} were borrowed from a range of fields that have already made the transition to being `big data' disciplines; among them, remote sensing of the earth, and molecular biology and biochemistry \parencite{peng2011,gorelick2017}.
+It is entirely unclear whether, and to my mind actually unlikely, that the full extent of these recommendations (version control, open science, well tested pipelines) will be adapted by the majority of researchers.
+This is simply because the correct incentive structures to promote their adoption are currently quite weak.
 
 In Chapter~\ref{ch:holeybirds}, I used data from the original ATLAS system deployed in the Hula Valley in Israel, to study how moult --- the loss and regrowth of flight feathers --- affects bird movement and habitat selection.
 This project demonstrates how data from more developmental versions of high-throughput systems can be made usable by robust filtering and cleaning.
@@ -29,6 +31,7 @@ I found that birds, regardless of their moult status, strongly avoid open areas 
 This finding is interestingly in contrast with an example presented in the Introduction: small southern African herbivores actually prefer open areas when seeking to avoid predation, as unlike with birds, it is mammalian predators rather than prey that use cover to ambush their prey \parencite[][]{leroux2018}.
 This highlights the challenges in generalising even broad findings about movement across taxa.
 Within birds, however, my results are in line with recent findings that flight characteristics affect whether bird species will risk crossing even narrow open tracts, such as forest roads \citep{claramunt2022}.
+
 The results here suggest that predation risk avoidance could be a possible mechanism by which some areas that appear productive become unsuitable for many bird species --- agricultural fields for instance provide little cover from aerial predators.
 Birds have long been anecdotally known to avoid certain features such as water bodies despite being powerful flyers, to the extent that this has prevented entire groups from colonising archipelagos in the absence of land bridges \citep{diamond1981}.
 This effect is now much better quantified by studying the migration of raptors across open water \citep{nourani2020}.
@@ -51,24 +54,62 @@ One of the main conclusions of Chapter~\ref{ch:holeybirds} (and of Part~\ref{par
 
 In Chapter~\ref{ch:kleptomove}, I showed how animal movement and competition strategies jointly evolve, using an individual-based model with 10,000 individuals moving about on a grid of over 250,000 cells --- among the largest IBMs in this field of study.
 The model demonstrated a number of interesting outcomes that could form the basis for future work.
-For instance, I showed that individual variation in preferences for environmental cues is reliably evolved in simple foraging contexts, without apparent trade-offs in foraging strategies, and that social information is key to moving and foraging in consumer populations.
+For instance, I showed that individual variation in preferences for environmental cues reliably evolves in simple foraging contexts, without apparent trade-offs in foraging strategies, and that social information is key to moving and foraging in consumer populations.
 When individuals can adopt a kleptoparasitic strategy, they may do so even when environmental cues indicate that a `producer' strategy \parencite{beauchamp2008} might be more suitable.
 In this sense, certain competition and foraging strategies may actually represent `personalities' as they were originally conceived of --- suboptimal choices despite countervailing information \parencite{sih2004}.
 Unlike other chapters in this thesis, I cannot be sure that this one will lead to substantial developments in eco-evolutionary theory, and see it more as a culmination of theory in the once-key field of foraging competition studies.
+
 Chapter~\ref{ch:patternprocess} is a direct development of of Chapter~\ref{ch:kleptomove}, even though it is presented later.
 Here, I adapted movement paths generated in Chapter~\ref{ch:kleptomove} to investigate popular statistical tools in movement ecology: repeatability analysis, and step-selection analysis.
 Inferring processes (mechanisms) from observed patterns (phenomena) is a common pursuit in movement ecology.
 My analysis shows that there are substantial risks to doing so naively --- spatial personalities \parencite{stuber2022} may actually result from underlying differences in movement and competition strategies.
 This highlights the importance of a detailed natural history understanding of the study species and its ecological context.
 
-Finally, Chapter~\ref{ch:pathomove}, I tackled a scenario that in expected to become increasingly common --- the transmission of novel pathogens from one species to another \citep{carlson2022a}.
+Finally, in Chapter~\ref{ch:pathomove}, I tackled a scenario that is expected to become increasingly common --- the transmission of novel pathogens from one species to another \citep{carlson2022a}.
 Indeed currently the hitherto poorly known tropical African disease monkeypox is currently breaking out in multiple countries where it is not usually found, with the key risk that it could become endemic in rodent and other animals in those regions.
 Additionally, SARS-CoV-2 has seen multiple introductions to animals, including abundant wildlife such as deer in the United States \citep{kuchipudi2022}, and the H5N1 strain of avian influenza has been spreading through multiple temperate species, primarily of shore- and seabirds \citep{wille2022}.
 My relatively simple model of the trade-off between social information use (in a foraging context), and the risk of pathogen transmission generated clear predictions for how such novel pathogen introductions should affect the evolution of host sociality.
 Worryingly, a cascading effect of decreased host sociality in most scenarios could be poorer ecological performance in terms of harvesting resources from the landscape, leaving populations vulnerable to other environmental risks.
-The potential consequences for other members of an ecological community --- albeit via the mechanism of mortality --- are borne out by \citet{monk2022}, who studied the effects of the introduction of mange to vicu\~{n}as in Patagonia.
+
+The potential consequences for an ecological community other than the species directly affected by pathogens are borne out by \citet{monk2022}, who studied the effects of the introduction of mange to vicu\~{n}as in Patagonia.
 The scenarios I modelled may actually be too mild, and novel pathogen spillovers could exterminate their hosts, rather than force the evolution of less gregarious social systems.
 The scale of future work required in this field is daunting: identifying outbreaks as they happen, often in remote areas and involving poorly known species; determining patterns of species' spatial overlap that could aid cross-species transmission beyond the initial spillover; determining which species --- for a range of reasons --- may be at heightened risk from an epi- or panzootic outbreak; and finally, determining a response that preserves species while minimising risk of further spillover.
+
+\section*{The Role of Models in Understanding the Evolution of Movement}
+
+The issue of how to use individual-based models to understand the (evolution of) mechanisms underlying empirical data from animal tracking studies is not new.
+One approach has been to use IBMs to generate ecological patterns (`pattern-oriented modelling'; \cite{grimm2005}), with quasi-evolutionary processes used to fine tune the IBM parameters \parencite{hamblin2013}.
+In \textcite{nathan2022}, a recent review of approaches to modern animal tracking data, we wrote,
+\begin{quotation}    
+        Using \emph{genetic algorithms}, initial candidate rulesets for individual decision-making can evolve into a robust ruleset that is able to reproduce the unique range and quality of spatial and temporal patterns in high-throughput data \emph{(``reinforcement learning')}~[emphasis mine].
+\end{quotation}
+This approach seeks to recover patterns seen in real empirical data from simulations, with the hope that the simulated mechanisms (`candidate rulesets') that produced them are similar to those animating real individuals (`true mechanisms') --- this is the essence of `pattern-oriented modelling' \parencite{grimm2005}.
+However, a wide range of behavioural mechanisms can produce very similar ecological phenomena, making it difficult to determine whether the `true' mechanism is approximated by any of the candidate simulated mechanisms.
+Essentially, it is challenging to determine processes from patterns (as I have alluded to in Chapter~\ref{ch:patternprocess}).
+
+Open questions also remain about how rulesets, or mechanisms, should be encoded in models.
+% Below I show how the choice of mechanism --- in this case, habitat selection rules --- can affect model conclusions quite substantially.
+Habitat selection rules which are complex functions of the information available to individuals are likely to be challenging to interpret.
+For example, movement decisions based on outputs computed by artificial neural networks were first proposed over a decade ago \parencite{mueller2011}, but they have not seen widespread adoption in the ecology and evolution literature (but see \cite{netz2021}).
+One approach to interpreting the strategies encoded by complex functions is to use sophisticated clustering algorithms to detect distinct combinations of function coefficients (weights in a neural network) \parencite{bastille-rousseau2019}.
+The potential stumbling block here is that the methods required for such clustering are also not native to ecology and evolution, and themselves suffer from being much too complex to interpret for a general biologist audience \parencite[see e.g. the GigaSOM method for clustering single-cell cytometry data; where SOM is a `self organised map', a form of machine learning][]{kratochvil2020}.
+
+Furthermore, it is also unclear how these mechanisms should undergo evolution --- in \textcite{nathan2022}, we suggested using both genetic algorithms and reinforcement learning acting on the simulated mechanisms, based on the similarity of simulated movement paths with real animal movements.
+The concept of genetic algorithms and reinforcement learning is borrowed from the fields of artificial intelligence and computer science, and represents their idea of biological processes \parencite[evolution and learning, respectively][]{deangelis2019}.
+However, these approaches are explicitly designed with a specific goal in mind, and the success of agents employing these algorithms can be --- and is --- usually measured using single, simple metrics (e.g. classification accuracy, task completion time).
+This solution-oriented approach of artificial intelligence is poorly suited to ecology and evolution, in which there \textit{are} no single correct solutions --- and in which, moreover, individuals interact not only with the environment, but also with each other, making `optimal' solutions heavily dependent on local ecological contexts.
+Consequently, I believe that neither the implementation of genetic algorithms such as `simulated annealing' \parencite{getz2015}, nor the use of reinforcement learning is a good choice for conceptual eco-evolutionary models.
+
+Throughout the latter part of this thesis, I have proposed a different way forward: rather than working backwards from empirical phenomena to potential mechanisms, to instead \textit{work forwards from plausible mechanisms to potential emergent outcomes}.
+This first requires a change in perspective on individual-based models, from being highly detailed simulations of specific empirical systems (such as in \cite{diaz2021,stillman2010,bocedi2014}), to being used to obtain broad conceptual insight into `What if \ldots?' scenarios.
+Such conceptual implementations, in addition to being demonstrated below, are also included in Chapters~\ref{ch:kleptomove} and~\ref{ch:pathomove}.
+Second, I suggest beginning with plausible, well-supported movement mechanisms, such as individual perception and integration of local cues when making movement decisions \parencite{nathan2008a}.
+% Of course, any biological mechanism is an emergent outcome of constituent sub-mechanisms, down to the molecular level; some abstraction is therefore necessary.
+Having selected salient mechanisms, a plausible ecological context is also key --- a population foraging on a landscape is a solid starting point.
+The main feature of these models, however, is to let the ecological outcomes for individuals in one generation (such as intake) determine the mixture of movement decision-making mechanisms in the next generation, through inheritance (with variation arising \textit{via} mutations; see below, or Chapters~\ref{ch:kleptomove},~\ref{ch:pathomove}).
+For simplicity, as seen in the example models here, and in Chapters~\ref{ch:kleptomove} and~\ref{ch:pathomove}, some ecological and evolutionary aspects will have to be set aside.
+% This is not to say that issues such as sexual selection, non-random mating, or flexible population sizes are not important, but rather that researchers should make their own judgments about which features of biological systems are important to their study.
+In addition to an initial understanding of how mechanisms can lead to unexpected emergent outcomes, the class of models I advocate are well suited to examining how these emergent outcomes could change following perturbations in environmental regimes, as I do in Chapter~\ref{ch:pathomove} (see also \cite{botero2015}).
 
 \section*{Estimating the `Fitness' Consequences of Movement Strategies from Tracking Data}
 
@@ -98,5 +139,14 @@ Movement itself cannot confer increased fecundity, but can indirectly facilitate
 Yet movement data can be very useful in determining whether individuals have bred successfully, and uncover the characteristics of good nesting sites \parencite{picardi2020}.
 Integrating the analysis of tri-axial acceleration data, could help refine current methods for detecting breeding or nesting outcomes, at least in some taxa \parencite{schreven2021}.
 At larger temporal scales, individuals' preferences for energy landscapes could be linked to their survival or reproductive success, for global comparisons of the potential evolutionary consequences of movement strategies.
+
+\section*{Approaches to Investigating Model Predictions}
+
+My class of conceptual models aim to provide broad frameworks for the interpretation of current and future patterns observed in animal tracking data.
+This is especially important as animal movement ecology becomes a `big data' field through the use of high-throughput tracking \parencite{nathan2022}.
+As the resolution of tracking data improves, animals' fine-scale decision-making rules could be revealed, and our framework could help understand the evolutionary causes of these rules --- as well as how these rules could shift with environmental change.
+In this regard, space-time substitutions could help: by studying movement strategies in distinct population of the same or similar species along a moving gradient of environmental conditions, researchers could understand the eco-evolutionary impacts of global changes such as warmer temperature bands moving polewards, or shifts in pathogen prevalence \parencite{blois2013,carlson2022a}.
+These could constitute simple initial tests of model predictions for the example scenarios I outline earlier.
+Such studies would require international collaborative frameworks studying comparable animal populations; fortunately, multiple such networks exist and are growing \parencite{iverson2019,davidson2020,jetz2022}.
 
 { \begin{center} \barfont{-.-} \end{center} }
