@@ -8,7 +8,7 @@
     \WarningFilter{titlesec}{Non standard sectioning command detected}
 \documentclass[twoside,openright,titlepage,numbers=noenddot,%1headlines,
               headinclude,footinclude,clearpage=empty,abstract=on,toc=flat,
-              BCOR=5mm,paper=b5,fontsize=10pt,dvipsnames,toc=indentunnumbered
+              BCOR=5mm,paper=b5,fontsize=9pt,dvipsnames,toc=indentunnumbered
               ]{scrbook}
 \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
 \RedeclareSectionCommands[
@@ -55,10 +55,10 @@
 \usepackage{fontspec}
 \usepackage[T1]{fontenc}
 % \setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
-\setmainfont[Numbers={Tabular,Uppercase}]{Tiempos Text}
+\setmainfont[Numbers={Tabular,Uppercase},SmallCapsFeatures={Ligatures=CommonOff}]{Tiempos Text}
 \setsansfont[]{Archivo Narrow}
 \setmathfont{Erewhon Math}
-\newfontfamily{\displayfont}{TeX Gyre Schola}
+\newfontfamily{\displayfont}{Tiempos Headline Black}
 \newfontfamily{\barfont}[Ligatures={Rare}]{Vollkorn}
 
 \renewcommand*{\bibfont}{\footnotesize}
@@ -136,13 +136,13 @@
 % fix part heading format
 \titleformat{\part}[display]
         {\ct@altfont\centering\rmfamily}%
-        {\thispagestyle{empty}\scshape\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
+        {\thispagestyle{empty}\color{Maroon}\displayfont\scshape\partname~\MakeTextUppercase\displayfont{\thepart}}{1em}%
         {\huge\rmfamily\color{Maroon}\scshape\bfseries}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\bfseries\rmfamily{\color{Maroon}\tiny{Chapter}}~{\displayfont\chapterNumber{\color{Maroon}\thechapter}}}}{0pt}%
+    {\relax}{\mbox{}\oldmarginpar{\bfseries\rmfamily{\color{Maroon}}~{\displayfont\chapterNumber{\color{Maroon}\thechapter}}}}{0pt}%
     {\raggedright\bfseries\color{Maroon}\large\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
@@ -158,7 +158,7 @@
     {\relax}{\theparagraph}{1em}{\rmfamily\itshape}
 
 % \usepackage[left]{lineno}
-\usepackage[skins,breakable]{tcolorbox}
+\usepackage[skins,float,floatplacement=p]{tcolorbox}
 % \usepackage{lipsum}
 
 % parts in toc
@@ -311,8 +311,8 @@ In the second part of this thesis, I probe the evolutionary causes and consequen
 % \cleardoublepage \include{chapters/kleptomove_header}
 % \include{chapters/kleptomove_main}
 
-% \clearpage \cleardoublepage
-% \include{boxes/details}
+\clearpage \cleardoublepage
+\include{boxes/details}
 
 % \cleardoublepage \include{chapters/pathomove_header}
 % \include{chapters/pathomove_main}
