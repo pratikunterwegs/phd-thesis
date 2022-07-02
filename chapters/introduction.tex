@@ -55,16 +55,12 @@ The rules governing animal movement are thus crucial to a sound understanding of
 
 \section*{Movement in Eco-evolutionary Theory}
 
-Movement has long been recognised as an important process, but is often only implicitly included in the cornerstone models of eco-evolutionary theory that are more focused on the phenomena that arise due to it.
-For example, the foundational models of evolutionary ecology consider the exploitation of patchily distributed resources (the `ideal free distribution' or IFD: \cite{fretwell1970}), and how to switch among patches based on expected payoffs and costs (primarily for a foraging context, `optimal foraging theory' or OFT; \cite{charnov1976}).
-While the ecological assumptions here are clear, the evolutionary underpinnings of these models are less so.
-% nonetheless, they can be very simply explained as being that any patch-switching strategy (from OFT), that resulted in any distribution but the ideal one (i.e., proportional to resources; \cite{parker1978,houston2008}), would be out-competed by the `optimal' strategy, which would be selected for, and eventually come to dominate, over evolutionary time.
-% In brief, a great deal of ecological theory imagines that evolution will have pruned away all but the optimal solution(s) to any problems of movement or distributions.
-% A similar logic is applied even when considering situations in which there are no resources to be had, but when adopting a suboptimal position relative to the group's topology would leave an individual susceptible to predation (hence removing it from the population; \cite{hamilton1971}).
-% Movement is also implicit in theoretical models that seek to explain broader macro-ecological and macro-evolutionary phenomena, such as regional biodiversity and the assembly of communities of species \parencite[island biogegraphy][]{macarthur1967}.
-Most models assume that at any point in time individuals move to a location that yields the highest fitness.
-The idea underlying this assumption is that natural selection will have `weeded out' all strategies that are not maximizing fitness.
-Yet, there are serious problems with the assumption that well-adapted individuals are maximizing fitness at all times. 
+Movement has long been recognised as an important process, but is often only implicitly included in the cornerstone models of eco-evolutionary theory.
+In these models, evolution is often not incorporated at all, but replaced by the assumption that individuals tend to make choices that maximize their fitness. 
+An early example is the foundational foraging model of \textcite{fretwell1970} that predicts the distribution of fitness-maximising agents over patchily distributed resources (`ideal free distribution' or IFD). Here, individuals that are `ideal' (having full knowledge of the distribution of resources and competitors) and `free' (unconstrained in their movement) scan the whole landscape and immediately move to the location maximizing their resource intake. 
+The idea underlying the assumption that individuals tend to move to fitness-maximising locations is that natural selection will have `weeded out' all strategies that are not maximising fitness.
+Yet, there are serious problems with the assumption that well-adapted individuals are maximising fitness at all times.
+
 First, `fitness' is an intricate concept \parencite{brommer2000}, and it is unlikely that individuals can judge the full fitness implications of their movement decisions. 
 Instead, they are likely to be guided by other principles, such as the avoidance of predators or the amount of food available. 
 Second, individuals will typically not be able to single out the best possible habitat patch, as they will only have knowledge on recently visited patches or the patches in their vicinity. 
@@ -86,10 +82,11 @@ Work on consistent behavioural differences in animals, including differences in 
 Yet it is not clear whether movement syndromes, in the sense of individual consistency and correlation in preferences for specific environmental conditions, truly exist (as suggested by \cite{stuber2022}), or whether researchers are instead identifying differences among spatial contexts that heavily influence animal movement \parencite{spiegel2022}.
 
 A consideration of movement in ecological theory should account for the fact that animals integrate many internal and external cues when making movement decisions \citep{nathan2008a}.
-Individual-based simulation models (individual-based models) are well suited to representing movement as a decision made after integrating multiple cues in complex ecological contexts \citep{huston1988,deangelis2019}.
+Individual-based simulation models (IBMs) are well suited to representing movement as a decision made after integrating multiple cues in complex ecological contexts \citep{huston1988,deangelis2019}.
 However, most IBMs in the study of animal movement do not tackle the ultimate evolutionary drivers of animal movement strategies (with a few exceptions: \cite{getz2015,getz2016,netz2021}).
 In Part~\ref{part:evo}, I develop and use a novel class of eco-evolutionary IBMs for broad conceptual insight into the evolution of animal movement strategies.
 % Theory rarely addresses the long-term, evolutionary causes or consequences of movement, despite adaptive reasoning underpinning many models \citep{charnov1976,fretwell1970}.
+
 Evolutionary models of movement rules treat them as population properties (as in \cite[]{dejager2011,dejager2020}, or \cite[]{morris2011}), whereas movement is an individual-level outcome, and it is on individual outcomes that selection acts.
 When individuals with different movement strategies have equivalent fitness, populations may show movement polymorphisms \citep{wolf2012,shaw2020,getz2015}.
 Including evolutionary dynamics in movement models could thus provide initial predictions for when individual variation (with its own consequences; \cite{spiegel2017}) should be expected.
@@ -97,13 +94,23 @@ We could also gain insight into how movement strategies could possibly evolve un
 This second aspect is often ignored, possibly because evolution is considered too slow to be relevant to the understanding and management of ecological dynamics over a few decades.
 This assumption is mistaken, as evolution can be both rapid and adaptive \citep[][]{bonnet2022}.
 
-\section*{Conceptual ingredients of mechanistic, eco-evolutionary individual-based models of animal movement}
+Animal movement behaviours are of many types, and span spatio-temporal scales, from migration to coordinated movement within a group.
+This makes it challenging to pick a behaviour common to all animals, and whose evolutionary aspects can be easily studied.
+For instance, although periodic migration \parencite[e.g.][]{guttal2010} and dispersal \parencite[e.g.][]{hillaert2018b} away from the natal site in early life have received substantial attention from evolutionary biologists, these are not common to all or even a majority of taxa.
+Furthermore, such rare and sporadic events are especially prone to being genetically controlled, with only a smaller role for adaptive, fine-scale behavioural strategies.
+One scenario in which fine-scale strategies are important is the foraging context.
+All animals, as heterotrophs, require intake, making (active or passive) foraging a behaviour shared by nearly all animal taxa.
+Even among migratory species, foraging is a key behaviour that enables their journeys.
+This makes the foraging context a good \textit{starting point} for models linking the ecology and evolution of fine-scale adaptive movement behaviours.
 
-We propose models that \textit{work forwards from plausible mechanisms to potential emergent outcomes}.
-This first requires a change in perspective on individual-based models, from being highly detailed simulations of specific empirical systems (such as in \cite{diaz2021,stillman2010,bocedi2014}), to being used to obtain broad conceptual insight into `What if \ldots?' scenarios (see the \emph{Case Study}; see also \cite{white2018,gupte2021a,gupte2022c,netz2021,getz2015,getz2016}).
-The key features of the simulation models we advocate is first, that they are \textbf{mechanistic, spatially explicit and individual-centric}, i.e., the functional unit of the model is the individual (animal) in a spatial context, and that interactions among individuals and their environment are based in plausible mechanisms.
-Second, that \textbf{individuals move in their spatial context using step-selection} based on the (plausibly mechanistic) sensing of direct local cues, such as resource or conspecific counts; this forms each individual's movement strategy (see below).
-Third and finally, that the models \textbf{explicitly include both ecological and evolutionary timescales and dynamics}; we propose this be done by considering multiple generations, and conditioning an individual's number of offspring --- to which it passes on its movement strategy --- on its ecological performance in the simulation.
+\section*{Proposing a New Method for Eco-evolutionary Models of Animal Movement}
+
+We propose models that \textit{work forwards from plausible mechanisms to potential emergent outcomes} (Fig.~\ref{fig:intro_concepts}).
+This first requires a change in perspective on individual-based models, from being highly detailed simulations of specific empirical systems (such as in \cite{diaz2021,stillman2010,bocedi2014}), to being used to obtain broad conceptual insight into `What if \ldots?' scenarios (see also \cite{white2018,gupte2021a,gupte2022c,netz2021,getz2015,getz2016}).
+The key features of the simulation models we advocate is first, that they are \textit{mechanistic, spatially explicit and individual-centric}, i.e., the functional unit of the model is the individual (animal) in a spatial context, and that interactions among individuals and their environment are based on plausible mechanisms (Fig.~\ref{fig:intro_concepts}A).
+Second, that \textit{individuals move in their spatial context using step-selection} based on the sensing of direct local cues, such as resource or conspecific counts (Fig.~\ref{fig:intro_concepts}B).
+The way how an individual chooses its steps in relation to local cues forms the individual's movement strategy (see below).
+Third and finally, that the models \textit{explicitly include both ecological and evolutionary timescales and dynamics}; we propose this be done by considering multiple generations, and conditioning an individual's number of offspring --- to which it passes on its movement strategy --- on its ecological performance in the simulation (Fig.~\ref{fig:intro_concepts}C).
 This last means that ecological outcomes in one generation determine the population mixture of movement strategies in the next generation, linking the ecological and evolutionary timescales.
 
 \begin{sidewaysfigure}[p]
@@ -116,7 +123,7 @@ This last means that ecological outcomes in one generation determine the populat
       \textbf{(C)} The model integrates both ecological and evolutionary timescales, by allowing the ecological outcomes of animal movement (here, resource intake), to have evolutionary consequences. In this example, the individual with more intake has more offspring. Individuals pass on their movement-determining cue preferences to offspring (with some rare mutations); thus individual movement strategies in one generation can determine the population-level mixture of movement strategies in the next generation, setting up a feedback loop between the ecology and evolution of animal movement.
       All individuals are conceptually represented by crows for convenience; crow silhouettes are copyright free images submitted to \textit{PhyloPic}; see phylopic.org.
   }
-  \label{fig:concepts}
+  \label{fig:intro_concepts}
 \end{sidewaysfigure}
 
 \subsection*{Mechanistic, Individual-Centric Simulations}
@@ -128,31 +135,61 @@ Unsurprisingly, individual-based simulation models (IBMs) are ideal for this tas
 While researchers may begin modelling with a phenomenon in mind, it is important to shift perspective to instead encode plausible, well supported individual-level processes (which we also call mechanisms) that could give rise to such phenomena.
 All ecological processes, including competition \parencite{keddy2001}, signalling and signal perception \parencite{torney2011}, and transmission processes (e.g. learning, pathogen transfer; see \cite{cantor2021,romano2021}) have a strong spatial component; thus models that study these phenomena should ideally also incorporate movement, and have an explicit spatial context.
 
-For example, a model of exploitation competition would begin with the process that causes it: the depletion of discrete resource items due to individual foraging, which makes the resource unavailable to others \parencite{keddy2001}.
-This involves deliberately encoding a sequence of individual-level behaviours: movement that enables accessing a resource, perception of available resources, harvesting of the resource, and most importantly, removal of the resource from the landscape (see the model presented in the Interlude~\ref{box:demo}; see also \cite{spiegel2017,gupte2021a,gupte2022c}).
+For example, a model of exploitation competition would begin with the process that causes it: the depletion of discrete resource items due to individual foraging, which makes the resource unavailable to others \parencite[][; see Fig.~\ref{fig:intro_concepts}A]{keddy2001}.
+This involves deliberately encoding a sequence of individual-level behaviours: movement that enables accessing a resource, perception of available resources, harvesting of the resource, and most importantly, removal of the resource from the landscape (see also \cite{spiegel2017,gupte2021a,gupte2022c}).
 Here, the perspective shift lies in seeing that individual-level processes (movement, perception, foraging) could lead to the emergence of phenomena (exploitation competition), when local conditions are met (multiple individuals in the same vicinity going after the same discrete resource items).
 
 Of course, any biological mechanism is an emergent outcome of constituent sub-mechanisms, down to the molecular level; some abstraction is therefore necessary.
-For simplicity, as seen in the Interlude~\ref{box:demo}, some ecological and evolutionary aspects will have to be set aside.
-This is not to say that issues such as sexual reproduction and non-random mating (included in \cite{getz2016}), detailed disease dynamics (seen in \cite{white2018,scherer2020}) or flexible population sizes (as in \cite{netz2021}) are not important, but rather that researchers should focus on features of biological systems that are important to their study.
-Classical analytical models regularly make similar modelling choices to arrive at conceptual insight (see an examination in \cite{vandermeer1997}); implementing these choices explicitly in simulation models' code helps bring these assumptions to the fore, promoting robust discussion of their importance to model conclusions.
+For simplicity, some ecological and evolutionary aspects will have to be set aside.
+This is not to say that issues such as sexual reproduction and non-random mating (included in \cite{getz2016}), detailed disease dynamics (seen in \cite{white2018,scherer2020}), flexible population sizes (as in \cite{netz2021}), or animal memory \parencite[e.g.][]{bracis2017,robira2021} are not important, but rather that researchers should focus on features of biological systems that are important to their study.
+Classical analytical models regularly make similar modelling choices to arrive at conceptual insight (see an examination in \cite{vandermeer1997}).
+Implementing these choices explicitly in simulation models' code helps bring these assumptions to the fore, promoting robust discussion of their importance to model conclusions.
 
 \subsection*{Movement Strategies as Step-selection}
 
-We conceive of individual movement across the landscape to take the form of sequential step-selection (which we call `movement decisions').
-That is, when the individual moves, it chooses among a number of potential destinations in its neighbourhood, including its current location (in which case it remains stationary).
-The step choice is made by assigning each potential step (including the current location) a step-selection score, which we call the `suitability', such that every step $i$ has a suitability $S_i = s_{1i}X_{1i} + s_{2i}X_{2i} + \ldots + s_{Ni}X_{Ni} + \epsilon_i$.
+We conceive of individual movement across the landscape to take the form of sequential step-selection (which we call `movement decisions'; see Fig.~\ref{fig:intro_concepts}B).
+Box A provides a primer to the idea of step-selection.
+In our models, when the individual moves, it chooses among a number of potential destinations in its neighbourhood, including its current location (in which case it remains stationary).
+Box B provides a brief overview of how step-selection has been used to encode movement in conceptual models.
+The step choice is made by assigning each potential step (including the current location) a step-selection score, which we call the `suitability', such that every step $i$ has a suitability $S = s_{1}X_{1i} + s_{2}X_{2i} + \ldots + s_{N}X_{Ni} + \epsilon_i$.
 Here, $s_n$ where $n \in (1, 2, \ldots N)$ is the individual-specific weight or `cue preference' for the cue $n$, and $X_n$ is the value of the cue at the location $i$.
 We optionally include the small error term $\epsilon_i$ (typically drawn from a statistical distribution) to approximate individuals' error in assessing a location's suitability.
 The cue preferences, and thus the suitability, can have arbitrarily large or small (positive or negative) values.
 This is similar to step- and resource-selection coefficients $\beta$ \parencite[see Box 2][]{fortin2005,manly2002}.
 Individuals are considered to move to the location with the highest suitability.
+
+\begin{tcolorbox}[width=\textwidth,
+    boxsep=0pt,
+    left=0pt,
+    right=0pt,
+    top=2pt,
+    arc=0pt,
+    boxrule=0.0pt,
+    toprule=1pt,
+    bottomrule=1pt,
+    colback=white
+    ]%%
+    \begin{description}[font=\scshape\bfseries]
+        \item[Box A. Step-selection Analysis: An Introduction] Step-selection analysis is a method developed from the study of empirical animal movement data, which seeks to determine the drivers of animal movement, with an early implementation in \textcite{fortin2005}'s study of the movement of deer in response to wolves, in Yellowstone National Park.
+        In brief, step-selection analysis contrasts locations at which animals were observed, against locations that they could have used instead \parencite[][]{fortin2005}.
+        The locations that are considered to have been available to an animal are conditioned upon its current location --- essentially, this avoids comparing used locations with distant regions that the animal could not have used at that time.
+        In this sense step-selection analysis is essentially similar to conditional resource-selection analysis \parencite[see as general reference][]{manly2007}.
+        The difference is that in step-selection analysis, the available locations are sampled from a distribution (usually the Gamma distribution) fitted to the movement distances obtained from the tracking data, with relative headings (`turning angles'; see \cite{calenge2009}) drawn from a von Mises distribution fitted to the animal's turning angles, again as seen in the tracking data \parencite[][]{thurfjell2014,signer2019}.
+        The parameters determining the relative probability that a location is selected given its environmental attributes (the relative selection strengths, often denoted $\beta$) can be estimated via a maximum likelihood approach using common statistical software \parencite[see e.g. for R][]{therneau2000}.
+        Overall, the step-selection method assumes that the probability that an animal will select a location is given by
+        $$
+            \hat{w}(x) = \text{exp}(\beta_1x_1 + \beta_2x_2 + \ldots \beta_nx_n)
+        $$
+        where $\hat{w}(x)$ is the selection score for a step, $\beta_i$ is the relative selection strength for (or against, if a negative value) the location attribute $x_i$.
+    \end{description}
+\end{tcolorbox}
+
 Crucially, when individuals move by step-selection as in our models, the value of each cue preference $s_{n}$ \textit{relative} to the other cue preferences is more important than the absolute value of any cue preference by itself (see also the `behavioural hypervolume' of \cite{bastille-rousseau2019}).
 Thus individuals making movement decisions based upon three cues $X_n$ for $n \in (1, 2, 3)$, that have relatively similar values of the corresponding cue preferences $s_n$ may be thought of as weighing, or preferring each cue relatively equally (or indeed avoiding, if any $s_n < 0$).
 The relative values of each individual's cue preferences \textit{taken together}, may be thought of as the individual \textit{movement strategy}.
-The \emph{Case Study} shows how these strategies can be visualised and interpreted when they are comprised of a small number of preferences.
+% The \emph{Case Study} shows how these strategies can be visualised and interpreted when they are comprised of a small number of preferences.
 
-In our models, we assume individuals have a constant instantaneous speed, which means that all steps have the same distance.
+In our models, we assume individuals have a constant instantaneous speed, which means that all steps have the same distance \parencite[see a similar implementation in][]{spiegel2017}.
 This is different from step-selection analysis of empirical data, which draws steps from a movement kernel \parencite{fortin2005,manly2002,avgar2016}.
 Drawing steps from a kernel \parencite*[see e.g.][]{white2018} is \textit{not} mechanistic, as the movement kernel idea derives from a phenomenological description of movements observed from animal tracking or relocation data \parencite{fortin2005}.
 Instead, our models allow movement kernels (and overall speeds, and `home ranges') to emerge from individual movement decisions (yet see below for an alternative).
@@ -174,38 +211,12 @@ Nonetheless, this approach is the preferable mechanistic alternative to assuming
     right=0pt,
     top=2pt,
     arc=0pt,
-    boxrule=0.0pt,
-    toprule=1pt,
-    bottomrule=1pt,
-    colback=white
-    ]%%
-    \begin{description}
-        \item[Step-selection Analysis: An Introduction] Step-selection analysis is a method developed from the study of empirical animal movement data, which seeks to determine the drivers of animal movement, with an early implementation in \textcite{fortin2005}'s study of the movement of deer in response to wolves, in Yellowstone National Park.
-        In brief, step-selection analysis contrasts locations at which animals were observed, against locations that they could have used instead \parencite[][]{fortin2005}.
-        The locations that are considered to have been available to an animal are conditioned upon its current location --- essentially, this avoids comparing used locations with distant regions that the animal could not have used at that time.
-        In this sense step-selection analysis is essentially similar to conditional resource-selection analysis \parencite[see as general reference][]{manly2007}.
-        The difference is that in step-selection analysis, the available locations are sampled from a distribution (usually the Gamma distribution) fitted to the movement distances obtained from the tracking data, with relative headings (`turning angles'; see \cite{calenge2009}) drawn from a von Mises distribution fitted to the animal's turning angles, again as seen in the tracking data \parencite[][]{thurfjell2014,signer2019}.
-        The parameters determining the relative probability that a location is selected given its environmental attributes (the relative selection strengths, often denoted $\beta$) can be estimated via a maximum likelihood approach using common statistical software \parencite[see e.g. for R][]{therneau2000}.
-        Overall, the step-selection method assumes that the probability that an animal will select a location is given by
-        $$
-            \hat{w}(x) = \text{exp}(\beta_1x_1 + \beta_2x_2 + \ldots \beta_nx_n)
-        $$
-        where $\hat{w}(x)$ is the selection score for a step, $\beta_i$ is the relative selection strength for (or against, if a negative value) the location attribute $x_i$.
-    \end{description}
-\end{tcolorbox}
-
-\begin{tcolorbox}[width=\textwidth,
-    boxsep=0pt,
-    left=0pt,
-    right=0pt,
-    top=2pt,
-    arc=0pt,
     boxrule=0.0pt,toprule=1pt,
     bottomrule=1pt,
     colback=white
     ]%%
-    \begin{description}
-        \item[Using Step-selection in Conceptual Models] Step-selection analysis is now widely used in animal movement ecology, with specialised implementations for habitat-specific movement characteristics \parencite{avgar2016}, decision points identified from very high-resolution data \parencite{munden2021}; it can also be extended to estimate animals' utilisation distributions \parencite{signer2017}.
+    \begin{description}[font=\scshape\bfseries]
+        \item[Box B. Using Step-selection in Conceptual Models] Step-selection analysis is now widely used in animal movement ecology, with specialised implementations for habitat-specific movement characteristics \parencite{avgar2016}, decision points identified from very high-resolution data \parencite{munden2021}; it can also be extended to estimate animals' utilisation distributions \parencite{signer2017}.
         Indeed, recall that step-selection analysis is used even in this thesis (Chapter~\ref{ch:holeybirds}).
         Despite its popularity and ease of implementation, step-selection has seldom been used in individual-based simulation models of animal movement.
         One good example of using a step selection approach is \textcite{white2018}, who implemented a movement-disease model wherein individuals move across a grid, with their steps determined by their relative selection strengths ($\beta_i$) for cell attributes ($x_i$) such as resource levels or conspecific densities (in this sense they describe it as resource selection).
@@ -228,27 +239,34 @@ The final feature of our model is the integration of ecological and evolutionary
 This can be done by adopting the mechanistic, individual-centric approach and modelling reproduction; this allows individuals to pass on heritable traits --- including movement strategies --- to their offspring.
 If individuals with better ecological performance are considered to have more offspring, this would lead to the proliferation of their strategies.
 This would allow the mechanistic movement strategies to have evolutionary consequences, and in a scenario with discrete, non-overlapping generations, the ecological outcomes of individuals in one generation would determine the population-level mixture of behavioural strategies in the next generation.
-This approach, which we call the `weighted lottery', is essentially the `roulette wheel selection' approach of `genetic algorithms' (GAs) borrowed from computer science and artificial intelligence \parencite[although GAs were themselves obviously inspired by biology][]{sumida1990,hamblin2013,correia2010,deangelis2019}.
-Genetic algorithms have been applied to animal ecology, often coupled with individual-based models, but are relatively rare (see \cite{hamblin2013,beauchamp2007,hamblin2010,getz2015,getz2016}), and their conception of selection is often unrealistic (e.g. truncation and tournament selection; \cite{hamblin2013}).
-
-While GAs were conceptualised to find the best solutions to complex optimisation problems, many eco-evolutionary contexts have no single, stable solution; moreover, environmental heterogeneity may mean that multiple solutions are equally viable \parencite{wolf2012}.
-An important consideration when mimicking evolution is the introduction of variation.
-Studies using GAs take a wide range of approaches, but we advocate the independent \textit{per locus} method, in which each of the cue preferences has a probability of undergoing mutation.
-While GAs often draw the value by which a locus changes (the mutation size) from a normal distribution, we suggest that the Cauchy distribution is more appropriate; most mutations are small, but large, potentially consequential mutations could rarely occur.
-Further details of the evolutionary process, such as the mutation probability, or initial variation in cue preferences and traits in the simulation, can be varied based on study requirements.
-For instance, simulations with smaller populations ($<$ 1,000 individuals) could benefit from higher mutation rates to keep simulation run times low.
 The same evolutionary dynamics could be applied to individual traits other than the cue preferences as well, to potentially examine the co-evolution of movement with behavioural or physiological traits (see e.g. \cite{gupte2021a}).
+This approach, which we call the `weighted lottery', derives from population genetics, and specifically from the replicator equation, which is fundamental to evolutionary biology \parencite{hofbauer1988}.
+The replicator equation states that the expected frequency of a strategy in the next generation is proportional to its frequency in the present generation, times the average lifetime reproductive success of individuals using that strategy.
 
-\section*{Scenarios Suited to Investigation Using Our Approach}
+% is essentially the `roulette wheel selection' approach of `genetic algorithms' (GAs) borrowed from computer science and artificial intelligence \parencite[although GAs were themselves obviously inspired by biology][]{sumida1990,hamblin2013,correia2010,deangelis2019}.
 
+Here it is important to acknowledge that attempts to mimic biological evolution in individual-based models have previously been made, in the form of so-called `genetic algorithms' \parencite[GAs:][]{hamblin2013}.
+Genetic algorithms have been applied to animal ecology, often coupled with individual-based models, but are relatively rare (see \cite{hamblin2013,beauchamp2007,hamblin2010,getz2015,getz2016}), possibly because their development and use is recognised as unsuitable for evolutionary biology.
+While GAs were conceptualised to find the best solutions to complex optimisation problems, many eco-evolutionary contexts have no single, stable solution; moreover, environmental heterogeneity may mean that multiple solutions are equally viable \parencite{wolf2012}.
+Furthermore, the GA conception of selection is often biologically unrealistic (e.g. truncation and tournament selection; \cite{hamblin2013}).
+This is illustrated by \textcite{getz2015}, which uses a specific form of truncation selection, called `simulated annealing', wherein only the top 50\% of individuals reproduce, and the frequency of variation (essentially, the rate of mutations) becomes smaller with each generation --- neither of these are good representations of biological systems.
+Consequently, I do not believe that the GA approach is broadly suitable for models that seek to study relatively open-ended evolution (although some specific cases may be useful; see `roulette wheel selection' in \cite{hamblin2013}).
+
+% An important consideration when mimicking evolution is the introduction of variation.
+% Studies using GAs take a wide range of approaches, but we advocate the independent \textit{per locus} method, in which each of the cue preferences has a probability of undergoing mutation.
+% While GAs often draw the value by which a locus changes (the mutation size) from a normal distribution, we suggest that the Cauchy distribution is more appropriate; most mutations are small, but large, potentially consequential mutations could rarely occur.
+% Further details of the evolutionary process, such as the mutation probability, or initial variation in cue preferences and traits in the simulation, can be varied based on study requirements.
+% For instance, simulations with smaller populations ($<$ 1,000 individuals) could benefit from higher mutation rates to keep simulation run times low.
+
+\section*{Versatility of Individual-Based Eco-evolutionary Models}
 
 Finally, I focus on three broad yet relatively distinct classes of scenarios that are amenable to investigation using our mechanistic, eco-evolutionary modelling approach.
 These are typically scenarios in which our current understanding of animal ecology suggests that multiple alternative or co-existing adaptive responses are possible.
-As my Interlude~\ref{box:demo} shows, including evolutionary dynamics is crucial \textit{(i)} to understanding movement strategies and outcomes expected under specific mechanistic assumptions (e.g. foraging dynamics, such as increased handling times, or adding interference competition: \cite{keddy2001}), and \textit{(ii)} to investigating animals' evolutionary dynamics in response to changes in the assumptions of the model (e.g. lowered forage quality or quantity).
+% As my Interlude~\ref{box:demo} shows, including evolutionary dynamics is crucial \textit{(i)} to understanding movement strategies and outcomes expected under specific mechanistic assumptions (e.g. foraging dynamics, such as increased handling times, or adding interference competition: \cite{keddy2001}), and \textit{(ii)} to investigating animals' evolutionary dynamics in response to changes in the assumptions of the model (e.g. lowered forage quality or quantity).
 I stress that this is how such models should be considered: as tools that enable the broad exploration of hypothetical scenarios, some of which I lay out below.
 I further caution against expecting eco-evolutionary dynamics known from analytical models; for instance, while steady-state eco-evolutionary equilibria may emerge in some models \parencite[e.g.][]{gupte2021a,gupte2022c,getz2015,getz2016}, it is unrealistic to expect such dynamics from all models \parencite[see e.g.][]{netz2021}.
-I encourage readers to adapt these scenarios to their own needs, and provide the simulation code for the case study as a starting point.
-The latter question is especially important to for initial predictions of the speed and nature of animals' evolutionary responses to global changes, and the ecological consequences \parencite{bonnet2022,botero2015}.
+% I encourage readers to adapt these scenarios to their own needs, and provide the simulation code for the case study as a starting point.
+% The latter question is especially important to for initial predictions of the speed and nature of animals' evolutionary responses to global changes, and the ecological consequences \parencite{bonnet2022,botero2015}.
 Morever, an exploration of the parameter space, especially in terms of the environmental regime (e.g. environmental productivity, periodicity, or variation), could help generate broad predictive frameworks, with which empirical data could be compared.
 Aspects of these example scenarios could be combined together to gain more detailed understandings of subtle interplays between important eco-evolutionary drivers.
 
@@ -256,9 +274,10 @@ Aspects of these example scenarios could be combined together to gain more detai
 
 A key concern currently is knowing how the climate crisis is likely to affect animal spatial ecology, and I argue it is also important to know whether animal populations' evolutionary dynamics are likely to play a large role \parencite[e.g.][]{botero2015}.
 For example, climate change is likely to induce greater variability in environmental conditions, thereby altering the spatial structure of resource landscapes (e.g. a transition from patchy to homogeneous resource landscapes).
-When resources are more homogenously distributed, direct resource cues ($F$ in our Interlude~\ref{box:demo}) are likely to be more widespread, potentially reducing the importance of social information (conspecific presence), which could indicate a resource cluster.
+When resources are more homogenously distributed, direct resource cues ($F$ in Fig.~\ref{fig:intro_concepts}) are likely to be more widespread, potentially reducing the importance of social information (conspecific presence; $H, N$ in Fig.~\ref{fig:intro_concepts}), which could indicate a resource cluster.
 Yet with resources sparsely distributed, it may be important for animals to avoid conspecifics already at a resource cluster, to avoid exploitation competition --- this would require social information to acquire a high (negative) weight for movement decisions.
-This scenario could be studied by adapting our Interlude~\ref{box:demo} to run for some thousands of generations (say, 3,000), then altering the spatial structure, and running the model for a few thousand generations more (e.g. initially having 30 patches of 15 items each, and then 90 patches, of 5 items each).
+This scenario could be studied by building a model wherein the landscape spatial structure is slowly or rapidly altered after an initial (long) period of stability.
+% our Interlude~\ref{box:demo} to run for some thousands of generations (say, 3,000), then altering the spatial structure, and running the model for a few thousand generations more (e.g. initially having 30 patches of 15 items each, and then 90 patches, of 5 items each).
 Key questions that could be answered with such models are include whether a change in resource spatial structure --- without a change in actual abundance --- can lead to changes in movement strategies; whether movement strategies evolved to deal with changed spatial structure then also result in a non-ideal distributions of animals relative to resources \parencite[a test of][]{fretwell1970,parker1978}; and whether different animal social structures could emerge \parencite[see a review in][]{webber2022,tanner2012}.
 
 \subsection*{Joint Evolution of Movement and Behavioural Strategies}
@@ -267,35 +286,37 @@ Animal movement strategies alone are insufficient to explain individuals' ecolog
 In a scenario where there are two distinct types of prey, individuals could potentially prefer to use the locally more abundant prey \parencite{emlen1966,pulliam1974}.
 Alternatively, individuals could specialise upon one of the two prey types; this could be on the prey type preferred by most other individuals (whereby social information on prey clustering could be useful; positive density dependence), or indeed upon the less preferred prey type, as this could reduce competition (negative density dependence).
 In this context, it is not clear how prey type preferences would evolve, but movement and foraging strategies could potentially be correlated, making it an ideal case for exploration with the class of models I advocate.
-This scenario could be explored by extending our Interlude~\ref{box:demo} to have two overlapping prey type distributions, say $A$ and $B$, and allowing individuals to sense and have a preference for these different prey types ($s_A, s_B$, instead of $s_F$).
+This scenario could be explored with a model containing two overlapping prey type distributions, say $A$ and $B$, and allowing individuals to sense and have a preference for these different prey types ($s_A, s_B$, instead of $s_F$ in our Fig.~\ref{fig:intro_concepts}).
 Simultaneously, it would be appropriate to consider prey choice to also be a flexible decision, and allow individuals to mechanistically choose, at each step, which prey type they want to target.
-This entails introducing four more intrinsic, individual-specific `behavioural preferences': $w_A, w_B$, for the prey counts $A, B$, and $w_H, w_N$, for the handler and non-handler counts $H, N$.
-Together with local cues, they could be combined into a prey type choice, where $W = w_AA + w_BB + w_HH + w_NN + \epsilon$, where the individual chooses prey $A$ if $W < 0$, and $B$ otherwise (the simplest binarisation of a continuous response).
+% This entails introducing four more intrinsic, individual-specific `behavioural preferences': $w_A, w_B$, for the prey counts $A, B$, and $w_H, w_N$, for the handler and non-handler counts $H, N$.
+% Together with local cues, they could be combined into a prey type choice, where $W = w_AA + w_BB + w_HH + w_NN + \epsilon$, where the individual chooses prey $A$ if $W < 0$, and $B$ otherwise (the simplest binarisation of a continuous response).
 Such a simulation could reveal the emergence of substantial individual variation in the preferences for the prey types, and potentially correlations with foraging movement strategies, forming a movement-behaviour syndrome (see e.g. \cite{eckhardt1979})
-More specific prey choice models could investigate how foraging individuals themselves may be a type of prey, through kleptoparasitism \parencite[see e.g.][]{gupte2021a}.
-Models could also be extended to multiple trophic levels by including predators, whose movement strategies could be in an evolutionary arms-race with their prey \parencite{netz2021}.
+More specific prey choice models could investigate how foraging individuals themselves may be a type of prey, through kleptoparasitism --- this scenario is explored in Chapter~\ref{ch:kleptomove}.
+Models could also be extended to multiple trophic levels by including predators, in order to study the evolutionary arms-race of movement strategies between predators and prey \parencite{netz2021}.
 
 \subsection*{Introduction of New Eco-evolutionary Dynamics}
 
 The introduction to an environment of a novel biotic component could substantially alter existing eco-evolutionary dynamics; the introduction of a novel pathogen (or strain) to a population is a key example of current relevance (\cite{carlson2022a}; see also \cite{monk2022} as a case study).
 Novel pathogen introductions should be expected to impose selection against animal sociality \parencite[e.g.][]{ashby2022}, but sociality emerges from an interaction of individual behaviour and the local environment, including the social environment \parencite{tanner2012}.
-To examine how a novel pathogen could affect the evolution of animal movement strategies, our Interlude~\ref{box:demo} could be modified such that, after adapting to their landscape for a few thousand generations, a small percentage ($<$ 5\%) of individuals in each generation are considered `infected' in each following generation by a novel pathogen, possibly spread to them by some other overlapping species (e.g. llamas \emph{Lama glama} to vicu\~nas \emph{Vicugna vicugna} in \cite{monk2022}).
-The pathogen would spread among spatially proximate individuals with a probability $p$, and impose an energetic (and hence, fitness) cost $\delta E$.
-Continuing this simulation for a thousand more generations could reveal whether the novel pathogen introductions impose selective pressure against individual preferences for conspecifics $s_H, s_N$, turning them into negative (avoidance) values.
-Such a scenario, with special reference to social information use, is explored in \textcite{gupte2022c}, and could be adapted to model \textit{(i)} only a single pathogen introduction, or \textit{(ii)} periodic pathogen introductions with the interval between introductions potentially drawn from a geometric distribution, and with \textit{(iii)} probabilistic vertical transmission from parents to offspring.
+To examine how a novel pathogen could affect the evolution of animal movement strategies, our modelling framework could be adapted into a movement-disease model following templates in \textcite{white2018a}.
+% modified such that, after adapting to their landscape for a few thousand generations, a small percentage ($<$ 5\%) of individuals in each generation are considered `infected' in each following generation by a novel pathogen, possibly spread to them by some other overlapping species (e.g. as in \cite{monk2022}).
+For instance, a pathogen could spread among spatially proximate individuals with some small probability $p$, and impose an energetic (and hence, fitness) cost $\delta E$.
+Such a model could reveal whether the novel pathogen introductions impose selective pressure against individual preferences for sociability as a proxy of transmission risk \parencite{weinstein2018}.
+Such a scenario, with special reference to social information use, is explored in Chapter~\ref{ch:pathomove}.
 Recording and logging spatial associations and pathogen transmissions among simulation individuals could help provide useful expectations against which to compare transmission dynamics inferred from animal tracking data (\cite{wilber2022}; see \cite{robitaille2019,albery2021} for background).
 
-\subsection*{Using mechanistic models to probe current statistical methods}
+\subsection*{Using Mechanistic Models to Probe Current Statistical Methods}
 
 Movement models are regularly used to generate tracks with known features in order to examine and improve the performance of statistical tools \parencite[such as segmentation algorithms; see e.g.][]{gurarie2016,michelot2016,patin2020a}.
 One area which could benefit from a similar understanding of commonly used methods is the study of individual variation in movement; specifically, this could help determine whether studies are truly picking up `spatial personalities' from the confounding factors of environmental differences among tracked animals \parencite{stuber2022,spiegel2022}.
 Animal movement researchers apply sophisticated variance-partitioning approaches to movement data to estimate how much behavioural variation in a population is explained by individual identity \parencite[especially using `repeatability analysis'][]{hertel2020, hertel2019, hertel2021,nakagawa2010}.
 Simultaneously, step- and resource-selection functions coefficients estimated from animal tracking data can also be analysed in order to detect distinct behavioural clusters \parencite{bastille-rousseau2019}.
+
 The class of mechanistic movement models I advocate could help explore whether current statistical tools can reliably detect individual differences in movement decision-making mechanisms.
 For instance, recording the movement paths of model agents, as well as their cue preferences and other traits (e.g. evolved prey-type preferences), and applying a repeatability approach, could help determine how the fitting of certain individual attributes as fixed effects could affect repeatability scores (\emph{vs.} leaving them out).
 Similarly, recording the local cues available to individuals while making movement decisions would yield exactly the matched case-control data used in fitting step-selection functions \parencite[see][]{signer2019}
-Individuals' relative step-selection (essentially, their preferences $s_n$) could be estimated from this data; furthermore, sub-sampling this data (to simulate low-resolution tracking), or using a static predictor such as landscape productivity (as is often used in empirical studies; e.g. NDVI: \cite{pettorelli2011}) could help demonstrate the benefits of using high-throughput tracking \parencite{nathan2022}, and the issues around using broad static predictors of landscape conditions.
-Overall, by treating a simulation model with simple movement strategies as one would empirical animal tracking data, one could explore the performance of popular statistical tools with data from known eco-evolutionary contexts.
+Sub-sampling this data (to simulate low-resolution tracking), or using a static predictor such as landscape productivity (as is often used in empirical studies; e.g. NDVI: \cite{pettorelli2011}) could help demonstrate the benefits of using high-throughput tracking \parencite{nathan2022}, and the issues around using broad static predictors of landscape conditions.
+Overall, by treating a simulation model with simple movement strategies as one would empirical animal tracking data, one could explore the performance of popular statistical tools with data from known eco-evolutionary contexts --- Chapter~\ref{ch:patternprocess} explores this scenario.
 
 \section*{Structure of this Thesis}
 
