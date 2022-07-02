@@ -119,9 +119,16 @@
 % 	}%
 % }
 
-% to correctly handle author name prefixes
-\AtBeginDocument{\toggletrue{blx@useprefix}}
-%\AtBeginBibliography{\togglefalse{blx@useprefix}}
+% to correctly handle author name prefixes as: Van X et al.
+% but in the bibliography, X, Y van et al.
+\AtBeginDocument{
+  \toggletrue{blx@useprefix}
+  \renewcommand*{\mkbibnameprefix}[1]{\MakeCapital{#1}}% this is the relevant line of code
+  }
+\AtBeginBibliography{
+  \togglefalse{blx@useprefix}
+  \renewcommand*{\mkbibnameprefix}[1]{#1}% this sets the name prefix back
+  }
 
 % to prevent hyphens in toc
 \renewcommand{\@tocrmarg}{2.55em plus1fil}
