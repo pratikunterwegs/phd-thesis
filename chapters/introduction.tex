@@ -187,7 +187,7 @@ Individuals are considered to move to the location with the highest suitability.
 Crucially, when individuals move by step-selection as in our models, the value of each cue preference $s_{n}$ \textit{relative} to the other cue preferences is more important than the absolute value of any cue preference by itself (see also the `behavioural hypervolume' of \cite{bastille-rousseau2019}).
 Thus individuals making movement decisions based upon three cues $X_n$ for $n \in (1, 2, 3)$, that have relatively similar values of the corresponding cue preferences $s_n$ may be thought of as weighing, or preferring each cue relatively equally (or indeed avoiding, if any $s_n < 0$).
 The relative values of each individual's cue preferences \textit{taken together}, may be thought of as the individual \textit{movement strategy}.
-% The \emph{Case Study} shows how these strategies can be visualised and interpreted when they are comprised of a small number of preferences.
+Interlude~\ref{box:demos} shows how these strategies can be visualised and interpreted when they are comprised of a small number of preferences.
 
 In our models, we assume individuals have a constant instantaneous speed, which means that all steps have the same distance \parencite[see a similar implementation in][]{spiegel2017}.
 This is different from step-selection analysis of empirical data, which draws steps from a movement kernel \parencite{fortin2005,manly2002,avgar2016}.
@@ -262,11 +262,8 @@ Consequently, I do not believe that the GA approach is broadly suitable for mode
 
 Finally, I focus on three broad yet relatively distinct classes of scenarios that are amenable to investigation using our mechanistic, eco-evolutionary modelling approach.
 These are typically scenarios in which our current understanding of animal ecology suggests that multiple alternative or co-existing adaptive responses are possible.
-% As my Interlude~\ref{box:demo} shows, including evolutionary dynamics is crucial \textit{(i)} to understanding movement strategies and outcomes expected under specific mechanistic assumptions (e.g. foraging dynamics, such as increased handling times, or adding interference competition: \cite{keddy2001}), and \textit{(ii)} to investigating animals' evolutionary dynamics in response to changes in the assumptions of the model (e.g. lowered forage quality or quantity).
 I stress that this is how such models should be considered: as tools that enable the broad exploration of hypothetical scenarios, some of which I lay out below.
 I further caution against expecting eco-evolutionary dynamics known from analytical models; for instance, while steady-state eco-evolutionary equilibria may emerge in some models \parencite[e.g.][]{gupte2021a,gupte2022c,getz2015,getz2016}, it is unrealistic to expect such dynamics from all models \parencite[see e.g.][]{netz2021}.
-% I encourage readers to adapt these scenarios to their own needs, and provide the simulation code for the case study as a starting point.
-% The latter question is especially important to for initial predictions of the speed and nature of animals' evolutionary responses to global changes, and the ecological consequences \parencite{bonnet2022,botero2015}.
 Morever, an exploration of the parameter space, especially in terms of the environmental regime (e.g. environmental productivity, periodicity, or variation), could help generate broad predictive frameworks, with which empirical data could be compared.
 Aspects of these example scenarios could be combined together to gain more detailed understandings of subtle interplays between important eco-evolutionary drivers.
 
