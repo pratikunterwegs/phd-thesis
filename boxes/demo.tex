@@ -107,19 +107,18 @@ Such evolution is likely to be strongly dependent on fine-scale ecological condi
 I found that all 20 replicates of scenario 3 models showed that populations converged to a similar movement strategy within only a few (100) generations.
 This strategy was to primarily prefer moving towards food items, while having a small preference or avoidance of potential competitors.
 The `evolved' scenario 3 individuals had better ecological performance than their ancestral populations (which we consider the first generation, G = 1), taking in more food items on average, and moving less.
-Indeed, these populations outperformed both the random walk and optimal movement implementations as well.
+Indeed, these populations outperformed both the random walk and locally optimal movement implementations as well.
 Adapting their movement strategies to the landscape also affected the social structure of scenario 3 populations --- there were fewer isolated individuals, more spatial clustering, and consequently, individuals encountered more unique conspecifics on average (higher mean degree; Fig.~\ref{fig:demo_networks}).
 
-Individuals in the final generation (G = 100) of scenario 4 had mostly evolved a movement strategy that we describe as `handler tracking', i.e., having a preference for successful neighbours handling a food item ($sH >$ 0), but avoiding unsuccessful neighbours that were still searching for a food item \citep[$sN <$ 0][]{gupte2021a,gupte2022c}.
-% This is similar to the scenario 2 `optimal movement' strategy, and allows individuals to avoid areas with many potential competitors, and thus a lower potential intake.
+Individuals in the final generation (G = 100) of scenario 4 had mostly evolved a movement strategy that we describe as `handler tracking', i.e., having a preference for successful neighbours handling a food item ($sH >$ 0), but avoiding unsuccessful neighbours that were still searching for a food item \citep[$sN <$ 0;][]{gupte2021a,gupte2022c}.
+% This is similar to the scenario 2 `locally optimal movement' strategy, and allows individuals to avoid areas with many potential competitors, and thus a lower potential intake.
 Importantly however, it allows individuals to use indirect social information \citep{dall2005,spiegel2016a}, in the form of the positions of successful neighbours, to find resource clusters --- even when these clusters are not immediately perceptible (due to earlier depletion).
-Consequently, scenario 4 individuals outperform both scenario 1 and scenario 2 individuals by having substantially higher mean per-capita intake (Fig.~\ref{fig:demo_compare}).
-While not shown here, this naturally leads to the conclusion that the resource landscape in scenario 4 is more depleted than in scenarios 1 and 2.
-Scenario 4 individuals, after 100 generations of selection, also outperform scenario 4 populations that have not undergone selection (i.e., their ancestors), demonstrating the difference that adding evolutionary dynamics makes even to a mechanistic, habitat selection model \citep[such as][]{white2018}.
+Consequently, scenario 4 individuals outperform all three previous scenarios' individuals by having a higher mean per-capita intake (Fig.~\ref{fig:demo_compare}; in some cases, substantially higher).
+While not shown here, this naturally leads to the conclusion that the resource landscape in scenario 4 is more depleted than in the three previous scenarios.
+While not shown here, scenario 4 individuals after 100 generations of selection, also outperform scenario 4 populations that have not undergone selection (i.e., their ancestors), demonstrating the difference that adding evolutionary dynamics makes even to a mechanistic, habitat selection model \citep[such as][]{white2018}.
 
-Scenario 4 individuals' evolved use of social information on the potential locations of resource clusters also leads them to have more spatial associations with conspecifics --- indeed, up to three times as many as in the random walk and optimal movement models (Fig.~\ref{fig:demo_compare}).
-These associations likely occur at or near resource clusters, leading to substantial spatial-social clustering in the final generation of scenario 3 populations (Fig.~\ref{fig:demo_networks}).
-Scenario 4 individuals across replicates associated with more individuals than in scenarios 1, 2 and 3.
+Scenario 4 individuals' evolved use of social information on the potential locations of resource clusters also leads them to have more spatial associations with conspecifics --- indeed, up to three times as many as in the random walk and locally optimal movement models (Fig.~\ref{fig:demo_compare}).
+These associations likely occur at or near resource clusters, leading to substantial spatial-social clustering in the final generation of scenario 4 populations (Fig.~\ref{fig:demo_networks}); and scenario 4 individuals across replicates associated with more individuals than in scenarios 1, 2 and 3.
 Spatial-social structure in animal populations can have important consequences for a wide range of processes and phenomena in animal ecology, including the transmission of animal culture \citep[such as foraging tactics or migration routes][]{romano2020,romano2021}, as well as the spread of infectious pathogens \citep{white2017,white2018}.
 The class of models I advocate are thus well suited to investigating questions around the emergent structure of animal societies.
 
@@ -130,15 +129,15 @@ The class of models I advocate are thus well suited to investigating questions a
         \textbf{Population ecological outcomes resulting from four types of movement strategy.}
         \textbf{(A)} In \textit{scenario 1}, individuals moving randomly across the landscape had expectedly lower per-capita intake than individuals moving in a locally optimal way (\textit{scenario 2}).
         When individuals selected their movement step based on heritable movement preferences for food items and conspecific competitors (\textit{scenario 3, `mechanistic 2 cues'}), they had a wide variance in intake, with the population median equivalent to that achieved by a random walk.
-        However, after only 100 generations of natural selection for adaptive movement preferences, scenario 3 populations had a higher intake than ostensibly `optimal' movement.
+        However, after only 100 generations of natural selection for adaptive movement preferences, scenario 3 populations had a higher intake than ostensibly locally `optimal' movement.
         Allowing individuals to differentiate between current and future competitors (non-handlers and handlers, respectively; \textit{scenario 4, `mechanistic 3 cues'}), did not improve individuals' intake, suggesting that relatively simple step-selection movement strategies may suffice on even complex, fluctuating resource landscapes.
         \textbf{(B)} Surprisingly, optimal movers also moved more than random walkers, with no apparent trade-off between movement and intake.
-        \textbf{(C)} Movement implementations strongly influenced individuals' associations (based on proximity), with step-selection movement leading to many times more associations than random or optimal movement.
+        \textbf{(C)} Movement implementations strongly influenced individuals' associations (based on proximity), with step-selection movement leading to many times more associations than random or locally optimal movement.
     }
     \label{fig:demo_compare}
     \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.9\linewidth]{figures/introduction/fig_networks.png}
     \caption{
@@ -194,10 +193,10 @@ Similar figures in chapters~\ref{ch:kleptomove} and~\ref{ch:patternprocess} show
 
 % To examine the consequences for disease ecology, I began by constructing social networks by recording individuals' pairwise associations (distance $<$ perception range) in all four scenarios \citep{farine2015}.
 % I ran simple epidemiological models with SIR assumptions over the social networks emerging in each scenario \citep[25 replicates per network; 1 network per scenario replicate][]{white2017,csardi2006,bailey1975}, with a hypothetical disease (transmission probability $\beta$ = 2.0, recovery probability $\gamma$ = 1.0; see Fig.~\ref{fig:sir}).
-% Between the non-mechanistic scenarios, the disease spread more rapidly through networks arising from the optimal movement model, than the random walk model.
+% Between the non-mechanistic scenarios, the disease spread more rapidly through networks arising from the locally optimal movement model, than the random walk model.
 % In scenario 3, the disease spread much more rapidly through the population after selection for movement preferences (G = 100), than through the ancestral population that had not undergone such selection (G = 1), despite both populations being similarly spatially clustered.
 % This is not unexpected as initially (G = 1), there are a number of individuals that avoid potential competitors ($s_C <$ 0), and this could hinder transmission in comparison with their descendants, fewer of which are similarly isolated.
-% Importantly, the unevolved mechanistic movement implementation had a lower infection peak than the random walk and optimal movement implementations.
+% Importantly, the unevolved mechanistic movement implementation had a lower infection peak than the random walk and locally optimal movement implementations.
 % A model beginning with diverse movement strategies, and not including an evolutionary component when implementing mechanistic movement \citep[such as][]{white2018}, would correctly conclude that mechanistic movement implementations differ from more mainstream movement modelling approaches in epidemiological outcomes, but crucially miss that this difference is that a disease would spread much more rapidly through the population.
 % Scenario 4 obtains a similar result --- populations adapted to their landscape cluster together, which allows a disease to spread even faster through their network than in scenario 3.
 
@@ -207,7 +206,7 @@ Similar figures in chapters~\ref{ch:kleptomove} and~\ref{ch:patternprocess} show
 %     \caption{
 %         \textbf{Case study 2: Effect of movement implementations on the outbreak of hypothetical disease.}
 %         Modelling a disease outbreak using a simple SIR model conditioned on the social networks of each population (e.g. as shown in Fig.~\ref{fig:demo_networks}) shows that how movement is implemented in models can strongly influence epidemiological conclusions (disease transmission rate $\beta$ = 2.0, recovery rate $\gamma$ = 1.0).
-%         \textbf{(A)} The hypothetical disease spreads more rapdily through \textit{scenario 2} than \textit{scenario 1}, as scenario 2 networks are somewhat better connected. This is likely because optimal movement is better at leading individuals towards resource clusters where they must associate with conspecifics while feeding.
+%         \textbf{(A)} The hypothetical disease spreads more rapdily through \textit{scenario 2} than \textit{scenario 1}, as scenario 2 networks are somewhat better connected. This is likely because locally optimal movement is better at leading individuals towards resource clusters where they must associate with conspecifics while feeding.
 %         \textbf{(B)} Modelling movement as mechanistic step-selection based on preferences for local cues (\textit{scenario 3}: mechanistic, 2 cues) leads to drastically different conclusions depending on whether the model includes an evolutionary component. Diseases spread less rapidly through ancestral populations with a diversity of movement strategies, than through populations moving optimally or even randomly.
 %         However, after 100 generations of selection, the population has primarily social agents that are strongly inter-connected, leading to very rapid disease outbreaks.
 %         \textbf{(C)} Disease dynamics are similar in \textit{scenario 4} (mechanistic, 3 cues): the spread of disease through initial networks (G = 1), is not representative of the spread through populations that have undergone selection (G = 100).
