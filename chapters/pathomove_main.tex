@@ -78,16 +78,9 @@ As handlers are immobilised at the location where they encountered food, they ma
 Once individuals finish handling a food item, they return to the non-handling, searching state.
 
 Our model individuals move in small, discrete steps of fixed size ($d_M$ = 1 unit).
-<<<<<<< HEAD
 Each step is chosen based on the individuals' assessment of local environmental cues, and this assessment is made using evolved movement strategies \autocite[as in][]{netz2021,gupte2021a}.
 First, individuals scan their current location, and five equally spaced points around their position, at a distance of 1 unit for three cues ($d_S$, see \textit{SI Appendix Fig. S1 -- S2}): the number of food items ($F$), the number of foragers handling a food item (`handlers': $H$) and the number of idle foragers not handling a food item (`non-handlers': $N$).
 Individuals assign a suitability \autocite[see][]{netz2021,gupte2021a} to their current position and each of the five locations, using their inherited preferences for each of the cues: $S = s_FF + s_HH + s_NN$ + $\epsilon$.
-=======
-Each step is chosen based on the individuals' assessment of local environmental cues, and this assessment is made using evolved movement strategies \citep[as in][]{netz2021,gupte2021a}.
-First, individuals scan their current location, and five equally spaced points located on the arc of a circle with a radius of 0.5 units ($\sim$1\% of the landscape's side).
-around their position, at a distance of 1 unit for three cues ($d_S$, see \textit{Supplementary Information}): the number of food items ($F$), the number of foragers handling a food item (`handlers': $H$) and the number of idle foragers not handling a food item (`non-handlers': $N$).
-Individuals assign a suitability \citep[see][]{netz2021,gupte2021a} to their current position and each of the five locations, using their inherited preferences for each of the cues: $S = s_FF + s_HH + s_NN$ + $\epsilon$.
->>>>>>> 8d43b47ddc128b0830158c7f25ae286fb9050a49
 The preferences $s_F$, $s_F$, and $s_N$ for each of the three cues are heritable from parents to offspring, while $\epsilon$ is a very small error term drawn for each location, to break ties among locations.
 The values of each of the cue preferences \emph{relative to each other} determine individuals' movement strategies \autocite{gupte2021a}.
 All individuals move simultaneously to the location to which they have assigned the highest suitability (`step selection') \autocite[akin to step-selection;][]{fortin2005}; this may be their current location, in which case individuals are stationary for that timestep.
@@ -302,7 +295,6 @@ Our work shows how qualitatively and quantitatively different social movement st
 
 \subsection*{Social Information Use and Pathogen Introduction}
 
-<<<<<<< HEAD
 Prior to pathogen introduction, the value of social information influenced which social movement strategies were evolved. 
 Individuals initialised (`born') near their parent's final location may benefit from `ecological inheritance' \autocite{badyaev2009} of their parent's favourable position near resource clusters (see \textit{SI Appendix Fig. S2, S4}).
 Avoiding potential competitors (and kin) thus correlates with avoiding profitable areas, and this leads to the persistence of the indiscriminately social agent tracking strategy, despite the evident costs of exploitation competition.
@@ -320,27 +312,6 @@ Our work suggests how, by leading to the necessary diversity in social movement 
 Nonetheless, the rapid decreases in social interactions should primarily prompt concern that the evolutionary consequences of pathogen introduction could slow the transmission of, and erode, animal culture \autocite{cantor2021} --- including foraging \autocite{klump2021} and migration behaviours \autocite{jesmer2018,guttal2010}.
 Pathogens themselves typically have shorter generation times than their hosts, and may also evolve rapidly in response to changes in host sociality \autocite{ashby2022}.
 Although not examined here, a mixture of social strategies could allow for the maintenance of a corresponding diversity in pathogen strategies as well \autocite{ashby2022,prado2009}.
-=======
-We expected that prior to pathogen introduction, exploitation competition should promote the use of high-quality social information, and the avoidance of potential competitors \citep[handler tracking;][]{gupte2021a}.
-We found that the usefulness of social information affected this outcome quite strongly, as handler tracking was most common on low-productivity landscapes ($R$ = 1), where social information is crucial to finding resources (see \textit{Model and Analysis}).
-Our current model's landscape clusters are more sparsely and irregularly distributed than in our previous work \citep{gupte2021a}, and individuals are initialised near their parent's final location (see \textit{Supplementary Information}).
-This leads to `ecological inheritance' whereby successful individuals on or near resource clusters pass their favourable positions on to their offspring \citep{badyaev2009}.
-Avoiding potential competitors thus correlates with avoiding profitable areas.
-This leads to the persistence of the indiscriminately social agent tracking strategy, despite the evident costs of exploitation competition (see \textit{Supplementary Information} for an alternative implementation).
-We found an unexpectedly rapid evolutionary shift, within 25 generations, in individual movement strategies following pathogen introduction.
-This is much more rapid than the timescales usually associated with the evolution of complex traits such as sociality.
-This change actually occurs over fewer generations than over which key aspects of animal culture and ecology, such as migration routes, are established through social learning \citep{jesmer2018,cantor2021}.
-Current and expected cross-species transmissions of novel pathogens \citep{carlson2022a,pusceddu2021} should thus prompt concern that the evolutionary consequences of pathogen introduction could slow the transmission of, and erode, animal culture \citep{cantor2021}.
-
-Avoiding potentially infectious individuals is a key component of navigating the `landscape of disgust' \citep{weinstein2018}.
-To navigate this landscape effectively, animals must first be sensitive, or become more sensitive, to cues of high transmission risk.
-Our results show that such sensitivity can rapidly evolve following the introduction of a novel pathogen, leading to strong qualitative changes in movement strategies within 100 generations.
-Furthermore, on average, individuals' sensitivity to social movement cues actually increases after pathogen introduction.
-However, there was substantial between-individual variation in the importance of social cues overall, even after a specific movement strategy had become dominant.
-A mix of individuals with different sensitivities to social cues, relative to resource cues, is key to the evolution of large-scale collective behaviours, such as migration \citep{guttal2010}.
-Our work suggests how in the long term (about 500 generations), by leading to the necessary diversity in social movement strategies, a novel pathogen may actually lay the groundwork for the evolution of more complex collective behaviour.
-The emergence of individual variation in social movement strategies, and especially the trade-off between movement, associations, and infection risk also suggests a clear mechanism by which sociality could evolve as a personality trait \citep[][]{gartland2021}.
->>>>>>> 8d43b47ddc128b0830158c7f25ae286fb9050a49
 
 \subsection*{Ecological Causes and Consequences of Social Movement Strategies}
 
