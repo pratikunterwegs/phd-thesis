@@ -23,7 +23,7 @@
 
 \medskip
 
-Here, by way of introduction to chapters appearing further in this thesis (Chapters~\ref{ch:kleptomove} and \ref{ch:pathomove}), I present a very basic version of the models in those chapters, in order to show how my approach differs from approaches used thus far.
+Here, I present a prototype of the models I outlined in the Introduction, in order to show how my approach differs from approaches used thus far.
 I show that considering movement as the outcome of evolved preferences for locally available cues leads to very different ecological outcomes when compared to mainstream frameworks such as random walks and optimal local movement.
 These differences can be important when such models are used as baselines against which to compare patterns observed from empirical animal tracking data, or to make predictions for how key ecological processes --- such as the transmission of pathogens or culture --- occur in animal populations \parencite{cantor2021}.
 Here I focus on movement strategies following \textcite{bastille-rousseau2019}, which are among the behavioural strategies of individuals, and which may also facilitate or constrain which other behavioural strategies individuals can employ \citep{nathan2008a,spiegel2017}.
@@ -33,10 +33,10 @@ In my model, 200 individuals inhabit a landscape of 30 square units, which also 
 Food items are patchily distributed to form distinct clusters (N = 30, 15 items per cluster).
 For the sake of simplicity, individuals choose only a movement direction, and have the same movement distance of 1 distance unit (like a king in chess; see Fig.~\ref{fig:demo_schematic}).
 Individuals can perceive food items ($F$) and other individuals at locations 1 distance unit away.
-When individuals perceive a food item, they pick it up and handle it for 5 time-steps until they can gain its energetic benefit \citep{ruxton1992,gupte2021a,gupte2022c}; we call such individuals `handlers' ($H$).
+When individuals perceive a food item, they pick it up and handle it for 5 time-steps until they can gain its energetic benefit \citep{ruxton1992,gupte2021a,gupte2022c}; I call such individuals `handlers' ($H$).
 While individuals are handling an item, they are immobilised.
-Individuals compete with each other exploitatively and an item once picked up by an individual is unavailable to its neighbours; these individuals continue searching for food, and we call them `non-handlers' ($N$).
-Items regenerate at the same location after a fixed number of timesteps, which we call the regeneration time ($T_R$; default = 100), and while an item is regenerating, it cannot be sensed by nearby individuals.
+Individuals compete with each other exploitatively and an item once picked up by an individual is unavailable to its neighbours; these individuals continue searching for food, and I call them `non-handlers' ($N$).
+Items regenerate at the same location after a fixed number of timesteps, which I call the regeneration time ($T_R$; default = 100), and while an item is regenerating, it cannot be sensed by nearby individuals.
 Individuals have a lifetime of 400 timesteps, over which they forage and move over the landscape.
 The model's four scenarios differ in their implementation of individual movement.
 
@@ -61,35 +61,36 @@ The model's four scenarios differ in their implementation of individual movement
 In \textit{scenario 1}, individuals perform a random walk, and have a uniform probability of either remaining in their current location, or moving in a direction chosen from among eight locations within 1 distance unit (see Fig.~\ref{fig:demo_compare}A); here, movement is independent of local cues.
 In \textit{scenario 2}, individuals move in a way that is considered locally optimal in foraging ecology \citep{stephens2019,scherer2020}.
 Each individual assesses local cues at its current location, and eight surrounding locations --- the number of available food items ($F$), and the number of potential competitors ($N + H$) --- and moves to the location with the highest expected intake, which is given by $(F / (N + H + 1)) + \epsilon$; $\epsilon$ is a small error term.
-We initially contrast these two scenarios to show how adding suitability-based decision making to individual movement can affect the outcomes of movement individual-based models.
+I initially contrast these two scenarios to show how adding suitability-based decision making to individual movement can affect the outcomes of movement individual-based models.
 
 Locally optimal movement models are often labelled mechanistic as they include environmental cues in decision making \citep[e.g.][]{scherer2020}, yet the expected payoff of a location is strongly influenced by the functional response of intake in relation to competitors.
 Such implementations make the implicit evolutionary assumption that all individuals individuals can `sense' the fitness revenue per location and then move in the direction of fitness increase.
 % However, the functional responses commonly used in foraging theory are often modelled on empirical data, and as such may not be properly generalisable to other eco-evolutionary contexts, nor sufficient to capture the mechanistic links between individuals' social environment, their behavioural decisions, and the consequences for intake.
 I showcase a more mechanistic way in which individuals can determine their optimal step when making foraging movements, which is to have distinct preferences for local cues (food items and potential competitors).
-These preferences are similar to the coefficients of habitat- and step-selection functions, which I introduce in the boxes below \citep[][]{fortin2005,avgar2013,thurfjell2014,avgar2016,fieberg2010,manly2007}.
+These preferences are similar to the coefficients of habitat- and step-selection functions \citep[][]{fortin2005,thurfjell2014,manly2002}.
 
 In my model's \textit{scenario 3}, individuals assesses local cues --- the number of available food items ($F$), and the number of potential competitors ($N + H$) --- at eight locations around themselves, and move to the location with the highest assessed suitability: $S = s_FF + s_C(N + H) + \epsilon$.
 Here, $s_F$ and $s_C$ are inherited \textit{movement preferences} for food items and potential competitors respectively, and can take any positive or negative numeric values; $\epsilon$ is a small error term.
-It is the relative contribution of $s_F$ and $s_C$ that determines individuals' \textit{movement strategy}.
+It is the relative contribution of $s_F$ and $s_C$ that determines individuals' \textit{movement strategy} \parencite[similar to the behavioural hypervolume of][]{bastille-rousseau2019}.
 I initialised the populations to have a broad range of movement strategies, so that it contained individuals with different combinations of preferences and avoidances of either food items or competitors.
 This assumption matters, as it speeds up initial evolution by orders of magnitude. 
 This method is useful for obtaining a first `quick' overview of the evolutionary outcome, but it is advisable to check whether the same outcome is achieved when starting with a monomorphic population with zero cue weights.
 
 In my evolutionary approach, I am more interested in cue weights (and strategies) that have evolved subject to natural selection.
-Since individuals inherit their cue weights from their parents, and successful parents produce more offspring (lifetime intake is the proxy for `fitness'), successful movement strategies are transmitted to more offspring and will thus spread in the population.
+Since individuals inherit their cue weights from their parents, and successful parents produce more offspring (lifetime intake is the proxy for `fitness'), successful movement strategies are transmitted to more offspring and will thus spread in the population \parencite[an expectation from the replicator equation:][]{hofbauer1988}.
 To examine which movement strategies evolved, I added an evolutionary component to the model: over 100 generations, individuals reproduce, passing on their preferences ($s_F$, $s_C$) to their offspring.
 The preference values undergo random, independent mutations with a probability $p$ = 0.01, and with a mutation step size drawn from a Cauchy distribution with a scale of 0.01.
 Consequently, most mutations are small, but larger mutations do occasionally occur.
-As is common in foraging theory, we assume that the number of offspring is proportional to individuals' intake of food items during their lifetime.
-For simplicity, we assume fixed population size, discrete, non-overlapping generations, asexual reproduction, and haploid individuals.
-I implemented large-scale natal dispersal, such that individuals are typically initialised (`born') within a standard deviation of 10 units of their parents --- this makes scenario 3 relatively similar to the random initialisation of individual positions in scenarios 1 and 2.
+
+For simplicity, I assume fixed population size, discrete, non-overlapping generations, asexual reproduction, and haploid individuals.
+I implemented large-scale natal dispersal, such that individuals are typically initialised (`born') within a standard deviation of 10 units of their parents (see \cite{travis1999} for a consideration of how dispersal itself evolves).
+This makes scenario 3 relatively similar to the random initialisation of individual positions in scenarios 1 and 2.
 These modelling choices must be explicitly implemented in simulation models' code, bringing the assumptions of classical models --- treated as received wisdom and hence ignored --- to the fore.
 
 A key feature of individual-based simulation models is their ability to incorporate great amounts of ecological detail \citep{deangelis2019}.
-With a simple extension to scenario 3, we show how to add biologically relevant details to models, and how these details can affect model outcomes.
+With a simple extension to scenario 3, I show how to add biologically relevant details to models, and how these details can affect model outcomes.
 Foraging can be a form of public information, serving as an indirect cue of the presence of resources, and furthermore, helping distinguish between individuals that are \textit{immediate} competitors (here, non-handlers), and those which are only future potential competitors \citep[][; here, handlers]{dall2005,giraldeau2018,beauchamp2008,beauchamp2013}.
-Thus in my \textit{scenario 4}, we allow individuals to sense the handling status of nearby potential competitors, and to have separate heritable preferences for handlers ($sH$) and non-handlers ($sN$).
+Thus in my \textit{scenario 4}, I allow individuals to sense the handling status of nearby potential competitors, and to have separate heritable preferences for handlers ($sH$) and non-handlers ($sN$).
 Individuals assess the suitability of locations as $S = s_FF + s_HH + s_NN + \epsilon$; $\epsilon$ is a small error term.
 I implemented the same evolutionary and dispersal assumptions as in scenario 3.
 
@@ -98,29 +99,10 @@ I implemented the same evolutionary and dispersal assumptions as in scenario 3.
 As expected, optimally moving scenario 2 individuals had a higher per-capita intake than randomly moving scenario 1 individuals (Fig.~\ref{fig:demo_compare}).
 Individuals with higher intake should be expected to move less, as my model --- in line with foraging ecology theory \citep{charnov1976} --- explicitly considers a tradeoff between movement and intake.
 Specifically, the tradeoff is that when an individual is handling, it cannot move towards areas of higher future expected intake, and if an individual moves into locations where there are no food items, it loses out on intake.
-Surprisingly then, optimally moving individuals moved \textit{more} than random walkers (Fig.~\ref{fig:demo_compare}).
-
-Individuals in both scenarios had very similar numbers of spatial associations with other individuals (Fig.~\ref{fig:demo_compare}, Fig.~\ref{fig:demo_networks}).
+Individuals following a locally optimal strategy moved \textit{more} than random walkers (Fig.~\ref{fig:demo_compare}), a clear confirmation of the expectation that such a strategy is more efficient than random walking (i.e., more food for less movement).
+Nonetheless, individuals in both scenarios had very similar numbers of spatial associations with other individuals (Fig.~\ref{fig:demo_compare}, Fig.~\ref{fig:demo_networks}).
 Overall, this comparison demonstrates the importance of active decision making in animal movement, and suggests why animals have evolved sophisticated sensory apparatuses to gather information from their environment \citep{avgar2013,berger2022,mann2021,swain2021}.
 Such evolution is likely to be strongly dependent on fine-scale ecological conditions, primarily the \textit{availability} of information in the environment, as well as the energetic cost of evolving and maintaining sensory capabilities \citep{swain2021}.
-
-I found that all 20 replicates of scenario 3 models showed that populations converged to a similar movement strategy within only a few (100) generations.
-This strategy was to primarily prefer moving towards food items, while having a small preference or avoidance of potential competitors.
-The `evolved' scenario 3 individuals had better ecological performance than their ancestral populations (which we consider the first generation, G = 1), taking in more food items on average, and moving less.
-Indeed, these populations outperformed both the random walk and locally optimal movement implementations as well.
-Adapting their movement strategies to the landscape also affected the social structure of scenario 3 populations --- there were fewer isolated individuals, more spatial clustering, and consequently, individuals encountered more unique conspecifics on average (higher mean degree; Fig.~\ref{fig:demo_networks}).
-
-Individuals in the final generation (G = 100) of scenario 4 had mostly evolved a movement strategy that we describe as `handler tracking', i.e., having a preference for successful neighbours handling a food item ($sH >$ 0), but avoiding unsuccessful neighbours that were still searching for a food item \citep[$sN <$ 0;][]{gupte2021a,gupte2022c}.
-% This is similar to the scenario 2 `locally optimal movement' strategy, and allows individuals to avoid areas with many potential competitors, and thus a lower potential intake.
-Importantly however, it allows individuals to use indirect social information \citep{dall2005,spiegel2016a}, in the form of the positions of successful neighbours, to find resource clusters --- even when these clusters are not immediately perceptible (due to earlier depletion).
-Consequently, scenario 4 individuals outperform all three previous scenarios' individuals by having a higher mean per-capita intake (Fig.~\ref{fig:demo_compare}; in some cases, substantially higher).
-While not shown here, this naturally leads to the conclusion that the resource landscape in scenario 4 is more depleted than in the three previous scenarios.
-While not shown here, scenario 4 individuals after 100 generations of selection, also outperform scenario 4 populations that have not undergone selection (i.e., their ancestors), demonstrating the difference that adding evolutionary dynamics makes even to a mechanistic, habitat selection model \citep[such as][]{white2018}.
-
-Scenario 4 individuals' evolved use of social information on the potential locations of resource clusters also leads them to have more spatial associations with conspecifics --- indeed, up to three times as many as in the random walk and locally optimal movement models (Fig.~\ref{fig:demo_compare}).
-These associations likely occur at or near resource clusters, leading to substantial spatial-social clustering in the final generation of scenario 4 populations (Fig.~\ref{fig:demo_networks}); and scenario 4 individuals across replicates associated with more individuals than in scenarios 1, 2 and 3.
-Spatial-social structure in animal populations can have important consequences for a wide range of processes and phenomena in animal ecology, including the transmission of animal culture \citep[such as foraging tactics or migration routes][]{romano2020,romano2021}, as well as the spread of infectious pathogens \citep{white2017,white2018}.
-The class of models I advocate are thus well suited to investigating questions around the emergent structure of animal societies.
 
 \begin{figure}[!h]
     \centering
@@ -135,7 +117,26 @@ The class of models I advocate are thus well suited to investigating questions a
         \textbf{(C)} Movement implementations strongly influenced individuals' associations (based on proximity), with step-selection based movement leading to many times more associations than random or locally optimal movement. Surprisingly, individuals in scenario 4 had many more associations than in scenario 3; this shows an unexpected difference that could have substantial consequences for the outcomes of social processes such as the transmission of animal culture or infectious pathogens.
     }
     \label{fig:demo_compare}
-    \end{figure}
+\end{figure}
+
+I found that all 20 replicates of scenario 3 models showed that populations converged to a similar movement strategy within only a few (100) generations.
+This strategy was to primarily prefer moving towards food items, while having a small preference or avoidance of potential competitors.
+The `evolved' scenario 3 individuals had better ecological performance than their ancestral populations (which I consider the first generation, G = 1), taking in more food items on average, and moving less.
+Indeed, these populations outperformed both the random walk and locally optimal movement implementations as well.
+Adapting their movement strategies to the landscape also affected the social structure of scenario 3 populations --- there were fewer isolated individuals, more spatial clustering, and consequently, individuals encountered more unique conspecifics on average (higher mean degree; Fig.~\ref{fig:demo_networks}).
+
+Individuals evolved after 100 generations in scenario 4 had mostly evolved a movement strategy that I describe as `handler tracking', i.e., having a preference for successful neighbours handling a food item ($sH >$ 0), but avoiding unsuccessful neighbours that were still searching for a food item \citep[$sN <$ 0;][]{gupte2021a,gupte2022c}.
+% This is similar to the scenario 2 `locally optimal movement' strategy, and allows individuals to avoid areas with many potential competitors, and thus a lower potential intake.
+Importantly this strategy allows individuals to use indirect social information \citep{dall2005,spiegel2016a}, in the form of the positions of successful neighbours, to find resource clusters --- even when these clusters are not immediately perceptible (due to earlier depletion).
+
+Consequently, scenario 4 individuals outperform all three previous scenarios' individuals by having a higher mean per-capita intake (Fig.~\ref{fig:demo_compare}; in some cases, substantially higher).
+This naturally leads to the conclusion that the resource landscape in scenario 4 is more depleted than in the three previous scenarios.
+While not shown here, scenario 4 individuals after 100 generations of selection, also outperform scenario 4 populations that have not undergone selection (i.e., their ancestors), demonstrating the difference that adding evolutionary dynamics makes even to a mechanistic, habitat selection model.
+
+Scenario 4 individuals' evolved use of social information on the potential locations of resource clusters also leads them to have more spatial associations with conspecifics --- indeed, up to three times as many as in the random walk and locally optimal movement models (Fig.~\ref{fig:demo_compare}).
+These associations likely occur at or near resource clusters, leading to substantial spatial-social clustering in the final generation of scenario 4 populations (Fig.~\ref{fig:demo_networks}); and scenario 4 individuals across replicates associated with more individuals than in scenarios 1, 2 and 3.
+Spatial-social structure in animal populations can have important consequences for a wide range of processes and phenomena in animal ecology, including the transmission of animal culture as well as the spread of infectious pathogens \parencite{romano2020,romano2021,cantor2021}.
+The class of models I advocate are thus well suited to investigating questions around the emergent structure of animal societies (see Chapter~\ref{ch:pathomove} for more on this).
 
 \begin{figure}[h]
     \centering
@@ -144,39 +145,23 @@ The class of models I advocate are thus well suited to investigating questions a
         \textbf{Different movement strategies lead to substantially different patterns of spatial-social associations.}
         Individuals moving randomly (\textbf{A}: scenario 1), or in locally optimal ways (\textbf{B}: scenario 2) have sparse social networks, with individuals spread out over the simulated resource landscape.
         Most individuals have a low degree, i.e., few unique social partners.
-        \textbf{C} In contrast, individuals making step-selection based movement decisions based on two cues (food and competitors; scenario 3) have much more spatially clustered networks, with a substantially higher mean degree (more unique social partners).
+        \textbf{(C)} In contrast, individuals making step-selection based movement decisions based on two cues (food and competitors; scenario 3) have much more spatially clustered networks, with a substantially higher mean degree (more unique social partners).
         Over 100 generations, scenario 3 individuals are selected for their preference for food items, and the resulting populations form networks that are also clustered, but with strong connectivity between clusters, and more unique partners overall.
-        A similar dynamic is seen in scenario 4, where most individuals still avoid immediate competitors (non-handlers), leading to more dispersed populations than scenario 3, though with strong links between nodes.
+        \textbf{(D)} A similar dynamic is seen in scenario 4, where most individuals still avoid immediate competitors (non-handlers), leading to more dispersed populations than scenario 3, though with strong links between nodes.
     }
     \label{fig:demo_networks}
   \end{figure}
 
-\subsection*{Visualising Evolved Variation}
+\subsection*{Visualising and Interpreting Evolved Variation}
 
 In scenarios 3 and 4, individuals' movement preferences (their weights for local environmental cues) may take any numeric value.
 It is the combination of these weights that altogether forms each individual's movement strategies; this approach has been referred to as the `behavioural hypervolume' approach when applied to step-selection coefficients estimated from real animal tracking data \parencite{bastille-rousseau2019}.
 One challenge in encoding behavioural strategies in this way is interpreting the evolved variation in strategies, if any.
-A key technique to do so is exploratory visualisation --- the evolved movement preferences can be plotted in relation to each other to check for any obvious clusters.
-This is substantially easier when examining the evolved cue weights in this class of conceptual models, as they can be readily plotted in three dimensional space (with scenario 3 requiring only two dimensions for $s_F$ and $s_C$).
-Here, I show how the three-weight individuals of scenario 4 (with $s_F$, $s_H$, and $s_N$) can be represented in a convenient figure: with $s_F$ and $s_H$ as the X and Y axes respectively, and the weight for non-handlers $s_N$ represented by a diverging colour scale (Fig.~\ref{fig:demo_hypervolume}).
+A key step in doing so is exploratory visualisation --- the evolved movement preferences can be plotted in relation to each other to check for any obvious clusters.
 
-The interpretation of this figure, which also helps with similar figures in chapters~\ref{ch:kleptomove} and~\ref{ch:patternprocess} is as follows.
-Each point on the figure represents a single individual.
-Each individual is plotted in a three dimensional space (colour representing position in the third dimension); this is \textcite{bastille-rousseau2019}'s behavioural hypervolume.
-Each individual's position is calculated by scaling each of its cue preferences (say, $s_i$) by the sum of the absolute cue preferences: $\text{scaled}~s_i = s_i / (\Sigma |s_n|)$.
-This means that regardless of the number of cue preferences (in this case, three), all dimenions are bounded by [-1, +1].
-The regions individuals can take in the two primary dimensions is bounded by the dashed lines.
-
-Individuals that lie towards the extremes (-1 or +1) of any dimension (i.e., the behavioural trait space) should be interpreted as making their movement decisions primarily based on that particular cue.
-For example, in Fig.~\ref{fig:demo_hypervolume}, many individuals have values of $s_F$ close to +1.0, indicating that they `assign' food item cues the highest, and indeed nearly all the weight when making movement decisions.
-Another perspective on this is that for such individuals, the other cues are so unimportant that the combination of their actual values and the individuals' weight for them (e.g. $s_H \times H$) is often less than $\epsilon$, i.e., their sensitivity to the cue is on the order of their perception error --- not of great importance.
-This same interpretation applies to individuals' position on the colour scale; extreme values indicate a strong preference or avoidance of the relevant cue (here, $s_N$).
-
-Interestingly, plotting individuals' evolved movement strategies (their position in the scaled behavioural trait space) in this way reveals that there is a substantial amount of variation among individuals.
-Indeed, individuals appear to occupy a spectrum between prioritising only food item cues (high $s_F$) and only handler cues ($s_H$).
-More rarely, some individuals' position indicates that they have a strong avoidance of non-handlers.
-In this model, this suggests that a broad range of movement strategies can and does coexist, neatly demonstrating that behavioural variation can arise spontaneously from simple mechanistic assumptions in this class of models.
-Similar figures in chapters~\ref{ch:kleptomove} and~\ref{ch:patternprocess} show how strong correlations can arise between movement strategies as shown here, and other behavioural strategies.
+Here, I would caution that conceptual individual-based models (and step-selection functions fitted to empirical data) may have to deal with a large number of model parameters \parencite{mueller2011}, or function coefficients \parencite{bastille-rousseau2019}.
+This makes clustering and interpreting these individual-level attributes a challenge, requiring complex classification approaches \parencite{bastille-rousseau2019}.
+This challenge is a powerful incentive to keep conceptual models' step-selection calculations as simple as possible.
 
 \begin{figure}[h]
     \centering
@@ -188,6 +173,27 @@ Similar figures in chapters~\ref{ch:kleptomove} and~\ref{ch:patternprocess} show
     }
     \label{fig:demo_hypervolume}
   \end{figure}
+
+In contrast, in my conceptual models, cue weights can be readily plotted in three dimensional space (with scenario 3 requiring only two dimensions for $s_F$ and $s_C$).
+Here, I show how the three-weight individuals of scenario 4 (with $s_F$, $s_H$, and $s_N$) can be represented in a convenient figure: with $s_F$ and $s_H$ as the X and Y axes respectively, and the weight for non-handlers $s_N$ represented by a diverging colour scale (Fig.~\ref{fig:demo_hypervolume}).
+
+The interpretation of this figure, which also helps with similar figures in chapters~\ref{ch:kleptomove} and~\ref{ch:patternprocess} is as follows.
+Each point on the figure represents a single individual.
+Each individual is plotted in a three dimensional space (colour representing position in the third dimension); this is \textcite{bastille-rousseau2019}'s behavioural hypervolume.
+Each individual's position is calculated by scaling each of its cue preferences (say, $s_i$) by the sum of the absolute cue preferences: $\text{scaled}~s_i = s_i / (\Sigma |s_n|)$.
+This means that regardless of the number of cue preferences (in this case, three), all axes are bounded by [-1, +1].
+The regions individuals can take in the two primary axes is bounded by the dashed lines.
+
+Individuals that lie towards the extremes (-1 or +1) of any axis should be interpreted as making their movement decisions primarily based on that particular cue.
+For example, in Fig.~\ref{fig:demo_hypervolume}, many individuals have values of $s_F$ close to +1.0, indicating that they `assign' food item cues the highest, and indeed nearly all the weight when making movement decisions.
+Another perspective on this is that for such individuals, the combination of cue values and the individuals' weight for them (e.g. $s_N \times N$) is often less than $\epsilon$, i.e., their sensitivity to the cue is on the order of their perception error --- not of great importance.
+This same interpretation applies to individuals' position on the colour scale; extreme values indicate a strong preference or avoidance of the relevant cue (here, $s_N$).
+
+Interestingly, plotting individuals' evolved movement strategies in this way reveals that there is a substantial amount of variation among individuals.
+Indeed, individuals appear to occupy a spectrum between prioritising only food item cues (high $s_F$) and only handler cues (high $s_H$).
+More rarely, some individuals' position indicates that they have a strong avoidance of non-handlers.
+In this model, this suggests that a broad range of movement strategies can and does coexist, neatly demonstrating that behavioural variation can arise spontaneously from simple mechanistic assumptions in this class of models.
+Similar figures in chapters~\ref{ch:kleptomove} show how strong correlations can arise between movement strategies as shown here, and other behavioural strategies.
 
 % \subsection*{Emergent Model Properties: Consequences for Disease Transmission}
 
