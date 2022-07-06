@@ -110,21 +110,21 @@
 
 \makeatletter
 
-% % for a bibliography split into alphabetical sections as margin notes
-% \def\ifskipbib{\iftoggle{blx@skipbib}}
-% \bibinitsep=\baselineskip %to trigger blx@initsep
-% \def\blx@initsep{%
-% 	\blx@imc@iffieldundef{sortinit}
-% 	{}
-% 	{%
-% 		\ifnum\c@instcount>\@ne
-% 		\blx@imc@iffieldequals{sortinit}\blx@previnit
-% 		{}
-% 		{\leavevmode\marginline{\color{Maroon}\bfseries\scshape\huge\printfield{sortinit}}}%
-% 		\fi
-% 		\global\let\blx@previnit\abx@field@sortinit
-% 	}%
-% }
+% for a bibliography split into alphabetical sections as margin notes
+\def\ifskipbib{\iftoggle{blx@skipbib}}
+\bibinitsep=\baselineskip %to trigger blx@initsep
+\def\blx@initsep{%
+	\blx@imc@iffieldundef{sortinit}
+	{}
+	{%
+		\ifnum\c@instcount>\@ne
+		\blx@imc@iffieldequals{sortinit}\blx@previnit
+		{}
+		{\leavevmode\marginline{\color{Maroon}\bfseries\headerfont\huge\printfield{sortinit}}}%
+		\fi
+		\global\let\blx@previnit\abx@field@sortinit
+	}%
+}
 
 % to correctly handle author name prefixes as: Van X et al.
 % but in the bibliography, X, Y van et al.
