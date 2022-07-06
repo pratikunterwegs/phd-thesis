@@ -148,17 +148,18 @@
         
 % fix chapter heading format
 \titleformat{\chapter}[display]%
-    % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\bfseries\rmfamily\scshape\small{\color{Maroon}~Chapter~\vspace*{.5\baselineskip}}{\displayfont\chapterNumber{\color{Maroon}\thechapter}}}}{0pt}%
-    {\raggedright\bfseries\color{Maroon}\large\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\relax}
+    {\mbox{}\oldmarginpar{\centering\headerfont\itshape\small{\color{Maroon}~Chapter~\vspace*{.5\baselineskip}}{\displayfont\chapterNumber{\color{Maroon}\thechapter}}}}
+    {0pt}%
+    {\raggedright\itshape\bfseries\headerfont\color{Maroon}\Huge}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\color{Maroon}\raggedright\rmfamily\bfseries\scshape}
+    {\relax}{\underline{\thesection}}{1em}{\Large\color{Maroon}\raggedright\headerfont\itshape\bfseries}%[\vspace*{.2\baselineskip}\titlerule]
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\raggedright\rmfamily\scshape}
+    {\relax}{\thesubsection}{1em}{\raggedright\headerfont\itshape}
 
 % fix section format
 \titleformat{\paragraph}
