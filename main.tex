@@ -134,7 +134,8 @@
   }
 \AtBeginBibliography{
   \togglefalse{blx@useprefix}
-  \renewcommand*{\mkbibnameprefix}[1]{#1}% this sets the name prefix back
+  % \renewcommand*{\mkbibnameprefix}[1]{#1}% this sets the name prefix back
+  \mkbibnameprefix{\MakeCapital{#3}}\isdot
   }
 
 % to prevent hyphens in toc
@@ -194,7 +195,7 @@
 \makeatother
 
 % required to make author name prefixes lowercase
-\renewbibmacro*{begentry}{\midsentence}
+% \renewbibmacro*{begentry}{\midsentence}
 
 \usepackage{caption}
 \setcapindent{0pt}
@@ -280,6 +281,8 @@
 % use \clearpage here to avoid problems with pdfbookmark
 \clearpage
 
+% \begin{refsection}
+
 \cleardoublepage \include{chapters/introduction}
 
 \cleardoublepage 
@@ -329,11 +332,6 @@ In the second part of this thesis, I probe the evolutionary causes and consequen
 
 \cleardoublepage \include{chapters/patternprocess_header}
 \include{chapters/patternprocess_main}
-
-% \include{Chapters/Chapter02}
-%\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
-% \include{Chapters/Chapter03}
-%\include{multiToC} % <--- just debug stuff, ignore for your documents
 
 \cleardoublepage \include{chapters/discussion}
 
