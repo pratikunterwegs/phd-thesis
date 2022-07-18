@@ -162,6 +162,8 @@ The cue preferences, and thus the suitability, can have arbitrarily large or sma
 This is similar to step- and resource-selection coefficients $\beta$ \parencite[see Box A][]{fortin2005,manly2002}.
 Individuals are considered to move to the location with the highest suitability.
 
+\medskip
+
 \begin{tcolorbox}[width=\textwidth,
     boxsep=0pt,
     left=0pt,
@@ -188,6 +190,8 @@ Individuals are considered to move to the location with the highest suitability.
     \end{description}
 \end{tcolorbox}
 
+\medskip
+
 Crucially, when individuals move by step-selection as in our models, the value of each cue preference $s_{n}$ \textit{relative} to the other cue preferences is more important than the absolute value of any cue preference by itself (see also the `behavioural hypervolume' of \cite{bastille-rousseau2019}).
 Thus individuals making movement decisions based upon three cues $X_n$ for $n \in (1, 2, 3)$, that have relatively similar values of the corresponding cue preferences $s_n$ may be thought of as weighing, or preferring each cue relatively equally (or indeed avoiding, if any $s_n < 0$).
 The relative values of each individual's cue preferences \textit{taken together}, may be thought of as the individual \textit{movement strategy}.
@@ -209,33 +213,39 @@ The drawback is that while movement distances are easily represented by linear f
 A complex function such as an artificial neural network (ANN) --- standing in for an animal's cognitive mechanisms --- could generate both distances and valid turning angles, but the ANN parameters would be challenging to interpret as a movement strategy (\cite{mueller2011}; but see \cite{bastille-rousseau2019} for dimension reduction approaches).
 Nonetheless, this approach is the preferable mechanistic alternative to assuming a movement kernel, as it too allows phenomenological movement descriptors (e.g. home range, step-length distribution) to emerge from individual movement decisions.
 
-\begin{tcolorbox}[width=\textwidth,
-    boxsep=0pt,
-    left=0pt,
-    right=0pt,
-    top=2pt,
-    arc=0pt,
-    boxrule=0.0pt,toprule=1pt,
-    bottomrule=1pt,
-    colback=white
-    ]%%
-    \begin{description}[font=\scshape\bfseries]
-        \item[Box B. Using Step-selection in Conceptual Models] Step-selection analysis is now widely used in animal movement ecology, with specialised implementations for habitat-specific movement characteristics \parencite{avgar2016}, decision points identified from very high-resolution data \parencite{munden2021}; it can also be extended to estimate animals' utilisation distributions \parencite{signer2017}.
-        Indeed, recall that step-selection analysis is used even in this thesis (Chapter~\ref{ch:holeybirds}).
-        Despite its popularity and ease of implementation, step-selection has seldom been used in individual-based simulation models of animal movement.
-        One good example of using a step selection approach is \textcite{white2018}, who implemented a movement-disease model wherein individuals move across a grid, with their steps determined by their relative selection strengths ($\beta_i$) for cell attributes ($x_i$) such as resource levels or conspecific densities (in this sense they describe it as resource selection).
-        In such models, individuals assign a selection score ($\hat{w}(x)$) to their current locations, and to neighbouring locations, and make the step with the highest score --- this may mean staying in place!
-        Furthermore, $\beta_i$ values can be programmed to vary randomly or systematically in the population, to examine the effect of having individuals with a broad range of responses to similar cues (as \cite{white2018} do).
-        In conceptual individual-based models such as mine, I refer to the selection score as `suitability'
-        $$
-            S = \Sigma~s_{i}x_{i}
-        $$
-        where $S$, the suitability of the potential location, is simply the sum of the interaction of the individual's selection strengths (which I call a `preference'; $s_i$) and the value of the corresponding cue at that location ($x_i$).
-        In contrast with the step-selection approach, I assume that the individual moves in the direction of \emph{maximal} suitability. 
-        Given that the `cue preferences' are individual properties, they can be considered to be heritable between generations of a population, allowing the examination of evolutionary dynamics.
-        This concept is examined further in the final scenario of my model, and models implementing this approach are described in Chapters~\ref{ch:kleptomove} and \ref{ch:pathomove}.
-    \end{description}
-\end{tcolorbox}
+\afterpage{
+    \medskip
+
+    \begin{tcolorbox}[width=\textwidth,
+        boxsep=0pt,
+        left=0pt,
+        right=0pt,
+        top=2pt,
+        arc=0pt,
+        boxrule=0.0pt,toprule=1pt,
+        bottomrule=1pt,
+        colback=white
+        ]%%
+        \begin{description}[font=\scshape\bfseries]
+            \item[Box B. Using Step-selection in Conceptual Models] Step-selection analysis is now widely used in animal movement ecology, with specialised implementations for habitat-specific movement characteristics \parencite{avgar2016}, decision points identified from very high-resolution data \parencite{munden2021}; it can also be extended to estimate animals' utilisation distributions \parencite{signer2017}.
+            Indeed, recall that step-selection analysis is used even in this thesis (Chapter~\ref{ch:holeybirds}).
+            Despite its popularity and ease of implementation, step-selection has seldom been used in individual-based simulation models of animal movement.
+            One good example of using a step selection approach is \textcite{white2018}, who implemented a movement-disease model wherein individuals move across a grid, with their steps determined by their relative selection strengths ($\beta_i$) for cell attributes ($x_i$) such as resource levels or conspecific densities (in this sense they describe it as resource selection).
+            In such models, individuals assign a selection score ($\hat{w}(x)$) to their current locations, and to neighbouring locations, and make the step with the highest score --- this may mean staying in place!
+            Furthermore, $\beta_i$ values can be programmed to vary randomly or systematically in the population, to examine the effect of having individuals with a broad range of responses to similar cues (as \cite{white2018} do).
+            In conceptual individual-based models such as mine, I refer to the selection score as `suitability'
+            $
+                S = \Sigma~s_{i}x_{i}
+            $
+            where $S$, the suitability of the potential location, is simply the sum of the interaction of the individual's selection strengths (which I call a `preference'; $s_i$) and the value of the corresponding cue at that location ($x_i$).
+            In contrast with the step-selection approach, I assume that the individual moves in the direction of \emph{maximal} suitability. 
+            Given that the `cue preferences' are individual properties, they can be considered to be heritable between generations of a population, allowing the examination of evolutionary dynamics.
+            This concept is examined further in the final scenario of my model, and models implementing this approach are described in Chapters~\ref{ch:kleptomove} and \ref{ch:pathomove}.
+        \end{description}
+    \end{tcolorbox}
+
+    \medskip
+}
 
 \subsection*{Integrating Ecological and Evolutionary Timescales}
 
