@@ -133,9 +133,10 @@
   \renewcommand*{\mkbibnameprefix}[1]{\MakeCapital{#1}}% this is the relevant line of code
   }
 \AtBeginBibliography{
-  \togglefalse{blx@useprefix}
+  \toggletrue{blx@useprefix}
+  \renewcommand*{\mkbibnameprefix}[1]{\MakeCapital{#1}}
   % \renewcommand*{\mkbibnameprefix}[1]{#1}% this sets the name prefix back
-  \mkbibnameprefix{\MakeCapital{#3}}\isdot
+  % \mkbibnameprefix{\MakeCapital{#3}}\isdot
   }
 
 % to prevent hyphens in toc
