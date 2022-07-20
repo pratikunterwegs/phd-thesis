@@ -3,6 +3,12 @@
 
 % \newrefcontext[sorting=ynt]
 
+\begin{center}
+    \emph{What is a bird if not a dinosaur persevering?}
+\end{center}
+
+\medskip
+
 \lettrine{B}{irds} are unique in moving mostly by powered flight on feathered wings.
 Feathers, unlike animal hair and claws, are dead proteinaceous structures, which cannot be renewed continuously as they suffer wear and tear \parencite{rayner1988,jenni1989}.
 As feathers mature, wing condition and consequently flight capacity gradually decreases \parencite{lindstrom1994,hedenstrom1999,hedenstrom2003}.
@@ -12,6 +18,10 @@ The reduction in flight surface area during moult can be measured using a robust
 Wider gaps lead to larger reductions in flight surface area, power output, and flight capacity and efficiency in captive birds \parencite{tucker1991,swaddle1996,swaddle1997,williams2003,lind2001,lind2001a,bowlin2009}.
 In addition to these indirect costs, wing moult is among the most energetically demanding phases of a bird's annual cycle, as regrowing large flight feathers requires substantial resources \parencite{lindstrom1993,newton2009,kiat2017}.
 Despite these mechanistic links between moult and movement, our understanding of moult's influence on birds' movement strategies and habitat selection is poor.
+
+\graffito{
+    Although I hadn't studied moult very much, I understood its effect on bird movement very well --- my master's fieldwork in Russia was timed to coincide with the full feather moult of white-fronted geese --- while flightless, they are easily chased down by humans.
+}
 
 The direct influence of wing moult on the movement and habitat selection of birds has primarily been examined in a few small-scale, disconnected studies \citep{bell1970,haukioja1971,green1975,francis1991,madsen1987,fox1998}.
 Moving less, as some northerly species of finches and buntings do \citep{bell1970,haukioja1971,green1975,francis1991}, could save energy required to regrow feathers.
@@ -24,6 +34,8 @@ Cross-species studies of movement and habitat selection in molting birds could b
 Birds, among other animals, can take the spatial perspective of visual predators, and avoid risky, exposed areas in favour of sheltered ones \parencite{hampton1994,emery2000,krams2001,davidson2016,krams2020}.
 Shelter is often only proxied by correlated variables, such as vegetation growth \parencite{pettorelli2011}. 
 Adopting a mechanistic, viewshed ecology approach \parencite{olsoy2015,aben2018,aben2021} in habitat selection analyses could directly account for birds' visibility to potential predators \parencite{olsoy2015,aben2018,aben2021}.
+
+\graffito{I was heavily inspired to use the viewshed ecology approach after reading \textcite{aben2021}'s work on greenbuls (African forest bulbuls), and the methods I used here borrow heavily from that --- our advantage is combining that with fine-scale tracking.}
 
 We explore the direct effects of wing moult on the movement of birds, focusing on four sympatric, non-migratory species: barn swallows (\textit{Hirundo rustica}), white-spectacled bulbuls (\textit{Pycnonotus xanthopygos}), house sparrows (\textit{Passer domesticus}), and clamorous reed-warblers (\textit{Acrocephalus stentoreus}).
 Scoring the moult-related wing gap size of naturally molting birds \citep{lind2001,kiat2016}, we manipulated a subset of molting individuals by trimming a number of flight feathers.
@@ -49,6 +61,10 @@ However, for PS = 0, wing gap size is also 0 because there is no gap in both the
 To compare moult-related wing gap sizes across individual birds, we summed the wing gap size scores across all nine primary flight feathers, for each individual, into a single wing gap index \citep{kiat2016}.
 This index is independent of the size of individual birds and their morphology, controls for the stage of wing feather moult, and allows for reliable cross-species comparisons \citep{bensch1993,kiat2016}.
 
+\graffito{
+    All the fieldwork for this study --- setting up the ATLAS system in the Hula Valley, capturing birds, measuring the extent of wing moult, and fitting them with ATLAS tags --- was performed by my co-authors in Israel. Special thanks also go to Yotam Orchan, who was responsible for managing the ATLAS system in the field.
+}
+
 We experimentally manipulated 29 individuals across species {(bulbuls = 6, sparrows = 14, reed-warblers = 2, swallows = 7)}, and removed one to three primaries; the exact number was determined randomly for each bird.
 We varied this number to produce variation in the possible effect of wing gap size, and the manipulation was symmetrical, i.e., the same feather was removed in both wings.
 Primaries were removed by cutting the feather near its base, in addition to the primaries missing as part of natural moult; this procedure simulates an enlargement of the moult-related wing gap.
@@ -73,6 +89,10 @@ Each individual was tracked for an average of 8.23 $\pm$ 3.24 days (bulbul = 9.8
 We collected 4.3 million position estimates overall, with 7,276 positions per individual per day, for an effective tracking interval of 5.05 $\pm$ 1.85 positions per minute on average (bulbuls = 6.14 $\pm$ 3.93; sparrows = 5.98 $\pm$ 5.57; reed warblers = 5.80 $\pm$ 3.16; swallows = 2.28 $\pm$ 1.42).
 Since we were interested in exploring movement patterns, and these species are diurnally active, we removed all nighttime positions, leading to an approximate halving of the total dataset.
 
+\graffito{
+    This study uses data from 2016, when the ATLAS system was still in its infancy. The system is constantly being improved, with upgrades to the hardware to make tags lighter and longer lasting, as well as software updates that make localisations more accurate.
+}
+
 \subsection*{Processing Tracking Data}
 
 ATLAS conservatively filters out location estimates that are clearly wrong (e.g., too far from the study area), letting users inspect most location estimates, which come with several measures of quality, 
@@ -91,6 +111,10 @@ Finally, we \textit{(iv)} accounted for small-scale errors --- noise around the 
 After excluding night time data and all other data filtering and smoothing, we analyzed 1.1 million locations from 86 individuals, keeping high per-minute sampling rate for all species (bulbuls = 4.85 $\pm$ 3.3, sparrows = 2.73 $\pm$ 3.0, reed-warblers = 2.09 $\pm$ 1.44, swallows = 2.07 $\pm$ 1.14).
 Compared with current technologies for tracking small birds ($<$ 50g) --- primarily radio triangulation and geolocators, which have low temporal (a few fixes per hour or day) and spatial resolution (error margins up to 200 km) \citep{bridge2013} --- ATLAS data represent an unprecedented sampling rate, with GPS-level accuracy \citep{beardsworth2022mee}.
 
+\graffito{
+    Of course, one downside here is the relatively small spatial extent of the area that ATLAS can cover. Yet for mostly sedentary birds such as bulbuls and reed warblers, even a localised system is able to capture the entire home range.
+}
+
 \subsection*{Quantifying Large-scale Movements}
 
 We investigated the large-scale space-use of bulbuls, sparrows, and reed-warblers by summarising their processed movement paths into daily sequences of `residence patches' using the \textit{atlastools} package developed specifically with high-throughput ATLAS tracking data in mind \citep{gupte2022d}.
@@ -102,6 +126,8 @@ Doing so, we obtained 4,373 residence patches overall and extracted environmenta
 We handled swallows differently, as these are highly aerial birds whose movement is not easily clustered into residence patches.
 Instead, and because the relatively higher-flying swallows are more accurately tracked by ATLAS, we simply calculated the total distances moved along daily tracks from the cleaned, processed data.
 
+\graffito{See Chapter~\ref{ch:preprocessing} for more details on pre-processing, as well as on the residence patch algorithm.}
+
 \subsection*{Visibility Analysis to Quantify Sheltered Habitats}
 
 Many animals can gauge the risk posed by predators by estimating a predator's field of view (`spatial perspective taking') \parencite{emery2000,bruce2003,davidson2016}, and select for sheltered locations outside of a predator's view \citep{hampton1994,krams2001,watve2002}.
@@ -111,6 +137,10 @@ We first obtained a 50cm canopy height model (CHM) \citep{aben2021} of the major
 For each cell of the CHM, we calculated a \textit{visibility index}, which is the proportion of surrounding cells from which the focal cell is visible, given that lines of sight can be blocked by intervening structures (also called cumulative viewshed analysis, or a `fearscape') \parencite{olsoy2015}.
 Open areas, such as agricultural fields or water bodies, are likely to be visible from all directions and have a visibility score $\approx$ 1.0.
 In contrast, locations inside woodland or reedbeds are likely to be hidden from view, with a lower visibility index (see \textit{Supplementary Information}).
+
+\graffito{
+    We initially thought that we would not be able to obtain the CHM from the Survey of Israel, as the Hula Valley is in a border region. However, we did manage to get almost the entire study area in excellent resolution, for which we thank the Survey.
+}
 
 Importantly, the visibility index depends upon the hypothetical observer's height above surface level; observers higher up may be able to see locations that are obstructed from a terrestrial viewpoint.
 We parameterised our visibility index calculations based on the hunting flight altitude of a raptor that commonly preys on small birds, the Eurasian sparrowhawk (\textit{Accipiter nisus}).
@@ -129,6 +159,10 @@ We first converted each individual's daily sequence of residence patches into st
 Then, for each such real step, we drew 9 alternative steps that the individual could have taken from patch $i$, and considered the end coordinates of these alternative steps to represent the median coordinates of a potential residence patch.
 The distances of these movements were drawn from a gamma distribution fitted to each individual's movements between patches, and turning angles were drawn from a von Mises distributions fitted to the observed turning angles \citep{signer2019}.
 For each alternative patch with median coordinates ($X_\text{alt}, Y_\text{alt}$), we drew 15 coordinate pairs from a normal distribution centred on ($X_\text{alt}, Y_\text{alt}$), with a standard deviation of 20 m.
+
+\graffito{
+    Level 1C data is from the so-called Top of Atmosphere (ToA), in contrast with the better quality Level 2A data, which correct for sensor distortions created by some dozens of kilometers of the atmosphere between the land surface and the satellite. 2A data are only available from 2017 onwards, which means that studies like ours that need spectal indices from before that must use 1C data.
+}
 
 To control for the resource-provisioning effect of vegetation, we also obtained the normalised difference vegetation index (NDVI) as a metric of vegetation growth \citep{pettorelli2011} across our study area, using Copernicus Sentinel-2 MultiSpectral Instrument, Level-1C data (10m resolution; June -- October 2016).
 We sampled the NDVI and visibility index at real and potential patch coordinates, and calculated averages per patch.
@@ -175,6 +209,8 @@ We fit one GAM for bulbuls, sparrows, and reed-warblers (species included as bot
         Reed-warblers did not show a significant difference in patch switching with increasing wing gap index, possibly because they are already restricted to small patches of reedbeds.
     }\label{holey_fig_02}
 \end{figure}
+
+\graffito{Throughout this paper I've chosen to use the Batlow colour scheme from the `scico' package for perceptually uniform colour palettes in R. The key was to choose colours without semantic meaning, such as blue or red; a similar consideration led to the colours used in Chapter~\ref{ch:preprocessing}.}
 
 \subsection*{Distance Between Residence Patches}
 
