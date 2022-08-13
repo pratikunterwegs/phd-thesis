@@ -4,7 +4,8 @@
 % \newrefcontext[sorting=ynt]
 
 \begin{center}
-    \emph{What is a bird if not a dinosaur persevering?}
+    \emph{What is a bird if not a dinosaur persevering?\\
+    --- Vinny Thomas, comedian.}
 \end{center}
 
 \medskip
@@ -157,7 +158,7 @@ While barn swallows could potentially make use of sheltering vegetation by flyin
 
 We first converted each individual's daily sequence of residence patches into steps, with each patch $i$ as the starting point, and the following patch $i+1$ as the end of the step.
 Then, for each such real step, we drew 9 alternative steps that the individual could have taken from patch $i$, and considered the end coordinates of these alternative steps to represent the median coordinates of a potential residence patch.
-The distances of these movements were drawn from a gamma distribution fitted to each individual's movements between patches, and turning angles were drawn from a von Mises distributions fitted to the observed turning angles \citep{signer2019}.
+The distances of these movements were drawn from a gamma distribution fitted to each individual's movements between patches, and turning angles were drawn from a Von Mises distributions fitted to the observed turning angles \citep{signer2019}.
 For each alternative patch with median coordinates ($X_\text{alt}, Y_\text{alt}$), we drew 15 coordinate pairs from a normal distribution centred on ($X_\text{alt}, Y_\text{alt}$), with a standard deviation of 20 m.
 
 \graffito{
@@ -646,7 +647,7 @@ We performed this analysis on the movements of bulbuls, sparrows, and reed warbl
 We excluded swallows because we had not constructed residence patches for these birds, and because we could not resolve their flight altitude, making it difficult to determine whether they were using shelter.
 
 We drew 9 alternative patch movements for every real patch movement, that is from patch $N$ to patch $N+1$, and sampled 15 locations distributed around the alternative moves.
-We drew the locations of the 9 alternative movements by drawing first a distance from a gamma distribution fitted to each individual's daily movements between patches, and second, an angle drawn from a von Mises distribution fitted to the individual's turning angles during large-scale movements between patches (see main text Fig. 1).
+We drew the locations of the 9 alternative movements by drawing first a distance from a gamma distribution fitted to each individual's daily movements between patches, and second, an angle drawn from a Von Mises distribution fitted to the individual's turning angles during large-scale movements between patches (see main text Fig. 1).
 For each of these alternative moves, we drew 15 locations from a normal distribution centred on the coordinates of the move, with a standard deviation of 20 m.
 In this way, we constructed `alternative residence patches', which we could compare with the patches that birds actually used.
 At each of the 135 alternative locations (15 locations $\times$ 9 patches) we obtained the NDVI and visibility index.
