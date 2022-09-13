@@ -6,6 +6,31 @@
 \end{center}
 % \newrefcontext[sorting=ynt]
 
+\section*{Abstract}
+
+{
+    % \small
+    Animal social interactions are the outcomes of evolved strategies that integrate the costs and benefits of being sociable.
+    % Using a novel mechanistic, evolutionary, individual-based simulation model, we examine how animals balance the risk of pathogen transmission against the benefits of social information about resource patches, and how this determines the emergent structure of socio-spatial networks.
+    We study a scenario in which a fitness-reducing infectious pathogen is introduced into a population which has initially evolved movement strategies in its absence.
+    Within only a few generations, pathogen introduction provokes a rapid evolutionary shift in animals' social movement strategies, and the importance of social cues in movement decisions increases.
+    Individuals undertake a dynamic social distancing approach, trading more movement (and less intake) for lower infection risk.
+    Pathogen-adapted populations disperse more widely over the landscape, and thus have less clustered social networks than their pre-introduction, pathogen-naive ancestors.
+    Running epidemiological simulations on these emergent social networks, we show that diseases do indeed spread more slowly through pathogen-adapted animal societies.
+    Finally, the mix of post-introduction strategies is strongly influenced by a combination of landscape productivity, the usefulness of social information, and disease cost.
+    Our model suggests that the introduction of an infectious pathogen into a population can trigger a rapid eco-evolutionary cascade, rapidly changing animals' social movement strategies, which alters movement decisions and encounters between individuals. 
+    In turn, this changes emergent social structures, and our model informs how such change can make populations more resilient to future disease outbreaks.
+    Overall, we offer both a modelling framework and initial predictions for the evolutionary and ecological consequences of wildlife pathogen spillover scenarios.
+
+    \bigskip
+
+    {\noindent \large{$\Delta$}} A manuscript under review at \textit{eLife}.
+}
+
+\newpage
+
+\section*{Introduction}
+
 \lettrine{A}{nimal} sociality emerges from individual decisions that balance the benefits of associations against the costs of proximity or interactions with neighbours \autocite[][]{tanner2012,webber2018,webber2022,gil2018}.
 While such associations can inadvertently or deliberately yield useful social information about resource availability \autocite{danchin2004,dall2005,gil2018}, they also provide opportunities for the transmission of parasites and infectious pathogens among associating individuals \autocite[][]{weinstein2018,romano2020,albery2021,cantor2021,romano2021}.
 Wildlife pathogen outbreaks affect most animal taxa, including mammals \autocite{blehert2009,fereidouni2019,chandler2021,kuchipudi2022}, birds \autocite{wille2022}, amphibians \autocite{scheele2019}, and social insects \autocite{goulson2015}.
@@ -165,7 +190,7 @@ However, there is significant variation among individuals in the importance of s
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.7\linewidth]{figures/pathomove/fig_eco_evo_general.png}
+    \includegraphics[width=0.8\linewidth]{figures/pathomove/fig_eco_evo_general.png}
     \caption{
         \textbf{Pathogen introduction leads to rapid evolutionary changes in social information use, with cascading effects on population ecological outcomes.}
         \textbf{(A)} Before pathogen introduction in the default scenario (R = 2, $\delta E$ = 0.25), populations rapidly evolve a social movement strategy that tracks all other individuals (`agent tracking'; $G \leq$ 3,000) --- however, their overall movement strategy is primarily guided by the presence of food items \textbf{(B)}.
@@ -204,7 +229,7 @@ These strategies have a wide range of infection rates (Fig.~\ref{fig_social_outc
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.7\linewidth]{figures/pathomove/fig_social_outcomes.png}
+    \includegraphics[width=0.8\linewidth]{figures/pathomove/fig_social_outcomes.png}
     \caption{
         \textbf{Social movement strategies trade movement for associations through dynamic social distancing, leading to differences in infection rates.}
         In post-introduction populations at eco-evolutionary equilibrium (G $>$ 3,500), \textbf{(A)} both agent avoiding and handler tracking individuals can reduce encounters with other individuals by moving to avoid other foragers (dynamic social distancing).
@@ -225,9 +250,10 @@ In contrast, the spread-out networks in pathogen-risk adapted populations sugges
 This reflects movement strategies which lead to near-perpetual movement to avoid associations; a sort of dynamic social distancing seen in real animal societies under risk of pathogen spread \autocite{weinstein2018,stroeymeyt2018,pusceddu2021,stockmaier2021}.
 This dispersed population structure means that most pathogen-risk adapted foragers encounter fewer than 10\% of the population over their lifetime (Fig.~\ref{fig_networks_disease} inset 1: \emph{red}).
 
+\afterpage{
 \begin{figure*}[!h]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/pathomove/fig_networks_disease.png}
+    \includegraphics[width=0.8\linewidth]{figures/pathomove/fig_networks_disease.png}
     % width=8.7cm
     \caption{
         \textbf{Reduced spatial-social clustering and disease transmission in populations adapted to the presence of an infectious pathogen.}
@@ -240,8 +266,9 @@ This dispersed population structure means that most pathogen-risk adapted forage
         The transmission of both diseases is reduced in populations with disease-adapted movement strategies (pre-introduction: G = 3,000, blue circles; post-introduction: G = 3,500, red triangles). Subfigures in panel D show means of 25 SIR model replicates (transmission rate $\beta$ = 5.0, recovery rate $\gamma$ = 1.0), run on emergent social network; both panels represent 10 simulation replicates the default scenario.
     }\label{fig_networks_disease}
 \end{figure*}
+}
 
-\subsection*{Pathogen-risk adapted Movement Strategies Make Animal Societies More Resilient to the Spread of Disease}
+\subsection*{Pathogen-risk Adapted Movement Strategies Make Animal Societies More Resilient to the Spread of Disease}
 
 Nearly every individual in the generations just after pathogen introduction was infected.
 However, tracking the evolutionary change in movement strategies, the number of infected individuals fell to just about 50\% within 25 generations (Fig.~\ref{fig_networks_disease}C).
@@ -253,9 +280,10 @@ Pathogen-risk adapted populations' social networks are more resilient to both th
 Less than 60\% of post-introduction populations were finally infected by the single encounter disease, compared with $>$ 75\% of pre-introduction, pathogen-risk naive ancestors; in pathogen-risk adapted populations, the spread of the multiple encounter disease was even slower (ever infected: $\approx$ 20\%).
 % the infection peak in pathogen-adapted networks  was only about half as much as for their pathogen-naive ancestors' networks (25\% \textit{versus} 50\% of individuals).
 
+\afterpage{
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/pathomove/fig_evo_strategy_default.png}
+    \includegraphics[width=0.8\linewidth]{figures/pathomove/fig_evo_strategy_default.png}
     % width=8.7cm
     \caption{
         \textbf{The balance of infection cost and the usefulness of social information together shape the rapid evolutionary change in movement strategies triggered by pathogen introduction.}
@@ -269,6 +297,7 @@ Less than 60\% of post-introduction populations were finally infected by the sin
         Grey areas show the relatively uncommon `non-handler' tracking strategy.
     }\label{fig_evo_strategy}
 \end{figure}
+}
 
 \subsection*{Usefulness of Social Information and Infection Cost Influence Evolution of Social Movement Strategies}
 
@@ -393,17 +422,17 @@ Finally, our model shows why it is important to consider evolutionary responses 
 \let\cleardoublepage\relax
 \let\cleardoublepage\relax
 
-{\chapter*{Supplementary Information}}
+{\chapter*{Supplementary Information for Chapter~\ref{ch:pathomove}}}
 
 \section*{Data and Code}
 
-The \textit{Pathomove} simulation model code is available on Zenodo at https://zenodo.org/record/6782640, and on Github at github.com/pratikunterwegs/pathomove.
-Code to run the simulations and analyse the output is on Zenodo at https://zenodo.org/record/6782665, and on Github at: 
+The \textit{Pathomove} simulation model code is available on Zenodo at zenodo.org/record/6782640, and on Github at github.com/pratikunterwegs/pathomove.
+Code to run the simulations and analyse the output is on Zenodo at zenodo.org/record/6782665, and on Github at:
 github.com/pratikunterwegs/patho-move-evol.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/pathomove/fig_schematic.png}
+    \includegraphics[width=0.75\textwidth]{figures/pathomove/fig_schematic.png}
     \caption{
         \textbf{Model implementation of discrete movement steps in continuous space, with movement steps selected based on inherited preferences for environmental cues.} 
         In our model, \textbf{(A)} individuals search for food items (\textbf{green circles}), which may be immediately available (\textbf{filled green circles}; \emph{F}), or may be available only in the future (\textbf{open green circles}). 

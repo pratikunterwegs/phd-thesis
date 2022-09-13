@@ -7,6 +7,25 @@
     -- \small{from Computing Machinery and Intelligence, by Alan Turing.}}
 \end{center}
 
+\section*{Abstract}
+
+% \small{
+    Movement ecologists have taken up the challenge of inferring animals' decision-making mechanisms in a spatial context from individual tracking data.
+    The implicit assumption is that differences in the movement paths of animals reflect differences in individual decision-making mechanisms.
+    However, animal movement takes place in complex and rapidly changing environments, where movement cues are not always available, and animals may differ along multiple axes of behaviour.
+    Mechanistic, individual-based modelling of animal decision-making can help investigate whether differences in decision-making mechanisms actually translate into differences in movement paths, and the insights gained by parsing animal tracking data using contemporary statistical methods.
+    % Here, we examine the movement paths of agents from an evolutionary individual-based model of foraging competition, in which relatively simple movement rules are determined by evolved decision-making weights.
+    To show how such a model can be used to investigate statistical methods, we explore a contemporary question in movement ecology: Can individual differences in movement decision-making mechanisms be detected from the emergent properties of the resulting movement paths?
+    % First, we examine whether our model individuals' movement types differ in the structure of their movement paths.
+    Using data on the movement of evolved model agents, we show how adopting a repeatability framework to quantify individual-differences in movement is sensitive to the evolutionary context in which movement rules evolve.
+    We also find that repeatability analysis can yield very different conclusions depending on how individuals' behavioural types are accounted for.
+    We also show that step-selection analysis can indicate differences between competition strategies, but rarely captures differences between movement types of the same competition strategy.
+    Overall, using a plausible eco-evolutionary model of animal decision-making, we highlight some challenges in using contemporary statistical methods to infer individual differences in animals' decision-making mechanisms from positioning data.
+
+\newpage
+
+\section*{Introduction}
+
 \lettrine{A}{nimal} movement is understood to be an individual response that integrates multiple internal and external stimuli, including environmental conditions and the presence of other animals \citep{nathan2008a}.
 Various aspects of animal movement, such as the distance moved over time (speed), or the tortuosity of an animal's path, are now readily measured and quantified in free-living individuals, given significant advances in animal tracking technology \citep[][see Nathan et al. \textit{in prep.}]{cagnacci2010}.
 This makes movement a sort of `model behaviour' that allows investigation of the underlying mechanisms --- the `how' and `why' of animal decision-making --- under natural conditions that cannot be replicated in experimental settings.
@@ -244,7 +263,7 @@ Kleptoparasites, however, moved nearly twice as much as foragers in scenario 2 (
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.90\textwidth]{figures/patternprocess/fig_01.png}
+    \includegraphics[width=0.8\textwidth]{figures/patternprocess/fig_01.png}
     \caption{
         \textbf{Evolutionary equilibrium and functional variation in movement rules in a spatially explicit, individual-based model of animal movement.}
         We find substantial polymorphism in movement rules in both scenarios of our spatially explicit, individual-based model of the joint evolution of animal movement and competition strategies.
@@ -262,7 +281,7 @@ Kleptoparasites, however, moved nearly twice as much as foragers in scenario 2 (
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.90\textwidth]{figures/patternprocess/fig_02.png}
+    \includegraphics[width=0.8\textwidth]{figures/patternprocess/fig_02.png}
     \caption{
         \textbf{Movement types and competition strategies, and differences in movement paths.}
         We classified agents in both scenario 1 \textbf{(A1)} and scenario 2 \textbf{(A2)} into intuitive `movement types', based on their relative preferences for environmental cues (see Fig. 1 and Main Text). 
@@ -313,7 +332,7 @@ We ran analyses only on growth rates of 0.01 and 0.02, as kleptoparasites rapidl
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/patternprocess/fig_03.png}
+    \includegraphics[width=0.8\textwidth]{figures/patternprocess/fig_03.png}
     \caption{
         \textbf{Frequency of movement types, competition strategies, and environmental cues, and consequences for repeatability analyses to detect individual differences in movement.}
         Increasing landscape productivity ($r_{max}$) beyond the index value of 0.01 leads to more prey-items on the landscape, and hence more available cues for movement decisions.
@@ -347,7 +366,7 @@ Overall, applying step-selection analysis to our model output suggests that diff
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.90\textwidth]{figures/patternprocess/fig_04.png}
+    \includegraphics[width=0.9\textwidth]{figures/patternprocess/fig_04.png}
     \caption{
         \textbf{Movement types and competition strategies revealed in step-selection analyses.}
         Applying step-selection analysis to long-term movement paths from \textbf{(A1)} scenario 1, and \textbf{(A2)} scenario 2 reveals strong differences in apparent selection for landscape productivity between competition strategies ($r_{max}$ = 0.01).

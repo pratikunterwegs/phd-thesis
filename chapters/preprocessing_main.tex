@@ -7,6 +7,31 @@
 -- \small{A common maxim in data science.}}
 \end{center}
 
+\section*{Abstract}
+{
+    % \small
+    	
+    Modern, high-throughput animal tracking increasingly yields `big data' at very fine temporal scales, and 
+    % At these scales, location error can exceed the animal's step size, leading to mis-estimation of behaviours inferred from movement. 
+    `cleaning' the data to reduce location errors is one of the main ways to deal with position uncertainty. 
+    Though data cleaning is widely recommended, inclusive, uniform guidance on this crucial step, and on how to organise the cleaning of massive datasets, is relatively scarce.
+    A pipeline for cleaning massive high-throughput datasets must balance ease of use and computationally efficiency, in which location errors are rejected while preserving valid animal movements. 
+    % Another useful feature of a pre-processing pipeline is efficiently segmenting and clustering location data for statistical methods, while also being scalable to large datasets and robust to imperfect sampling. 
+    Manual methods being prohibitively time consuming, and to boost reproducibility, pre-processing pipelines must be automated.
+    We provide guidance on building pipelines for pre-processing high-throughput animal tracking data to prepare it for subsequent analyses. 
+    We apply our proposed pipeline to simulated movement data with location errors, and also show how large volumes of cleaned data can be transformed into biologically meaningful `residence patches', for exploratory inference on animal space use. 
+    We use tracking data from the Wadden Sea ATLAS system (WATLAS) to show how pre-processing improves its quality, and to verify the usefulness of the residence patch method. 
+    Finally, with tracks from Egyptian fruit bats \textit{Rousettus aegyptiacus}, we demonstrate the pre-processing pipeline and residence patch method in a fully worked out example.
+    To help with fast implementation of standardised methods, we developed the R package \textit{atlastools}, which we also introduce here. 
+    Our pre-processing pipeline and \textit{atlastools} can be used with any high-throughput animal movement data in which the high data-volume combined with knowledge of the tracked individuals’ movement capacity can be used to reduce location errors. 
+    % \textit{atlastools} is easy to use for beginners, while providing a template for further development. 
+    % The common use of simple yet robust pre-processing steps promotes standardised methods in the field of movement ecology and leads to better inferences from data.
+}
+
+\newpage
+
+\section*{Introduction}
+
 \lettrine{A}{nimal} movement is an adaptive, integrated response to multiple drivers, including internal state, life-history traits and capacities, biotic interactions, and other environmental factors \citep{nathan2008a, holyoak2008}.
 % Movement has both beneficial and detrimental consequences for individual fitness, and 
 The movement ecology framework links the drivers, processes, and fitness outcomes of animal movement \citep{nathan2008a}, and remotely tracking individual animals in the wild is the methodological mainstay of movement ecology \citep{wikelski2007,nathan2008a,hussey2015,kays2015}.
@@ -514,9 +539,9 @@ Simple examples of such tests for the residence patch method and other functions
 % %                 )
 
 % % first residence patch figure
-\begin{figure}[ht!]
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_06.png}
+    \includegraphics[width=0.75\textwidth]{figures/preprocessing/fig_06.png}
     \caption{
         \textbf{Movement tracks can be classified into residence patches, while leaving out the transit between them.}
         \textbf{(a)} A simulated animal movement track from \citealt{gupte2021a}, where an agent uses local cues to make movement decisions to maximise intake.
@@ -567,9 +592,9 @@ This translates to a 2\% underestimation of the stop duration at a tracking inte
 Finally, any classification algorithm will present users with a trade-off between over-sensitivity (erroneously finding stops where there were none), and under-sensitivity (missing stops where they are not local or long enough) --- users should balance between these based on the broader questions sought to be answered.
 
 % % calibration figure
-\begin{figure}[ht!]
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_07.png}
+    \includegraphics[width=0.75\textwidth]{figures/preprocessing/fig_07.png}
     \caption{
         \textbf{Pre-processing steps for WATLAS calibration data showing filtering on speed, median smoothing and thinning by aggregation, and making residence patches.}
         \textbf{(a)} Positions with incoming and outgoing speed $>$ 15 m/s are removed (grey crosses = removed, green points = retained).
@@ -610,9 +635,9 @@ Although all three bats roosted at the same cave during the day, and all their t
 Contrasting the actual movement path with the linear path between residence patches can help reveal details of how animal cognition affects space use \citep{toledo2020}.
 Bats tended to show prolonged residence near known food sources (fruit trees), but also where no fruit trees were recorded (Fig.~\ref{preproc_fig_08}.b, ~\ref{preproc_fig_08}.c), in line with previous evidence for their use of non-fruiting trees to rest, to handle and digest food, and presumably for social interactions \citep{tsoar2011}.
 
-\begin{figure}[ht!]
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/preprocessing/fig_08.png}
+    \includegraphics[width=0.75\textwidth]{figures/preprocessing/fig_08.png}
     \caption{
         \textbf{Synthesising animal tracks into residence patches can reveal movement in relation to landscape features, prior exploration, and other individuals.}
         \textbf{(a)} Linear approximations of the paths (coloured straight lines) between residence patches (circles) of three Egyptian fruit bats (\textit{Rousettus aegyptiacus}), tracked over three nights in the Hula Valley, Israel.
@@ -652,7 +677,7 @@ We offer our approach to large tracking datasets, and our pipeline and package a
 
 %%%%%%%%%%%%% Supplement %%%%%%%%%%%%%%%
 
-% \newpage
+\newpage
 
 \begingroup
 
@@ -660,7 +685,7 @@ We offer our approach to large tracking datasets, and our pipeline and package a
 \let\cleardoublepage\relax
 \let\cleardoublepage\relax
 
-{\chapter*{Supplementary Information}}
+{\chapter*{Supplementary Information for Chapter~\ref{ch:preprocessing}}}
 
 The supplementary material for this chapter is a worked out, step-by-step guide to using the \emph{atlastools} package to clean data as described in preceding sections.
 Being primarily a tutorial for practitioners --- and quite lengthy --- it is not provided here, but may be found online as Supporting Information published along with the manuscript, \textcite{gupte2022d}, \citetitle{gupte2022d}, at:

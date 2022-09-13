@@ -11,6 +11,23 @@
 
 \medskip
 
+\section*{Abstract}
+
+The flight surfaces of bird wings require regular renewal through a process called moult --- shedding worn out feathers and growing fresh ones.
+Moult presents birds with the dilemma of needing more resources for feather growth just when their flight capacity is reduced due to feather loss, making them more vulnerable to predation.
+We combined mechanistic and experimental approaches to present a first quantification of the direct effects of wing moult on the movement and habitat selection of four non-migratory passerine species. 
+We followed the movement of moulting birds using a high-throughput tracking system. 
+Taking a viewshed ecology approach, we examined how birds used areas sheltered from observation by potential predators.
+We found that species' moult rate determined whether they adjusted their movement to their wing condition.
+Among species that adapted movement to moult rate, natural moult led to increased movement between habitat patches, whereas artificial feather removal led to shorter between-patch movements. 
+Across moult rates, birds preferred lower visibility areas that are more sheltered from visual predators.
+Our study revealed that birds' fine-scale adaptive movement decisions are intertwined with their evolved physiological strategies, and they can adopt the spatial perspective of their predators at landscape scales, pre-emptively avoiding areas where they could be observed.
+Overall, we show how combining experimental and tracking approaches with mechanistic, biologically-grounded estimates of landscape attributes allows cross-species comparisons of movement strategies in response to moult dynamics.
+
+\newpage
+
+\section*{Introduction}
+
 \lettrine{B}{irds} are unique in moving mostly by powered flight on feathered wings.
 Feathers, unlike animal hair and claws, are dead proteinaceous structures, which cannot be renewed continuously as they suffer wear and tear \parencite{rayner1988,jenni1989}.
 As feathers mature, wing condition and consequently flight capacity gradually decreases \parencite{lindstrom1994,hedenstrom1999,hedenstrom2003}.
@@ -321,7 +338,7 @@ Overall, our work provides a template for combining simple experimental methods 
 \let\cleardoublepage\relax
 \let\cleardoublepage\relax
 
-{\chapter*{Supplementary Information}}
+{\chapter*{Supplementary Information for Chapter~\ref{ch:holeybirds}}}
 
 \section*{Individuals' Wing Gap Sizes across the Study Period}
 
@@ -337,7 +354,7 @@ Overall, our work provides a template for combining simple experimental methods 
     \label{fig:wgi-daily}
 \end{figure}
 
-\section*{Vegetation, visibility, and land use across the study area}
+\section*{Vegetation, Visibility, and Land Use across the Study Area}
 
 \subsection*{Land cover}
 
@@ -404,9 +421,9 @@ This suggests that vegetation indices such as NDVI could be used to examine the 
 We tested this hypothesis by examining the relationship between NDVI and the visibility index using a generalised additive model (GAM).
 We extracted the NDVI, visibility index, and land-cover type for 10,000 equally spaced locations across our study area, and excluded areas which were covered by water.
 We fit a GAM with the formula: 
-\begin{linenomath*}
-    $$\text{visibility~index} \sim s(\text{NDVI}, by = \text{landcover}) + s(\text{landcover}, bs = \text{``re''})$$
-\end{linenomath*}
+\begin{equation*}
+    \mathit{visibility~index} \sim s(\mathit{NDVI}, by = \mathit{landcover}) + s(\mathit{landcover}, bs = \mathit{``re''})
+\end{equation*}
 This fit a separate smooth visibility-NDVI curve for each land-cover class, and also modelled land-cover as a random effect \parencite{wood2017}.
 
 We found that the relation between NDVI and visibility index was statistically significant, but the shape of the relationship was strongly influenced by land-cover (Fig.~\ref{fig:vis-ndvi}; GAM degrees of freedom [DOF] = 2.99, estimate $F$ = 1,004.02, p $<$ 0.001; $R^2$ = 0.596).
@@ -433,12 +450,12 @@ We modelled the effect of wing gap size, given by the wing gap index, on large-s
 We examined data from four non-migratory birds common to our study area in northern Israel: barn swallows (\textit{Hirundo rustica}), white-spectacled bulbuls (\textit{Pycnonotus xanthopygos}), house sparrows (\textit{Passer domesticus}), and clamorous reed warblers (\textit{Acrocephalus stentoreus}).
 For bulbuls, sparrows, and reed warblers, we fit one GAM with species-specific curves to relate the average hourly distance moved between areas of prolonged residence \parencite[``residence patches''][]{gupte2022d}, and the individual wing gap index
 We used the GAM formula:
-\begin{linenomath*}
-    $$
-        \text{distance between patches per hour} \sim s(\text{wing gap index}, by = \text{species}, k = 3) +\\
-    s(\text{species}, bs = \text{``re''})      
-    $$
-\end{linenomath*}
+\begin{equation*}
+    \begin{split}
+        \mathit{distance~between~patches~per~hour} &\sim s(\mathit{wing~gap~index}, by = \mathit{species}, k = 3)
+        &+ s(\mathit{species}, bs = \mathit{``re''})
+    \end{split}
+\end{equation*}
 This fit a GAM with wing gap index as a smoothed term with three knots allowed, and species as a random effect \parencite{wood2017}.
 Model coefficients are in Table~\ref{table:coef_distance}.
 
@@ -473,18 +490,18 @@ Model coefficients are in Table~\ref{table:coef_distance}.
 \end{table}
 
 To determine whether the molt-related wing gap's size also affected the frequency with which birds moved from one putative foraging patch to another, we fit a GAM to the number of patch switches (essentially, the number of patches) per hour of daytime tracking, using the formula:
-\begin{linenomath*}
-    $$
-        \text{number of patches visited per hour} \sim s(\text{wing gap index}, by = \text{species}, k = 3) +\\
-    s(\text{species}, bs = \text{``re''})
-    $$
-\end{linenomath*}
+\begin{equation*}
+    \begin{split}
+        \mathit{number~of~patches~visited~per~hour} &\sim s(\mathit{wing~gap~index}, by = \mathit{species}, k = 3) \\
+        &+ s(\mathit{species}, bs = \mathit{``re''})
+    \end{split}
+\end{equation*}
 Model coefficients are in Table~\ref{table:coef_switches}.
 For swallows, we fit a GAM with distance travelled per hour of tracking as the response, and the individual wing gap index as the smooth predictor.
 This fit a GAM with wing gap index as a smoothed term with three knots allowed:
-\begin{linenomath*}
-$$\text{distance per hour} \sim s(\text{wing gap index}, k = 3)$$
-\end{linenomath*}
+\begin{equation*}
+\mathit{distance~per~hour} \sim s(\mathit{wing~gap~index}, k = 3)
+\end{equation*}
 These results are reported in the main text.
 
 \begin{table}
@@ -522,13 +539,13 @@ These results are reported in the main text.
 We examined whether birds' molt-related wing gap size affected the duration that they spent in each residence patch.
 Following from the results of the models described above (see main text Figs. 1 -- 2), we expected that molting birds would spend a shorter duration in each patch, as this is the only way to achieve both farther distances between patches, as well as more frequent patches, given a constant flight speed.
 We fit a GAM to the duration (in hours) of each residence patch as:
-\begin{linenomath*}
-    $$
-        \text{patch duration} \sim s(\text{wing gap index}, by = \text{species}, k = 3) + \\
-        \text{visibility index} + \text{ndvi} +
-        s(\text{species}, bs = \text{``re''})
-    $$
-\end{linenomath*}
+\begin{equation*}
+    \begin{split}
+        \mathit{patch~duration} &\sim s(\mathit{wing~gap~index}, by = \mathit{species}, k = 3) \\
+        &+ \mathit{visibility~index} + \mathit{ndvi} \\
+        &+ s(\mathit{species}, bs = \mathit{``re''})
+    \end{split}
+\end{equation*}
 Here, we also included the visibility index and NDVI as parametric fixed effects.
 Model coefficients are in Table~\ref{table:coef_duration}.
 
@@ -568,11 +585,12 @@ Model coefficients are in Table~\ref{table:coef_duration}.
 
 We fit GAMs with species-specific smooths to examine the effect of wing gap size on the availability of shelter in individual birds' residence patches.
 We included NDVI as a smoothed term to account for the effect of vegetation productivity, using the formula:
-\begin{linenomath*}
-$$ \text{visibility} \sim s(\text{wing gap index}, by = \text{species}, k = 3) + \\
-    s(\text{NDVI}, k = 5) + s(\text{species}, bs = \text{``re''})
-$$
-\end{linenomath*}
+\begin{equation*}
+    \begin{split}
+        \mathit{visibility} &\sim s(\mathit{wing gap index}, by = \mathit{species}, k = 3) \\
+        &+ s(\mathit{NDVI}, k = 5) + s(\mathit{species}, bs = \mathit{``re''})        
+    \end{split}
+\end{equation*}
 Here, the wing gap index is allowed 3 knots, while NDVI is allowed five knots for a potentially more complex relationship.
 We did not find a significant effect of wing gap index on species' use of more sheltered patches.
 The one exception was clamorous reed warblers, in which the visibility of residence patches decreased linearly with increasing wing gap index (GAM DOF = 1.0 [a linear fit], $F$ = 16.354, p < 0.001).
@@ -629,9 +647,9 @@ In this way, we were able to determine how birds selected for vegetation product
 Since most birds' residence patches are in high-NDVI low-visibility areas (see main text Fig. 4), but are surrounded by high-NDVI, high-visibility areas, this allowed us to disentangle the provisioning effects of vegetation from its sheltering effects.
 
 We fit separate regressions for each molt status for each of the three species, using the formula:
-\begin{linenomath*}
-$$ \text{case\_} \sim \text{visibility} + \text{NDVI} + \text{strata}(\text{step~identity}) $$
-\end{linenomath*}
+\begin{equation*}
+\mathit{case\_} \sim \mathit{visibility} + \mathit{NDVI} + \mathit{strata}(\mathit{step~identity})
+\end{equation*}
 We chose the ``approximate'' fitting method to reduce computational time.
 Model coefficients are presented in Table~\ref{table:coef_ssa}; negative coefficients indicate selection against visibility, and for shelter.
 
