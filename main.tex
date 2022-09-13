@@ -9,7 +9,7 @@
 
 \documentclass[
     paper=170mm:240mm,
-    font=9pt,
+    font=8.5pt,
     BCOR=15mm,
     twoside,openright,titlepage,
     dvipsnames,
@@ -19,7 +19,7 @@
     headsepline=false,
     DIV=15
 ]{scrbook}
-\setlength{\textheight}{1.03\textheight}
+\setlength{\textheight}{1.035\textheight}
 % \usepackage[b5paper, total={170mm, 240mm}]{geometry}
 
 % \usepackage[]{showframe}
@@ -98,7 +98,7 @@
 % \onehalfspacing
 
 \renewcommand{\chapterNumber}{%
-  \displayfont\color{Maroon}\fontsize{60}{20} \bfseries}\par
+  \displayfont\color{black}\fontsize{60}{20} \bfseries}\par
 
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent}
@@ -122,7 +122,7 @@
   {}
   {}
   {0pt}
-  {\raggedright\color{Maroon}\displayfont\itshape\bfseries{\huge{Interlude~{\theinterludes}\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
+  {\raggedright\color{black}\displayfont\itshape\bfseries{\huge{Interlude~{\theinterludes}\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
 }
 
 \newenvironment{bibenv}{
@@ -130,7 +130,7 @@
   {}
   {}
   {0pt}
-  {\raggedright\color{Maroon}\displayfont\itshape\bfseries{\huge{Bibliography\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
+  {\raggedright\color{black}\displayfont\itshape\bfseries{\huge{Bibliography\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
 }
 
 \makeatletter
@@ -145,7 +145,7 @@
 		\ifnum\c@instcount>\@ne
 		\blx@imc@iffieldequals{sortinit}\blx@previnit
 		{}
-		{\leavevmode\marginline{\color{Maroon}\underline{\bfseries\headerfont\huge\printfield{sortinit}}}}%
+		{\leavevmode\marginline{\color{black}\underline{\bfseries\headerfont\huge\printfield{sortinit}}}}%
 		\fi
 		\global\let\blx@previnit\abx@field@sortinit
 	}%
@@ -170,20 +170,20 @@
 % fix part heading format
 \titleformat{\part}[display]
         {\ct@altfont\centering\rmfamily}%
-        {\thispagestyle{empty}\color{Maroon}\displayfont\scshape\partname~\MakeTextUppercase\displayfont{\thepart}}{1em}%
-        {\huge\rmfamily\color{Maroon}\scshape\bfseries}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+        {\thispagestyle{empty}\color{black}\displayfont\scshape\partname~\MakeTextUppercase\displayfont{\thepart}}{1em}%
+        {\huge\rmfamily\color{black}\scshape\bfseries}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
 
 % \renewcommand*\chapterheadstartvskip{\vspace*{-1\topskip}} 
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     {\relax}
-    {\mbox{}\oldmarginpar{\centering\displayfont\itshape\small{\color{Maroon}~Chapter~\vspace*{.5\baselineskip}}{\displayfont\chapterNumber{\color{Maroon}\thechapter}}}}
+    {\mbox{}\oldmarginpar{\centering\displayfont\itshape\small{\color{black}~Chapter~\vspace*{.5\baselineskip}}{\displayfont\chapterNumber{\color{black}\thechapter}}}}
     {0pt}%
-    {\raggedright\itshape\bfseries\displayfont\color{Maroon}\Huge}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\raggedright\itshape\bfseries\displayfont\color{black}\Huge}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{{\thesection}}{1em}{\Large\color{Maroon}\raggedright\headerfont\bfseries}[\color{Maroon}\normalsize\vspace*{.1\baselineskip}\titlerule]
+    {\relax}{{\thesection}}{1em}{\Large\color{black}\raggedright\headerfont\bfseries}[\color{black}\normalsize\vspace*{.1\baselineskip}\titlerule]
 
 % fix section format
 \titleformat{\subsection}
