@@ -28,21 +28,18 @@
 % in order to deactivate the time-stamp on the pages
 % (see ClassicThesis.pdf for more information):
 % ****************************************************************************************************
-\PassOptionsToPackage{
-  drafting=false,    % print version information on the bottom of the pages
-  tocaligned=true, % the left column of the toc will be aligned (no indentation)
-  dottedtoc=true,  % page numbers in ToC flushed right
-  eulerchapternumbers=false, % use AMS Euler for chapter font (otherwise Palatino)
-  linedheaders=false,       % chaper headers will have line above and beneath
-  floatperchapter=true,     % numbering per chapter for all floats (i.e., Figure 1.1)
-  eulermath=false,  % use awesome Euler fonts for mathematical formulae (only with pdfLaTeX)
-  beramono=true,    % toggle a nice monospaced font (w/ bold)
-  palatino=true,    % deactivate standard font for loading another one, see the last section at the end of this file for suggestions
-  % style=classicthesis,
-  style=classicthesis,
-  parts=true
-  %classicthesis % classicthesis, arsclassica
-}{classicthesis}
+\usepackage[
+    drafting=true,
+    tocaligned=true,
+    dottedtoc=true,
+    eulerchapternumbers=false,
+    linedheaders=false,
+    palatino=true,
+    beramono=true,
+    floatperchapter=true,
+    style=classicthesis,
+    parts=true
+]{classicthesis}
 
 
 % ****************************************************************************************************
@@ -88,9 +85,6 @@
 \PassOptionsToPackage{%
   backend=biber,
   hyperref,
-  % bibencoding=utf8, %instead of bibtex
-  % backend=bibtex8,bibencoding=ascii,%
-  % language=auto,%
   url=false,
   isbn=false,
   doi=false,
@@ -98,8 +92,6 @@
   style=oxyear,%oxyear, % Author 1999, 2010
   dashed=true, % dashed: substitute rep. author with ---
   maxcitenames=2,
-  % mincitenames=1,
-  % maxbibnames=5
   maxbibnames=99, % default: 3, et al.
   date=year,
   uniquename=false,
@@ -236,7 +228,9 @@
   % pdfpagemode=UseOutlines,%
   plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
   hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
-  urlcolor=CTurl, linkcolor=black, citecolor=black, %pagecolor=RoyalBlue,%
+  urlcolor=CTurl, 
+  linkcolor=, 
+  citecolor=black, %pagecolor=RoyalBlue,%
   %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
   pdftitle={\myTitle},%
   pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
