@@ -1,15 +1,14 @@
 %*******************************************************
 % Cover Titlepage
 %*******************************************************
-\definecolor{myOrange}{rgb}{0.969,0.965,0.945}
 
 \begin{titlepage}
-    \pagecolor{white}\afterpage{\nopagecolor}
+    % \pagecolor{white}\afterpage{\nopagecolor}
     %\pdfbookmark[1]{\myTitle}{titlepage}
     % if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
-    \begin{addmargin}[-1cm]{-3cm}
+    % \begin{addmargin}[-1cm]{-3cm}
     % \begin{center}
-        \linespread{1.5}
+        \linespread{1.15}
         % \large
 
         \hfill
@@ -20,12 +19,15 @@
             \color{Plum4}{\fontsize{50}{50} \scshape\displayfont{Animal\\Movement\\Strategies}\par}\par
           \end{flushleft}
         }
-        \includegraphics[width=0.6\textwidth,
+
+        \medskip
+        
+        \includegraphics[width=0.5\textwidth,
           align=h,
           smash=br,
           hsmash=r,
           hshift=0.\textwidth,
-          vshift=-1cm,     % adjust the vertical position
+          vshift=-0cm,     % adjust the vertical position
           % hshift=-1.5cm
           ]{figures/cover_bars.png}
         \vspace{81mm}
@@ -48,7 +50,7 @@
         % \vfill
         {
           \begin{flushleft}
-            {\Huge \displayfont{Animal Movement\\Strategies}\par}\par
+            {\Huge \displayfont{Animal Movement Strategies}\par}\par
             \vspace{25mm}
             Pratik Rajan Gupte
           \end{flushleft}
@@ -57,4 +59,4 @@
   \end{addmargin}
 \end{titlepage}
 
-\nopagecolor
+% \nopagecolor
