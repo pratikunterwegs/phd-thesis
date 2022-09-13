@@ -6,62 +6,24 @@
 % 
 {\noindent \textbf{Pratik R. Gupte}, Christine E. Beardsworth\textsuperscript{1}, Orr Spiegel\textsuperscript{2}, Emmanuel Lourie\textsuperscript{3}, Sivan Toledo\textsuperscript{2}, Ran Nathan\textsuperscript{3}, and Allert Bijleveld\textsuperscript{1}}
 
-\graffito{
-	{\color{Maroon}\normalsize\headerfont{Co-author Affiliations}}
-
     \medskip
 
-    
-    \textsuperscript{1} Netherlands Inst. for Sea Research, The Netherlands.
-    
-    \medskip
-    
-    \textsuperscript{2} Tel Aviv University, Israel.
-    
-    \medskip
+    {\color{Maroon}\normalsize\headerfont{Co-author Affiliations}}
 
-    \textsuperscript{3} The Hebrew University of Jerusalem, Israel.
+    \begin{enumerate}
+        \item NIOZ Netherlands Institute for Sea Research, The Netherlands.
+        \item Tel Aviv University, Israel.
+        \item The Hebrew University of Jerusalem, Israel.
+    \end{enumerate}
 
     \medskip
 
     {\color{Maroon}\normalsize\headerfont{Funding}}
 
-    \medskip
-
-    Dutch Research Council (NWO)
-
-    \medskip
-
-    Israel Science Foundation
-
-    \medskip
-
-    Minerva Foundation    
-}
-
-\section*{Abstract}
-{
-    % \small
-    	
-    Modern, high-throughput animal tracking increasingly yields `big data' at very fine temporal scales, and 
-    % At these scales, location error can exceed the animal's step size, leading to mis-estimation of behaviours inferred from movement. 
-    `cleaning' the data to reduce location errors is one of the main ways to deal with position uncertainty. 
-    Though data cleaning is widely recommended, inclusive, uniform guidance on this crucial step, and on how to organise the cleaning of massive datasets, is relatively scarce.
-    A pipeline for cleaning massive high-throughput datasets must balance ease of use and computationally efficiency, in which location errors are rejected while preserving valid animal movements. 
-    % Another useful feature of a pre-processing pipeline is efficiently segmenting and clustering location data for statistical methods, while also being scalable to large datasets and robust to imperfect sampling. 
-    Manual methods being prohibitively time consuming, and to boost reproducibility, pre-processing pipelines must be automated.
-    We provide guidance on building pipelines for pre-processing high-throughput animal tracking data to prepare it for subsequent analyses. 
-    We apply our proposed pipeline to simulated movement data with location errors, and also show how large volumes of cleaned data can be transformed into biologically meaningful `residence patches', for exploratory inference on animal space use. 
-    We use tracking data from the Wadden Sea ATLAS system (WATLAS) to show how pre-processing improves its quality, and to verify the usefulness of the residence patch method. 
-    Finally, with tracks from Egyptian fruit bats \textit{Rousettus aegyptiacus}, we demonstrate the pre-processing pipeline and residence patch method in a fully worked out example.
-    To help with fast implementation of standardised methods, we developed the R package \textit{atlastools}, which we also introduce here. 
-    Our pre-processing pipeline and \textit{atlastools} can be used with any high-throughput animal movement data in which the high data-volume combined with knowledge of the tracked individuals’ movement capacity can be used to reduce location errors. 
-    % \textit{atlastools} is easy to use for beginners, while providing a template for further development. 
-    % The common use of simple yet robust pre-processing steps promotes standardised methods in the field of movement ecology and leads to better inferences from data.
+    Dutch Research Council (NWO); Israel Science Foundation; Minerva Foundation
 
     \bigskip
 
     {\noindent \large{$\Delta$}} \normalfont Published in the \textit{Journal of Animal Ecology} as \citet{gupte2022d}. \citetitle{gupte2022d}.
-}
 
 \clearpage
