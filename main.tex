@@ -6,21 +6,46 @@
     \WarningFilter{scrreprt}{Usage of package `titlesec'}
     %\WarningFilter{scrreprt}{Activating an ugly workaround}
     \WarningFilter{titlesec}{Non standard sectioning command detected}
-\documentclass[twoside,openright,titlepage,numbers=noenddot,%1headlines,
-              headinclude,footinclude,clearpage=empty,abstract=on,toc=flat,
-              BCOR=5mm,paper=b5,fontsize=9pt,dvipsnames,toc=indentunnumbered
-              ]{scrbook}
+
+\documentclass[
+    paper=170mm:240mm,
+    font=9pt,
+    BCOR=15mm,
+    twoside,openright,titlepage,
+    dvipsnames,
+    clearpage=empty,abstract=on,
+    toc=indentunnumbered,
+    headings=standardclasses,
+    headsepline=false,
+    DIV=15
+]{scrbook}
+\setlength{\textheight}{1.03\textheight}
+% \usepackage[b5paper, total={170mm, 240mm}]{geometry}
+
+% \usepackage[]{showframe}
+% \renewcommand\ShowFrameLinethickness{0.25pt}
+% \renewcommand*\ShowFrameColor{\color{gray}}
+
 \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
 \RedeclareSectionCommands[
   tocindent=0mm,
-  tocnumwidth=12mm,
-  tocraggedentrytext
+  tocnumwidth=12mm
+  % tocraggedentrytext
 ]{chapter,section,part}
 
 % use some packages
 \usepackage{multicol}
 \usepackage[x11names]{xcolor}
 \usepackage{graphbox}
+
+\usepackage[
+    % cam,
+    % info,
+    center,
+    luatex,
+    width=176mm,
+    height=246mm
+]{crop}
 
 % for non hyphenated toc
 \usepackage{ragged2e}
@@ -59,21 +84,21 @@
 \setsansfont[]{Archivo Narrow}
 \setmathfont{Erewhon Math}
 \newfontfamily{\displayfont}{Tiempos Headline Black}
-\newfontfamily{\headerfont}{Tiempos Headline}
+\newfontfamily{\headerfont}{Tiempos Headline Medium}
 \newfontfamily{\barfont}[Ligatures={Rare}]{Vollkorn}
 
 \renewcommand*{\bibfont}{\footnotesize}
 
-%% spacing after section headers
-\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+%% spacing after sections and headers
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{8pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
 
 \usepackage{setspace}
 % \onehalfspacing
 
 \renewcommand{\chapterNumber}{%
-  \displayfont\color{Maroon}\fontsize{70}{20} \bfseries}\par
+  \displayfont\color{Maroon}\fontsize{60}{20} \bfseries}\par
 
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent}
@@ -88,7 +113,7 @@
                            \chapter*{#1}
                            \markboth{}{}
                            \addtocontents{toc}{\protect\vspace{5pt}}%
-                           \addcontentsline{toc}{chapter}{{\small~Interlude \theinterludes~} #1}
+                           \addcontentsline{toc}{chapter}{{Interlude~\theinterludes~\hspace{5pt}} #1}
                            \addtocontents{toc}{\protect\vspace{5pt}}%
                            }
 
@@ -97,7 +122,7 @@
   {}
   {}
   {0pt}
-  {\raggedright\color{Maroon}\headerfont\itshape\bfseries{\huge{Interlude~{\theinterludes}\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
+  {\raggedright\color{Maroon}\displayfont\itshape\bfseries{\huge{Interlude~{\theinterludes}\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
 }
 
 \newenvironment{bibenv}{
@@ -105,7 +130,7 @@
   {}
   {}
   {0pt}
-  {\raggedright\color{Maroon}\headerfont\itshape\bfseries{\huge{Bibliography\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
+  {\raggedright\color{Maroon}\displayfont\itshape\bfseries{\huge{Bibliography\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
 }
 
 \makeatletter
@@ -120,7 +145,7 @@
 		\ifnum\c@instcount>\@ne
 		\blx@imc@iffieldequals{sortinit}\blx@previnit
 		{}
-		{\leavevmode\marginline{\color{Maroon}\bfseries\headerfont\huge\printfield{sortinit}}}%
+		{\leavevmode\marginline{\color{Maroon}\underline{\bfseries\headerfont\huge\printfield{sortinit}}}}%
 		\fi
 		\global\let\blx@previnit\abx@field@sortinit
 	}%
@@ -147,17 +172,18 @@
         {\ct@altfont\centering\rmfamily}%
         {\thispagestyle{empty}\color{Maroon}\displayfont\scshape\partname~\MakeTextUppercase\displayfont{\thepart}}{1em}%
         {\huge\rmfamily\color{Maroon}\scshape\bfseries}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
-        
+
+% \renewcommand*\chapterheadstartvskip{\vspace*{-1\topskip}} 
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     {\relax}
-    {\mbox{}\oldmarginpar{\centering\headerfont\itshape\small{\color{Maroon}~Chapter~\vspace*{.5\baselineskip}}{\displayfont\chapterNumber{\color{Maroon}\thechapter}}}}
+    {\mbox{}\oldmarginpar{\centering\displayfont\itshape\small{\color{Maroon}~Chapter~\vspace*{.5\baselineskip}}{\displayfont\chapterNumber{\color{Maroon}\thechapter}}}}
     {0pt}%
-    {\raggedright\itshape\bfseries\headerfont\color{Maroon}\Huge}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\raggedright\itshape\bfseries\displayfont\color{Maroon}\Huge}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\underline{\thesection}}{1em}{\Large\color{Maroon}\raggedright\headerfont\bfseries}%[\vspace*{.2\baselineskip}\titlerule]
+    {\relax}{{\thesection}}{1em}{\Large\color{Maroon}\raggedright\headerfont\bfseries}[\color{Maroon}\normalsize\vspace*{.1\baselineskip}\titlerule]
 
 % fix section format
 \titleformat{\subsection}
@@ -239,12 +265,12 @@
 
 \begin{document}
 
-\raggedright
+% \raggedright
 \nonfrenchspacing
 \setstretch{1.15}
 
 \raggedbottom
-\setlength{\parindent}{1.2em}
+\setlength{\parindent}{1.1em}
 \selectlanguage{american} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
@@ -259,21 +285,19 @@
 \include{frontbackmatter/Titlepage}
 \include{frontbackmatter/Titleback}
 \include{frontbackmatter/innertitle}
-\cleardoublepage \include{frontbackmatter/propositions}
+% \cleardoublepage \include{frontbackmatter/propositions}
 % \clearpage\include{frontbackmatter/Dedication}
 % % \clearpage\include{frontbackmatter/Colophon}
 
 \cleardoublepage \include{frontbackmatter/Contents}
 % \tableofcontents
 
-\frontmatter
+\mainmatter
+\pagenumbering{arabic}
 \cleardoublepage \include{frontbackmatter/Abstract}
 
 \pagestyle{scrheadings}
-\pagenumbering{arabic}
 % \setcounter{page}{1}
-
-\mainmatter
 
 %********************************************************************
 % Mainmatter
@@ -327,6 +351,8 @@ In the second part of this thesis, I probe the evolutionary causes and consequen
 \include{chapters/patternprocess_main}
 
 \cleardoublepage \include{chapters/discussion}
+
+\cleardoublepage \include{frontbackmatter/dutch_summary}
 
 \cleardoublepage \include{frontbackmatter/Bibliography}
 
