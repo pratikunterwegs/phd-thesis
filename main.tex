@@ -8,19 +8,21 @@
     \WarningFilter{titlesec}{Non standard sectioning command detected}
 
 \documentclass[
-    paper=170mm:240mm,
-    font=8.5pt,
+    paper=170mm:225mm,
+    % font=8pt,
     BCOR=15mm,
     twoside,openright,titlepage,
     dvipsnames,
     clearpage=empty,abstract=on,
     toc=indentunnumbered,
+    headinclude=on,
     headings=standardclasses,
     headsepline=false,
     DIV=15
 ]{scrbook}
-\setlength{\textheight}{1.035\textheight}
-% \usepackage[b5paper, total={170mm, 240mm}]{geometry}
+\setlength{\textheight}{1.05\textheight}
+\KOMAoption{fontsize}{9.5pt}
+\KOMAoptions{headwidth=\textwidth+1cm:0pt}
 
 % \usepackage[]{showframe}
 % \renewcommand\ShowFrameLinethickness{0.25pt}
@@ -40,6 +42,7 @@
 
 \usepackage[
     % cam,
+    % axes,
     % info,
     center,
     luatex,
@@ -98,7 +101,7 @@
 % \onehalfspacing
 
 \renewcommand{\chapterNumber}{%
-  \displayfont\color{black}\fontsize{60}{20} \bfseries}\par
+  \displayfont\color{black}\fontsize{70}{20} \bfseries}\par
 
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent}
@@ -177,7 +180,7 @@
 % fix chapter heading format
 \titleformat{\chapter}[display]%
     {\relax}
-    {\mbox{}\oldmarginpar{\centering\displayfont\itshape\small{\color{black}~Chapter~\vspace*{.5\baselineskip}}{\displayfont\chapterNumber{\color{black}\thechapter}}}}
+    {\raggedleft\displayfont\itshape\small{\color{black}~Chapter~\vspace*{.5\baselineskip}}{\displayfont\chapterNumber{\color{black}\thechapter}}~\vspace*{2\baselineskip}\\}
     {0pt}%
     {\raggedright\itshape\bfseries\displayfont\color{black}\Huge}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
@@ -238,7 +241,7 @@
 % \areaset[current]{\dimexpr\textwidth+
 %   \marginparwidth+\marginparsep
 % }{\textheight}
-% \setlength{\marginparwidth}{0pt}
+% \setlength{\marginparwidth}{50mm}
 % \setlength{\marginparsep}{0pt}
 
 % to format short titles
@@ -289,6 +292,7 @@
 % \clearpage\include{frontbackmatter/Dedication}
 % % \clearpage\include{frontbackmatter/Colophon}
 
+\frontmatter
 \cleardoublepage \include{frontbackmatter/Contents}
 % \tableofcontents
 
