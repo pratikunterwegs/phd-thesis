@@ -1,24 +1,54 @@
 % !TEX program = lualatex
 
+% for rotated images
+\RequirePackage{rotating}
 \RequirePackage{silence} % :-\
     \WarningFilter{scrreprt}{Usage of package `titlesec'}
     %\WarningFilter{scrreprt}{Activating an ugly workaround}
     \WarningFilter{titlesec}{Non standard sectioning command detected}
-\documentclass[ twoside,openright,titlepage,numbers=noenddot,%1headlines,
-                headinclude,footinclude,clearpage=empty,abstract=on,toc=flat,
-                BCOR=5mm,paper=b5,fontsize=11pt,dvipsnames
-                ]{scrbook}
+
+\documentclass[
+    paper=170mm:225mm,
+    % font=8pt,
+    BCOR=15mm,
+    twoside,openright,titlepage,
+    dvipsnames,
+    clearpage=empty,abstract=on,
+    toc=indentunnumbered,
+    headinclude=on,
+    headings=standardclasses,
+    headsepline=false,
+    DIV=15
+]{scrbook}
+\setlength{\textheight}{1.05\textheight}
+\KOMAoption{fontsize}{9.5pt}
+\KOMAoptions{headwidth=\textwidth+1cm:0pt}
+
+% \usepackage[]{showframe}
+% \renewcommand\ShowFrameLinethickness{0.25pt}
+% \renewcommand*\ShowFrameColor{\color{gray}}
+
 \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
 \RedeclareSectionCommands[
   tocindent=0mm,
-  tocnumwidth=12mm,
-  tocraggedentrytext
+  tocnumwidth=12mm
+  % tocraggedentrytext
 ]{chapter,section,part}
 
 % use some packages
 \usepackage{multicol}
 \usepackage[x11names]{xcolor}
 \usepackage{graphbox}
+
+\usepackage[
+    % cam,
+    % axes,
+    % info,
+    center,
+    luatex,
+    width=176mm,
+    height=246mm
+]{crop}
 
 % for non hyphenated toc
 \usepackage{ragged2e}
@@ -37,15 +67,13 @@
 % \cslsetup{style = apa}
 \addbibresource{references/preprocessing.bib}
 \addbibresource{references/kleptomove.bib}
-\addbibresource{references/hillybirds.bib}
+% \addbibresource{references/hillybirds.bib}
 \addbibresource{references/holeybirds.bib}
 \addbibresource{references/pathomove.bib}
 \addbibresource{references/personality.bib}
 \addbibresource{references/patternprocess.bib}
+\addbibresource{references/discussion.bib}
 \addbibresource{references/general.bib}
-
-% \addbibresource{Bibliography.bib}
-% \addbibresource[label=ownpubs]{AMiede_Publications.bib}
 
 %********************************************************************
 % Hyphenation
@@ -55,77 +83,121 @@
 \usepackage{fontspec}
 \usepackage[T1]{fontenc}
 % \setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
-\setmainfont[Numbers={Proportional,Uppercase}]{Source Serif Pro}
-
-% \defaultfontfeatures{
-%   RawFeature={+axis={wght=100}},
-%   UprightFont = {Source Serif 4 Variable}
-% }
-% \setmainfont[
-%   Path={}
-%   % BoldFeatures={RawFeature={+axis={wght=700}}},
-%   % ItalicFeatures={RawFeature={+axis={wght=300}}},
-%   % UprightFeatures={RawFeature={+axis={wght=450}}}
-% ]{SourceSerif4Variable-Roman.otf}
-% % \setmainfont[Numbers={Proportional,Uppercase}]{Vollkorn}
-% % \setmainfont[
-% %     ItalicFont=SourceSerif4Variable-Italic.otf,
-% %     BoldFont=SourceSerif4Variable-Roman.otf,
-% %     BoldItalicFont=SourceSerif4Variable-Italic.otf,
-% %     BoldFeatures={RawFeature={+axis={wght=900}}},
-% %     BoldItalicFeatures={RawFeature={+axis={wght=900}}}
-% % ]{SourceSerif4Variable-Roman.otf}
-
-\setsansfont[]{Oswald}
+\setmainfont[Numbers={Tabular,Uppercase},SmallCapsFeatures={Ligatures=CommonOff}]{Tiempos Text}
+\setsansfont[]{Archivo Narrow}
 \setmathfont{Erewhon Math}
-\newfontfamily{\displayfont}{TeX Gyre Schola}
+\newfontfamily{\displayfont}{Tiempos Headline Black}
+\newfontfamily{\headerfont}{Tiempos Headline Medium}
+\newfontfamily{\barfont}[Ligatures={Rare}]{Vollkorn}
 
 \renewcommand*{\bibfont}{\footnotesize}
 
+%% spacing after sections and headers
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{8pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+
 \usepackage{setspace}
+% \onehalfspacing
 
 \renewcommand{\chapterNumber}{%
-  \color{Black}\fontsize{60}{60} \bfseries}\par
+  \displayfont\color{black}\fontsize{70}{20} \bfseries}\par
 
 \usepackage{enumitem}
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent}
 
+% spacing between author names of different letters
+\setlength{\bibinitsep}{\baselineskip}
+
+% new kind of chapter
+\newcounter{interludes}
+\renewcommand{\theinterludes}{\Alph{interludes}}
+\newcommand{\interlude}[1]{\refstepcounter{interludes}
+                           \chapter*{#1}
+                           \markboth{}{}
+                           \addtocontents{toc}{\protect\vspace{5pt}}%
+                           \addcontentsline{toc}{chapter}{{Interlude~\theinterludes~\hspace{5pt}} #1}
+                           \addtocontents{toc}{\protect\vspace{5pt}}%
+                           }
+
+\newenvironment{interludeenv}{
+  \titleformat{name=\chapter}[display]
+  {}
+  {}
+  {0pt}
+  {\raggedright\color{black}\displayfont\itshape\bfseries{\huge{Interlude~{\theinterludes}\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
+}
+
+\newenvironment{bibenv}{
+  \titleformat{name=\chapter}[display]
+  {}
+  {}
+  {0pt}
+  {\raggedright\color{black}\displayfont\itshape\bfseries{\huge{Bibliography\\}\large}}[\normalsize\vspace*{.2\baselineskip}\titlerule]
+}
+
 \makeatletter
 
-% to indent unnumbered chapters - doesnt work
-% \def\ttl@addcontentsline#1#2{%
-%   \addcontentsline{toc}{#1}{\ifttl@toclabel\ttl@a\else\numberline{}\fi#2}% indent unnumbered ToC entries too
-%   \nobreak}
+% for a bibliography split into alphabetical sections as margin notes
+\def\ifskipbib{\iftoggle{blx@skipbib}}
+\bibinitsep=\baselineskip %to trigger blx@initsep
+\def\blx@initsep{%
+	\blx@imc@iffieldundef{sortinit}
+	{}
+	{%
+		\ifnum\c@instcount>\@ne
+		\blx@imc@iffieldequals{sortinit}\blx@previnit
+		{}
+		{\leavevmode\marginline{\color{black}\underline{\bfseries\headerfont\huge\printfield{sortinit}}}}%
+		\fi
+		\global\let\blx@previnit\abx@field@sortinit
+	}%
+}
+
+% to correctly handle author name prefixes as: Van X et al.
+% but in the bibliography, X, Y van et al.
+\AtBeginDocument{
+  \toggletrue{blx@useprefix}
+  \renewcommand*{\mkbibnameprefix}[1]{\MakeCapital{#1}}% this is the relevant line of code
+  }
+\AtBeginBibliography{
+  \toggletrue{blx@useprefix}
+  \renewcommand*{\mkbibnameprefix}[1]{\MakeCapital{#1}}
+  % \renewcommand*{\mkbibnameprefix}[1]{#1}% this sets the name prefix back
+  % \mkbibnameprefix{\MakeCapital{#3}}\isdot
+  }
 
 % to prevent hyphens in toc
 \renewcommand{\@tocrmarg}{2.55em plus1fil}
 
 % fix part heading format
 \titleformat{\part}[display]
-        {\ct@altfont\centering\LARGE\rmfamily}%
-        {\thispagestyle{empty}\scshape\rmfamily\partname~\MakeTextUppercase{\thepart}}{1em}%
-        {\huge\rmfamily\scshape\bfseries}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
-        
+        {\ct@altfont\centering\rmfamily}%
+        {\thispagestyle{empty}\color{black}\displayfont\scshape\partname~\MakeTextUppercase\displayfont{\thepart}}{1em}%
+        {\huge\rmfamily\color{black}\scshape\bfseries}[\bigskip\normalfont\normalsize\color{Black}\begin{quote}\ctparttext@print\end{quote}]
+
+% \renewcommand*\chapterheadstartvskip{\vspace*{-1\topskip}} 
 % fix chapter heading format
 \titleformat{\chapter}[display]%
-    % \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ }%
-    {\relax}{\mbox{}\oldmarginpar{\bfseries\rmfamily{\tiny{Chapter}}~\displayfont\chapterNumber\thechapter}}{0pt}%
-    {\raggedright\large\rmfamily\scshape}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
+    {\relax}
+    {\raggedleft\displayfont\itshape\small{\color{black}~Chapter~\vspace*{.5\baselineskip}}{\displayfont\chapterNumber{\color{black}\thechapter}}~\vspace*{2\baselineskip}\\}
+    {0pt}%
+    {\raggedright\itshape\bfseries\displayfont\color{black}\Huge}[\normalsize\vspace*{.2\baselineskip}\titlerule]%
 
 % fix section format
 \titleformat{\section}
-    {\relax}{\thesection}{1em}{\rmfamily\bfseries\scshape}
+    {\relax}{{\thesection}}{1em}{\Large\color{black}\raggedright\headerfont\bfseries}[\color{black}\normalsize\vspace*{.1\baselineskip}\titlerule]
 
 % fix section format
 \titleformat{\subsection}
-    {\relax}{\thesubsection}{1em}{\rmfamily\bfseries}
+    {\relax}{\thesubsection}{1em}{\raggedright\bfseries\headerfont}
 
 % fix section format
 \titleformat{\paragraph}
     {\relax}{\theparagraph}{1em}{\rmfamily\itshape}
 
 % \usepackage[left]{lineno}
-\usepackage[skins,breakable]{tcolorbox}
+\usepackage[skins,float,floatplacement=t]{tcolorbox}
 % \usepackage{lipsum}
 
 % parts in toc
@@ -133,23 +205,27 @@
 \renewcommand{\cftpartfont}{\bfseries\scshape\rmfamily\large\raggedleft}%
 \renewcommand{\cftpartpresnum}{\small Part~}%  \MakeTextLowercase
 % chapters in toc
-\renewcommand{\cftchappresnum}{\rmfamily}%
+\renewcommand{\cftchappresnum}{\rmfamily\small Chapter~}%
 \renewcommand{\cftchapaftersnumb}{\rmfamily}%
 \renewcommand{\cftchapfont}{\rmfamily}%
 \renewcommand{\cftchappagefont}{\rmfamily}%
 
 % handle extended part and chapter numbers due to text
 \newlength\mylen
-\settowidth\mylen{\bfseries\cftpartpresnum\cftpartaftersnum}
+\settowidth\mylen{\bfseries{Interlude}\cftchapaftersnum}
 \addtolength\cftpartnumwidth{\mylen}
 \addtolength\cftchapnumwidth{\mylen}
 
 % for stylistic elements
 \usepackage{lettrine}
 \usepackage{adforn}
+\usepackage[]{pgfornament}
 \usepackage{afterpage}
 
 \makeatother
+
+% required to make author name prefixes lowercase
+% \renewbibmacro*{begentry}{\midsentence}
 
 \usepackage{caption}
 \setcapindent{0pt}
@@ -165,11 +241,11 @@
 % \areaset[current]{\dimexpr\textwidth+
 %   \marginparwidth+\marginparsep
 % }{\textheight}
-% \setlength{\marginparwidth}{0pt}
+% \setlength{\marginparwidth}{50mm}
 % \setlength{\marginparsep}{0pt}
 
 % to format short titles
-\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\rmfamily{\thechapter}}{\color{gray}\small\rmfamily{#1}}}
+\renewcommand{\chaptermark}[1]{\markboth{\color{gray}\small\scshape\rmfamily{{Chapter}~\thechapter}}{\color{gray}\small\scshape\rmfamily{#1}}}
 \renewcommand{\sectionmark}[1]{\markright{\small\rmfamily\MakeUppercase{\thesection}\enspace{#1}}}
 
 % to format page numbers
@@ -177,6 +253,14 @@
 
 % paragraph spacing
 % \setlength{\parskip}{1em}
+\setlength{\parskip}{5pt plus1pt minus1pt}
+
+% for tables
+\usepackage{dcolumn}
+\usepackage{booktabs}
+
+% for box
+\usepackage{pdfpages}
 
 % ********************************************************************
 % GO!GO!GO! MOVE IT!
@@ -184,10 +268,12 @@
 
 \begin{document}
 
-\raggedright
+% \raggedright
 \nonfrenchspacing
+\setstretch{1.15}
+
 \raggedbottom
-\setlength{\parindent}{1.2em}
+\setlength{\parindent}{1.1em}
 \selectlanguage{american} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
@@ -206,52 +292,61 @@
 % \clearpage\include{frontbackmatter/Dedication}
 % % \clearpage\include{frontbackmatter/Colophon}
 
-\cleardoublepage \include{frontbackmatter/Contents}
-
 \frontmatter
+\cleardoublepage \include{frontbackmatter/Contents}
+% \tableofcontents
+
+\mainmatter
+\pagenumbering{arabic}
 \cleardoublepage \include{frontbackmatter/Abstract}
 
 \pagestyle{scrheadings}
-\pagenumbering{arabic}
 % \setcounter{page}{1}
-
-\mainmatter
 
 %********************************************************************
 % Mainmatter
 % *******************************************************
-% \titleformat{\section}{\relax}{\textsf{\thesection}}{1em}{}
 
 % use \clearpage here to avoid problems with pdfbookmark
 \clearpage
 
-% \cleardoublepage \include{chapters/introduction}
+% \begin{refsection}
+
+\cleardoublepage \include{chapters/introduction}
 
 \cleardoublepage 
-% % \ctparttext{}
-\part{Leveraging New Methods to Study Animal Movement and Spatial Ecology}
+\ctparttext{The central challenge of the study of animal movement is knowing where animals actually are, with a high degree of spatial and temporal accuracy. Harnessing the massive datasets generated by modern tracking systems for robust ecological inferences requires computational methods that are informed by the biology of the systems to which they are applied. Additionally, taking a mechanistic view can reveal the world as animals see it.
+
+In the first part of this thesis, I demonstrate how to deal with large spatial datasets to investigate the direct drivers of animal movement.\\ \centering\barfont{-.-}}
+\part{A Mechanistic Perspective on Animal Movement Ecology}
+\label{part:eco}
 
 \cleardoublepage \include{chapters/preprocessing_header}
 \include{chapters/preprocessing_main}
 
-% \cleardoublepage \include{boxes/mapping}
+\clearpage \clearemptydoublepage
+\begin{interludeenv}
+\include{boxes/mapping}
+\end{interludeenv}
 
 \cleardoublepage \include{chapters/holeybirds_header}
 \include{chapters/holeybirds_main}
 
-\cleardoublepage \include{chapters/hillybirds_header}
-\include{chapters/hillybirds_main}
+\clearpage \cleardoublepage
+\ctparttext{Animal movement is neither random nor optimal, but the outcome of individuals making movement decisions based on local information. The strategies underlying these decisions are, like everything in biology, shaped by animals' evolutionary contexts. Yet evolution is rarely considered in animal movement models, possibly because it is considered to be too slow to be relevant to outcomes on human timescales. 
 
-% \cleardoublepage \include{boxes/clearances}
+In the second part of this thesis, I probe the evolutionary causes and consequences of animal movement using mechanistic, individual-based simulation models.\\ \centering\barfont{-.-}}
+\part{Mechanistic Models of the Evolution of Animal Movement}
+\label{part:evo}
 
-\cleardoublepage 
-\ctparttext{How we can tackle questions about the evolution of animal movement strategies, using mechanistic \textit{individual-based models} of movement decisions.}
-\part{Evolutionary Contexts of Animal Movement Strategies}
+\clearpage \cleardoublepage
+\include{boxes/demo}
 
-% \cleardoublepage \include{boxes/details}
-
-\cleardoublepage \include{chapters/kleptomove_header} 
+\cleardoublepage \include{chapters/kleptomove_header}
 \include{chapters/kleptomove_main}
+
+\clearpage \cleardoublepage
+\include{boxes/details}
 
 \cleardoublepage \include{chapters/pathomove_header}
 \include{chapters/pathomove_main}
@@ -259,16 +354,15 @@
 \cleardoublepage \include{chapters/patternprocess_header}
 \include{chapters/patternprocess_main}
 
-% \include{Chapters/Chapter02}
-%\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
-% \include{Chapters/Chapter03}
-%\include{multiToC} % <--- just debug stuff, ignore for your documents
+\cleardoublepage \include{chapters/discussion}
 
-% \cleardoublepage \include{chapters/discussion}
+\cleardoublepage \include{frontbackmatter/dutch_summary}
 
-% \include{frontbackmatter/Acknowledgments}
+\cleardoublepage \include{frontbackmatter/Bibliography}
 
-% \include{frontbackmatter/Publications}
+\clearpage \include{frontbackmatter/Acknowledgments}
+
+\clearpage \include{frontbackmatter/Publications}
 
 % ********************************************************************
 % Backmatter
@@ -277,7 +371,7 @@
 %\renewcommand{\thechapter}{\alph{chapter}}
 % \clearpage
 % \part{Appendix}
-\cleardoublepage
+\clearemptydoublepage
 %********************************************************************
 % Other Stuff in the Back
 %*******************************************************

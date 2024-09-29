@@ -1,16 +1,46 @@
 %*******************************************************
 % Publications
 %*******************************************************
-\pdfbookmark[1]{Publications}{publications}
-\chapter*{Publications}\graffito{This is just an early --~and currently ugly~-- test!}
-This might come in handy for PhD theses: some ideas and figures have appeared previously in the following publications:
+% \pdfbookmark[1]{Acknowledgments}{acknowledgments}
+% \phantomsection
+% \addtocontents{toc}{\protect\vspace{\beforebibskip}}%
+% \addcontentsline{toc}{chapter}{\tocEntry{Publications Related to this Thesis}}%
+\addchap{About the Author}\label{ch:pubs}
+\chaptermark{About the Author}
 
-%\noindent Put your publications from the thesis here. The packages \texttt{multibib} or \texttt{bibtopic} etc. can be used to handle multiple different bibliographies in your document.
+\begingroup
 
-\begin{refsection}[ownpubs]
+Pratik R. Gupte was born in India in 1993.
+After schooling in Hyderabad and an undergraduate degree in zoology from St. Xavier's College, Mumbai in 2014, he worked on field projects in southern India, Ladakh, and in South Africa.
+In 2017 he received a master's degree from the University of Kiel, as part of the International Master's in Applied Ecology, a programme spread over France, Portugal, Germany, and Ecuador.
+His master's thesis on families of wintering geese saw fieldwork in the Russian Arctic and the Netherlands.
+In 2018, he began his PhD in Franjo Weissing's lab at the University of Groningen.
+Pratik is broadly interested in the spatial ecology of animals, especially birds.
+Recognising that the current model of academic science is unsustainable, he left the academic career track, and is now a research software engineer at the London School of Hygiene and Tropical Medicine, where he develops epidemiological models to inform policy responses to disease outbreaks.
+
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\let\cleardoublepage\relax
+
+% set the separation between entries with different author name first letters
+% to zero, and this suppresses letter printing in the margin as in the main bib
+\bibinitsep=0
+
+\begin{refsection}
     \small
-    \nocite{*} % is local to to the enclosing refsection
-    \printbibliography[heading=none]
+    \nocite{gupte2021a,gupte2022c,gupte2022d,thaker2019,nathan2022,netz2022,ramesh2022,
+        bijleveld2021,rimbach2022un,gupte2019} % is local to to the enclosing refsection
+    \printbibliography[title=Author Publications]
 \end{refsection}
 
-\emph{Attention}: This requires a separate run of \texttt{bibtex} for your \texttt{refsection}, \eg, \texttt{ClassicThesis1-blx} for this file. You might also use \texttt{biber} as the backend for \texttt{biblatex}. See also \url{http://tex.stackexchange.com/questions/128196/problem-with-refsection}.
+\begin{refsection}
+    \small
+    \nocite{gupte2022,gupte2022e,gupte2022b,gupte2021b,gupte2020a,gupte2022f,netz2021b,netz2022a,netz2021b} % is local to to the enclosing refsection
+    \printbibliography[title=Data and Code]
+\end{refsection}
+
+\endgroup
+
+{ \begin{center} \barfont{-.-} \end{center} }
+
+% \emph{Attention}: This requires a separate run of \texttt{bibtex} for your \texttt{refsection}, \eg, \texttt{ClassicThesis1-blx} for this file. You might also use \texttt{biber} as the backend for \texttt{biblatex}. See also \url{http://tex.stackexchange.com/questions/128196/problem-with-refsection}.

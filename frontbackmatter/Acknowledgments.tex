@@ -1,13 +1,15 @@
 %*******************************************************
 % Acknowledgments
 %*******************************************************
-\pdfbookmark[1]{Acknowledgments}{acknowledgments}
+% \pdfbookmark[1]{Acknowledgments}{acknowledgments}
+\addchap{Acknowledgments}\label{ch:ack}
+% \chaptermark{Reflections and Acknowledgments}
 
 % \begin{flushright}{\slshape
-%     We have seen that computer programming is an art, \\
-%     because it applies accumulated knowledge to the world, \\
-%     because it requires skill and ingenuity, and especially \\
-%     because it produces objects of beauty.} \\ \medskip
+%     We have seen that computer programming is an art, 
+%     because it applies accumulated knowledge to the world, 
+%     because it requires skill and ingenuity, and especially 
+%     because it produces objects of beauty.}  \medskip
 %     --- \defcitealias{knuth:1974}{Donald E. Knuth}\citetalias{knuth:1974} \citep{knuth:1974}
 % \end{flushright}
 
@@ -17,83 +19,89 @@
 \let\clearpage\relax
 \let\cleardoublepage\relax
 \let\cleardoublepage\relax
-\chapter*{Acknowledgments and Reflections}
 
-Having read many thesis ``Acknowledgments'', the general pattern is to express a great sense of achievement, with thanks to family, friends, and supervisors.
-Instead, I want to reflect on the PhD and the past four years generally.
-People tend to rationalise their choices in hindsight, and this section may be no different.
+I would like to write down a few acknowledgments for people who have had a substantial role over the course of my PhD.
 
-It was probably not a good idea for me to have undertaken this PhD, perhaps a PhD at all.
-I don't have the unbounded curiosity or creativity that defines `good' academics.
-Rather, I should probably have been an engineer --- I enjoy getting things done.
-I suppose I must say that I didn't know any better than to start a PhD, and that I wanted to conform socially with my friends, many of whom were starting PhDs, and that it did at the time represent a great deal of stability at a relatively high income.
+First I'd like to acknowledge the role of my supervisory team, starting with those who were initially on the team in 2018.
+Ton Groothuis, Theunis Piersma, and Allert Bijleveld from the University of Groningen and the NIOZ were initially involved, but as my PhD veered further away from its planned form, they understandably dropped out.
+I'm grateful that neither of them insisted that I should stick to the original structure of the PhD.
 
-I'm now convinced that I did not choose my PhD situation wisely.
-Both of my `main' supervisors were in a state which I now recognise is not at all easy for their first few PhD students --- they were starting, or re-starting, their labs.
-While one issue with a new lab is the relative inexperience of the supervisor, the more important one is actually the lack of a lab culture.
-This includes accumulated wisdom that is invaluable to those receiving it; for those first uncovering it, it is often dearly won.
-This is exactly the situation in which I found myself from beginning to end --- there was nobody around to show me the ropes, because there was nobody ahead of me to know them.
+Much more positively, Ran Nathan from the Hebrew University of Jerusalem officially joined my supervisory team in early 2022, but he had been involved with my work since 2020.
+% , and we had met at conferences in 2018 (Biomove in Potsdam) and 2019 (the Gordon conference in Lucca, Italy).
+It was entirely by chance that I presented my work in methods development at an online workshop hosted by his lab; this prompted Ran to suggest the writing of what eventually became Chapter~\ref{ch:preprocessing} of this thesis.
+% Later, he invited me to be part of a large author team working on a review in \textit{Science}, which was very exciting.
+I began collaborating with Ran directly in the summer of 2021, to replace the projects I closed when I stopped working with Allert.
+This project, now Chapter~\ref{ch:holeybirds}, went better than I could have hoped, and that led me to suggest including him as a supervisor and indeed as a `promotor', which is a special role in the Dutch academic system.
+I found Ran, even when he was not yet my supervisor, to be warm, supportive and helpful, with lots of big picture thinking in relation to animal tracking.
+I'm grateful that he accepted a role as one of my promotors, and indeed that he initially agreed to work with me; I look forward to working with him in the future.
 
-My lab also suffered --- and still does --- from being much too large. 
-There were (and are) too many lines of research, all of them quite different.
-I would have appreciated a smaller, more focused lab.
-It was also very frustrating that my supervisors were pulling in wildly different directions (in a meeting, they once called each others' work ``irrelevant'').
-There was a constant tension between where I was based (in a theoretical lab), and what I was good at (working with empirical data).
+Finally, I must acknowledge Franjo Weissing who has been my main PhD supervisor, and is now my first promotor and the sole survivor of the original supervisory team.
+I had actually been in touch, indirectly at least, with Franjo since 2015, when I had turned down an offer to join the MEME master's programme that he established.
+% I have mixed feelings about accepting this position, to which I did not actually apply.
+When I began my PhD, I was neither a theoretician nor an evolutionary biologist (and I still would not maintain I am), so I'm glad that Franjo decided to take a chance with a relatively inexperienced candidate.
+% I thought Franjo's lab was too conceptually dispersed for there to be much peer support for my work.
+% This effect was exacerbated by my being one of the first people in the newly reconstituted lab, and also because I initially worked more with data (through the NIOZ collaboration) than my colleagues.
+I appreciated that Franjo allowed me to continue working on movement data, even though at the time, there was no apparent link with any theoretical work.
+I'm grateful that he allowed me to do pretty much as I wanted with my PhD, and for my part I tried to make sure that I was as productive as possible.
+I found Franjo to be a supportive and caring supervisor, and I'm grateful that he decided to hire me; I hope our work together will help establish his approach to eco-evolutionary theory.
 
-Then the pandemic happened.
-In 2020, being securely employed for two more years was a huge advantage.
-For that, I was, and remain, grateful; without the pandemic, though, I would have quit my PhD midway.
+I also want to say that none of these wranglings in the PhD process --- adding and removing supervisors, dealing with finances, or organising many other matters --- would have been possible without Ingeborg Jansen, who runs the Theoretical Biology secretariat and by extension the department; I am very grateful to her for her help over the years.
 
-\paragraph*{Supervisors}
+\medskip
 
-I've thought a great deal about whether to thank my supervisors --- this should already make it clear that I was less than pleased with how they operated.
+I've had the good fortune to have worked with two ambitious and driven collaborators over the past few years.
 
-First, I bear Ton Groothuis --- who was initially supposed to have been my second promotor, as well as Theunis, no ill will.
-They were largely absent for most of my PhD, and I also did not seek them out.
-I'm glad Ton did not insist that I should align with his interests, which don't overlap with mine at all.
-However, I regret not working with Theunis because I think I would have found some satisfaction in the kind of work he does.
+\noindent Vijay Ramesh at Columbia University reached out to me in late 2018.
+Vijay was trying to use data from \textit{eBird} to study birds in the southern Western Ghats of India, and asked whether I would help him with some spatial data analysis.
+I joined him in a six month project that actually ran for three and a half years, and was recently published in \textit{Ecography} --- this project was even included in earlier versions of this thesis.
+I used this project as a testbed for new techniques and ideas, such as using Python for some spatial computations; and this was my first professional foray out of R programming.
+It also helped keep me connected with ecological work with a focus on India.
+Last year, in 2021, we began another exciting project to study changes in bird distributions in the Nilgiri Hills over the past 150 years using museum specimen data and modern survey work --- I look forward to continuing that work as Vijay moves on to Cornell.
 
-Second, I think Allert shouldn't be supervising anybody, let alone PhD students.
-He was unreliable across contexts, quick to agree with senior people he respected, quick to rubbish ideas he didn't, and I never sensed a `big picture' in his work.
-I felt he tried to hold me back to protect his less able student, and took advantage of my skills and generally helpful nature.
-He appears in this thesis simply because it was considered too time-consuming to remove him.
+\noindent Greg Albery is a recent collaborator but someone whose work I've held in high regard for some time.
+In early 2021, he tried to recruit me to his supervisor's lab and it was the first time that somebody had reached out to me in this way. 
+Coming just after the pandemic winter of 2020, in the midst of the slow collapse of my collaboration with the NIOZ, and just as I was seriously considering my future after my PhD, this was a massive confidence boost.
+I was sounded out to work on building social networks from animal movement data, with a potential expansion into examining disease transmission; this gave me the idea for Chapter~\ref{ch:pathomove}, on which Greg is a co-author.
+Greg is a prolific scientist and overall decent person, and I'm very keen to be involved with his work in a newly N.S.F-funded position for the study of emerging diseases.
 
-In contrast, Ran Nathan joined my promotors' committee very late --- just a few days before I turned in my thesis.
-The idea of including him grew on me slowly, and was cemented when I began collaborating with him directly in the summer of 2021, to replace the projects I lost when I stopped working with Allert.
-I found Ran, even when not my supervisor, to be supportive and helpful, with exactly the sort of `big picture' view I had been lacking in relation to tracking data.
+\noindent I've had the help of many other external colleagues at all levels in academia, some of whom who appear as authors on chapters in this thesis, and others with whom I worked on projects outside my PhD.
+I'm grateful for their help and acknowledge them here:
+Orr Spiegel and Emmanuel Lourie, who helped substantially with feedback on the methods and guidance that I wrote into Chapter~\ref{ch:preprocessing};
+Yosef Kiat, Ulrike Schl{\"a}gel, and Johannes Signer who vetted the bird biology and the statistical methods I used in Chapter~\ref{ch:holeybirds}, and Yoav Bartan who helped with getting the essential canopy height model;
+Sivan Toledo who gave me feedback on all things ATLAS --- and also developed the system in the first place;
+Amy Sweeny who ensured that Chapter~\ref{ch:pathomove} remained rooted in the biological reality of host-pathogen systems;
+Morgan Tingley, V. V. Robin, and Ruth De Fries from Vijay's supervisory team who guided the \textit{eBird} project through three long years of development and review;
+and Rebecca Rimbach, who was my supervisor during my time in South Africa, and who allowed me to practice my Python geospatial skills on two recent projects on urbanisation.
 
-Finally \ldots
+I worked with a smaller number of peers within the University, and I'd like to thank them for the time and effort that went into chapters that are part of this thesis:
+Christoph Netz for all his work over the more than three years that Chapter~\ref{ch:kleptomove} has been in development, and for co-supervising both bachelor's and master's projects with me;
+and Jakob Gismann for helping with the development of Chapter~\ref{ch:pathomove}, and for getting me involved in the analysis of fish social networks in the pond mesocosms.
 
-\paragraph*{Collaborators}
+Many other people helped make a difference to various projects --- appearing in this thesis and otherwise: Anat Levi, Adi Ben-Nun, Yotam Orchan, and Sivan Margalit in Israel; Mridula Mary Paul and a large number of citizen-scientist birdwatchers in India; Mark Adams and Henk Van Grouw in Tring; and Thijs Jansen, Hanno Hildenbrandt, Apu Ramesh, Selin Ersoy, Christine Beardsworth, Anne Dekinga, Frank Van Maarseveen, Bas Denissen, and many field workers in the Netherlands.
 
-I had the good fortune to have worked with two ambitious and driven people.
+\medskip
 
-Vijay Ramesh, then at Columbia University (now at Cornell) reached out to ask whether I would help him with some spatial data in late 2018.
-I joined him in a 6-month project that ran for three and a half years --- see Chapter~\ref{ch:hillybirds}.
-I used this project as a testbed for new techniques --- using Python for some computations, and ideas --- spatial thinning using a network approach, that caught my interest.
+Joining TRES in mid-2018, I was lucky to arrive at a time when the department was at full strength, with multiple labs full of intelligent and social people.
+Although the pandemic severely impacted this dynamic, I want to thank everybody in the labs of the three main PIs, Franjo, Rampal, and Charlotte.
+From Franjo's lab, Christoph, Jakob, Apu, and Stefano for lots of joint activities including badminton, but also Timo, Ines, Jana, and Magdalena for interesting discussions usually commencing around five o'clock;
+from Rampal's lab, Theo, Raphael, Karen, Sebastian, Megan and Elisa for being a mainstay of my social life before the pandemic, as well as Shu for excellent dinners;
+from Charlotte's lab, Marina and Lauren for fun pre- and post-pandemic events of all sorts;
+and Boris and Jan, whom we adopted into Franjo's lab.
+I especially want to thank Lucas, who was only with us for a year but made it an extremely fun year, from trying to convince us about snake jazz in Lisbon, to introducing me to \textit{Stranger Things} in Paris --- I'm looking forward to meeting again in London.
 
-Greg Albery is among my most recent collaborators, and someone whose work I've held in high regard for a while.
-In early 2021, Greg tried to recruit me to his supervisor's lab at Georgetown (he tried again in early 2022).
-I was sounded out to work on building social networks from animal movement data, with a potential expansion into examining disease transmission.
-This gave me the idea for Chapter~\ref{ch:pathomove}, during which I learned the movement and disease modelling that landed me my current job.
+I also especially want to thank Pedro for being the bedrock of my social and work life for four years.
+It was Pedro who introduced me to \textit{R} package development for example, and also the one who invited me and others out to Lisbon for New Year's in 2019, where I had a really lovely time.
+Pedro is the wise elder everybody needs in their lives, and I think TRES is lucky to be able to keep him for a while longer.
 
-I look forward to working with both Vijay and Greg in the years to come.
+I'm not really able to thank Josh enough, except to say that my time in Groningen would have been very different without him.
+Josh convinced me to try many new things that I eventually came to enjoy, and it was on his suggestion that I seriously began considering the UK to live and work.
+Josh is both very smart and very grounded, making him the first and last person I go to for advice. 
+I'm very happy to have him around in this next chapter of my life in London.
 
-I've had the help of many other collaborators at all levels in academia, who appear as authors on some of the chapters in this thesis, and on manuscripts yet to come: Orr Spiegel, Sivan Toledo, Yosef Kiat, Yoav Barton, Ulrike Schl{\"a}gel, Johannes Signer, Mark Adams, Rebecca Rimbach, Mridula Paul, Morgan Tingley, VV Robin, Ruth de Fries, and Amy Sweeny.
+I also want to thank all my other friends, visiting and talking with whom helped me prioritise where I should take my life: Kevin, Thore, Paula, Amanda, Maria, Nick, Andr{\'e}, Merijn, and Norah from my master's; Ayushman, Vignesh, and Nehal from my time in India; and Connor, who I hope will be the first of new friends in England.
 
-\paragraph*{TRES and Surrounds}
+Finally, I'm grateful to lots of people for their help and support in what seems like a past life in India, while I was on the path to my PhD position: my parents and grandparents, and the many supervisors who offered me opportunities in their labs, both in Europe and India.
 
-Joining TRES in mid-2018, I found a department that, pre-pandemic, was very similar to the Centre for Ecological Sciences I was coming from --- full of intelligent people, and most importantly, social.
-I will freely admit to not finding the majority of the work in this department interesting, and that was a function of the diversity, or divergence, of topics among and within labs.
-Yet the general gregariousness of the PhD students who were my colleagues more than made up for this.
-I now think departments with better social than professional ties are probably healthier workplaces.
-
-A number of people here 
-
-I'm quite sure my life would be very different without Josh Lambert.
-I would never have tried a number of things I now enjoy without Josh suggesting them, and often, accompanying me: squash, long-distance cycling, programming in Julia, considering the UK to live and work.
-I also made a more serious change, of which Josh convinced me: to eventually leave the academic track.
-I'm immensely pleased that I was able to find a cluster-hire at the London School of Hygiene and Tropical Medicine, through which we were both offered positions.
-Josh is both very smart and grounded, and he's the first and last person I go to for advice --- I look forward to having him around.
+{ \begin{center} \barfont{-.-} \end{center} }
 
 \endgroup
